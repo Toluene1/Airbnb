@@ -3,19 +3,33 @@ const Address = require("../Model/Address");
 const emailOtp = require("../Model/Emailotp");
 const EmergencyContact = require("../Model/EmergencyContact");
 const User = require("../Model/User");
+const createJWT = require("../utils/jwt");
 
 const createEmailOtp = async (req, res) => {
   try {
     const { email } = req.body;
     const new_Otp = Math.floor(100000 + Math.random() * 900000);
-    await emailOtp.create({
-      otp: new_Otp,
-      Email: email,
-      createdAt: Date.now(),
-      expirededAt: Date.now() + 3600000,
-    });
-
     const message = `welcome to Airbnb ${email} please verify your email with the ${new_Otp}`;
+    const existing_Otp = await emailOtp.findOne({ Email: email });
+
+    if (!existing_Otp) {
+      await emailOtp.create({
+        otp: new_Otp,
+        Email: email,
+        createdAt: Date.now(),
+        expirededAt: Date.now() + 3600000,
+      });
+
+      ev.emit("mail", message, email);
+      res.status(200).json({ message: "otp sent " });
+      return;
+    }
+
+    await emailOtp.findOneAndUpdate(
+      { Email: email },
+      { otp: new_Otp },
+      { new: true },
+    );
     ev.emit("mail", message, email);
     res.status(200).json({ message: "otp sent " });
   } catch (error) {
@@ -40,10 +54,8 @@ const verifyEmailOtp = async (req, res) => {
       res.status(200).json({ message: "proceed to create account" });
       return;
     }
-
-    //await jwt
-
-    res.status(200).json({ message: "login successful" });
+    const token = createJWT(regUser._id);
+    res.status(200).json({ user: regUser, token });
   } catch (error) {
     res.status(500).json({ message: "please contact admin" });
     console.log(error);
@@ -54,11 +66,10 @@ const createUser = async (req, res) => {
   try {
     const user = await User.create({ ...req.body });
 
-    //await jwt
-
-    res.status(200).json({ message: "user created", user });
+    const token = createJWT(user._id);
+    res.status(200).json({ message: "user created", user, token });
   } catch (error) {
-    res.status(500).json({ message: "please contact your admin" });
+    res.status(404).json({ message: "please contact your admin" });
     console.log(error);
   }
 };
