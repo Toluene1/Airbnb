@@ -16,6 +16,6 @@ mailer.use(
   pugEngine({
     templateDir: path.join(__dirname, "../templates"),
     pretty: true,
-  }),
+  })
 );
 module.exports = mailer;

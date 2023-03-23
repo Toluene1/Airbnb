@@ -26,7 +26,7 @@ const createEmailOtp = async (req, res) => {
     await emailOtp.findOneAndUpdate(
       { Email: email },
       { otp: new_Otp },
-      { new: true },
+      { new: true }
     );
     ev.emit("mail", message, email);
     res.status(200).json({ message: "otp sent " });
@@ -91,8 +91,8 @@ const updateAddress = async (req, res) => {
     const { _id } = req.user;
     const user = await User.findOneAndUpdate(
       { _id: _id },
-      { Address: newAddress, Avatar: "" },
-      { new: true },
+      { Address: newAddress },
+      { new: true }
     );
 
     res.status(200).json(user);
@@ -101,4 +101,58 @@ const updateAddress = async (req, res) => {
     console.log(error);
   }
 };
-module.exports = { createEmailOtp, verifyEmailOtp, createUser, updateAddress };
+const updateEmergencyContact = async (req, res) => {
+  const { name, relationship, language, email, phoneNumber } = req.body;
+
+  try {
+    const newContact =
+      name +
+      ", " +
+      relationship +
+      ", " +
+      email +
+      ", " +
+      phoneNumber +
+      ", " +
+      language +
+      " ";
+
+    const { _id } = req.user;
+    const user = await User.findOneAndUpdate(
+      { _id: _id },
+      { EmergencyContact: newContact },
+      { new: true }
+    );
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "please contact your admin" });
+    console.log(error);
+  }
+};
+
+const updateProfile = async (req, res) => {
+  const { about, language, location, work } = req.body;
+
+  try {
+    const { _id } = req.user;
+    const user = await User.findOneAndUpdate(
+      { _id: _id },
+      { About: about, Language: language, Work: work, Location: location },
+      { new: true }
+    );
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "please contact your admin" });
+    console.log(error);
+  }
+};
+module.exports = {
+  createEmailOtp,
+  verifyEmailOtp,
+  createUser,
+  updateAddress,
+  updateEmergencyContact,
+  updateProfile,
+};

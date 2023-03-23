@@ -19,6 +19,14 @@ const userSchema = new Schema(
       type: Schema.Types.String,
       required: true,
     },
+    About: {
+      type: Schema.Types.String,
+      default: "",
+    },
+    Language: {
+      type: Schema.Types.String,
+      default: "",
+    },
     Avatar: {
       type: Schema.Types.String,
       default: "",
@@ -31,7 +39,14 @@ const userSchema = new Schema(
       type: Schema.Types.String,
       default: "",
     },
-
+    Location: {
+      type: Schema.Types.String,
+      default: "",
+    },
+    Work: {
+      type: Schema.Types.String,
+      default: "",
+    },
     EmergencyContact: {
       type: Schema.Types.String,
       default: "",
@@ -39,7 +54,7 @@ const userSchema = new Schema(
   },
   {
     timestamps: true,
-  },
+  }
 );
 
 const User = model("users", userSchema);

@@ -25,7 +25,7 @@ const start = async () => {
   try {
     await mongoose.connect(MONGO_URL);
     app.listen(PORT, () =>
-      console.log(`Server is listening on port ${PORT}...`),
+      console.log(`Server is listening on port ${PORT}...`)
     );
   } catch (error) {
     console.log(error);
