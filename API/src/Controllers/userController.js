@@ -130,11 +130,29 @@ const updateEmergencyContact = async (req, res) => {
     console.log(error);
   }
 };
+
+const updateProfile = async (req, res) => {
+  const { about, language, location, work } = req.body;
+
+  try {
+    const { _id } = req.user;
+    const user = await User.findOneAndUpdate(
+      { _id: _id },
+      { About: about, Language: language, Work: work, Location: location },
+      { new: true }
+    );
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "please contact your admin" });
+    console.log(error);
+  }
+};
 module.exports = {
   createEmailOtp,
   verifyEmailOtp,
   createUser,
   updateAddress,
   updateEmergencyContact,
-  updateEmergencyContact,
+  updateProfile,
 };
