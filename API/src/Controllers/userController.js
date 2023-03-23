@@ -26,7 +26,7 @@ const createEmailOtp = async (req, res) => {
     await emailOtp.findOneAndUpdate(
       { Email: email },
       { otp: new_Otp },
-      { new: true }
+      { new: true },
     );
     ev.emit("mail", message, email);
     res.status(200).json({ message: "otp sent " });
@@ -72,27 +72,12 @@ const createUser = async (req, res) => {
 };
 
 const updateAddress = async (req, res) => {
-  const { country, suite, street, city, state, zipcode } = req.body;
-
   try {
-    const newAddress =
-      suite +
-      " " +
-      street +
-      " " +
-      city +
-      " " +
-      state +
-      " " +
-      country +
-      " " +
-      zipcode;
-
     const { _id } = req.user;
     const user = await User.findOneAndUpdate(
       { _id: _id },
-      { Address: newAddress },
-      { new: true }
+      { Address: { ...req.body } },
+      { new: true },
     );
 
     res.status(200).json(user);
@@ -102,26 +87,12 @@ const updateAddress = async (req, res) => {
   }
 };
 const updateEmergencyContact = async (req, res) => {
-  const { name, relationship, language, email, phoneNumber } = req.body;
-
   try {
-    const newContact =
-      name +
-      ", " +
-      relationship +
-      ", " +
-      email +
-      ", " +
-      phoneNumber +
-      ", " +
-      language +
-      " ";
-
     const { _id } = req.user;
     const user = await User.findOneAndUpdate(
       { _id: _id },
-      { EmergencyContact: newContact },
-      { new: true }
+      { EmergencyContact: { ...req.body } },
+      { new: true },
     );
 
     res.status(200).json(user);
@@ -139,7 +110,7 @@ const updateProfile = async (req, res) => {
     const user = await User.findOneAndUpdate(
       { _id: _id },
       { About: about, Language: language, Work: work, Location: location },
-      { new: true }
+      { new: true },
     );
 
     res.status(200).json(user);
