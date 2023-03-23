@@ -1,5 +1,7 @@
 const ev = require("../Events/emailHandler");
+const Address = require("../Model/Address");
 const emailOtp = require("../Model/Emailotp");
+const EmergencyContact = require("../Model/EmergencyContact");
 const User = require("../Model/User");
 
 const createEmailOtp = async (req, res) => {
@@ -60,4 +62,37 @@ const createUser = async (req, res) => {
     console.log(error);
   }
 };
-module.exports = { createEmailOtp, verifyEmailOtp, createUser };
+
+const CreateAddress = async (req, res) => {
+  try {
+    // const { User, Country, Street, Suite, City, State, Zipcode } = req.body;
+
+    const address = await Address.create({ ...req.body });
+
+    res.status(200).json({ message: "Address created", address });
+  } catch (error) {
+    res.status(500).json({ message: "please contact your admin" });
+    console.log(error);
+  }
+};
+
+const AddEmergencyontact = async (req, res) => {
+  try {
+    const AddedContact = await EmergencyContact.create({ ...req.body });
+
+    res
+      .status(200)
+      .json({ message: "Emergency Contact created", AddedContact });
+  } catch (error) {
+    res.status(500).json({ message: "please contact your admin" });
+    console.log(error);
+  }
+};
+
+module.exports = {
+  createEmailOtp,
+  verifyEmailOtp,
+  createUser,
+  CreateAddress,
+  AddEmergencyontact,
+};
