@@ -3,13 +3,12 @@ const { Schema, model } = require("mongoose");
 const userOtp = new Schema({
   Email: {
     type: Schema.Types.String,
-    unique: true,
+
     trim: true,
   },
   otp: {
     type: Schema.Types.String,
     required: true,
-    unique: true,
   },
   createdAt: {
     type: Schema.Types.Date,
