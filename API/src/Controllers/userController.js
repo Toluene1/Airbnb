@@ -101,4 +101,40 @@ const updateAddress = async (req, res) => {
     console.log(error);
   }
 };
-module.exports = { createEmailOtp, verifyEmailOtp, createUser, updateAddress };
+const updateEmergencyContact = async (req, res) => {
+  const { name, relationship, language, email, phoneNumber } = req.body;
+
+  try {
+    const newContact =
+      name +
+      ", " +
+      relationship +
+      ", " +
+      email +
+      ", " +
+      phoneNumber +
+      ", " +
+      language +
+      " ";
+
+    const { _id } = req.user;
+    const user = await User.findOneAndUpdate(
+      { _id: _id },
+      { EmergencyContact: newContact },
+      { new: true }
+    );
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "please contact your admin" });
+    console.log(error);
+  }
+};
+module.exports = {
+  createEmailOtp,
+  verifyEmailOtp,
+  createUser,
+  updateAddress,
+  updateEmergencyContact,
+  updateEmergencyContact,
+};
