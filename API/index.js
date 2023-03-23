@@ -5,14 +5,17 @@ const mongoose = require("mongoose");
 const { PORT, MONGO_URL } = require("./src/Config/config");
 const Error404 = require("./src/middleware/error404");
 const userRoute = require("./src/Routes/userRoute");
+const auth = require("./src/middleware/auth");
 //middleware
 app.use(cors());
 app.use(express.json());
 
 //Routes
 app.use("/api/v1/user", userRoute);
-app.get("/", (req, res) => {
-  res.send("welcome to home");
+
+//test auth
+app.get("/admin", [auth], (req, res) => {
+  res.status(200).json(req.user);
 });
 
 app.use(Error404); // unavailable route
