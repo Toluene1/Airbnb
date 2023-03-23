@@ -63,12 +63,42 @@ const verifyEmailOtp = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const user = await User.create({ ...req.body });
-
     const token = createJWT(user._id);
     res.status(200).json({ message: "user created", user, token });
   } catch (error) {
-    res.status(404).json({ message: "please contact your admin" });
+    res.status(500).json({ message: "please contact your admin" });
     console.log(error);
   }
 };
-module.exports = { createEmailOtp, verifyEmailOtp, createUser };
+
+const updateAddress = async (req, res) => {
+  const { country, suite, street, city, state, zipcode } = req.body;
+
+  try {
+    const newAddress =
+      suite +
+      " " +
+      street +
+      " " +
+      city +
+      " " +
+      state +
+      " " +
+      country +
+      " " +
+      zipcode;
+
+    const { _id } = req.user;
+    const user = await User.findOneAndUpdate(
+      { _id: _id },
+      { Address: newAddress, Avatar: "" },
+      { new: true },
+    );
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "please contact your admin" });
+    console.log(error);
+  }
+};
+module.exports = { createEmailOtp, verifyEmailOtp, createUser, updateAddress };
