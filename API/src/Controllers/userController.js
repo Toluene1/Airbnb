@@ -72,11 +72,30 @@ const createUser = async (req, res) => {
 };
 
 const updateAddress = async (req, res) => {
-  const { _id } = req.user;
-  try {
-    const user = await User.findByIdAndUpdate({ _id: _id });
+  const { country, suite, street, city, state, zipcode } = req.body;
 
-    res.status(200).json({ message: user });
+  try {
+    const newAddress =
+      suite +
+      " " +
+      street +
+      " " +
+      city +
+      " " +
+      state +
+      " " +
+      country +
+      " " +
+      zipcode;
+
+    const { _id } = req.user;
+    const user = await User.findOneAndUpdate(
+      { _id: _id },
+      { Address: newAddress },
+      { new: true }
+    );
+
+    res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
     console.log(error);
