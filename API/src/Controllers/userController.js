@@ -2,6 +2,8 @@ const ev = require("../Events/emailHandler");
 const emailOtp = require("../Model/Emailotp");
 const User = require("../Model/User");
 const createJWT = require("../utils/jwt");
+const formidable = require("formidable");
+const cloudinary = require("../utils/cloudinary");
 
 const createEmailOtp = async (req, res) => {
   try {
@@ -119,6 +121,34 @@ const updateProfile = async (req, res) => {
     console.log(error);
   }
 };
+
+const uploadPhoto = async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const user = await User.findOne({ _id: _id });
+    const form = formidable();
+    form.parse(req, async (err, fields, files) => {
+      if (err) throw new Error(err);
+      const filePath = files["image"].filepath;
+      const result = await cloudinary.uploader.upload(filePath, {
+        public_id: user.Email,
+        folder: "profile_pics",
+        width: 300,
+        crop: "scale",
+      });
+      const { Avatar } = await User.findOneAndUpdate(
+        { _id: _id },
+        { Avatar: result.secure_url },
+        { new: true },
+      );
+      res.status(200).json({ message: "file uploaded", Avatar });
+    });
+  } catch (error) {
+    res.status(500).json({ message: "img uploaded failed" });
+    console.log(error);
+  }
+};
+
 module.exports = {
   createEmailOtp,
   verifyEmailOtp,
@@ -126,4 +156,5 @@ module.exports = {
   updateAddress,
   updateEmergencyContact,
   updateProfile,
+  uploadPhoto,
 };
