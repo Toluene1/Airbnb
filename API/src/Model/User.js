@@ -23,7 +23,7 @@ const userSchema = new Schema(
       type: Schema.Types.String,
       default: "",
     },
-    Language: {
+    Location: {
       type: Schema.Types.String,
       default: "",
     },
@@ -36,25 +36,61 @@ const userSchema = new Schema(
       required: true,
     },
     Address: {
-      type: Schema.Types.String,
-      default: "",
+      suite: {
+        type: Schema.Types.String,
+        default: "",
+      },
+      street: {
+        type: Schema.Types.String,
+        default: "",
+      },
+      state: {
+        type: Schema.Types.String,
+        default: "",
+      },
+      country: {
+        type: Schema.Types.String,
+        default: "",
+      },
+      zipcode: {
+        type: Schema.Types.String,
+        default: "",
+      },
     },
-    Location: {
-      type: Schema.Types.String,
-      default: "",
+    Language: {
+      type: Schema.Types.Array,
     },
+
     Work: {
       type: Schema.Types.String,
       default: "",
     },
     EmergencyContact: {
-      type: Schema.Types.String,
-      default: "",
+      name: {
+        type: Schema.Types.String,
+        default: "",
+      },
+      relationship: {
+        type: Schema.Types.String,
+        default: "",
+      },
+      email: {
+        type: Schema.Types.String,
+        default: "",
+      },
+      phoneNumber: {
+        type: Schema.Types.String,
+        default: "",
+      },
+      language: {
+        type: Schema.Types.String,
+        default: "",
+      },
     },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 const User = model("users", userSchema);
