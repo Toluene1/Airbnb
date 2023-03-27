@@ -28,7 +28,7 @@ const createEmailOtp = async (req, res) => {
     await emailOtp.findOneAndUpdate(
       { Email: email },
       { otp: new_Otp },
-      { new: true }
+      { new: true },
     );
     ev.emit("mail", message, email);
     res.status(200).json({ message: "otp sent " });
@@ -55,7 +55,7 @@ const verifyEmailOtp = async (req, res) => {
       return;
     }
     const token = createJWT(regUser._id);
-    res.status(200).json({ user: regUser, token });
+    res.status(200).json({ token: token });
   } catch (error) {
     res.status(500).json({ message: "please contact admin" });
     console.log(error);
@@ -66,7 +66,7 @@ const createUser = async (req, res) => {
   try {
     const user = await User.create({ ...req.body });
     const token = createJWT(user._id);
-    res.status(200).json({ message: "user created", user, token });
+    res.status(200).json({ message: "user created", token });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
     console.log(error);
@@ -76,13 +76,13 @@ const createUser = async (req, res) => {
 const updateAddress = async (req, res) => {
   try {
     const { _id } = req.user;
-    const user = await User.findOneAndUpdate(
+    await User.findOneAndUpdate(
       { _id: _id },
       { Address: { ...req.body } },
-      { new: true }
+      { new: true },
     );
 
-    res.status(200).json(user);
+    res.status(200).json({ message: "address update" });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
     console.log(error);
@@ -94,10 +94,10 @@ const updateEmergencyContact = async (req, res) => {
     const user = await User.findOneAndUpdate(
       { _id: _id },
       { EmergencyContact: { ...req.body } },
-      { new: true }
+      { new: true },
     );
 
-    res.status(200).json(user);
+    res.status(200).json({ message: "emergencey contact updated" });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
     console.log(error);
@@ -112,10 +112,10 @@ const updateProfile = async (req, res) => {
     const user = await User.findOneAndUpdate(
       { _id: _id },
       { About: about, Language: language, Work: work, Location: location },
-      { new: true }
+      { new: true },
     );
 
-    res.status(200).json(user);
+    res.status(200).json({ message: "profile updated" });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
     console.log(error);
@@ -139,13 +139,24 @@ const uploadPhoto = async (req, res) => {
       const { Avatar } = await User.findOneAndUpdate(
         { _id: _id },
         { Avatar: result.secure_url },
-        { new: true }
+        { new: true },
       );
       res.status(200).json({ message: "file uploaded", Avatar });
     });
   } catch (error) {
     res.status(500).json({ message: "img uploaded failed" });
     console.log(error);
+  }
+};
+
+const getUser = async (req, res) => {
+  const { _id } = req.user;
+  try {
+    const user = await User.findOne({ _id: _id });
+    res.status(200).json({ user: user });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "please contact the admin" });
   }
 };
 
@@ -157,4 +168,5 @@ module.exports = {
   updateEmergencyContact,
   updateProfile,
   uploadPhoto,
+  getUser,
 };
