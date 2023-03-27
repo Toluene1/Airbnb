@@ -7,10 +7,12 @@ const {
   updateEmergencyContact,
   updateProfile,
   uploadPhoto,
+  getUser,
 } = require("../Controllers/userController");
 const auth = require("../middleware/auth");
 
 const router = Router();
+router.get("/fetchUser", [auth], getUser);
 router.post("/createEmailOtp", createEmailOtp);
 router.post("/verifyEmailOtp", verifyEmailOtp);
 router.post("/createUser", createUser);
