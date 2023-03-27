@@ -28,7 +28,7 @@ const createEmailOtp = async (req, res) => {
     await emailOtp.findOneAndUpdate(
       { Email: email },
       { otp: new_Otp },
-      { new: true },
+      { new: true }
     );
     ev.emit("mail", message, email);
     res.status(200).json({ message: "otp sent " });
@@ -79,7 +79,7 @@ const updateAddress = async (req, res) => {
     const user = await User.findOneAndUpdate(
       { _id: _id },
       { Address: { ...req.body } },
-      { new: true },
+      { new: true }
     );
 
     res.status(200).json(user);
@@ -94,7 +94,7 @@ const updateEmergencyContact = async (req, res) => {
     const user = await User.findOneAndUpdate(
       { _id: _id },
       { EmergencyContact: { ...req.body } },
-      { new: true },
+      { new: true }
     );
 
     res.status(200).json(user);
@@ -112,7 +112,7 @@ const updateProfile = async (req, res) => {
     const user = await User.findOneAndUpdate(
       { _id: _id },
       { About: about, Language: language, Work: work, Location: location },
-      { new: true },
+      { new: true }
     );
 
     res.status(200).json(user);
@@ -139,7 +139,7 @@ const uploadPhoto = async (req, res) => {
       const { Avatar } = await User.findOneAndUpdate(
         { _id: _id },
         { Avatar: result.secure_url },
-        { new: true },
+        { new: true }
       );
       res.status(200).json({ message: "file uploaded", Avatar });
     });
