@@ -26,6 +26,7 @@ const OtpVerify = () => {
         return;
       }
       handleSaveToken(response.data.token);
+      navigate("/");
     } catch (error) {
       setalert(true);
       setalertMessage(error.response.data.message);

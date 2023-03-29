@@ -1,10 +1,42 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import httpAuth from "./Services/config";
 
 function App() {
+  const [User, setUser] = useState({});
+  const [loading, setloading] = useState(false);
+  let isMounted = true;
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        setloading(true);
+        const response = await httpAuth.get("/fetchUser");
+        setUser(response.data.user);
+        setloading(false);
+      } catch (error) {
+        setloading(false);
+        // load Login component
+      }
+    };
+
+    if (isMounted) {
+      fetchUser();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  if (loading) {
+    return <h1>Loading .....</h1>;
+  }
+
   return (
     <div>
       <Navbar />
-      <h1>welcome to home</h1>
+      <h1>welcome to home {User.FirstName}</h1>
     </div>
   );
 }

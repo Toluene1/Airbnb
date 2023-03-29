@@ -1,21 +1,19 @@
 import axios from "axios";
-const httpClient = axios.create({
-  baseURL: "http://localhost:5000/",
+const httpAuth = axios.create({
+  baseURL: "http://localhost:5000/api/v1/user",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-axios.interceptors.request.use(
+httpAuth.interceptors.request.use(
   (config) => {
     const token = JSON.parse(localStorage.getItem("token"));
-
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
-
     return config;
   },
   (error) => Promise.reject(error),
 );
-export default httpClient;
+export default httpAuth;
