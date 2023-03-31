@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import httpAuth from "./Services/config";
+import DisplayModal from "./utils/DisplayModal";
 
 function App() {
   const [User, setUser] = useState({});
@@ -18,9 +19,9 @@ function App() {
         setloading(false);
       } catch (error) {
         setloading(false);
-        navigate("/login", {
-          state: { previousUrl: location.pathname },
-        });
+        // navigate("/login", {
+        //   state: { previousUrl: location.pathname },
+        // });
       }
     };
 
@@ -40,6 +41,7 @@ function App() {
     <div>
       <Navbar />
       <h1>welcome to home {User.FirstName}</h1>
+      <DisplayModal />
     </div>
   );
 }
