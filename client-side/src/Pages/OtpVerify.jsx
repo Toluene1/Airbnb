@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import httpClient from "../Services/httpclient";
 
@@ -8,7 +8,9 @@ const OtpVerify = () => {
   const [alertMessage, setalertMessage] = useState("");
   const navigate = useNavigate();
   const submitOtp = useRef({ user_Otp: "" });
+  const location = useLocation();
 
+  //save token
   const handleSaveToken = (token) => {
     return localStorage.setItem("token", JSON.stringify(token));
   };
@@ -26,7 +28,7 @@ const OtpVerify = () => {
         return;
       }
       handleSaveToken(response.data.token);
-      navigate("/");
+      navigate(location.state.previousUrl);
     } catch (error) {
       setalert(true);
       setalertMessage(error.response.data.message);
