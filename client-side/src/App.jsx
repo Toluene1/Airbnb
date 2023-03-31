@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import httpAuth from "./Services/config";
 
@@ -7,7 +7,8 @@ function App() {
   const [User, setUser] = useState({});
   const [loading, setloading] = useState(false);
   let isMounted = true;
-
+  const navigate = useNavigate();
+  const location = useLocation();
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -17,7 +18,9 @@ function App() {
         setloading(false);
       } catch (error) {
         setloading(false);
-        // load Login component
+        navigate("/login", {
+          state: { previousUrl: location.pathname },
+        });
       }
     };
 
