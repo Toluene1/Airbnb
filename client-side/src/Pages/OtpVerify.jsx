@@ -1,15 +1,13 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import { Context } from "../Provider/Context";
 import httpClient from "../Services/httpclient";
 
 const OtpVerify = () => {
-  const [alert, setalert] = useState(false);
-  const [alertMessage, setalertMessage] = useState("");
   const navigate = useNavigate();
   const submitOtp = useRef({ user_Otp: "" });
   const location = useLocation();
-
+  const { mail } = useContext(Context);
   //save token
   const handleSaveToken = (token) => {
     return localStorage.setItem("token", JSON.stringify(token));
@@ -44,9 +42,8 @@ const OtpVerify = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="m-5">
-        <h1>verify Otp</h1>
+        <h1>Enter the code we sent over to your {mail} </h1>
         <form action="" onSubmit={handleVerifyOtp}>
           <input
             required
@@ -57,10 +54,9 @@ const OtpVerify = () => {
           <br /> <br />
           <button type="submit" className="btn btn-primary mx-4 p-2 w-25">
             {" "}
-            submit
+            continue
           </button>
         </form>
-        {alert && <p>{alertMessage}</p>}
       </div>
     </div>
   );
