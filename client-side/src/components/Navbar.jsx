@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="navDiv1 ">
           <Link to={"/"} className="text-decoration-none">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1280px-Airbnb_Logo_B%C3%A9lo.svg.png"
+              src="https://seeklogo.com/images/A/airbnb-logo-1D03C48906-seeklogo.com.png"
               alt=""
               className="imageDiv1"
             />

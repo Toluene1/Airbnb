@@ -1,40 +1,45 @@
 
 .divMain {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     align-items: center;
     justify-content: space-between;
     height: 75px;
 }
 .navDiv1 {
-    /* background-color: blue; */
-    max-width: 460px;
+    /* background-color: rgb(22, 22, 32); */
+    /* max-width: 460px; */
     height: 70px;
     padding: 18px;
     align-content: center;
-    margin-left: 60px;
+    /* margin-left: 60px; */
 }
 .imageDiv1 {
-    width: 118px;
+    /* width: 118px; */
     height: 30px;
+    /* background-color: blue; */
+    margin-left: 30px;
 }
 .navDiv2 {
     /* background-color: blue; */
         max-width: 400px;
         height: 43px;
-        margin-left: 70px;
+        /* margin-left: 70px; */
         
 }
 .navDiv3 {
-        max-width: 460px;
+        /* max-width: 460px; */
         height: 48px;
         padding: 5px;
-        margin-right: 80px;
+        margin-right: 50px;
         display: flex;
-        justify-content: center;
+        /* justify-content: center; */
+        /* background-color: blue; */
 }
 .div2Button1 {
-    width: 109px;
+    /* max-width: 109px; */
+    padding-left: 17px;
+    padding-right: 17px;
     height: 43px;
     border-radius: 20px 0px 0px 20px;
     background-color: white;
@@ -48,8 +53,9 @@
     border: 1px solid rgb(203, 192, 192);
 }
 .div2Button2 {
-    width: 98px;
-        height: 43px;
+padding-left: 17px;
+    padding-right: 17px;
+    height: 43px;
     background-color: white;
         border: 1px solid rgb(203, 192, 192);
         font-size: 14px;
@@ -125,7 +131,7 @@
 .airHome {
     padding: 3px;
     position: relative;
-    left: -55px;
+    /* left: -55px; */
 }
 .dropdownNav {
     position: absolute;
@@ -135,7 +141,6 @@
     float: right;
     padding: 10px;
     /* margin-top: 5px; */
-
 }
 .itemDrop {
     padding: 10px;
