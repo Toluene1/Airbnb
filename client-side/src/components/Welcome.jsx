@@ -63,7 +63,7 @@ function Welcome({ setshowOtp }) {
         <div className="form-floating mt-2  ">
           <input
             required
-            id="phone"
+            id="Email"
             type="Email"
             className="form-control p-3"
             placeholder="Email"

@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { TbWorld } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
-import Dropdown from "react-bootstrap/Dropdown";
 import PopModal from "../SignUp";
 import "./Navbar.css";
+import { Context } from "../../Provider/Context";
 const Navbar = () => {
-  const [modalShow, setModalShow] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-
-  function HideDropdown(params) {
+  const { modalShow, setModalShow } = useContext(Context);
+  // hideDropDown
+  function HideDropdown() {
     setModalShow(true);
     setDropdown(false);
   }

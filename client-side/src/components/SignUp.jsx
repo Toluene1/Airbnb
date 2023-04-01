@@ -1,12 +1,20 @@
 import Modal from "react-bootstrap/Modal";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import OtpVerify from "../Pages/OtpVerify";
-import Welcome from "./Welcome.jsx";
-function PopModal(props) {
-  const [showOtp, setshowOtp] = useState(false);
+import React, { useContext, useState } from "react";
 
-  const navigate = useNavigate();
+import OtpVerify from "./OtpVerify";
+import Welcome from "./Welcome.jsx";
+import { FaAngleLeft } from "react-icons/fa";
+import CreateAcc from "./CreateAcc";
+import { Context } from "../Provider/Context";
+
+function PopModal(props) {
+  const { showOtp, setshowOtp, showCreateAcc, setshowCreateAcc } =
+    useContext(Context);
+
+  function backToVerifyOtp() {
+    setshowCreateAcc(false);
+    setshowOtp(true);
+  }
 
   return (
     <Modal
@@ -16,15 +24,37 @@ function PopModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title
-          id="contained-modal-title-vcenter"
-          className="fs-6 ms-auto py-0  "
-        >
-          Login or Signup
+        <Modal.Title id="contained-modal-title-vcenter" className=" fs-6  ">
+          {showCreateAcc ? (
+            <div>
+              <FaAngleLeft onClick={backToVerifyOtp} className="Angle-left" />{" "}
+              <span className="ms-5"> Finish Signing up</span>
+            </div>
+          ) : (
+            <div>
+              {showOtp ? (
+                <div>
+                  <FaAngleLeft
+                    onClick={() => setshowOtp(false)}
+                    className="Angle-left"
+                  />{" "}
+                  <span className="ms-5"> confirm your email</span>
+                </div>
+              ) : (
+                <p className="mt-3 ">login or SignUp</p>
+              )}
+            </div>
+          )}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="p-2">
-        {showOtp ? <OtpVerify /> : <Welcome setshowOtp={setshowOtp} />}
+        {showCreateAcc ? (
+          <CreateAcc />
+        ) : (
+          <div>
+            {showOtp ? <OtpVerify /> : <Welcome setshowOtp={setshowOtp} />}
+          </div>
+        )}
       </Modal.Body>
     </Modal>
   );

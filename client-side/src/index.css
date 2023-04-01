@@ -52,3 +52,16 @@ button:hover {
   border-radius: 8px;
   height: 50px;
 }
+
+.otp {
+  border: 1px solid grey;
+  height: 50px;
+  width: 180px;
+  border-radius: 10px;
+}
+.otp :focus {
+  border: 1px solid black;
+}
+.Angle-left {
+  cursor: pointer;
+}
