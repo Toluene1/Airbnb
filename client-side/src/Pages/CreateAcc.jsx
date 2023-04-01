@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from "react";
 
 import httpClient from "../Services/httpClient";
 import { Context } from "../Provider/Context";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 
 const Signup = () => {
   const [alert, setalert] = useState(false);
