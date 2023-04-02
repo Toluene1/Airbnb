@@ -16,12 +16,12 @@ const Navbar = () => {
     setDropdown(false);
   }
   return (
-    <nav className=" navMain p-0  shadow">
+    <nav className=" navMain p-0  text-center ">
       <section className="divMain">
         <div className="navDiv1 ">
           <Link to={"/"} className="text-decoration-none">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1280px-Airbnb_Logo_B%C3%A9lo.svg.png"
+              src="https://seeklogo.com/images/A/airbnb-logo-1D03C48906-seeklogo.com.png"
               alt=""
               className="imageDiv1"
             />
@@ -51,7 +51,7 @@ const Navbar = () => {
             </button>{" "}
           </div>
           {dropdown && (
-            <div className="dropdown shadow">
+            <div className="dropdown shadow text-start">
               <p onClick={HideDropdown}>Login </p>{" "}
               <p onClick={HideDropdown}>Sign Up</p>
               <hr />
@@ -69,7 +69,20 @@ const Navbar = () => {
           )}
         </div>
       </section>
-
+      <section>
+        <div className="inputNav">
+          <button className="inputButton1">
+            <AiOutlineSearch className="searchIcon" />
+          </button>
+          <div className="anyDiv">
+            <span className="anyWhere">Anywhere</span> <br />
+            <span className="anyWeek"> Any Week - Add guests</span>
+          </div>
+          <button className="inputButton2">
+            <FaSlidersH className="searchIcon2" />
+          </button>
+        </div>
+      </section>
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
     </nav>
   );
