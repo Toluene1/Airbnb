@@ -4,6 +4,7 @@ export const Context = createContext(null);
 
 const ContextProvider = ({ children }) => {
   const [mail, setmail] = useState("");
+  const [filterShow, setFilterShow] = useState(true);
   const [modalShow, setModalShow] = useState(false);
   const [showOtp, setshowOtp] = useState(false);
   const [showCreateAcc, setshowCreateAcc] = useState(false);
@@ -16,6 +17,8 @@ const ContextProvider = ({ children }) => {
     setshowOtp,
     showCreateAcc,
     setshowCreateAcc,
+    filterShow,
+    setFilterShow,
   };
 
   return <Context.Provider value={initialState}>{children}</Context.Provider>;

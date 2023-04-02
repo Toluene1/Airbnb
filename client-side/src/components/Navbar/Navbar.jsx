@@ -3,17 +3,23 @@ import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { TbWorld } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaSlidersH } from "react-icons/fa";
 import PopModal from "../SignUp";
+import filterProperties from "../filterProperties";
 import "./Navbar.css";
 import { Context } from "../../Provider/Context";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
-  const { modalShow, setModalShow } = useContext(Context);
+  const { modalShow, setModalShow, filterShow, setFilterShow } =
+    useContext(Context);
   // hideDropDown
   function HideDropdown() {
     setModalShow(true);
     setDropdown(false);
+  }
+
+  function showFilter() {
+    setFilterShow(true);
   }
   return (
     <nav className=" navMain p-0  text-center ">
@@ -78,10 +84,14 @@ const Navbar = () => {
             <span className="anyWhere">Anywhere</span> <br />
             <span className="anyWeek"> Any Week - Add guests</span>
           </div>
-          <button className="inputButton2">
+          <button className="inputButton2" onClick={showFilter}>
             <FaSlidersH className="searchIcon2" />
           </button>
         </div>
+        {/* <filterProperties
+          show={filterShow}
+          onHide={() => setFilterShow(false)}
+        /> */}
       </section>
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
     </nav>
