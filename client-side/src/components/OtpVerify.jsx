@@ -3,15 +3,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../Provider/Context";
 import httpClient from "../Services/httpclient";
 
-const OtpVerify = () => {
+const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const [user_Otp, setuser_Otp] = useState("");
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
   const [disableBtn, setdiasbleBtn] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { mail, setModalShow, setshowCreateAcc, setshowOtp } =
-    useContext(Context);
+  const [loading, setloading] = useState(false);
+  const { mail, setModalShow } = useContext(Context);
 
   function backToWelcome() {
     setshowCreateAcc(false);
@@ -34,9 +34,11 @@ const OtpVerify = () => {
 
   const postUserOtp = async () => {
     try {
+      setloading(true);
       const response = await httpClient.post("/verifyEmailOtp", { user_Otp });
       setalert(true);
       setalertMessage(response.data.message);
+      setloading(false);
       if (response.data.message == "proceed to create account") {
         setshowCreateAcc(true);
         return;
@@ -51,6 +53,7 @@ const OtpVerify = () => {
     } catch (error) {
       setalert(true);
       setalertMessage(error.response.data.message);
+      setloading(false);
     }
   };
 
@@ -60,7 +63,7 @@ const OtpVerify = () => {
   };
 
   return (
-    <div>
+    <div className="animate__animated animate__backInLeft">
       <div className="m-2">
         <p>Enter the code we sent over to your {mail} </p>
         <form action="" onSubmit={handleVerifyOtp}>
@@ -73,15 +76,17 @@ const OtpVerify = () => {
           />{" "}
           {alert && <p className="text-danger">{alertMessage}</p>}
           <hr className="mt-5" />
-          <div className="text-end">
+          <div className=" w-100 ">
             <button
               type="submit"
-              className={` ${
+              className={`d-flex justify-content-center   ms-auto ${
                 disableBtn ? "btn btn-danger" : " btn btn-secondary"
-              }    p-2 w-25`}
+              }    p-2 w-50`}
             >
-              {" "}
-              continue
+              <span
+                className={`${loading && "spinner-border text-danger"}`}
+              ></span>
+              <span className="mx-3">continue</span>
             </button>
           </div>
         </form>

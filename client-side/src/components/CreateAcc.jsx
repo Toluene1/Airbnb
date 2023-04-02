@@ -4,11 +4,10 @@ import httpClient from "../Services/httpClient";
 import { Context } from "../Provider/Context";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const CreateAcc = () => {
+const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
-  const { mail, setModalShow, setshowOtp, setshowCreateAcc } =
-    useContext(Context);
+  const { mail, setModalShow } = useContext(Context);
 
   function backToWelcome() {
     setshowCreateAcc(false);
@@ -26,7 +25,7 @@ const CreateAcc = () => {
     DOB: "",
     PhoneNumber: "",
   });
-  console.log(state.current.Email, location.pathname);
+
   const postUserDetails = async () => {
     try {
       const response = await httpClient.post("/createUser", state.current);
@@ -53,7 +52,7 @@ const CreateAcc = () => {
 
   return (
     <>
-      <div>
+      <div className=" animate__animated animate__backInLeft">
         <form
           action=""
           className={` border-0  form-control  `}

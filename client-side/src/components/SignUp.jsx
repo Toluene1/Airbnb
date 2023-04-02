@@ -1,15 +1,14 @@
 import Modal from "react-bootstrap/Modal";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import OtpVerify from "./OtpVerify";
 import Welcome from "./Welcome.jsx";
 import { FaAngleLeft } from "react-icons/fa";
 import CreateAcc from "./CreateAcc";
-import { Context } from "../Provider/Context";
 
 function PopModal(props) {
-  const { showOtp, setshowOtp, showCreateAcc, setshowCreateAcc } =
-    useContext(Context);
+  const [showOtp, setshowOtp] = useState(false);
+  const [showCreateAcc, setshowCreateAcc] = useState(false);
 
   function backToVerifyOtp() {
     setshowCreateAcc(false);
@@ -22,6 +21,7 @@ function PopModal(props) {
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      className="animate__animated animate__backInUp"
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className=" fs-6  ">
@@ -49,10 +49,20 @@ function PopModal(props) {
       </Modal.Header>
       <Modal.Body className="p-2">
         {showCreateAcc ? (
-          <CreateAcc />
+          <CreateAcc
+            setshowOtp={setshowOtp}
+            setshowCreateAcc={setshowCreateAcc}
+          />
         ) : (
           <div>
-            {showOtp ? <OtpVerify /> : <Welcome setshowOtp={setshowOtp} />}
+            {showOtp ? (
+              <OtpVerify
+                setshowCreateAcc={setshowCreateAcc}
+                setshowOtp={setshowOtp}
+              />
+            ) : (
+              <Welcome setshowOtp={setshowOtp} />
+            )}
           </div>
         )}
       </Modal.Body>
