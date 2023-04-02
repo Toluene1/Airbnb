@@ -52,7 +52,7 @@ const Navbar = () => {
             </button>{" "}
           </div>
           {dropdown && (
-            <div className="dropdown shadow">
+            <div className="dropdown shadow text-start">
               <p onClick={HideDropdown}>Login </p>{" "}
               <p onClick={HideDropdown}>Sign Up</p>
               <hr />
