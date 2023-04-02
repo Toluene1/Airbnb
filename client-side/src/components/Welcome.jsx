@@ -1,7 +1,7 @@
 import { FaFacebookSquare } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Context } from "../Provider/Context";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { AiFillApple, AiOutlineMail } from "react-icons/ai";
 import httpClient from "../Services/httpclient";
 import { country_code } from "../utils/CountryCodes";
@@ -9,13 +9,17 @@ import { country_code } from "../utils/CountryCodes";
 function Welcome({ setshowOtp }) {
   const state = useRef({ email: "" });
   const { setmail } = useContext(Context);
+  const [loading, setloading] = useState(false);
 
   const postUserEmail = async () => {
     try {
+      setloading(true);
       await httpClient.post("/createEmailOtp", state.current);
       setmail(state.current.email);
       setshowOtp(true);
+      setloading(false);
     } catch (error) {
+      setloading(false);
       console.log(error);
     }
   };
@@ -63,7 +67,7 @@ function Welcome({ setshowOtp }) {
         <div className="form-floating mt-2  ">
           <input
             required
-            id="phone"
+            id="Email"
             type="Email"
             className="form-control p-3"
             placeholder="Email"
@@ -80,9 +84,16 @@ function Welcome({ setshowOtp }) {
         </p>
 
         <div>
-          <button type="submit" className="btn btn-danger w-100 p-2">
-            {" "}
-            continue
+          <button
+            type="submit"
+            className={`w-100 p-2 d-flex justify-content-center border ${
+              loading ? "btn-btn-secondary" : "btn btn-danger "
+            }  `}
+          >
+            <span
+              className={`${loading && "spinner-border text-secondary"}`}
+            ></span>
+            <span className="mx-3"> continue</span>
           </button>
         </div>
 
