@@ -26,7 +26,7 @@ border-radius: 50%;
 border: none;
 }
 .inputButton2 {
-  background-color: whitesmoke;
+  background-color: rgb(79, 34, 126);
 box-shadow:2px 2px lightgray ;
   float: right;
   margin-top: 5px;
@@ -63,6 +63,13 @@ border: none;
   font-size: 13px;
   font-weight: lighter;
 }
+.modalStyle{
+ margin-top: 9px;
+}
+/* .modal-dialog {
+  display: none;
+  opacity: 0.2;
+} */
 @media only screen and (max-width:735px) {
   .divMain {
     display: none;
@@ -73,6 +80,9 @@ border: none;
   .navMain {
     box-shadow: none;
   }
+  /* .modalDisplay{
+    display: block;
+  } */
 }
 .navDiv1 {
   height: 70px;
@@ -211,4 +221,19 @@ a {
           margin-right: 30px;
         } 
 }
-
+.topModal {
+line-height:13px ;
+}
+.imgGraph {
+  width: 80%;
+  height: 55px;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+.inputPrice {
+  width: 43%;
+  min-width: 10px;
+  border: 1px solid rgb(100, 94, 94);
+  border-radius: 10px;
+}

@@ -1,25 +1,39 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { TbWorld } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
 import { FaUserCircle, FaSlidersH } from "react-icons/fa";
 import PopModal from "../SignUp";
-import filterProperties from "../filterProperties";
+import FilterProperties from "../filterProperties";
 import "./Navbar.css";
 import { Context } from "../../Provider/Context";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
-  const { modalShow, setModalShow, filterShow, setFilterShow } =
-    useContext(Context);
+  const [fullscreen, setFullscreen] = useState(true);
+  const [filterShow, setFilterShow] = useState(false);
+  const [screensize, setscreensize] = useState(false);
+  const { modalShow, setModalShow } = useContext(Context);
   // hideDropDown
+  //  window.screen.width;
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setscreensize(window.innerWidth);
+    });
+  }, [window.innerWidth]);
+
   function HideDropdown() {
     setModalShow(true);
     setDropdown(false);
   }
 
-  function showFilter() {
+  function showFilter(breakpoint) {
     setFilterShow(true);
+    setFullscreen(breakpoint);
+  }
+
+  if (screensize > 735) {
+    setFilterShow(false);
   }
   return (
     <nav className=" navMain p-0  text-center ">
@@ -88,10 +102,11 @@ const Navbar = () => {
             <FaSlidersH className="searchIcon2" />
           </button>
         </div>
-        {/* <filterProperties
+        <FilterProperties
           show={filterShow}
+          fullscreen={fullscreen}
           onHide={() => setFilterShow(false)}
-        /> */}
+        />
       </section>
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
     </nav>
