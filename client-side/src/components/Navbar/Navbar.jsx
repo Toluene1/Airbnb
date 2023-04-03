@@ -10,15 +10,8 @@ import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
-  const {
-    modalShow,
-    setModalShow,
-    UserImg,
-    User,
-    setUserImg,
-    setUser,
-    Loggedin,
-  } = useContext(Context);
+  const { modalShow, setModalShow, setUser, UserImg, User, Loggedin } =
+    useContext(Context);
   const navigate = useNavigate();
   let isMounted = true;
   // hideDropDown
@@ -26,22 +19,25 @@ const Navbar = () => {
     setModalShow(true);
     setDropdown(false);
   }
-  // log Out
-
-  const handleLogOut = () => {
-    localStorage.removeItem("token");
-    location.reload();
-    navigate("/");
+  const checkInnerwidth = () => {
+    if (window.innerWidth < 735) {
+      setDropdown(false);
+    }
   };
+  useEffect(() => {
+    window.addEventListener("resize", checkInnerwidth);
+    return () => {
+      window.removeEventListener("resize", checkInnerwidth);
+    };
+  }, [window.innerWidth]);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await httpAuth.get("/fetchUser");
         setUser(response.data.user);
-        setUserImg(true);
       } catch (error) {
-        setUserImg(false);
+        console.log(error.response.data.msg);
       }
     };
 
@@ -52,6 +48,13 @@ const Navbar = () => {
       isMounted = false;
     };
   }, []);
+
+  // log Out
+  const handleLogOut = () => {
+    localStorage.clear();
+    location.reload();
+    navigate("/");
+  };
 
   return (
     <nav className=" navMain p-0  text-center ">
@@ -123,22 +126,22 @@ const Navbar = () => {
                 <div>
                   <p>
                     {" "}
-                    <Link onClick={HideDropdown} className="fw-bold  ">
-                      Messages
+                    <Link className="fw-bold  ">Messages</Link>
+                  </p>
+                  <p>
+                    {" "}
+                    <Link className="text-dark">Trips</Link>
+                  </p>
+                  <p>
+                    {" "}
+                    <Link className="text-dark" onClick={HideDropdown}>
+                      Wishlist
                     </Link>
-                  </p>
-                  <p>
-                    {" "}
-                    <Link onClick={HideDropdown}>Trips</Link>
-                  </p>
-                  <p>
-                    {" "}
-                    <Link onClick={HideDropdown}>Wishlist</Link>
                   </p>
                   <hr />
                   <p>
                     {" "}
-                    <Link>Manage listings</Link>
+                    <Link className="text-dark">Manage listings</Link>
                   </p>
                   <p>
                     {" "}
@@ -146,7 +149,7 @@ const Navbar = () => {
                   </p>
                   <p>
                     {" "}
-                    <Link>Account</Link>
+                    <Link className="text-dark">Account</Link>
                   </p>
                   <hr />
                   <p>
@@ -169,14 +172,14 @@ const Navbar = () => {
                   <p onClick={HideDropdown}>Sign Up</p>
                   <hr />
                   <p>
-                    <Link>Airbnb your home</Link>
+                    <Link className="text-dark">Airbnb your home</Link>
                   </p>
                   <p className="text-dark">
                     {" "}
-                    <Link>Host an experience</Link>{" "}
+                    <Link className="text-dark">Host an experience</Link>{" "}
                   </p>
-                  <p className="text-dark">
-                    <Link>Help</Link>
+                  <p>
+                    <Link className="text-dark">Help</Link>
                   </p>
                 </div>
               )}
