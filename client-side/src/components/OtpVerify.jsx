@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../Provider/Context";
+import httpAuth from "../Services/config";
 import httpClient from "../Services/httpclient";
 
 const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
@@ -11,8 +12,10 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setloading] = useState(false);
-  const { mail, setModalShow } = useContext(Context);
+  const { mail, setModalShow, setUserImg, setUser, setLoggedIn } =
+    useContext(Context);
 
+  //navigate to weolcome page after auth
   function backToWelcome() {
     setshowCreateAcc(false);
     setshowOtp(false);
@@ -22,6 +25,16 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
 
   const handleSaveToken = (token) => {
     return localStorage.setItem("token", JSON.stringify(token));
+  };
+
+  const fetchUser = async () => {
+    try {
+      const response = await httpAuth.get("/fetchUser");
+      setUser(response.data.user);
+      setUserImg(true);
+    } catch (error) {
+      setUserImg(false);
+    }
   };
 
   useEffect(() => {
@@ -43,11 +56,15 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
         setshowCreateAcc(true);
         return;
       }
-      handleSaveToken(response.data.token);
       backToWelcome();
+      setUserImg(true);
+      handleSaveToken(response.data.token);
       setModalShow(false);
+      fetchUser();
+      setLoggedIn(true);
       if (location.pathname == "/") {
-        return navigate("/");
+        navigate("/");
+        return;
       }
       navigate(location.state.previousUrl);
     } catch (error) {

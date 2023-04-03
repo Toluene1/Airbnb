@@ -7,12 +7,26 @@ import { useLocation, useNavigate } from "react-router-dom";
 const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
-  const { mail, setModalShow } = useContext(Context);
+  const { mail, setModalShow, setLoggedIn, setUserImg, setUser } =
+    useContext(Context);
+
+  // fetchuser details
+  const fetchUser = async () => {
+    try {
+      const response = await httpAuth.get("/fetchUser");
+      setUser(response.data.user);
+      setUserImg(true);
+    } catch (error) {
+      setUserImg(false);
+    }
+  };
 
   function backToWelcome() {
     setshowCreateAcc(false);
     setshowOtp(false);
   }
+
+  //save token to loca storage
   const handleSaveToken = (token) => {
     return localStorage.setItem("token", JSON.stringify(token));
   };
@@ -26,6 +40,7 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
     PhoneNumber: "",
   });
 
+  //post user details  to server
   const postUserDetails = async () => {
     try {
       const response = await httpClient.post("/createUser", state.current);
@@ -33,8 +48,10 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
       setalertMessage(response.data.message);
       handleSaveToken(response.data.token);
       backToWelcome();
+      setUserImg(true);
       setModalShow(false);
-
+      fetchUser();
+      setLoggedIn(true);
       if (location.pathname == "/") {
         return navigate("/");
       }
