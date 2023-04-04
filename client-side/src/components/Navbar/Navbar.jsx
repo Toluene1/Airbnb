@@ -9,6 +9,7 @@ import FilterProperties from "../filterProperties";
 import "./Navbar.css";
 import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
+import { Existing } from "../../utils/setlocalstorage";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
 
@@ -27,15 +28,13 @@ const Navbar = () => {
   } = useContext(Context);
   const navigate = useNavigate();
   let isMounted = true;
-  // hideDropDown
-  //  window.screen.width;
 
+  //close filter
   const checkmodalShow = () => {
     if (window.innerWidth > 735) {
       setFilterShow(false);
     }
   };
-
   function showFilter() {
     setFilterShow(true);
     setFullscreen(true);
@@ -46,6 +45,7 @@ const Navbar = () => {
     setModalShow(true);
     setDropdown(false);
   }
+
   const checkInnerwidth = () => {
     if (window.innerWidth < 735) {
       setDropdown(false);
@@ -90,8 +90,7 @@ const Navbar = () => {
     localStorage.removeItem("loggedin");
     localStorage.removeItem("img");
     location.reload();
-    localStorage.setItem("existing", JSON.stringify(true));
-    setexisting(true);
+    Existing(setexisting);
     navigate("/");
   };
 
@@ -160,7 +159,7 @@ const Navbar = () => {
             </button>
           </div>
           {dropdown && (
-            <div className="dropdown shadow px-1  text-start">
+            <div className="dropdown shadow px-0 text-start">
               {Loggedin ? (
                 <div>
                   <p>
@@ -169,34 +168,32 @@ const Navbar = () => {
                   </p>
                   <p>
                     {" "}
-                    <Link className="text-dark">Trips</Link>
+                    <Link>Trips</Link>
                   </p>
                   <p>
                     {" "}
-                    <Link className="text-dark" onClick={HideDropdown}>
-                      Wishlist
-                    </Link>
+                    <Link onClick={HideDropdown}>Wishlist</Link>
                   </p>
                   <hr />
                   <p>
                     {" "}
-                    <Link className="text-dark">Manage listings</Link>
+                    <Link>Manage listings</Link>
                   </p>
                   <p>
                     {" "}
-                    <Link className="text-dark">Manage experiences</Link>
+                    <Link>Manage experiences</Link>
                   </p>
                   <p>
                     {" "}
-                    <Link className="text-dark">Account</Link>
+                    <Link>Account</Link>
                   </p>
                   <hr />
                   <p>
                     {" "}
-                    <Link className="text-dark">Help </Link>
+                    <Link>Help </Link>
                   </p>
                   <button
-                    className="border-0 bg-white p-0"
+                    className="border-0 bg-white mx-2 p-0"
                     onClick={handleLogOut}
                   >
                     Log out
@@ -204,21 +201,21 @@ const Navbar = () => {
                 </div>
               ) : (
                 <div>
-                  <p onClick={HideDropdown} className="fw-bold  ">
+                  <p onClick={HideDropdown} className="fw-bold text-dark ">
                     {" "}
                     Login{" "}
                   </p>{" "}
                   <p onClick={HideDropdown}>Sign Up</p>
                   <hr />
                   <p>
-                    <Link className="text-dark">Airbnb your home</Link>
-                  </p>
-                  <p className="text-dark">
-                    {" "}
-                    <Link className="text-dark">Host an experience</Link>{" "}
+                    <Link>Airbnb your home</Link>
                   </p>
                   <p>
-                    <Link className="text-dark">Help</Link>
+                    {" "}
+                    <Link>Host an experience</Link>{" "}
+                  </p>
+                  <p>
+                    <Link>Help</Link>
                   </p>
                 </div>
               )}
