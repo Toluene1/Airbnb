@@ -72,25 +72,25 @@ function FilterBody() {
           <hr />
           <div className="mt-3 pb-2">
             <span className="fw-bold">Type of place</span>
-            <ul class="list-group mt-2 ul">
+            <ul className="list-group mt-2 ul">
               <li>
                 <label
                   className="form-check-label labelStyle"
-                  for="firstCheckbox"
+                  htmlFor="firstCheckbox"
                 >
                   Entire place <br /> A place to yourself
                 </label>
                 <span>
                   <input
-                    class=" me-1 float-end mt-2 accent addStyle"
+                    className=" me-1 float-end mt-2 accent addStyle"
                     type="checkbox"
                     value=""
                     id="firstCheckbox"
                   />
                 </span>
               </li>
-              <li class="mt-3">
-                <label class=" accent  labelStyle" for="secondCheckbox">
+              <li className="mt-3">
+                <label className=" accent  labelStyle" htmlFor="secondCheckbox">
                   Private room <br /> Your own room in a home or a hotel, plus
                   some shared common spaces
                 </label>
@@ -103,8 +103,8 @@ function FilterBody() {
                   />
                 </span>
               </li>
-              <li class="mt-3">
-                <label class=" accent  labelStyle" for="secondCheckbox">
+              <li className="mt-3">
+                <label className=" accent  labelStyle" htmlFor="secondCheckbox">
                   shared room <br /> A sleeping space and common areas that may
                   be shared with others
                 </label>
@@ -129,7 +129,7 @@ function FilterBody() {
               <button
                 type="button"
                 className="bedButtonRest"
-                key={list.id}
+                key={index}
                 onClick={() => handleColor(index)}
                 style={{
                   backgroundColor: index === selected ? "black" : "",
@@ -146,7 +146,7 @@ function FilterBody() {
               <button
                 type="button"
                 className="bedButtonRest"
-                key={list.id}
+                key={index}
                 onClick={() => handleColorBed(index)}
                 style={{
                   backgroundColor: index === bed ? "black" : "",
@@ -163,7 +163,7 @@ function FilterBody() {
               <button
                 type="button"
                 className="bedButtonRest"
-                key={list.id}
+                key={index}
                 onClick={() => handleColorBath(index)}
                 style={{
                   backgroundColor: index === bathroom ? "black" : "",
@@ -224,22 +224,22 @@ function FilterBody() {
           <p className="fw-bold">Amenities</p>
           <p className="fw-bold">Essentials</p>
           <div className="mt-3 pb-2">
-            <ul class="list-group mt-2 ul">
+            <ul className="list-group mt-2 ul">
               <li>
-                <label className="form-check-label" for="Checkbox1">
+                <label htmlFor="Checkbox1" className="form-check-label">
                   wifi
                 </label>
                 <span>
                   <input
-                    class=" me-1 float-end accent addStyle"
+                    className=" me-1 float-end accent addStyle"
                     type="checkbox"
                     value=""
                     id="Checkbox1"
                   />
                 </span>
               </li>
-              <li class="mt-3">
-                <label class=" accent" for="Checkbox2">
+              <li className="mt-3">
+                <label className=" accent" htmlFor="Checkbox2">
                   kitchen
                 </label>
                 <span>
@@ -251,8 +251,8 @@ function FilterBody() {
                   />
                 </span>
               </li>
-              <li class="mt-3">
-                <label class=" accent" for="Checkbox3">
+              <li className="mt-3">
+                <label htmlFor="Checkbox3" className=" accent">
                   washer
                 </label>
                 <span>
@@ -264,8 +264,8 @@ function FilterBody() {
                   />
                 </span>
               </li>
-              <li class="mt-3">
-                <label class=" accent" for="Checkbox4">
+              <li className="mt-3">
+                <label htmlFor="Checkbox4" className=" accent">
                   Air Conditioning
                 </label>
                 <span>
@@ -277,8 +277,8 @@ function FilterBody() {
                   />
                 </span>
               </li>
-              <li class="mt-3">
-                <label class=" accent" for="Checkbox5">
+              <li className="mt-3">
+                <label className=" accent" htmlFor="Checkbox5">
                   Heating
                 </label>
                 <span>
@@ -290,8 +290,8 @@ function FilterBody() {
                   />
                 </span>
               </li>
-              <li class="mt-3">
-                <label class=" accent" for="Checkbox6">
+              <li className="mt-3">
+                <label className=" accent" htmlFor="Checkbox6">
                   TV
                 </label>
                 <span>
@@ -310,22 +310,22 @@ function FilterBody() {
         <section>
           <p className="fw-bold">Host Language</p>
           <div className="mt-3 pb-2">
-            <ul class="list-group mt-2 ul">
+            <ul className="list-group mt-2 ul">
               <li>
-                <label className="form-check-label" for="Language1">
+                <label className="form-check-label" htmlFor="Language1">
                   English
                 </label>
                 <span>
                   <input
-                    class=" me-1 float-end accent addStyle"
+                    className=" me-1 float-end accent addStyle"
                     type="checkbox"
                     value=""
                     id="Language1"
                   />
                 </span>
               </li>
-              <li class="mt-3">
-                <label class=" accent" for="Lamguage2">
+              <li className="mt-3">
+                <label className=" accent" htmlFor="Lamguage2">
                   French
                 </label>
                 <span>
@@ -337,8 +337,8 @@ function FilterBody() {
                   />
                 </span>
               </li>
-              <li class="mt-3">
-                <label class=" accent" for="Language3">
+              <li className="mt-3">
+                <label className=" accent" htmlFor="Language3">
                   German
                 </label>
                 <span>
@@ -350,8 +350,8 @@ function FilterBody() {
                   />
                 </span>
               </li>
-              <li class="mt-3">
-                <label class=" accent" for="Language4">
+              <li className="mt-3">
+                <label className=" accent" htmlFor="Language4">
                   Spanish
                 </label>
                 <span>

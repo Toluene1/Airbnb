@@ -11,17 +11,40 @@ import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
-  const { modalShow, setModalShow, setUser, UserImg, User, Loggedin } =
-    useContext(Context);
+
+  const {
+    modalShow,
+    setModalShow,
+    setUser,
+    UserImg,
+    User,
+    Loggedin,
+    setFilterShow,
+    filterShow,
+    fullscreen,
+    setFullscreen,
+  } = useContext(Context);
   const navigate = useNavigate();
   let isMounted = true;
   // hideDropDown
   //  window.screen.width;
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setscreensize(window.innerWidth);
-    });
+    window.addEventListener("resize", checkmodalShow);
+    return () => {
+      window.removeEventListener("resize", checkmodalShow);
+    };
   }, [window.innerWidth]);
+
+  const checkmodalShow = () => {
+    if (window.innerWidth < 735) {
+      setFilterShow(false);
+    }
+  };
+
+  function showFilter() {
+    setFilterShow(true);
+    setFullscreen(true);
+  }
 
   function HideDropdown() {
     setModalShow(true);

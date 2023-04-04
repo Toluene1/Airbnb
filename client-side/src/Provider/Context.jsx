@@ -5,16 +5,18 @@ export const Context = createContext(null);
 const ContextProvider = ({ children }) => {
   const [mail, setmail] = useState("");
   const [modalShow, setModalShow] = useState(false);
+  const [filterShow, setFilterShow] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
   const [UserImg, setUserImg] = useState(
     localStorage.getItem("img")
       ? JSON.parse(localStorage.getItem("img"))
-      : false
+      : false,
   );
   const [User, setUser] = useState({});
   const [Loggedin, setLoggedIn] = useState(
     localStorage.getItem("loggedin")
       ? JSON.parse(localStorage.getItem("loggedin"))
-      : false
+      : false,
   );
 
   const initialState = {
@@ -22,10 +24,6 @@ const ContextProvider = ({ children }) => {
     setmail,
     modalShow,
     setModalShow,
-    showOtp,
-    setshowOtp,
-    showCreateAcc,
-    setshowCreateAcc,
     filterShow,
     setFilterShow,
     fullscreen,
