@@ -23,20 +23,15 @@ const Navbar = () => {
     filterShow,
     fullscreen,
     setFullscreen,
+    setexisting,
   } = useContext(Context);
   const navigate = useNavigate();
   let isMounted = true;
   // hideDropDown
   //  window.screen.width;
-  useEffect(() => {
-    window.addEventListener("resize", checkmodalShow);
-    return () => {
-      window.removeEventListener("resize", checkmodalShow);
-    };
-  }, [window.innerWidth]);
 
   const checkmodalShow = () => {
-    if (window.innerWidth < 735) {
+    if (window.innerWidth > 735) {
       setFilterShow(false);
     }
   };
@@ -46,6 +41,7 @@ const Navbar = () => {
     setFullscreen(true);
   }
 
+  // closeDropDown
   function HideDropdown() {
     setModalShow(true);
     setDropdown(false);
@@ -55,6 +51,14 @@ const Navbar = () => {
       setDropdown(false);
     }
   };
+
+  useEffect(() => {
+    window.addEventListener("resize", checkmodalShow);
+    return () => {
+      window.removeEventListener("resize", checkmodalShow);
+    };
+  }, [window.innerWidth]);
+
   useEffect(() => {
     window.addEventListener("resize", checkInnerwidth);
     return () => {
@@ -82,8 +86,12 @@ const Navbar = () => {
 
   // log Out
   const handleLogOut = () => {
-    localStorage.clear();
+    localStorage.removeItem("token");
+    localStorage.removeItem("loggedin");
+    localStorage.removeItem("img");
     location.reload();
+    localStorage.setItem("existing", JSON.stringify(true));
+    setexisting(true);
     navigate("/");
   };
 
@@ -152,12 +160,12 @@ const Navbar = () => {
             </button>
           </div>
           {dropdown && (
-            <div className="dropdown shadow  text-start">
+            <div className="dropdown shadow px-1  text-start">
               {Loggedin ? (
                 <div>
                   <p>
                     {" "}
-                    <Link className="fw-bold  ">Messages</Link>
+                    <Link className="fw-bold  text-dark">Messages</Link>
                   </p>
                   <p>
                     {" "}

@@ -11,12 +11,18 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setloading] = useState(false);
-  const { mail, setModalShow, setUserImg, setLoggedIn, setUser } =
+  const { mail, setmail, setModalShow, setUserImg, setLoggedIn, setUser } =
     useContext(Context);
   const verify = useRef(null);
-  //navigate to weolcome page after auth
+  //navigate to welcome page after auth
   useEffect(() => {
     verify.current.focus();
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setmail(JSON.parse(localStorage.getItem("user")).Email);
+    }
   }, []);
 
   function backToWelcome() {
@@ -62,6 +68,7 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
       handleSaveToken(response.data.token);
       setModalShow(false);
       setUser(response.data.user);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       setLogin();
       UserImg();
       if (location.pathname == "/") {

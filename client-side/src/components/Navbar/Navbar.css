@@ -205,6 +205,11 @@
 }
 .dropdown p {
   cursor: pointer;
+  padding: 3px;
+  margin-top: 5px;
+}
+.dropdown p:hover {
+  background-color: rgb(245, 241, 241);
 }
 a {
   color: #222222;
@@ -236,7 +241,7 @@ a :hover {
   }
 }
 .topModal {
-line-height:13px ;
+  line-height: 13px;
 }
 .imgGraph {
   width: 80%;
@@ -252,92 +257,92 @@ line-height:13px ;
   border-radius: 10px;
 }
 .labelStyle {
-font-size: 12px;
- }
- .ul {
+  font-size: 12px;
+}
+.ul {
   list-style: none;
- }
- .addStyle {
+}
+.addStyle {
   background-color: rgb(13, 13, 14);
   width: 23px;
   height: 23px;
- }
- .accent {
+}
+.accent {
   accent-color: black;
   /* opacity: 0.7; */
- }
- .bedButton {
+}
+.bedButton {
   width: 78px;
   height: 40px;
   border-radius: 30px;
   background-color: white;
   border: 1px solid lightgrey;
- }
- .bedButton:hover {
+}
+.bedButton:hover {
   border: 1px solid black;
- }
- .bedButtonRest {
+}
+.bedButtonRest {
   min-width: 59px;
-    height: 40px;
-    border-radius: 30px;
-    background-color: white;
-    border: 1px solid lightgrey;
-    margin-left: 10px;
- }
- .bedButtonRest:hover {
-   border: 1px solid black;
- }
- .divBed {
+  height: 40px;
+  border-radius: 30px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  margin-left: 10px;
+}
+.bedButtonRest:hover {
+  border: 1px solid black;
+}
+.divBed {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
   scroll-behavior: auto;
- }
- .divBed::-webkit-scrollbar {
-   display: none;
- }
- .divPropType {
+}
+.divBed::-webkit-scrollbar {
+  display: none;
+}
+.divPropType {
   display: flex;
   /* flex-wrap: wrap; */
- }
- .propertyType {
+}
+.propertyType {
   width: 330px;
   min-width: 150px;
   height: 120px;
   border-radius: 20px;
-  border:  1px solid rgb(169, 156, 156);
+  border: 1px solid rgb(169, 156, 156);
   transition: 0.3s;
- }
- .propertyType:hover {
-  border:  1px solid black;
- }
- .geyDiv {
+}
+.propertyType:hover {
+  border: 1px solid black;
+}
+.geyDiv {
   background-color: rgb(211, 202, 202);
- }
- .divWithinProp {
+}
+.divWithinProp {
   margin-left: 20px;
   margin-top: 42px;
   font-size: 18px;
- }
- .iconProp {
+}
+.iconProp {
   font-size: 30px;
   margin-left: 20px;
   margin-top: 13px;
- }
- .clearAll {
+}
+.clearAll {
   font-weight: 600;
   text-decoration: underline;
   margin-left: -150px;
- }
- .colorBorder {
+}
+.colorBorder {
   background-color: rgb(227, 208, 208);
-  border:  2px solid black;
- }
- .footerButton {
+  border: 2px solid black;
+}
+.footerButton {
   width: 162px;
   height: 48px;
   background-color: black;
   color: white;
   font-weight: bold;
   border-radius: 15px;
- } 
+}
