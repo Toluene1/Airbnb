@@ -5,21 +5,52 @@ import "./Navbar/Navbar.css";
 
 function FilterProperties(props) {
   const [fullscreen, setFullscreen] = useState(true);
-  // const [show, setShow] = useState(false);
+  const [selected, setSelected] = useState(0);
+  const [bed, setbed] = useState(0);
+  const [property, setProperty] = useState("light");
+  const [bathroom, setbathroom] = useState(0);
+  const [state, setState] = useState({
+    name: "bob",
+  });
+  const lists = [
+    { title: "any" },
+    { title: "1" },
+    { title: "2" },
+    { title: "3" },
+    { title: "4" },
+    { title: "5" },
+    { title: "6" },
+    { title: "7" },
+    { title: "8+" },
+  ];
+  const handleColor = (row) => {
+    setSelected(row);
+  };
+  const handleColorBed = (row) => {
+    setbed(row);
+  };
+  const handleColorBath = (row) => {
+    setbathroom(row);
+  };
 
   function handleShow(breakpoint) {
     setFullscreen(breakpoint);
     setShow(true);
   }
-
+  const ChangePropertyDiv = () => {
+    setProperty((prev) => (prev == "light" ? "grey" : "light"));
+    theme == "light"
+      ? (document.body.className = "border greyDiv")
+      : (document.body.className = "bg-light");
+  };
   return (
     <>
       <div id="modalDisplay">
-        <Modal {...props} className="modalStyle">
-          <Modal.Header closeButton className="p-1 pe-3">
+        <Modal {...props} className="modalStyle ">
+          <Modal.Header closeButton className="p-1 pe-3 ">
             <Modal.Title className="text-center ms-auto">Filters</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="ms-2">
             <div className="topModal">
               <p className="fw-bold">price change</p>
               <p className="fw-lighter">The average nightly price is $472</p>
@@ -40,6 +71,127 @@ function FilterProperties(props) {
               <span className="ms-2 me-2">-</span>
               <input type="text" className="inputPrice p-2" placeholder="max" />
             </div>
+            <form>
+              <section>
+                <hr />
+                <div className="mt-3 pb-2">
+                  <span className="fw-bold">Type of place</span>
+                  <ul class="list-group mt-2 ul">
+                    <li>
+                      <label
+                        className="form-check-label labelStyle"
+                        for="firstCheckbox"
+                      >
+                        Entire place <br /> A place to yourself
+                      </label>
+                      <span>
+                        <input
+                          class=" me-1 float-end mt-2 accent addStyle"
+                          type="checkbox"
+                          value=""
+                          id="firstCheckbox"
+                        />
+                      </span>
+                    </li>
+                    <li class="mt-3">
+                      <label class=" accent  labelStyle" for="secondCheckbox">
+                        Private room <br /> Your own room in a home or a hotel,
+                        plus some shared common spaces
+                      </label>
+                      <span>
+                        <input
+                          className=" me-1 float-end mt-2 addStyle accent"
+                          type="checkbox"
+                          value=""
+                          id="secondCheckbox"
+                        />
+                      </span>
+                    </li>
+                    <li class="mt-3">
+                      <label class=" accent  labelStyle" for="secondCheckbox">
+                        shared room <br /> A sleeping space and common areas
+                        that may be shared with others
+                      </label>
+                      <span>
+                        <input
+                          className=" me-1 float-end mt-2 addStyle accent"
+                          type="checkbox"
+                          value=""
+                          id="secondCheckbox"
+                        />
+                      </span>
+                    </li>
+                  </ul>
+                  <hr />
+                </div>
+              </section>
+              <section>
+                <p className="fw-bold">Room and Beds</p>
+                <p className="fw-bold">Bedrooms</p>
+                <div className="divBed">
+                  {lists.map((list, index) => (
+                    <button
+                      type="button"
+                      className="bedButtonRest"
+                      key={list.id}
+                      onClick={() => handleColor(index)}
+                      style={{
+                        backgroundColor: index === selected ? "black" : "",
+                        color: index === selected ? "white" : "",
+                      }}
+                    >
+                      {list.title}
+                    </button>
+                  ))}
+                </div>
+                <p className="fw-bold mt-3">Beds</p>
+                <div className="divBed">
+                  {lists.map((list, index) => (
+                    <button
+                      type="button"
+                      className="bedButtonRest"
+                      key={list.id}
+                      onClick={() => handleColorBed(index)}
+                      style={{
+                        backgroundColor: index === bed ? "black" : "",
+                        color: index === bed ? "white" : "",
+                      }}
+                    >
+                      {list.title}
+                    </button>
+                  ))}
+                </div>
+                <p className="fw-bold mt-3">Bathrooms</p>
+                <div className="divBed">
+                  {lists.map((list, index) => (
+                    <button
+                      type="button"
+                      className="bedButtonRest"
+                      key={list.id}
+                      onClick={() => handleColorBath(index)}
+                      style={{
+                        backgroundColor: index === bathroom ? "black" : "",
+                        color: index === bathroom ? "white" : "",
+                      }}
+                    >
+                      {list.title}
+                    </button>
+                  ))}
+                </div>
+                <hr className="mt-4" />
+              </section>
+              <section>
+                <p className="fw-bold ">Property type</p>
+                <div className="divPropType">
+                  <span className="propertyType">Tolu</span>
+                  <span className="propertyType ms-3">Tolu</span>
+                </div>
+                <div className="divPropType">
+                  <span className="propertyType mt-3">Tolu</span>
+                  <span className="propertyType ms-3 mt-3">Tolu</span>
+                </div>
+              </section>
+            </form>
             cumque. Repudiandae iure unde illum ea consequatur error modi
             adipisci amet, minus aspernatur sed odit nisi facilis eligendi culpa
             quo quod esse temporibus officiis nam. Fugit ad enim sint nisi iste
