@@ -4,7 +4,6 @@ import { Context } from "../Provider/Context";
 import { useContext, useRef, useState } from "react";
 import { AiFillApple, AiOutlineMail } from "react-icons/ai";
 import httpClient from "../Services/httpclient";
-import { country_code } from "../utils/CountryCodes";
 
 function Welcome({ setshowOtp }) {
   const state = useRef({ email: "" });
@@ -35,36 +34,9 @@ function Welcome({ setshowOtp }) {
     <section>
       <form action="" onSubmit={handleSubmit} className="form-control border-0">
         <h4 className="my-2">Welcome to AirBnb</h4>
-
-        {/* country_code */}
-        <div className="form-floating py-2">
-          <select name="" id="Country/Region" className="form-control p-3">
-            {country_code.map((country) => (
-              <option key={country?.name} value="">
-                {country?.name} ({country?.dial_code})
-              </option>
-            ))}
-          </select>
-          <label htmlFor="Country/Region" className="mx-1">
-            Country/Region
-          </label>
-        </div>
-
-        {/* phone number  */}
-        <div className="form-floating  ">
-          <input
-            id="phone"
-            type="text"
-            className="form-control p-3"
-            placeholder="Phone number"
-          />
-          <label htmlFor="phone" className="p-2 mx-1">
-            Phone Number
-          </label>
-        </div>
         {/* email  */}
 
-        <div className="form-floating mt-2  ">
+        <div className="form-floating  ">
           <input
             required
             id="Email"
@@ -73,12 +45,12 @@ function Welcome({ setshowOtp }) {
             placeholder="Email"
             onChange={(e) => (state.current.email = e.target.value)}
           />
-          <label htmlFor="Email" className="p-2 mx-1">
+          <label htmlFor="Email" className="p-2">
             Email
           </label>
         </div>
 
-        <p>
+        <p className="mt-1">
           We’ll call or text you to confirm your number. Standard message and
           data rates apply
         </p>

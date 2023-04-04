@@ -1,15 +1,17 @@
 import Modal from "react-bootstrap/Modal";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import OtpVerify from "./OtpVerify";
 import Welcome from "./Welcome.jsx";
 import { FaAngleLeft } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
 import CreateAcc from "./CreateAcc";
+import { Context } from "../Provider/Context";
 
 function PopModal(props) {
   const [showOtp, setshowOtp] = useState(false);
   const [showCreateAcc, setshowCreateAcc] = useState(false);
-
+  const { setModalShow } = useContext(Context);
   function backToVerifyOtp() {
     setshowCreateAcc(false);
     setshowOtp(true);
@@ -23,22 +25,37 @@ function PopModal(props) {
       centered
       className="animate__animated animate__backInUp"
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter" className=" fs-6  ">
+      <Modal.Header className="d-flex align-items-center">
+        {showCreateAcc ? (
+          <FaAngleLeft onClick={backToVerifyOtp} className="Angle-left fs-4" />
+        ) : (
+          <div>
+            {showOtp ? (
+              <FaAngleLeft
+                onClick={() => setshowOtp(false)}
+                className="Angle-left fs-4 fw-normal"
+              />
+            ) : (
+              <AiOutlineClose
+                className="fs-4 Angle-left"
+                onClick={() => setModalShow(false)}
+              />
+            )}
+          </div>
+        )}
+        <Modal.Title
+          id="contained-modal-title-vcenter"
+          className=" fs-6 m-auto"
+        >
           {showCreateAcc ? (
             <div>
-              <FaAngleLeft onClick={backToVerifyOtp} className="Angle-left" />{" "}
-              <span className="ms-5"> Finish Signing up</span>
+              <span> Finish Signing up</span>
             </div>
           ) : (
             <div>
               {showOtp ? (
                 <div>
-                  <FaAngleLeft
-                    onClick={() => setshowOtp(false)}
-                    className="Angle-left"
-                  />{" "}
-                  <span className="ms-5"> confirm your email</span>
+                  <span> confirm your email</span>
                 </div>
               ) : (
                 <p className="mt-3 ">login or SignUp</p>

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { TbWorld } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
@@ -8,12 +8,13 @@ import PopModal from "../SignUp";
 import FilterProperties from "../filterProperties";
 import "./Navbar.css";
 import { Context } from "../../Provider/Context";
+import httpAuth from "../../Services/config";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
-  const [fullscreen, setFullscreen] = useState(true);
-  const [filterShow, setFilterShow] = useState(false);
-  const [screensize, setscreensize] = useState(false);
-  const { modalShow, setModalShow } = useContext(Context);
+  const { modalShow, setModalShow, setUser, UserImg, User, Loggedin } =
+    useContext(Context);
+  const navigate = useNavigate();
+  let isMounted = true;
   // hideDropDown
   //  window.screen.width;
   useEffect(() => {
@@ -26,15 +27,43 @@ const Navbar = () => {
     setModalShow(true);
     setDropdown(false);
   }
+  const checkInnerwidth = () => {
+    if (window.innerWidth < 735) {
+      setDropdown(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("resize", checkInnerwidth);
+    return () => {
+      window.removeEventListener("resize", checkInnerwidth);
+    };
+  }, [window.innerWidth]);
 
-  function showFilter(breakpoint) {
-    setFilterShow(true);
-    setFullscreen(breakpoint);
-  }
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await httpAuth.get("/fetchUser");
+        setUser(response.data.user);
+      } catch (error) {
+        console.log(error.response.data.msg);
+      }
+    };
 
-  if (screensize > 735) {
-    setFilterShow(false);
-  }
+    if (isMounted) {
+      fetchUser();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // log Out
+  const handleLogOut = () => {
+    localStorage.clear();
+    location.reload();
+    navigate("/");
+  };
+
   return (
     <nav className=" navMain p-0  text-center ">
       <section className="divMain">
@@ -56,35 +85,112 @@ const Navbar = () => {
           </button>
         </div>
         <div className="navDiv3 ">
-          <div className=" airHome">
-            <Link to={"/"} className="text-decoration-none text-dark">
-              {" "}
-              Airbnb your home
-            </Link>
+          {Loggedin ? (
+            <div>
+              <Link
+                to={"/"}
+                className="text-decoration-none text-dark fw-normal"
+              >
+                {" "}
+                Switch to hosting
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <Link to={"/"} className="text-decoration-none text-dark">
+                {" "}
+                Airbnb your home
+              </Link>
+            </div>
+          )}
+
+          {/* world icon  */}
+          <div>
             <TbWorld className="tbIcon" />
+          </div>
+          {/* bars */}
+          <div>
             <button
-              className="userButton"
+              className="userButton "
               onClick={() => setDropdown(!dropdown)}
             >
-              <FaBars />
-              <FaUserCircle className="iconAvatar" />{" "}
-            </button>{" "}
+              <div>
+                <FaBars />
+              </div>
+
+              {/* display user Image */}
+              {UserImg ? (
+                <div className="user-img">
+                  <img src={User?.Avatar} alt="" style={{ width: "100%" }} />
+                </div>
+              ) : (
+                <FaUserCircle className="iconAvatar" />
+              )}
+            </button>
           </div>
           {dropdown && (
-            <div className="dropdown shadow text-start">
-              <p onClick={HideDropdown}>Login </p>{" "}
-              <p onClick={HideDropdown}>Sign Up</p>
-              <hr />
-              <p>
-                <Link>Airbnb your home</Link>
-              </p>
-              <p className="text-dark">
-                {" "}
-                <Link>Host an experience</Link>{" "}
-              </p>
-              <p className="text-dark">
-                <Link>Help</Link>
-              </p>
+            <div className="dropdown shadow  text-start">
+              {Loggedin ? (
+                <div>
+                  <p>
+                    {" "}
+                    <Link className="fw-bold  ">Messages</Link>
+                  </p>
+                  <p>
+                    {" "}
+                    <Link className="text-dark">Trips</Link>
+                  </p>
+                  <p>
+                    {" "}
+                    <Link className="text-dark" onClick={HideDropdown}>
+                      Wishlist
+                    </Link>
+                  </p>
+                  <hr />
+                  <p>
+                    {" "}
+                    <Link className="text-dark">Manage listings</Link>
+                  </p>
+                  <p>
+                    {" "}
+                    <Link className="text-dark">Manage experiences</Link>
+                  </p>
+                  <p>
+                    {" "}
+                    <Link className="text-dark">Account</Link>
+                  </p>
+                  <hr />
+                  <p>
+                    {" "}
+                    <Link className="text-dark">Help </Link>
+                  </p>
+                  <button
+                    className="border-0 bg-white p-0"
+                    onClick={handleLogOut}
+                  >
+                    Log out
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <p onClick={HideDropdown} className="fw-bold  ">
+                    {" "}
+                    Login{" "}
+                  </p>{" "}
+                  <p onClick={HideDropdown}>Sign Up</p>
+                  <hr />
+                  <p>
+                    <Link className="text-dark">Airbnb your home</Link>
+                  </p>
+                  <p className="text-dark">
+                    {" "}
+                    <Link className="text-dark">Host an experience</Link>{" "}
+                  </p>
+                  <p>
+                    <Link className="text-dark">Help</Link>
+                  </p>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -114,30 +220,6 @@ const Navbar = () => {
 };
 export default Navbar;
 
-// const [User, setUser] = useState({});
-//   const [loading, setloading] = useState(false);
-//   let isMounted = true;
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   useEffect(() => {
-//     const fetchUser = async () => {
-//       try {
-//         setloading(true);
-//         const response = await httpAuth.get("/fetchUser");
-//         setUser(response.data.user);
-//         setloading(false);
-//       } catch (error) {
-//         setloading(false);
-//         // navigate("/login", {
-//         //   state: { previousUrl: location.pathname },
-//         // });
-//       }
-//     };
-
-//     if (isMounted) {
-//       fetchUser();
-//     }
-//     return () => {
-//       isMounted = false;
-//     };
-//   }, []);
+// navigate("/login", {
+//   state: { previousUrl: location.pathname },
+// });

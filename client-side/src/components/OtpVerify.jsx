@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../Provider/Context";
 import httpClient from "../Services/httpclient";
@@ -11,7 +11,13 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setloading] = useState(false);
-  const { mail, setModalShow } = useContext(Context);
+  const { mail, setModalShow, setUserImg, setLoggedIn, setUser } =
+    useContext(Context);
+  const verify = useRef(null);
+  //navigate to weolcome page after auth
+  useEffect(() => {
+    verify.current.focus();
+  }, []);
 
   function backToWelcome() {
     setshowCreateAcc(false);
@@ -19,10 +25,19 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   }
 
   //save token
-
   const handleSaveToken = (token) => {
     return localStorage.setItem("token", JSON.stringify(token));
   };
+  //save loggein to local storage
+  function setLogin() {
+    localStorage.setItem("loggedin", JSON.stringify(true));
+    setLoggedIn(true);
+  }
+  //save img to localstorage
+  function UserImg() {
+    setUserImg(true);
+    localStorage.setItem("img", JSON.stringify(true));
+  }
 
   useEffect(() => {
     if (user_Otp.length == 6) {
@@ -43,11 +58,15 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
         setshowCreateAcc(true);
         return;
       }
-      handleSaveToken(response.data.token);
       backToWelcome();
+      handleSaveToken(response.data.token);
       setModalShow(false);
+      setUser(response.data.user);
+      setLogin();
+      UserImg();
       if (location.pathname == "/") {
-        return navigate("/");
+        navigate("/");
+        return;
       }
       navigate(location.state.previousUrl);
     } catch (error) {
@@ -65,9 +84,10 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   return (
     <div className="animate__animated animate__backInLeft">
       <div className="m-2">
-        <p>Enter the code we sent over to your {mail} </p>
+        <p>Enter the code we sent over to {mail} </p>
         <form action="" onSubmit={handleVerifyOtp}>
           <input
+            ref={verify}
             required
             type="text"
             className="p-2 otp"
