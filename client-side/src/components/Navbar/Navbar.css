@@ -13,7 +13,7 @@
   display: none;
   border-radius: 20px 20px;
   margin-top: 7px;
-  margin-left: 17px;
+  margin-left: 13px;
   border: 1px solid lightgrey;
   box-shadow: 3px 3px lightgrey;
 }
@@ -73,6 +73,9 @@
   .navMain {
     box-shadow: none;
   }
+  /* .modalDisplay{
+    display: block;
+  } */
 }
 .navDiv1 {
   height: 70px;
@@ -232,3 +235,109 @@ a :hover {
     margin-right: 30px;
   }
 }
+.topModal {
+line-height:13px ;
+}
+.imgGraph {
+  width: 80%;
+  height: 55px;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+.inputPrice {
+  width: 43%;
+  min-width: 10px;
+  border: 1px solid rgb(100, 94, 94);
+  border-radius: 10px;
+}
+.labelStyle {
+font-size: 12px;
+ }
+ .ul {
+  list-style: none;
+ }
+ .addStyle {
+  background-color: rgb(13, 13, 14);
+  width: 23px;
+  height: 23px;
+ }
+ .accent {
+  accent-color: black;
+  /* opacity: 0.7; */
+ }
+ .bedButton {
+  width: 78px;
+  height: 40px;
+  border-radius: 30px;
+  background-color: white;
+  border: 1px solid lightgrey;
+ }
+ .bedButton:hover {
+  border: 1px solid black;
+ }
+ .bedButtonRest {
+  min-width: 59px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: white;
+    border: 1px solid lightgrey;
+    margin-left: 10px;
+ }
+ .bedButtonRest:hover {
+   border: 1px solid black;
+ }
+ .divBed {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: auto;
+ }
+ .divBed::-webkit-scrollbar {
+   display: none;
+ }
+ .divPropType {
+  display: flex;
+  /* flex-wrap: wrap; */
+ }
+ .propertyType {
+  width: 330px;
+  min-width: 150px;
+  height: 120px;
+  border-radius: 20px;
+  border:  1px solid rgb(169, 156, 156);
+  transition: 0.3s;
+ }
+ .propertyType:hover {
+  border:  1px solid black;
+ }
+ .geyDiv {
+  background-color: rgb(211, 202, 202);
+ }
+ .divWithinProp {
+  margin-left: 20px;
+  margin-top: 42px;
+  font-size: 18px;
+ }
+ .iconProp {
+  font-size: 30px;
+  margin-left: 20px;
+  margin-top: 13px;
+ }
+ .clearAll {
+  font-weight: 600;
+  text-decoration: underline;
+  margin-left: -150px;
+ }
+ .colorBorder {
+  background-color: rgb(227, 208, 208);
+  border:  2px solid black;
+ }
+ .footerButton {
+  width: 162px;
+  height: 48px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+ } 

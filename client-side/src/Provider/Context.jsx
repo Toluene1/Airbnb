@@ -8,13 +8,13 @@ const ContextProvider = ({ children }) => {
   const [UserImg, setUserImg] = useState(
     localStorage.getItem("img")
       ? JSON.parse(localStorage.getItem("img"))
-      : false,
+      : false
   );
   const [User, setUser] = useState({});
   const [Loggedin, setLoggedIn] = useState(
     localStorage.getItem("loggedin")
       ? JSON.parse(localStorage.getItem("loggedin"))
-      : false,
+      : false
   );
 
   const initialState = {
@@ -22,6 +22,14 @@ const ContextProvider = ({ children }) => {
     setmail,
     modalShow,
     setModalShow,
+    showOtp,
+    setshowOtp,
+    showCreateAcc,
+    setshowCreateAcc,
+    filterShow,
+    setFilterShow,
+    fullscreen,
+    setFullscreen,
     UserImg,
     setUserImg,
     User,

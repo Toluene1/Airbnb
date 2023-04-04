@@ -5,6 +5,7 @@ import { TbWorld } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
 import { FaUserCircle, FaSlidersH } from "react-icons/fa";
 import PopModal from "../SignUp";
+import FilterProperties from "../filterProperties";
 import "./Navbar.css";
 import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
@@ -15,6 +16,13 @@ const Navbar = () => {
   const navigate = useNavigate();
   let isMounted = true;
   // hideDropDown
+  //  window.screen.width;
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setscreensize(window.innerWidth);
+    });
+  }, [window.innerWidth]);
+
   function HideDropdown() {
     setModalShow(true);
     setDropdown(false);
@@ -196,10 +204,15 @@ const Navbar = () => {
             <span className="anyWhere">Anywhere</span> <br />
             <span className="anyWeek"> Any Week - Add guests</span>
           </div>
-          <button className="inputButton2">
+          <button className="inputButton2" onClick={showFilter}>
             <FaSlidersH className="searchIcon2" />
           </button>
         </div>
+        <FilterProperties
+          show={filterShow}
+          fullscreen={fullscreen}
+          onHide={() => setFilterShow(false)}
+        />
       </section>
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
     </nav>
