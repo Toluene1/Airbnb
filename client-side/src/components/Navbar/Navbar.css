@@ -247,7 +247,6 @@ font-size: 12px;
   background-color: rgb(13, 13, 14);
   width: 23px;
   height: 23px;
-  color: black !important;
  }
  .accent {
   accent-color: black;
@@ -292,7 +291,7 @@ font-size: 12px;
   min-width: 150px;
   height: 120px;
   border-radius: 20px;
-  border:  1px solid rgb(230, 215, 215);
+  border:  1px solid rgb(169, 156, 156);
   transition: 0.3s;
  }
  .propertyType:hover {
@@ -300,5 +299,24 @@ font-size: 12px;
  }
  .geyDiv {
   background-color: rgb(211, 202, 202);
+ }
+ .divWithinProp {
+  margin-left: 20px;
+  margin-top: 42px;
+  font-size: 18px;
+ }
+ .iconProp {
+  font-size: 30px;
+  margin-left: 20px;
+  margin-top: 13px;
+ }
+ .clearAll {
+  margin-right: 335px;
+  font-weight: 600;
+  text-decoration: underline;
+ }
+ .colorBorder {
+  background-color: rgb(242, 227, 227);
+  border:  2px solid black;
  }
  

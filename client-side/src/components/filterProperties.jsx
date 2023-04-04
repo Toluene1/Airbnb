@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./Navbar/Navbar.css";
+import { MdOutlineWarehouse } from "react-icons/md";
+import { BsBuildings } from "react-icons/bs";
+import { TbBuildingHospital } from "react-icons/tb";
+import { BsHouses } from "react-icons/bs";
 
 function FilterProperties(props) {
   const [fullscreen, setFullscreen] = useState(true);
   const [selected, setSelected] = useState(0);
   const [bed, setbed] = useState(0);
-  const [property, setProperty] = useState("light");
+  const [property, setProperty] = useState(false);
+  const [property2, setProperty2] = useState(false);
+  const [property3, setProperty3] = useState(false);
+  const [property4, setProperty4] = useState(false);
   const [bathroom, setbathroom] = useState(0);
   const [state, setState] = useState({
     name: "bob",
@@ -38,10 +45,16 @@ function FilterProperties(props) {
     setShow(true);
   }
   const ChangePropertyDiv = () => {
-    setProperty((prev) => (prev == "light" ? "grey" : "light"));
-    theme == "light"
-      ? (document.body.className = "border greyDiv")
-      : (document.body.className = "bg-light");
+    setProperty(!property);
+  };
+  const ChangePropertyDiv2 = () => {
+    setProperty2(!property2);
+  };
+  const ChangePropertyDiv3 = () => {
+    setProperty3(!property3);
+  };
+  const ChangePropertyDiv4 = () => {
+    setProperty4(!property4);
   };
   return (
     <>
@@ -183,22 +196,214 @@ function FilterProperties(props) {
               <section>
                 <p className="fw-bold ">Property type</p>
                 <div className="divPropType">
-                  <span className="propertyType">Tolu</span>
-                  <span className="propertyType ms-3">Tolu</span>
+                  <span
+                    className={`propertyType ms-3 ${
+                      property ? "colorBorder" : ""
+                    }`}
+                    onClick={ChangePropertyDiv}
+                  >
+                    <span>
+                      <MdOutlineWarehouse className="iconProp" />
+                    </span>
+                    <div className="divWithinProp">house</div>
+                  </span>
+                  <span
+                    className={`propertyType ms-3 ${
+                      property2 ? "colorBorder" : ""
+                    }`}
+                    onClick={ChangePropertyDiv2}
+                  >
+                    <span>
+                      <BsBuildings className="iconProp" />
+                    </span>
+                    <div className="divWithinProp">Apartment</div>
+                  </span>
                 </div>
-                <div className="divPropType">
-                  <span className="propertyType mt-3">Tolu</span>
-                  <span className="propertyType ms-3 mt-3">Tolu</span>
+                <div className="divPropType mt-3">
+                  <span
+                    className={`propertyType ms-3 ${
+                      property3 ? "colorBorder" : ""
+                    }`}
+                    onClick={ChangePropertyDiv3}
+                  >
+                    <span>
+                      <TbBuildingHospital className="iconProp" />
+                    </span>
+                    <div className="divWithinProp">Guesthouse</div>
+                  </span>
+                  <span
+                    className={`propertyType ms-3 ${
+                      property4 ? "colorBorder" : ""
+                    }`}
+                    onClick={ChangePropertyDiv4}
+                  >
+                    <span>
+                      <BsHouses className="iconProp" />
+                    </span>
+                    <div className="divWithinProp">Hotel</div>
+                  </span>
+                </div>
+              </section>
+              <hr className="mt-5" />
+              <section>
+                <p className="fw-bold">Amenities</p>
+                <p className="fw-bold">Essentials</p>
+                <div className="mt-3 pb-2">
+                  <ul class="list-group mt-2 ul">
+                    <li>
+                      <label className="form-check-label" for="Checkbox1">
+                        wifi
+                      </label>
+                      <span>
+                        <input
+                          class=" me-1 float-end accent addStyle"
+                          type="checkbox"
+                          value=""
+                          id="Checkbox1"
+                        />
+                      </span>
+                    </li>
+                    <li class="mt-3">
+                      <label class=" accent" for="Checkbox2">
+                        kitchen
+                      </label>
+                      <span>
+                        <input
+                          className=" me-1 float-end mt-2 addStyle accent"
+                          type="checkbox"
+                          value=""
+                          id="Checkbox2"
+                        />
+                      </span>
+                    </li>
+                    <li class="mt-3">
+                      <label class=" accent" for="Checkbox3">
+                        washer
+                      </label>
+                      <span>
+                        <input
+                          className=" me-1 float-end mt-2 addStyle accent"
+                          type="checkbox"
+                          value=""
+                          id="Checkbox3"
+                        />
+                      </span>
+                    </li>
+                    <li class="mt-3">
+                      <label class=" accent" for="Checkbox4">
+                        Air Conditioning
+                      </label>
+                      <span>
+                        <input
+                          className=" me-1 float-end mt-2 addStyle accent"
+                          type="checkbox"
+                          value=""
+                          id="Checkbox4"
+                        />
+                      </span>
+                    </li>
+                    <li class="mt-3">
+                      <label class=" accent" for="Checkbox5">
+                        Heating
+                      </label>
+                      <span>
+                        <input
+                          className=" me-1 float-end mt-2 addStyle accent"
+                          type="checkbox"
+                          value=""
+                          id="Checkbox5"
+                        />
+                      </span>
+                    </li>
+                    <li class="mt-3">
+                      <label class=" accent" for="Checkbox6">
+                        TV
+                      </label>
+                      <span>
+                        <input
+                          className=" me-1 float-end mt-2 addStyle accent"
+                          type="checkbox"
+                          value=""
+                          id="Checkbox6"
+                        />
+                      </span>
+                    </li>
+                  </ul>
+                  <hr />
+                </div>
+              </section>
+              <section>
+                <p className="fw-bold">Host Language</p>
+                <div className="mt-3 pb-2">
+                  <ul class="list-group mt-2 ul">
+                    <li>
+                      <label className="form-check-label" for="Language1">
+                        English
+                      </label>
+                      <span>
+                        <input
+                          class=" me-1 float-end accent addStyle"
+                          type="checkbox"
+                          value=""
+                          id="Language1"
+                        />
+                      </span>
+                    </li>
+                    <li class="mt-3">
+                      <label class=" accent" for="Lamguage2">
+                        French
+                      </label>
+                      <span>
+                        <input
+                          className=" me-1 float-end mt-2 addStyle accent"
+                          type="checkbox"
+                          value=""
+                          id="Language2"
+                        />
+                      </span>
+                    </li>
+                    <li class="mt-3">
+                      <label class=" accent" for="Language3">
+                        German
+                      </label>
+                      <span>
+                        <input
+                          className=" me-1 float-end mt-2 addStyle accent"
+                          type="checkbox"
+                          value=""
+                          id="Language3"
+                        />
+                      </span>
+                    </li>
+                    <li class="mt-3">
+                      <label class=" accent" for="Language4">
+                        Spanish
+                      </label>
+                      <span>
+                        <input
+                          className=" me-1 float-end mt-2 addStyle accent"
+                          type="checkbox"
+                          value=""
+                          id="Language4"
+                        />
+                      </span>
+                    </li>
+                  </ul>
+                  <hr />
                 </div>
               </section>
             </form>
-            cumque. Repudiandae iure unde illum ea consequatur error modi
-            adipisci amet, minus aspernatur sed odit nisi facilis eligendi culpa
-            quo quod esse temporibus officiis nam. Fugit ad enim sint nisi iste
-            odit minima magnam eveniet fugiat? Numquam, non iusto.
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={props.onHide}>Close</Button>
+            <a href="#" className="text-dark clearAll">
+              clear all
+            </a>
+            <Button
+              onClick={props.onHide}
+              className="text-white fw-bold p-2 ps-3 pe-3 bg-dark"
+            >
+              Show xxx days
+            </Button>
           </Modal.Footer>
         </Modal>
       </div>
