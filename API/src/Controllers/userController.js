@@ -55,7 +55,7 @@ const verifyEmailOtp = async (req, res) => {
       return;
     }
     const token = createJWT(regUser._id);
-    res.status(200).json({ token: token });
+    res.status(200).json({ token: token, user: regUser });
   } catch (error) {
     res.status(500).json({ message: "please contact admin" });
     console.log(error);

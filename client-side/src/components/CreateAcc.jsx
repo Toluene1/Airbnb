@@ -3,19 +3,12 @@ import { useContext, useRef, useState } from "react";
 import httpClient from "../Services/httpClient";
 import { Context } from "../Provider/Context";
 import { useLocation, useNavigate } from "react-router-dom";
+import { country_code } from "../utils/CountryCodes";
 
 const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
-  const [alert, setalert] = useState(false);
-  const [alertMessage, setalertMessage] = useState("");
-  const { mail, setModalShow } = useContext(Context);
+  const { mail, setModalShow, setLoggedIn, setUserImg, setUser } =
+    useContext(Context);
 
-  function backToWelcome() {
-    setshowCreateAcc(false);
-    setshowOtp(false);
-  }
-  const handleSaveToken = (token) => {
-    return localStorage.setItem("token", JSON.stringify(token));
-  };
   const navigate = useNavigate();
   const location = useLocation();
   const state = useRef({
@@ -25,15 +18,49 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
     DOB: "",
     PhoneNumber: "",
   });
+  const phone = useRef(null);
 
+  // select country and populate to phonenumber input
+  function sliceCountry(e) {
+    let country = String(e.target.value);
+    let foundCountry = country_code.find(
+      (country_code) => country_code.name == country,
+    );
+    phone.current.value = foundCountry.dial_code;
+  }
+
+  //save logged in to local storage
+  function setLogin() {
+    localStorage.setItem("loggedin", JSON.stringify(true));
+    setLoggedIn(true);
+  }
+  //save img to localstorage
+  function UserImg() {
+    setUserImg(true);
+    localStorage.setItem("img", JSON.stringify(true));
+  }
+
+  //back to welcome page before logout
+  function backToWelcome() {
+    setshowCreateAcc(false);
+    setshowOtp(false);
+  }
+
+  //save token to local storage
+  const handleSaveToken = (token) => {
+    return localStorage.setItem("token", JSON.stringify(token));
+  };
+
+  //post user details  to server
   const postUserDetails = async () => {
     try {
       const response = await httpClient.post("/createUser", state.current);
-      setalert(true);
-      setalertMessage(response.data.message);
       handleSaveToken(response.data.token);
+      setUser(response.data.user);
       backToWelcome();
       setModalShow(false);
+      setLogin();
+      UserImg();
 
       if (location.pathname == "/") {
         return navigate("/");
@@ -58,7 +85,6 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
           className={` border-0  form-control  `}
           onSubmit={handleSubmit}
         >
-          {alert && <p>{alertMessage}</p>}
           {/* First NAme  */}
           <div className="form-floating ">
             <input
@@ -101,18 +127,38 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
             To sign up, you need to be at least 18. Your birthday won’t be
             shared with other people who use Airbnb.
           </p>
-          {/* password  */}
-          <div className="form-floating">
+          {/* country_code */}
+          <div className="form-floating py-2">
+            <select
+              name=""
+              id="Country/Region"
+              className="form-control p-3"
+              onChange={sliceCountry}
+            >
+              {country_code.map((country) => (
+                <option key={country?.name} value={country?.name}>
+                  {country?.name} ({country?.dial_code})
+                </option>
+              ))}
+            </select>
+            <label htmlFor="Country/Region" className="mx-1">
+              Country/Region
+            </label>
+          </div>
+          {/* phone number  */}
+          <div className="form-floating  ">
             <input
-              id="Phone"
-              required
+              ref={phone}
+              id="phone"
               type="text"
-              className="form-control"
+              className="form-control p-3"
+              placeholder="Phone number"
               onChange={(e) => (state.current.PhoneNumber = e.target.value)}
-              placeholder="Phone Number"
             />
-            <label htmlFor="Phone">PhoneNumber</label>
-          </div>{" "}
+            <label htmlFor="phone" className="p-2 mx-1">
+              Phone Number
+            </label>
+          </div>
           <p>We'll email you trip confirmations and receipts.</p>
           <p>
             {" "}
