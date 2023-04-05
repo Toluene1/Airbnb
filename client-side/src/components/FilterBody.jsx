@@ -12,9 +12,7 @@ function FilterBody() {
   const [property3, setProperty3] = useState(false);
   const [property4, setProperty4] = useState(false);
   const [bathroom, setbathroom] = useState(0);
-  const [state, setState] = useState({
-    name: "bob",
-  });
+
   const lists = [
     { title: "any" },
     { title: "1" },
@@ -180,7 +178,7 @@ function FilterBody() {
           <p className="fw-bold ">Property type</p>
           <div className="divPropType">
             <span
-              className={`propertyType ms-2 ${property ? "colorBorder" : ""}`}
+              className={`propertyType ms-2 ${property && "colorBorder"}`}
               onClick={ChangePropertyDiv}
             >
               <span>
@@ -189,7 +187,7 @@ function FilterBody() {
               <div className="divWithinProp">house</div>
             </span>
             <span
-              className={`propertyType ms-2 ${property2 ? "colorBorder" : ""}`}
+              className={`propertyType ms-2 ${property2 && "colorBorder"}`}
               onClick={ChangePropertyDiv2}
             >
               <span>
@@ -200,7 +198,7 @@ function FilterBody() {
           </div>
           <div className="divPropType mt-3">
             <span
-              className={`propertyType ms-2 ${property3 ? "colorBorder" : ""}`}
+              className={`propertyType ms-2 ${property3 && colorBorder}`}
               onClick={ChangePropertyDiv3}
             >
               <span>
@@ -209,7 +207,7 @@ function FilterBody() {
               <div className="divWithinProp">Guesthouse</div>
             </span>
             <span
-              className={`propertyType ms-2 ${property4 ? "colorBorder" : ""}`}
+              className={`propertyType ms-2 ${property4 && "colorBorder"}`}
               onClick={ChangePropertyDiv4}
             >
               <span>

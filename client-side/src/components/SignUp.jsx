@@ -7,11 +7,12 @@ import { FaAngleLeft } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import CreateAcc from "./CreateAcc";
 import { Context } from "../Provider/Context";
+import LoadExistingUser from "./LoadExistingUser";
 
 function PopModal(props) {
   const [showOtp, setshowOtp] = useState(false);
   const [showCreateAcc, setshowCreateAcc] = useState(false);
-  const { setModalShow } = useContext(Context);
+  const { setModalShow, existing, User, setexisting } = useContext(Context);
   function backToVerifyOtp() {
     setshowCreateAcc(false);
     setshowOtp(true);
@@ -26,20 +27,32 @@ function PopModal(props) {
       className="animate__animated animate__backInUp"
     >
       <Modal.Header className="d-flex align-items-center">
-        {showCreateAcc ? (
-          <FaAngleLeft onClick={backToVerifyOtp} className="Angle-left fs-4" />
+        {existing ? (
+          <AiOutlineClose
+            className="fs-6 Angle-left"
+            onClick={() => setModalShow(false)}
+          />
         ) : (
           <div>
-            {showOtp ? (
+            {showCreateAcc ? (
               <FaAngleLeft
-                onClick={() => setshowOtp(false)}
-                className="Angle-left fs-4 fw-normal"
+                onClick={backToVerifyOtp}
+                className="Angle-left fs-6"
               />
             ) : (
-              <AiOutlineClose
-                className="fs-4 Angle-left"
-                onClick={() => setModalShow(false)}
-              />
+              <div>
+                {showOtp ? (
+                  <FaAngleLeft
+                    onClick={() => setshowOtp(false)}
+                    className="Angle-left fs-6 fw-normal"
+                  />
+                ) : (
+                  <AiOutlineClose
+                    className="fs-6 Angle-left"
+                    onClick={() => setModalShow(false)}
+                  />
+                )}
+              </div>
             )}
           </div>
         )}
@@ -47,38 +60,56 @@ function PopModal(props) {
           id="contained-modal-title-vcenter"
           className=" fs-6 m-auto"
         >
-          {showCreateAcc ? (
+          {existing ? (
             <div>
-              <span> Finish Signing up</span>
+              <span className="fs-6"> Welcome back {User.FirstName}</span>
             </div>
           ) : (
             <div>
-              {showOtp ? (
+              {showCreateAcc ? (
                 <div>
-                  <span> confirm your email</span>
+                  <span className="fs-6"> Finish Signing up</span>
                 </div>
               ) : (
-                <p className="mt-3 ">login or SignUp</p>
+                <div>
+                  {showOtp ? (
+                    <div>
+                      <span className="fs-6"> confirm your email</span>
+                    </div>
+                  ) : (
+                    <p className="mt-3 fs-6 ">login or Signup</p>
+                  )}
+                </div>
               )}
             </div>
           )}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="p-2">
-        {showCreateAcc ? (
-          <CreateAcc
+        {existing ? (
+          <LoadExistingUser
             setshowOtp={setshowOtp}
+            setexisting={setexisting}
             setshowCreateAcc={setshowCreateAcc}
           />
         ) : (
           <div>
-            {showOtp ? (
-              <OtpVerify
-                setshowCreateAcc={setshowCreateAcc}
+            {showCreateAcc ? (
+              <CreateAcc
                 setshowOtp={setshowOtp}
+                setshowCreateAcc={setshowCreateAcc}
               />
             ) : (
-              <Welcome setshowOtp={setshowOtp} />
+              <div>
+                {showOtp ? (
+                  <OtpVerify
+                    setshowCreateAcc={setshowCreateAcc}
+                    setshowOtp={setshowOtp}
+                  />
+                ) : (
+                  <Welcome setshowOtp={setshowOtp} />
+                )}
+              </div>
             )}
           </div>
         )}

@@ -2,6 +2,12 @@ import { useState, useContext, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../Provider/Context";
 import httpClient from "../Services/httpclient";
+import {
+  handleSaveToken,
+  handleSaveUser,
+  setLogin,
+  UserImg,
+} from "../utils/setlocalstorage";
 
 const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const [user_Otp, setuser_Otp] = useState("");
@@ -11,33 +17,18 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setloading] = useState(false);
-  const { mail, setModalShow, setUserImg, setLoggedIn, setUser } =
+  const { mail, setmail, setModalShow, setUserImg, setLoggedIn, setUser } =
     useContext(Context);
   const verify = useRef(null);
-  //navigate to weolcome page after auth
   useEffect(() => {
     verify.current.focus();
   }, []);
 
-  function backToWelcome() {
-    setshowCreateAcc(false);
-    setshowOtp(false);
-  }
-
-  //save token
-  const handleSaveToken = (token) => {
-    return localStorage.setItem("token", JSON.stringify(token));
-  };
-  //save loggein to local storage
-  function setLogin() {
-    localStorage.setItem("loggedin", JSON.stringify(true));
-    setLoggedIn(true);
-  }
-  //save img to localstorage
-  function UserImg() {
-    setUserImg(true);
-    localStorage.setItem("img", JSON.stringify(true));
-  }
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setmail(JSON.parse(localStorage.getItem("user")).Email);
+    }
+  }, []);
 
   useEffect(() => {
     if (user_Otp.length == 6) {
@@ -46,6 +37,11 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
       setdiasbleBtn(false);
     }
   }, [user_Otp]);
+
+  function backToWelcome() {
+    setshowCreateAcc(false);
+    setshowOtp(false);
+  }
 
   const postUserOtp = async () => {
     try {
@@ -62,8 +58,9 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
       handleSaveToken(response.data.token);
       setModalShow(false);
       setUser(response.data.user);
-      setLogin();
-      UserImg();
+      handleSaveUser(response.data.user);
+      setLogin(setLoggedIn);
+      UserImg(setUserImg);
       if (location.pathname == "/") {
         navigate("/");
         return;

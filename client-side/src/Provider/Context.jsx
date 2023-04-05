@@ -7,15 +7,23 @@ const ContextProvider = ({ children }) => {
   const [modalShow, setModalShow] = useState(false);
   const [filterShow, setFilterShow] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
+  const [User, setUser] = useState({});
+  const [existingUser, setexistingUser] = useState({});
+
   const [UserImg, setUserImg] = useState(
     localStorage.getItem("img")
       ? JSON.parse(localStorage.getItem("img"))
       : false,
   );
-  const [User, setUser] = useState({});
   const [Loggedin, setLoggedIn] = useState(
     localStorage.getItem("loggedin")
       ? JSON.parse(localStorage.getItem("loggedin"))
+      : false,
+  );
+
+  const [existing, setexisting] = useState(
+    localStorage.getItem("existing")
+      ? JSON.parse(localStorage.getItem("existing"))
       : false,
   );
 
@@ -34,6 +42,10 @@ const ContextProvider = ({ children }) => {
     setUser,
     Loggedin,
     setLoggedIn,
+    existing,
+    setexisting,
+    existingUser,
+    setexistingUser,
   };
 
   return <Context.Provider value={initialState}>{children}</Context.Provider>;

@@ -57,3 +57,11 @@ html {
 .Angle-left {
   cursor: pointer;
 }
+.existingImg {
+  height: 100px;
+  width: 100px;
+  border: 1px solid lightgrey;
+  border-radius: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
