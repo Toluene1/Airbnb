@@ -1,92 +1,91 @@
 .mainDiv {
-    width: 85%;
-    margin: auto;
-    padding-left: 40px;
-    padding-right: 40px;
+  width: 85%;
+  margin: auto;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 .divAboveGrid div {
-    min-width: 280px;
-    height: 156px;
-    border-radius: 20px;
-/* box-shadow: 0.1rem 0.1rem lightgrey; */
-    /* background-color: rgb(77, 225, 119); */
+  min-width: 280px;
+  height: 156px;
+  border-radius: 20px;
+  /* box-shadow: 0.1rem 0.1rem lightgrey; */
+  /* background-color: rgb(77, 225, 119); */
 }
 .divAboveGrid {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 .divTop {
-max-width: 930px;
-    margin: auto;
+  max-width: 930px;
+  margin: auto;
 }
 .textCard {
-    line-height: 17px;
+  cursor: pointer;
+  line-height: 17px;
 }
 .imgMobile {
-    height: 56px;
-    width: 56px;
-    border: 1px solid lightseagreen;
-    /* background-color: blue; */
-    border-radius: 50%;
+  height: 56px;
+  width: 56px;
+  border: 1px solid lightseagreen;
+  /* background-color: blue; */
+  border-radius: 50%;
 }
 .webAccount {
-    display: none;
-}
-.mobileAccount{
-    display: block;
-}
-.iconAccount{
-    font-size: 20px;
-    margin-top: -7px;
-position: absolute;
-right: 25px;
-}
-.iconAccount2{
-    font-size: 20px;
-    margin-top: 5px;
-position: absolute;
-right: 25px;
-}
-.imgAirbnb{
-    font-size: 20px;
-        margin-top: -45px;
-        position: absolute;
-        right: 35px;
-}
-.logOut {
-    width: 100%;
-    margin-top: 10px;
-    border-radius: 7px;
-    padding: 10px;
-    background-color: white;
-    transition: 0.3s;
-}
-.logOut:hover {
-    background-color: rgb(240, 220, 220);
-}
-@media only screen and (max-width: 1208px) {
-
-    .divTop {
-        max-width: 610px;
-    }
-}
-@media only screen and (max-width: 1029px) {
-
-    .divAboveGrid div {
-        min-width: 235px;
-    }
-
-    .divTop {
-        max-width: 510px;
-    }
-}
-@media only screen and (min-width: 735px) {
-.webAccount {
-    display: block;
+  display: none;
 }
 .mobileAccount {
-    display: none;
+  display: block;
 }
-   
+.iconAccount {
+  font-size: 20px;
+  margin-top: -7px;
+  position: absolute;
+  right: 25px;
+}
+.iconAccount2 {
+  font-size: 20px;
+  margin-top: 5px;
+  position: absolute;
+  right: 25px;
+}
+.imgAirbnb {
+  font-size: 20px;
+  margin-top: -45px;
+  position: absolute;
+  right: 35px;
+}
+.logOut {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 7px;
+  padding: 10px;
+  background-color: white;
+  transition: 0.3s;
+}
+.logOut:hover {
+  background-color: rgb(240, 220, 220);
+}
+
+@media only screen and (max-width: 1208px) {
+  .divTop {
+    max-width: 610px;
+  }
+}
+@media only screen and (max-width: 1029px) {
+  .divAboveGrid div {
+    min-width: 235px;
+  }
+
+  .divTop {
+    max-width: 510px;
+  }
+}
+@media only screen and (min-width: 735px) {
+  .webAccount {
+    display: block;
+  }
+  .mobileAccount {
+    display: none;
+  }
 }

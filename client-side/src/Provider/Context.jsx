@@ -8,6 +8,7 @@ const ContextProvider = ({ children }) => {
   const [filterShow, setFilterShow] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [User, setUser] = useState({});
+  const [authloading, setauthloading] = useState(true);
   const [existingUser, setexistingUser] = useState({});
 
   const [UserImg, setUserImg] = useState(
@@ -46,6 +47,8 @@ const ContextProvider = ({ children }) => {
     setexisting,
     existingUser,
     setexistingUser,
+    authloading,
+    setauthloading,
   };
 
   return <Context.Provider value={initialState}>{children}</Context.Provider>;

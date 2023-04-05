@@ -65,3 +65,10 @@ html {
   object-fit: cover;
   overflow: hidden;
 }
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}

@@ -17,8 +17,15 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setloading] = useState(false);
-  const { mail, setmail, setModalShow, setUserImg, setLoggedIn, setUser } =
-    useContext(Context);
+  const {
+    mail,
+    setmail,
+    setModalShow,
+    setUserImg,
+    setLoggedIn,
+    setUser,
+    setauthloading,
+  } = useContext(Context);
   const verify = useRef(null);
   useEffect(() => {
     verify.current.focus();
@@ -61,11 +68,12 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
       handleSaveUser(response.data.user);
       setLogin(setLoggedIn);
       UserImg(setUserImg);
+      setauthloading(false);
       if (location.pathname == "/") {
         navigate("/");
         return;
       }
-      navigate(location.state.previousUrl);
+      navigate(location.pathname);
     } catch (error) {
       setalert(true);
       setalertMessage(error.response.data.message);

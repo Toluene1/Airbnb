@@ -12,8 +12,14 @@ import {
 } from "../utils/setlocalstorage";
 
 const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
-  const { mail, setModalShow, setLoggedIn, setUserImg, setUser } =
-    useContext(Context);
+  const {
+    mail,
+    setModalShow,
+    setLoggedIn,
+    setUserImg,
+    setUser,
+    setauthloading,
+  } = useContext(Context);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,8 +47,6 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
     setshowOtp(false);
   }
 
-  //save token to local storage
-
   //post user details  to server
   const postUserDetails = async () => {
     try {
@@ -54,10 +58,11 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
       setLogin(setLoggedIn);
       UserImg(setUserImg);
       handleSaveUser(response.data.user);
+      setauthloading(false);
       if (location.pathname == "/") {
         return navigate("/");
       }
-      navigate(location.state.previousUrl);
+      navigate(location.pathname);
     } catch (error) {
       setalert(true);
       setalertMessage(error.response.data.message);
