@@ -180,7 +180,9 @@ const Navbar = () => {
                   </p>
                   <p>
                     {" "}
-                    <Link className="text-dark">Account</Link>
+                    <Link to={"/Accounts"} className="text-dark">
+                      Account
+                    </Link>
                   </p>
                   <hr />
                   <p>
