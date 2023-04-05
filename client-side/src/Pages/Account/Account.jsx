@@ -17,6 +17,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { BiUserCircle, BiGift } from "react-icons/bi";
 import { FiSettings, FiHelpCircle } from "react-icons/fi";
 import { TbWorld } from "react-icons/tb";
+import LoginFooter from "../../components/LoginFooter/LoginFooter";
 
 function Accounts() {
   const { setUser, User, UserImg } = useContext(Context);
@@ -39,21 +40,6 @@ function Accounts() {
       isMounted = false;
     };
   }, []);
-
-  // useEffect(() => {
-  //   window.addEventListener("resize", setMobileShow);
-  //   return () => {
-  //     window.removeEventListener("resize", setMobileShow);
-  //   };
-  // }, [window.innerWidth]);
-
-  // const setMobileShow = () => {
-  //   if (window.innerWidth > 735) {
-  //     setMobile(true);
-  //   } else {
-  //     setMobile(false);
-  //   }
-  // };
 
   return (
     <section className="">
@@ -405,6 +391,7 @@ function Accounts() {
           </section>
         </div>
       </main>
+      <LoginFooter />
       <br />
       <br />
       <br />
