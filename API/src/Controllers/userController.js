@@ -9,7 +9,7 @@ const createEmailOtp = async (req, res) => {
   try {
     const { email } = req.body;
     const new_Otp = Math.floor(100000 + Math.random() * 900000);
-    const message = `welcome to Airbnb ${email} please verify your email with the ${new_Otp}`;
+    // const message = `welcome to Airbnb ${email} please verify your email with the ${new_Otp}`;
     const existing_Otp = await emailOtp.findOne({ Email: email });
 
     if (!existing_Otp) {
@@ -20,7 +20,7 @@ const createEmailOtp = async (req, res) => {
         expirededAt: Date.now() + 3600000,
       });
 
-      ev.emit("mail", message, email);
+      // ev.emit("mail", message, email);
       res.status(200).json({ message: "otp sent " });
       return;
     }
@@ -66,7 +66,7 @@ const createUser = async (req, res) => {
   try {
     const user = await User.create({ ...req.body });
     const token = createJWT(user._id);
-    res.status(200).json({ message: "user created", token });
+    res.status(200).json({ token, user });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
     console.log(error);
@@ -76,13 +76,13 @@ const createUser = async (req, res) => {
 const updateAddress = async (req, res) => {
   try {
     const { _id } = req.user;
-    await User.findOneAndUpdate(
+    const user = await User.findOneAndUpdate(
       { _id: _id },
       { Address: { ...req.body } },
       { new: true },
     );
 
-    res.status(200).json({ message: "address update" });
+    res.status(200).json({ message: "address update", user });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
     console.log(error);
@@ -97,7 +97,7 @@ const updateEmergencyContact = async (req, res) => {
       { new: true },
     );
 
-    res.status(200).json({ message: "emergencey contact updated" });
+    res.status(200).json({ message: "emergencey contact updated", user });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
     console.log(error);
@@ -115,7 +115,7 @@ const updateProfile = async (req, res) => {
       { new: true },
     );
 
-    res.status(200).json({ message: "profile updated" });
+    res.status(200).json({ user });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
     console.log(error);
@@ -136,12 +136,12 @@ const uploadPhoto = async (req, res) => {
         width: 300,
         crop: "scale",
       });
-      const { Avatar } = await User.findOneAndUpdate(
+      const user = await User.findOneAndUpdate(
         { _id: _id },
         { Avatar: result.secure_url },
         { new: true },
       );
-      res.status(200).json({ message: "file uploaded", Avatar });
+      res.status(200).json({ message: "file uploaded", user });
     });
   } catch (error) {
     res.status(500).json({ message: "img uploaded failed" });

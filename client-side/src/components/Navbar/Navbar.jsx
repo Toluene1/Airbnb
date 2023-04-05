@@ -9,6 +9,7 @@ import FilterProperties from "../filterProperties";
 import "./Navbar.css";
 import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
+import { Existing } from "../../utils/setlocalstorage";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
 
@@ -23,11 +24,34 @@ const Navbar = () => {
     filterShow,
     fullscreen,
     setFullscreen,
+    setexisting,
   } = useContext(Context);
   const navigate = useNavigate();
   let isMounted = true;
-  // hideDropDown
-  //  window.screen.width;
+
+  //close filter
+  const checkmodalShow = () => {
+    if (window.innerWidth > 735) {
+      setFilterShow(false);
+    }
+  };
+  function showFilter() {
+    setFilterShow(true);
+    setFullscreen(true);
+  }
+
+  // closeDropDown
+  function HideDropdown() {
+    setModalShow(true);
+    setDropdown(false);
+  }
+
+  const checkInnerwidth = () => {
+    if (window.innerWidth < 735) {
+      setDropdown(false);
+    }
+  };
+
   useEffect(() => {
     window.addEventListener("resize", checkmodalShow);
     return () => {
@@ -35,26 +59,6 @@ const Navbar = () => {
     };
   }, [window.innerWidth]);
 
-  const checkmodalShow = () => {
-    if (window.innerWidth < 735) {
-      setFilterShow(false);
-    }
-  };
-
-  function showFilter() {
-    setFilterShow(true);
-    setFullscreen(true);
-  }
-
-  function HideDropdown() {
-    setModalShow(true);
-    setDropdown(false);
-  }
-  const checkInnerwidth = () => {
-    if (window.innerWidth < 735) {
-      setDropdown(false);
-    }
-  };
   useEffect(() => {
     window.addEventListener("resize", checkInnerwidth);
     return () => {
@@ -82,8 +86,11 @@ const Navbar = () => {
 
   // log Out
   const handleLogOut = () => {
-    localStorage.clear();
+    localStorage.removeItem("token");
+    localStorage.removeItem("loggedin");
+    localStorage.removeItem("img");
     location.reload();
+    Existing(setexisting);
     navigate("/");
   };
 
@@ -152,43 +159,41 @@ const Navbar = () => {
             </button>
           </div>
           {dropdown && (
-            <div className="dropdown shadow  text-start">
+            <div className="dropdown shadow px-0 text-start">
               {Loggedin ? (
                 <div>
                   <p>
                     {" "}
-                    <Link className="fw-bold  ">Messages</Link>
+                    <Link className="fw-bold  text-dark">Messages</Link>
                   </p>
                   <p>
                     {" "}
-                    <Link className="text-dark">Trips</Link>
+                    <Link>Trips</Link>
                   </p>
                   <p>
                     {" "}
-                    <Link className="text-dark" onClick={HideDropdown}>
-                      Wishlist
-                    </Link>
+                    <Link onClick={HideDropdown}>Wishlist</Link>
                   </p>
                   <hr />
                   <p>
                     {" "}
-                    <Link className="text-dark">Manage listings</Link>
+                    <Link>Manage listings</Link>
                   </p>
                   <p>
                     {" "}
-                    <Link className="text-dark">Manage experiences</Link>
+                    <Link>Manage experiences</Link>
                   </p>
                   <p>
                     {" "}
-                    <Link className="text-dark">Account</Link>
+                    <Link>Account</Link>
                   </p>
                   <hr />
                   <p>
                     {" "}
-                    <Link className="text-dark">Help </Link>
+                    <Link>Help </Link>
                   </p>
                   <button
-                    className="border-0 bg-white p-0"
+                    className="border-0 bg-white mx-2 p-0"
                     onClick={handleLogOut}
                   >
                     Log out
@@ -196,21 +201,21 @@ const Navbar = () => {
                 </div>
               ) : (
                 <div>
-                  <p onClick={HideDropdown} className="fw-bold  ">
+                  <p onClick={HideDropdown} className="fw-bold text-dark ">
                     {" "}
                     Login{" "}
                   </p>{" "}
                   <p onClick={HideDropdown}>Sign Up</p>
                   <hr />
                   <p>
-                    <Link className="text-dark">Airbnb your home</Link>
-                  </p>
-                  <p className="text-dark">
-                    {" "}
-                    <Link className="text-dark">Host an experience</Link>{" "}
+                    <Link>Airbnb your home</Link>
                   </p>
                   <p>
-                    <Link className="text-dark">Help</Link>
+                    {" "}
+                    <Link>Host an experience</Link>{" "}
+                  </p>
+                  <p>
+                    <Link>Help</Link>
                   </p>
                 </div>
               )}

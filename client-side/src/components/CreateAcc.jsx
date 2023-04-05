@@ -4,6 +4,12 @@ import httpClient from "../Services/httpClient";
 import { Context } from "../Provider/Context";
 import { useLocation, useNavigate } from "react-router-dom";
 import { country_code } from "../utils/CountryCodes";
+import {
+  handleSaveToken,
+  handleSaveUser,
+  setLogin,
+  UserImg,
+} from "../utils/setlocalstorage";
 
 const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
   const { mail, setModalShow, setLoggedIn, setUserImg, setUser } =
@@ -29,17 +35,6 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
     phone.current.value = foundCountry.dial_code;
   }
 
-  //save logged in to local storage
-  function setLogin() {
-    localStorage.setItem("loggedin", JSON.stringify(true));
-    setLoggedIn(true);
-  }
-  //save img to localstorage
-  function UserImg() {
-    setUserImg(true);
-    localStorage.setItem("img", JSON.stringify(true));
-  }
-
   //back to welcome page before logout
   function backToWelcome() {
     setshowCreateAcc(false);
@@ -47,9 +42,6 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
   }
 
   //save token to local storage
-  const handleSaveToken = (token) => {
-    return localStorage.setItem("token", JSON.stringify(token));
-  };
 
   //post user details  to server
   const postUserDetails = async () => {
@@ -59,9 +51,9 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
       setUser(response.data.user);
       backToWelcome();
       setModalShow(false);
-      setLogin();
-      UserImg();
-
+      setLogin(setLoggedIn);
+      UserImg(setUserImg);
+      handleSaveUser(response.data.user);
       if (location.pathname == "/") {
         return navigate("/");
       }
