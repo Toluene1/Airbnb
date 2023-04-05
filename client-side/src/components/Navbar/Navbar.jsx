@@ -185,7 +185,7 @@ const Navbar = () => {
                   </p>
                   <p>
                     {" "}
-                    <Link>Account</Link>
+                    <Link to={"/Accounts"}>Account</Link>
                   </p>
                   <hr />
                   <p>
