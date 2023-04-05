@@ -3,11 +3,20 @@ import { Link } from "react-router-dom";
 import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
 import "./Account.css";
-import { FaRegAddressCard } from "react-icons/fa";
+import { FaRegAddressCard, FaAirbnb } from "react-icons/fa";
 import { TfiShield } from "react-icons/tfi";
 import { RxSpeakerLoud } from "react-icons/rx";
-import { BsCreditCard, BsFileEarmarkSpreadsheet } from "react-icons/bs";
+import {
+  BsCreditCard,
+  BsFileEarmarkSpreadsheet,
+  BsToggles,
+  BsGrid1X2,
+  BsHeadset,
+} from "react-icons/bs";
 import { MdArrowForwardIos } from "react-icons/md";
+import { BiUserCircle, BiGift } from "react-icons/bi";
+import { FiSettings, FiHelpCircle } from "react-icons/fi";
+import { TbWorld } from "react-icons/tb";
 
 function Accounts() {
   const { setUser, User, UserImg } = useContext(Context);
@@ -51,6 +60,7 @@ function Accounts() {
       <br />
       <br />
       <br />
+      {/* // WEB SECTION  */}
       <main className="mainDiv webAccount">
         <div style={{ lineHeight: "10px" }} className="divTop">
           <h1 className="account flex-start" style={{ fontSize: "30px" }}>
@@ -191,6 +201,8 @@ function Accounts() {
           </div>
         </div>
       </main>
+
+      {/* //MOBILE SECTION  */}
       <main className="ps-4 mobileAccount pe-4">
         <div>
           <h1>Profile</h1>
@@ -223,7 +235,7 @@ function Accounts() {
               </Link>
             </div>
           </section>
-          <hr className="mt-4 bg-light" />
+          <hr className="mt-4" />
           <section>
             <Link
               className="ms-3 text-dark text-decoration-none mt-1"
@@ -253,9 +265,152 @@ function Accounts() {
                 </span>
               </div>
             </Link>
+            <div className="d-flex align-center mt-4  ">
+              <Link
+                className="ms-3 text-dark text-decoration-none mt-3"
+                style={{ width: "93%" }}
+              >
+                <span>
+                  <BiUserCircle className="fs-3 me-3 " />
+                </span>
+                <span className="fw-light">Personal info</span>
+                <span>
+                  <MdArrowForwardIos className="iconAccount2" />
+                </span>
+              </Link>
+            </div>
+            <div className="d-flex align-center mt-4  ">
+              <Link
+                className="ms-3 text-dark text-decoration-none mt-1"
+                style={{ width: "93%" }}
+              >
+                <span>
+                  <FiSettings className="fs-3 me-3 " />
+                </span>
+                <span className="fw-light">Account</span>
+                <span>
+                  <MdArrowForwardIos className="iconAccount2" />
+                </span>
+              </Link>
+            </div>
+          </section>
+          <hr className="mt-4" />
+          <section>
+            <h4 className="mt-4">Hosting</h4>
+            <div className="d-flex align-center mt-4  ">
+              <Link
+                className="ms-3 text-dark text-decoration-none mt-1"
+                style={{ width: "93%" }}
+              >
+                <span>
+                  <BsToggles className="fs-3 me-3 " />
+                </span>
+                <span className="fw-light">Manage your listing</span>
+                <span>
+                  <MdArrowForwardIos className="iconAccount2" />
+                </span>
+              </Link>
+            </div>
+            <div className="d-flex align-center mt-4  ">
+              <Link
+                className="ms-3 text-dark text-decoration-none mt-1"
+                style={{ width: "93%" }}
+              >
+                <span>
+                  <BsGrid1X2 className="fs-3 me-3 " />
+                </span>
+                <span className="fw-light">Host an experience</span>
+                <span>
+                  <MdArrowForwardIos className="iconAccount2" />
+                </span>
+              </Link>
+            </div>
+          </section>
+          <hr className="mt-4" />
+          <section>
+            <h4 className="mt-4">Refferals & Credits</h4>
+            <div className="d-flex align-center mt-4  ">
+              <Link
+                className="ms-3 text-dark text-decoration-none mt-1"
+                style={{ width: "93%" }}
+              >
+                <span>
+                  <BiGift className="fs-3 me-3 " />
+                </span>
+                <span className="fw-light">Refer a host</span>
+                <span>
+                  <MdArrowForwardIos className="iconAccount2" />
+                </span>
+              </Link>
+            </div>
+          </section>
+          <hr className="mt-4" />
+          <section>
+            <h4 className="mt-4">Support</h4>
+            <div className="d-flex align-center mt-4  ">
+              <Link
+                className="ms-3 text-dark text-decoration-none mt-1"
+                style={{ width: "93%" }}
+              >
+                <span>
+                  <FaAirbnb className="fs-3 me-3 " />
+                </span>
+                <span className="fw-light">How Airbnb works</span>
+                <span>
+                  <MdArrowForwardIos className="iconAccount2" />
+                </span>
+              </Link>
+            </div>
+            <div className="d-flex align-center mt-4  ">
+              <Link
+                className="ms-3 text-dark text-decoration-none mt-1"
+                style={{ width: "93%" }}
+              >
+                <span>
+                  <FiHelpCircle className="fs-3 me-3 " />
+                </span>
+                <span className="fw-light">Get help</span>
+                <span>
+                  <MdArrowForwardIos className="iconAccount2" />
+                </span>
+              </Link>
+            </div>
+            <div className="d-flex align-center mt-4  ">
+              <Link
+                className="ms-3 text-dark text-decoration-none mt-1"
+                style={{ width: "93%" }}
+              >
+                <span>
+                  <BsHeadset className="fs-3 me-3 " />
+                </span>
+                <span className="fw-light">Contact Neighborhood Support</span>
+                <span>
+                  <MdArrowForwardIos className="iconAccount2" />
+                </span>
+              </Link>
+            </div>
+          </section>
+          <hr className="mt-4" />
+          <section>
+            <div className="mt-5">
+              <span>
+                <TbWorld className="" style={{ fontSize: "24px" }} />
+              </span>
+              <span className="ms-2">English (US)</span>
+              <span className="ms-3">$ USD</span>
+            </div>
+            <div>
+              <button className="logOut">Log out</button>
+            </div>
           </section>
         </div>
       </main>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </section>
   );
 }

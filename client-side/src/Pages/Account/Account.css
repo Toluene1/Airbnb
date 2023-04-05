@@ -42,11 +42,28 @@ max-width: 930px;
 position: absolute;
 right: 25px;
 }
+.iconAccount2{
+    font-size: 20px;
+    margin-top: 5px;
+position: absolute;
+right: 25px;
+}
 .imgAirbnb{
     font-size: 20px;
         margin-top: -45px;
         position: absolute;
         right: 35px;
+}
+.logOut {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: white;
+    transition: 0.3s;
+}
+.logOut:hover {
+    background-color: rgb(240, 220, 220);
 }
 @media only screen and (max-width: 1208px) {
 
