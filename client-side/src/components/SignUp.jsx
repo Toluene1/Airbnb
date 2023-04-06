@@ -10,9 +10,10 @@ import { Context } from "../Provider/Context";
 import LoadExistingUser from "./LoadExistingUser";
 
 function PopModal(props) {
-  const [showOtp, setshowOtp] = useState(false);
+  const [showOtp, setshowOtp] = useState(true);
   const [showCreateAcc, setshowCreateAcc] = useState(false);
-  const { setModalShow, existing, User, setexisting } = useContext(Context);
+  const { setModalShow, existing, setexisting, existingUser } =
+    useContext(Context);
   function backToVerifyOtp() {
     setshowCreateAcc(false);
     setshowOtp(true);
@@ -62,7 +63,10 @@ function PopModal(props) {
         >
           {existing ? (
             <div>
-              <span className="fs-6"> Welcome back {User.FirstName}</span>
+              <span className="fs-6">
+                {" "}
+                Welcome back {existingUser.FirstName}
+              </span>
             </div>
           ) : (
             <div>

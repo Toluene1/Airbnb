@@ -122,7 +122,7 @@ const PersonalInfo = () => {
                   </button>
                 </div>
                 {editaddress ? (
-                  <Address />
+                  <Address seteditaddress={seteditaddress} />
                 ) : (
                   <p>
                     {User?.Address?.suite +
@@ -144,7 +144,7 @@ const PersonalInfo = () => {
                   </button>
                 </div>
                 {editcontact ? (
-                  <EmergencyContact />
+                  <EmergencyContact seteditcontact={seteditcontact} />
                 ) : (
                   <p>{User?.EmergencyContact?.name || "not provided"}</p>
                 )}
