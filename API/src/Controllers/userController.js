@@ -30,7 +30,7 @@ const createEmailOtp = async (req, res) => {
       { otp: new_Otp },
       { new: true },
     );
-    ev.emit("mail", message, email);
+    // ev.emit("mail", message, email);
     res.status(200).json({ message: "otp sent " });
   } catch (error) {
     res.status(500).json({ message: "please contact admin" });
@@ -67,6 +67,50 @@ const createUser = async (req, res) => {
     const user = await User.create({ ...req.body });
     const token = createJWT(user._id);
     res.status(200).json({ token, user });
+  } catch (error) {
+    res.status(500).json({ message: "please contact your admin" });
+    console.log(error);
+  }
+};
+
+const updateEmail = async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const user = await User.findOneAndUpdate(
+      { _id: _id },
+      { ...req.body },
+      { new: true },
+    );
+    res.status(200).json({ user: user });
+  } catch (error) {
+    res.status(500).json({ message: "please contact your admin" });
+    console.log(error);
+  }
+};
+
+const updateNames = async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const user = await User.findOneAndUpdate(
+      { _id: _id },
+      { ...req.body },
+      { new: true },
+    );
+    res.status(200).json({ user: user });
+  } catch (error) {
+    res.status(500).json({ message: "please contact your admin" });
+    console.log(error);
+  }
+};
+const updatePhone = async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const user = await User.findOneAndUpdate(
+      { _id: _id },
+      { ...req.body },
+      { new: true },
+    );
+    res.status(200).json({ user: user });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
     console.log(error);
@@ -136,12 +180,12 @@ const uploadPhoto = async (req, res) => {
         width: 300,
         crop: "scale",
       });
-      const user = await User.findOneAndUpdate(
+      const userPics = await User.findOneAndUpdate(
         { _id: _id },
         { Avatar: result.secure_url },
         { new: true },
       );
-      res.status(200).json({ message: "file uploaded", user });
+      res.status(200).json({ message: "file uploaded", user: userPics });
     });
   } catch (error) {
     res.status(500).json({ message: "img uploaded failed" });
@@ -169,4 +213,7 @@ module.exports = {
   updateProfile,
   uploadPhoto,
   getUser,
+  updateEmail,
+  updateNames,
+  updatePhone,
 };
