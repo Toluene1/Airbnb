@@ -86,7 +86,7 @@ const PersonalInfo = () => {
                   </button>
                 </div>
                 {editname ? (
-                  <EditName />
+                  <EditName seteditname={seteditname} />
                 ) : (
                   <p>
                     {User?.FirstName} {User?.LastName}
@@ -101,7 +101,11 @@ const PersonalInfo = () => {
                     {editmail ? "Cancel" : "edit"}
                   </button>
                 </div>
-                {editmail ? <Email /> : <p>{User?.Email}</p>}
+                {editmail ? (
+                  <Email seteditmail={seteditmail} />
+                ) : (
+                  <p>{User?.Email}</p>
+                )}
               </main>{" "}
               {/* PhoneNumber */}
               <main>
@@ -111,7 +115,11 @@ const PersonalInfo = () => {
                     {editphone ? "Cancel" : "edit"}
                   </button>
                 </div>
-                {editphone ? <Phone /> : <p>{User.PhoneNumber}</p>}
+                {editphone ? (
+                  <Phone seteditphone={seteditphone} />
+                ) : (
+                  <p>{User.PhoneNumber}</p>
+                )}
               </main>{" "}
               {/* Address */}
               <main>

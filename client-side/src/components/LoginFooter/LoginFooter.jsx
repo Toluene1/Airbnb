@@ -15,12 +15,12 @@ function LoginFooter() {
         {Loggedin ? (
           <section>
             <div className="footerDiv2 text-dark text-center">
-              {/* <Link to={"/"} className="text-decoration-none "> */}
-              <div className=" divWithin ">
-                <AiOutlineSearch className="iconFooter" /> <br />
-                <span className="textFooter">Explore</span>
-              </div>
-              {/* </Link> */}
+              <Link to={"/"} className="text-decoration-none ">
+                <div className=" divWithin ">
+                  <AiOutlineSearch className="iconFooter" /> <br />
+                  <span className="textFooter">Explore</span>
+                </div>
+              </Link>
               <div className=" divWithin ">
                 <AiOutlineHeart className="iconFooter" /> <br />
                 <span className="textFooter">Wishlists</span>

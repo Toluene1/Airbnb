@@ -1,9 +1,14 @@
-import { useRef } from "react";
+import { useContext, useRef, useState } from "react";
+import { Context } from "../Provider/Context";
+import httpAuth from "../Services/config";
 import { country_code } from "./CountryCodes";
+import { handleSaveUser } from "./setlocalstorage";
 
-const Phone = () => {
+const Phone = ({ seteditphone }) => {
   const edit = useRef({ PhoneNumber: "" });
   const phone = useRef(null);
+  const [loading, setloading] = useState(false);
+  const { setUser } = useContext(Context);
 
   // select country and populate to phonenumber input
   function sliceCountry(e) {
@@ -13,6 +18,25 @@ const Phone = () => {
     );
     phone.current.value = foundCountry.dial_code;
   }
+
+  const postUserEmail = async () => {
+    try {
+      setloading(true);
+      const response = await httpAuth.post("/updatePhone", edit.current);
+      setUser(response.data.user);
+      handleSaveUser(response.data.user);
+      seteditphone(false);
+      setloading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updatePhone = (e) => {
+    e.preventDefault();
+    postUserEmail();
+  };
+
   return (
     <div>
       <span style={{ fontSize: "15px", color: "grey" }}>
@@ -20,7 +44,7 @@ const Phone = () => {
         can add other numbers and choose how they’re used
       </span>
 
-      <form action="" className="form-control border-0 p-0 ">
+      <form onSubmit={updatePhone} className="form-control border-0 p-0 ">
         <div className="form-floating py-2">
           <select
             name=""
@@ -41,7 +65,6 @@ const Phone = () => {
         <div className="form-floating my-2">
           <input
             ref={phone}
-            value={edit.current.FirstName}
             id="lastname"
             required
             type="text"
@@ -53,7 +76,11 @@ const Phone = () => {
         </div>
 
         <button className="bg-dark text-white border text-decoration-none p-3 rounded my-2">
-          Save
+          {loading ? (
+            <span className="spinner-border text-light"></span>
+          ) : (
+            " Save"
+          )}
         </button>
       </form>
     </div>
