@@ -58,7 +58,10 @@ const LoadExistingUser = ({ setshowOtp, setexisting, setshowCreateAcc }) => {
           <span
             className={`${loading && "spinner-border p-0 text-secondary"}`}
           ></span>
-          <span className="mx-3"> continue</span>
+          <span className={`mx-3 ${loading ? "d-none" : "d-block"}  `}>
+            {" "}
+            continue
+          </span>
         </button>
       </div>
       <p style={{ fontSize: " 0.8rem ", marginTop: "10px" }}>

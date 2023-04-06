@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import NavbarAuth from "../../components/Navbar/NavbarAuth";
 import { Context } from "../../Provider/Context";
 import "./PersonalInfo.css";
@@ -8,8 +8,19 @@ import { Link } from "react-router-dom";
 import httpAuth from "../../Services/config";
 import PopModal from "../../components/SignUp";
 import LoginFooter from "../../components/LoginFooter/LoginFooter";
+import EditName from "../../utils/EditName";
+import Email from "../../utils/Email";
+import Phone from "../../utils/Phone";
+import Address from "../../utils/Address";
+import EmergencyContact from "../../utils/EmergContat";
 
 const PersonalInfo = () => {
+  const [editname, seteditname] = useState(false);
+  const [editmail, seteditmail] = useState(false);
+  const [editphone, seteditphone] = useState(false);
+  const [editaddress, seteditaddress] = useState(false);
+  const [editcontact, seteditcontact] = useState(false);
+
   const {
     setUser,
     User,
@@ -51,12 +62,12 @@ const PersonalInfo = () => {
       ) : (
         <section className="mt-5 PersonalInfo">
           <div className="personal-info">
-            <span>Account </span>
-            <span className="ms-2 mb-1">
+            <Link to={"/Accounts"}>Account </Link>
+            <span className="ms-3 mb-1">
               {" "}
               <FaAngleRight />
             </span>
-            <span className="mx-4"> Personal Info</span>
+            <span className="mx-3"> Personal Info</span>
           </div>
           <Link to={"/Accounts"} className="angle">
             {" "}
@@ -70,51 +81,73 @@ const PersonalInfo = () => {
               <main>
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Legal name</span>
-                  <button>edit</button>
+                  <button onClick={() => seteditname(!editname)}>
+                    {editname ? "Cancel" : "edit"}
+                  </button>
                 </div>
-                <p>
-                  {User?.FirstName} {User?.LastName}
-                </p>
+                {editname ? (
+                  <EditName />
+                ) : (
+                  <p>
+                    {User?.FirstName} {User?.LastName}
+                  </p>
+                )}
               </main>{" "}
               {/* email */}
               <main>
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Email Address</span>
-                  <button>edit</button>
+                  <button onClick={() => seteditmail(!editmail)}>
+                    {editmail ? "Cancel" : "edit"}
+                  </button>
                 </div>
-                <p>{User?.Email}</p>
+                {editmail ? <Email /> : <p>{User?.Email}</p>}
               </main>{" "}
               {/* PhoneNumber */}
               <main>
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Phone Number</span>
-                  <button>edit</button>
+                  <button onClick={() => seteditphone(!editphone)}>
+                    {editphone ? "Cancel" : "edit"}
+                  </button>
                 </div>
-                <p>{User.PhoneNumber}</p>
+                {editphone ? <Phone /> : <p>{User.PhoneNumber}</p>}
               </main>{" "}
               {/* Address */}
               <main>
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Address</span>
-                  <button>edit</button>
+                  <button onClick={() => seteditaddress(!editaddress)}>
+                    {editaddress ? "Cancel" : "edit"}
+                  </button>
                 </div>
-                <p>
-                  {User?.Address?.suite +
-                    "," +
-                    User?.Address?.street +
-                    "," +
-                    User?.Address?.state +
-                    "," +
-                    User?.Address?.country || "not provided"}
-                </p>
+                {editaddress ? (
+                  <Address />
+                ) : (
+                  <p>
+                    {User?.Address?.suite +
+                      "," +
+                      User?.Address?.street +
+                      "," +
+                      User?.Address?.state +
+                      "," +
+                      User?.Address?.country || "not provided"}
+                  </p>
+                )}
               </main>{" "}
               {/* //emergency contact */}
               <main>
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Emergency Contact</span>
-                  <button>edit</button>
+                  <button onClick={() => seteditcontact(!editcontact)}>
+                    {editcontact ? "Cancel" : "edit"}
+                  </button>
                 </div>
-                <p>{User?.EmergencyContact?.name || "not provided"}</p>
+                {editcontact ? (
+                  <EmergencyContact />
+                ) : (
+                  <p>{User?.EmergencyContact?.name || "not provided"}</p>
+                )}
               </main>{" "}
             </main>
 
@@ -153,6 +186,7 @@ const PersonalInfo = () => {
       )}
       <LoginFooter />
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
+      <br /> <br />
     </>
   );
 };

@@ -93,6 +93,7 @@
 }
 @media only screen and (min-width: 735px) {
   .webNav {
+    z-index: 4000;
     display: flex;
     justify-content: space-around;
     align-items: center;

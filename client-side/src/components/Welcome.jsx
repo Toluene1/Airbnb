@@ -65,7 +65,10 @@ function Welcome({ setshowOtp }) {
             <span
               className={`${loading && "spinner-border text-secondary"}`}
             ></span>
-            <span className="mx-3"> continue</span>
+            <span className={`mx-3 ${loading ? "d-none" : "d-block"}`}>
+              {" "}
+              continue
+            </span>
           </button>
         </div>
 
