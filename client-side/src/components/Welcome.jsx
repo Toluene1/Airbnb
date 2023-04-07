@@ -41,13 +41,11 @@ function Welcome({ setshowOtp }) {
             required
             id="Email"
             type="Email"
-            className="form-control p-3"
+            className="form-control "
             placeholder="Email"
             onChange={(e) => (state.current.email = e.target.value)}
           />
-          <label htmlFor="Email" className="p-2">
-            Email
-          </label>
+          <label htmlFor="Email">Email</label>
         </div>
 
         <p className="mt-1">

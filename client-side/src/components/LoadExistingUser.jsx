@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../Provider/Context";
 import httpClient from "../Services/httpclient";
-
+import { CiMail, CiMobile1 } from "react-icons/ci";
 const LoadExistingUser = ({ setshowOtp, setexisting, setshowCreateAcc }) => {
   const { existingUser, setexistingUser } = useContext(Context);
   const [loading, setloading] = useState(false);
 
-  let email = JSON.parse(localStorage.getItem("user"));
+  let email = JSON.parse(localStorage.getItem("user")).Email;
 
-  email = email.Email;
   useEffect(() => {
     if (localStorage.getItem("user")) {
       setexistingUser(JSON.parse(localStorage.getItem("user")));
@@ -45,11 +44,25 @@ const LoadExistingUser = ({ setshowOtp, setexisting, setshowCreateAcc }) => {
       <div className="existingImg m-auto">
         <img src={existingUser?.Avatar} alt="" style={{ width: " 100% " }} />
       </div>
-      <p className="text-center mt-3">{existingUser?.Email}</p>
-      <p className="text-center mt-1">{existingUser?.PhoneNumber}</p>
-      <div>
+      <p className="text-center mt-3  ">
+        {" "}
+        <span>
+          <CiMail />
+        </span>{" "}
+        <span className="mx-1">{"***" + String(email).slice(4)}</span>
+      </p>
+      <p className="text-center mt-1">
+        {" "}
+        <span>
+          <CiMobile1 />
+        </span>{" "}
+        <span className="mx-1">
+          {"*****" + String(existingUser.PhoneNumber).slice(-4)}
+        </span>
+      </p>
+      <div className="my-4">
         <button
-          className={`w-100 p-2 d-flex justify-content-center border ${
+          className={`w-100 p-2 d-flex justify-content-center  border ${
             loading ? "btn-btn-secondary" : "btn btn-danger "
           }  `}
           onClick={postUserEmail}

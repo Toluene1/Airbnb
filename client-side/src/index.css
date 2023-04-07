@@ -78,3 +78,6 @@ html {
   background-color: black;
   color: white;
 }
+.modal-backdrop {
+  opacity: 0.3 !important;
+}

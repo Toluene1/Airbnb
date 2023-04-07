@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContextProvider from "./Provider/Context";
 
 const App = React.lazy(() => import("./App"));
-const Authroute = React.lazy(() => import("./Pages/Authroute"));
+
 const Accounts = React.lazy(() => import("./Pages/Account/Account"));
 const PersonalInfo = React.lazy(() =>
   import("./Pages/PersonalInfo/PersonalInfo"),
@@ -26,10 +26,7 @@ const router = createBrowserRouter([
     path: "/personalInfo",
     element: <PersonalInfo />,
   },
-  {
-    path: "/Auth",
-    element: <Authroute />,
-  },
+
   {
     path: "/Accounts",
     element: <Accounts />,

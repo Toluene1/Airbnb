@@ -436,9 +436,6 @@ function Accounts() {
           <br />
           <br />
           <br />
-          <br />
-          <br />
-          <br />
         </section>
       )}
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
