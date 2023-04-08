@@ -21,6 +21,7 @@ import LoginFooter from "../../components/LoginFooter/LoginFooter";
 import PopModal from "../../components/SignUp";
 import NavbarAuth from "../../components/Navbar/NavbarAuth";
 import { Existing } from "../../utils/setlocalstorage";
+import Footer from "../../components/Footer/Footer";
 
 function Accounts() {
   const {
@@ -438,6 +439,7 @@ function Accounts() {
           <br />
         </section>
       )}
+      <Footer />
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );

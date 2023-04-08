@@ -13,6 +13,7 @@ import Email from "../../utils/Email";
 import Phone from "../../utils/Phone";
 import Address from "../../utils/Address";
 import EmergencyContact from "../../utils/EmergContat";
+import Footer from "../../components/Footer/Footer";
 
 const PersonalInfo = () => {
   const [editname, seteditname] = useState(false);
@@ -82,7 +83,7 @@ const PersonalInfo = () => {
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Legal name</span>
                   <button onClick={() => seteditname(!editname)}>
-                    {editname ? "Cancel" : "edit"}
+                    {editname ? "Cancel" : "Edit"}
                   </button>
                 </div>
                 {editname ? (
@@ -98,7 +99,7 @@ const PersonalInfo = () => {
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Email Address</span>
                   <button onClick={() => seteditmail(!editmail)}>
-                    {editmail ? "Cancel" : "edit"}
+                    {editmail ? "Cancel" : "Edit"}
                   </button>
                 </div>
                 {editmail ? (
@@ -112,7 +113,7 @@ const PersonalInfo = () => {
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Phone Number</span>
                   <button onClick={() => seteditphone(!editphone)}>
-                    {editphone ? "Cancel" : "edit"}
+                    {editphone ? "Cancel" : "Edit"}
                   </button>
                 </div>
                 {editphone ? (
@@ -126,7 +127,7 @@ const PersonalInfo = () => {
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Address</span>
                   <button onClick={() => seteditaddress(!editaddress)}>
-                    {editaddress ? "Cancel" : "edit"}
+                    {editaddress ? "Cancel" : "Edit"}
                   </button>
                 </div>
                 {editaddress ? (
@@ -148,7 +149,7 @@ const PersonalInfo = () => {
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Emergency Contact</span>
                   <button onClick={() => seteditcontact(!editcontact)}>
-                    {editcontact ? "Cancel" : "edit"}
+                    {editcontact ? "Cancel" : "Edit"}
                   </button>
                 </div>
                 {editcontact ? (
@@ -158,7 +159,6 @@ const PersonalInfo = () => {
                 )}
               </main>{" "}
             </main>
-
             <main className="questions border ">
               <div>
                 <BsFillShieldLockFill className="fs-3" />
@@ -192,9 +192,10 @@ const PersonalInfo = () => {
           </section>
         </section>
       )}
+      <Footer />
       <LoginFooter />
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
-      <br /> <br />
+      <div className="space"></div>
     </>
   );
 };

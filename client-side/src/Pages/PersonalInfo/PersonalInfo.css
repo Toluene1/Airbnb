@@ -36,8 +36,14 @@
 .personal-info {
   display: none;
 }
+.personal-info a:hover {
+  text-decoration: underline;
+}
 .angle {
   display: block;
+}
+.space {
+  margin: 40px 0px;
 }
 @media only screen and (min-width: 735px) {
   .questions {
@@ -55,6 +61,9 @@
     align-items: center;
   }
   .angle {
+    display: none;
+  }
+  .space {
     display: none;
   }
 }
