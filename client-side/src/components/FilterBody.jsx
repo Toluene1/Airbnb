@@ -34,6 +34,7 @@ function FilterBody() {
     setbathroom(row);
   };
 
+  //properties house,apartment function
   const ChangePropertyDiv = () => {
     setProperty(!property);
   };

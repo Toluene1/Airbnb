@@ -65,3 +65,19 @@ html {
   object-fit: cover;
   overflow: hidden;
 }
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+.save {
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+}
+.modal-backdrop {
+  opacity: 0.3 !important;
+}
