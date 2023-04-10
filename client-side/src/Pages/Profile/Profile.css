@@ -1,0 +1,13 @@
+.profile {
+  display: flex;
+  justify-content: start;
+  margin: 20px auto;
+}
+
+.profile-badge {
+  width: 300px;
+  height: 600px;
+  border: 1px solid rgb(207, 205, 205);
+  margin-left: 180px;
+  border-radius: 10px;
+}

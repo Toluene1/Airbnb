@@ -3,7 +3,7 @@ import { Context } from "../Provider/Context";
 import httpClient from "../Services/httpclient";
 import { CiMail, CiMobile1 } from "react-icons/ci";
 const LoadExistingUser = ({ setshowOtp, setexisting, setshowCreateAcc }) => {
-  const { existingUser, setexistingUser } = useContext(Context);
+  const { existingUser, setexistingUser, setmail } = useContext(Context);
   const [loading, setloading] = useState(false);
 
   let email = JSON.parse(localStorage.getItem("user")).Email;
@@ -31,6 +31,7 @@ const LoadExistingUser = ({ setshowOtp, setexisting, setshowCreateAcc }) => {
     try {
       setloading(true);
       await httpClient.post("/createEmailOtp", { email });
+      setmail(email);
       continueSameAcc();
       setloading(false);
     } catch (error) {
