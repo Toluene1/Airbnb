@@ -135,15 +135,12 @@ const PersonalInfo = () => {
                 ) : (
                   <p>
                     {User?.Address?.suite +
-                      "," +
                       User?.Address?.street +
-                      "," +
                       User?.Address?.state +
-                      "," +
                       User?.Address?.country || "not provided"}
                   </p>
                 )}
-              </main>{" "}
+              </main>
               {/* //emergency contact */}
               <main>
                 <div className="d-flex justify-content-between align-items-center">

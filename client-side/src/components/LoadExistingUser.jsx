@@ -35,7 +35,6 @@ const LoadExistingUser = ({ setshowOtp, setexisting, setshowCreateAcc }) => {
       setloading(false);
     } catch (error) {
       setloading(false);
-
       console.log(error);
     }
   };
