@@ -89,6 +89,7 @@ function Accounts() {
                 <Link
                   className="text-dark ms-2 fw-bold"
                   style={{ textDecoration: "underline" }}
+                  to={"/profile"}
                 >
                   .Go to profile
                 </Link>

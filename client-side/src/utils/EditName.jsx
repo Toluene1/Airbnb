@@ -6,8 +6,18 @@ import { handleSaveUser } from "./setlocalstorage";
 const EditName = ({ seteditname }) => {
   const edit = useRef({ FirstName: "", LastName: "" });
   const [loading, setloading] = useState(false);
-  const { setUser } = useContext(Context);
+  const { setUser, User } = useContext(Context);
+  const [firstname, setFirstName] = useState(User.FirstName);
+  const [lastname, setlastname] = useState(User.LastName);
 
+  const FirstName = (e) => {
+    setFirstName(e.target.value);
+    edit.current.FirstName = e.target.value;
+  };
+  const LastName = (e) => {
+    setlastname(e.target.value);
+    edit.current.LastName = e.target.value;
+  };
   const postUserEmail = async () => {
     try {
       setloading(true);
@@ -36,11 +46,12 @@ const EditName = ({ seteditname }) => {
         <main className="d-flex justify-content-start border-0  ">
           <div className="form-floating">
             <input
+              value={firstname}
               id="lastname"
               required
               type="text"
               className="form-control border "
-              onChange={(e) => (edit.current.FirstName = e.target.value)}
+              onChange={FirstName}
               placeholder="FirstName"
             />
             <label htmlFor="lastname">First Name</label>
@@ -48,11 +59,12 @@ const EditName = ({ seteditname }) => {
 
           <div className="form-floating mx-4  ">
             <input
+              value={lastname}
               id="lastname"
               required
               type="text"
               className="form-control border"
-              onChange={(e) => (edit.current.LastName = e.target.value)}
+              onChange={LastName}
               placeholder="Last Name"
             />
             <label htmlFor="lastname">Last Name</label>

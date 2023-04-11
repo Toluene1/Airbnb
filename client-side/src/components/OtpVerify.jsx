@@ -19,7 +19,6 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const [loading, setloading] = useState(false);
   const {
     mail,
-    setmail,
     setModalShow,
     setUserImg,
     setLoggedIn,
@@ -29,12 +28,6 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const verify = useRef(null);
   useEffect(() => {
     verify.current.focus();
-  }, []);
-
-  useEffect(() => {
-    if (localStorage.getItem("user")) {
-      setmail(JSON.parse(localStorage.getItem("user")).Email);
-    }
   }, []);
 
   useEffect(() => {

@@ -13,6 +13,7 @@ const Accounts = React.lazy(() => import("./Pages/Account/Account"));
 const PersonalInfo = React.lazy(() =>
   import("./Pages/PersonalInfo/PersonalInfo"),
 );
+const Profile = React.lazy(() => import("./Pages/Profile/Profile"));
 const Error404 = React.lazy(() => import("./Pages/error404"));
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/Accounts",
     element: <Accounts />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
   },
 ]);
 
