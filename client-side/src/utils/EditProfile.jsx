@@ -3,11 +3,11 @@ import { Context } from "../Provider/Context";
 import httpAuth from "../Services/config";
 import { handleSaveUser } from "./setlocalstorage";
 
-const EditProfile = ({ seteditname }) => {
+const EditProfile = ({ seteditprofile }) => {
   const profile = useRef({
     about: "",
-    language: "",
-    location: [""],
+    language: [],
+    location: "",
     work: "",
   });
   const [loading, setloading] = useState(false);
@@ -39,7 +39,7 @@ const EditProfile = ({ seteditname }) => {
       const response = await httpAuth.post("/updateProfile", profile.current);
       setUser(response.data.user);
       handleSaveUser(response.data.user);
-      seteditname(false);
+      seteditprofile(false);
       setloading(false);
     } catch (error) {
       console.log(error);
