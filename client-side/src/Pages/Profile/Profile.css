@@ -35,11 +35,9 @@
   background-color: rgb(246, 241, 241);
 }
 .profile-badge2 {
-  height: 600px;
   width: 728px;
   margin-left: 20px;
   padding-left: 45px;
-  border: 1px solid black;
 }
 .buttonToggle {
   border: none;
@@ -55,4 +53,19 @@
   text-decoration: underline;
   color: black;
   cursor: pointer;
+}
+.aboutInput {
+  height: 80px;
+  border: 1px solid black;
+}
+.label{
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.saveProfileButton {
+  height: 45px;
+  width: 84px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
 }

@@ -1,5 +1,5 @@
 import NavbarAuth from "../../components/Navbar/NavbarAuth";
-import { BsShieldCheck } from "react-icons/bs";
+import { BsShieldCheck, BsFillHouseDoorFill } from "react-icons/bs";
 import React, { useState, useEffect, useContext } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
@@ -140,7 +140,15 @@ const Profile = () => {
               {editprofile ? (
                 <EditProfile seteditprofile={seteditprofile} />
               ) : (
-                <p>tolu</p>
+                <div>
+                  <h4 className="mt-4">About</h4>
+                  <p>{User.About}</p>
+                  <section>
+                    <p>
+                      <BsFillHouseDoorFill className="fs-1" />
+                    </p>
+                  </section>
+                </div>
               )}
             </div>
           </div>

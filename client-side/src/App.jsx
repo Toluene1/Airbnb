@@ -11,7 +11,7 @@ function App() {
         <Navbar />
         <h1>welcome to home</h1>
       </div>
-      <div className="footerDivMain">
+      <div>
         <LoginFooter />
       </div>
     </section>
