@@ -84,14 +84,26 @@
 .mobileProfile {
   display: none;
   padding-top: 60px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .mobileDiv {
   max-width: 395px;
-  height: 700px;
-  /* background-color: blue; */
+  /* height: 700px; */
   margin: auto;
+}
+.mobileEditButton {
+  background-color: white;
+  padding: 7px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(51, 49, 49);
+  transition: 0.2s;
+}
+.mobileEditButton:hover {
+background-color: rgb(240, 234, 234);
 }
 @media only screen and (max-width: 1150px) {
   .profile {

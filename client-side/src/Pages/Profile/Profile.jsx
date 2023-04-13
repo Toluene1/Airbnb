@@ -168,7 +168,7 @@ const Profile = () => {
           {/* //{MOBILE VERSION} */}
           <main className=" mobileProfile">
             <section className="mobileDiv">
-              <div className="imageDiv shadow-lg">
+              <div className="imageDiv shadow">
                 {UserImg ? (
                   <div className="profile-img m-auto d-flex justify-content-center align-items-center">
                     {loading ? (
@@ -198,9 +198,58 @@ const Profile = () => {
                   </div>
                 </form>
               </div>{" "}
-              <section className=" pb-3 detailsDiv">
+              <section className=" pb-5">
+                <h2 className="fw-bold">About me</h2>
+                <p className="mt-3">
+                  {" "}
+                  <button
+                    className="mobileEditButton"
+                    onClick={() => seteditprofile(!editprofile)}
+                  >
+                    {editprofile ? "Cancel" : "Edit profile"}
+                  </button>
+                </p>
                 <div>
-                  <h2 className="fw-bold">About me</h2>
+                  {editprofile ? (
+                    <EditProfile seteditprofile={seteditprofile} />
+                  ) : (
+                    <div>
+                      <h4 className="mt-4">About</h4>
+                      <p>{User.About}</p>
+                      <section>
+                        <p>
+                          <BsFillHouseDoorFill className="iconAbout" />
+                          <span className="ms-3">lives in {User.Location}</span>
+                        </p>
+                        <p>
+                          <BsBag className="iconAbout" />
+                          <span className="ms-3"> My Work: {User.Work}</span>
+                        </p>
+                        <p>
+                          <FaMicrophoneAlt className="iconAbout" />
+                          <span className="ms-3"> Speaks: {User.Language}</span>
+                        </p>
+                      </section>
+                    </div>
+                  )}
+                </div>
+                <hr className="mt-4 me-4" />
+                <h5 className="fw-bold mt-4">
+                  {User.LastName}'s confirmed information
+                </h5>
+                <p className="mt-3">
+                  <TiTick /> Email address
+                </p>
+                <hr className="mt-4 me-4" />
+                <h5 className="fw-bold mt-4">Identity verification</h5>
+                <p className="mt-4">
+                  Show others you’re really you with the identity verification
+                  badge.
+                </p>
+                <div>
+                  <button className="profileBadge px-4 mt-3">
+                    Get the badge
+                  </button>
                 </div>
               </section>
             </section>

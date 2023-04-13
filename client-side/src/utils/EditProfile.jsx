@@ -48,7 +48,6 @@ const EditProfile = ({ seteditprofile }) => {
       });
     }
   };
-  console.log(profile.language);
   const work = (e) => {
     setWork(e.target.value);
     setprofile({
