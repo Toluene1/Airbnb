@@ -32,7 +32,7 @@
   transition: 0.3s;
 }
 .profileBadge:hover {
-background-color: rgb(246, 241, 241);
+  background-color: rgb(246, 241, 241);
 }
 .profile-badge2 {
   height: 600px;
@@ -41,10 +41,18 @@ background-color: rgb(246, 241, 241);
   padding-left: 45px;
   border: 1px solid black;
 }
-.buttonToggle{
+.buttonToggle {
   border: none;
   text-decoration: underline;
   color: black;
   font-weight: bold;
   background-color: white;
+}
+.file-input input {
+  display: none;
+}
+.file-input label {
+  text-decoration: underline;
+  color: black;
+  cursor: pointer;
 }

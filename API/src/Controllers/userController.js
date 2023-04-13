@@ -175,7 +175,7 @@ const uploadPhoto = async (req, res) => {
       if (err) throw new Error(err);
       const filePath = files["image"].filepath;
       const result = await cloudinary.uploader.upload(filePath, {
-        public_id: user.Email,
+        public_id: user._id,
         folder: "profile_pics",
         width: 300,
         crop: "scale",
