@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { TbWorld } from "react-icons/tb";
@@ -12,7 +12,7 @@ import httpAuth from "../../Services/config";
 import { Existing } from "../../utils/setlocalstorage";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
-
+  const dropdownRef = useRef(null);
   const {
     modalShow,
     setModalShow,
@@ -51,6 +51,18 @@ const Navbar = () => {
       setDropdown(false);
     }
   };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   useEffect(() => {
     window.addEventListener("resize", checkmodalShow);
@@ -159,7 +171,7 @@ const Navbar = () => {
             </button>
           </div>
           {dropdown && (
-            <div className="dropdown shadow px-0 text-start">
+            <div ref={dropdownRef} className="dropdown shadow px-0 text-start">
               {Loggedin ? (
                 <div>
                   <p>
