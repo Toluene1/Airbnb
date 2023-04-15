@@ -50,7 +50,7 @@ function LoginFooter() {
               {/* <Link to={"/"} className="text-decoration-none "> */}
               <div className=" divWithin ">
                 <AiOutlineSearch className="iconFooter" /> <br />
-                <span className="textFooter">Explore1</span>
+                <span className="textFooter">Explore</span>
               </div>
               {/* </Link> */}
               <div className=" divWithin ">
