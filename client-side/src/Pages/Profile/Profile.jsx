@@ -4,7 +4,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
 import { FaMicrophoneAlt } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
 import "./Profile.css";
 import httpAuth from "../../Services/config";
 import { Context } from "../../Provider/Context";
@@ -18,6 +17,8 @@ const Profile = () => {
     useContext(Context);
   const [loading, setloading] = useState(false);
   let isMounted = true;
+
+  const JoinedYear = new Date(User.createdAt).getFullYear();
 
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
@@ -129,7 +130,7 @@ const Profile = () => {
 
             <div className="profile-badge2">
               <h1>Hi, I'm {User.LastName}</h1>
-              <span className="fw-light">Joined in {User.createdAt}</span>
+              <span className="fw-light">Joined in {JoinedYear}</span>
               <p className="mt-3">
                 {" "}
                 <button
@@ -157,7 +158,10 @@ const Profile = () => {
                       </p>
                       <p>
                         <FaMicrophoneAlt className="iconAbout" />
-                        <span className="ms-3"> Speaks: {User.Language}</span>
+                        <span className="ms-3">
+                          {" "}
+                          Speaks: {User.Language.join(",")}
+                        </span>
                       </p>
                     </section>
                   </div>
@@ -227,7 +231,10 @@ const Profile = () => {
                         </p>
                         <p>
                           <FaMicrophoneAlt className="iconAbout" />
-                          <span className="ms-3"> Speaks: {User.Language}</span>
+                          <span className="ms-3">
+                            {" "}
+                            Speaks: {User.Language.join(",")}
+                          </span>
                         </p>
                       </section>
                     </div>

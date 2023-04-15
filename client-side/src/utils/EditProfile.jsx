@@ -15,7 +15,6 @@ const EditProfile = ({ seteditprofile }) => {
   const [loading, setloading] = useState(false);
   const [About, setAbout] = useState(User.About);
   const [Location, setLocation] = useState(User.Location);
-  const [Language, setLanguage] = useState([]);
   const [Work, setWork] = useState(User.Work);
 
   const about = (e) => {
