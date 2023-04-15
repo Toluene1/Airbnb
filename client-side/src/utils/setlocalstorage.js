@@ -11,7 +11,7 @@ export function setLogin(setLoggedIn) {
   setLoggedIn(true);
 }
 
-export function UserImg(setUserImg) {
+export function ImgState(setUserImg) {
   setUserImg(true);
   localStorage.setItem("img", JSON.stringify(true));
 }

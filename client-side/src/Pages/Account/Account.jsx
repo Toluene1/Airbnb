@@ -227,7 +227,7 @@ function Accounts() {
           </main>
 
           {/* //MOBILE SECTION  */}
-          <main className="ps-4 mobileAccount pe-4">
+          <main className="px-4 mobileAccount ">
             <div>
               <h1>Profile</h1>
               <section>

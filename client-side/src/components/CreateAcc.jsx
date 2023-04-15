@@ -1,6 +1,5 @@
 import { useContext, useRef, useState } from "react";
-
-import httpClient from "../Services/httpClient";
+import httpClient from "../Services/httpclient";
 import { Context } from "../Provider/Context";
 import { useLocation, useNavigate } from "react-router-dom";
 import { country_code } from "../utils/CountryCodes";
@@ -8,18 +7,11 @@ import {
   handleSaveToken,
   handleSaveUser,
   setLogin,
-  UserImg,
 } from "../utils/setlocalstorage";
 
 const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
-  const {
-    mail,
-    setModalShow,
-    setLoggedIn,
-    setUserImg,
-    setUser,
-    setauthloading,
-  } = useContext(Context);
+  const { mail, setModalShow, setLoggedIn, setUser, setauthloading } =
+    useContext(Context);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -56,7 +48,6 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
       backToWelcome();
       setModalShow(false);
       setLogin(setLoggedIn);
-      UserImg(setUserImg);
       handleSaveUser(response.data.user);
       setauthloading(false);
       if (location.pathname == "/") {
