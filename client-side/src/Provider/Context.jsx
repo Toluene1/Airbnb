@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const Context = createContext(null);
 
@@ -11,11 +11,6 @@ const ContextProvider = ({ children }) => {
   const [authloading, setauthloading] = useState(true);
   const [existingUser, setexistingUser] = useState({});
 
-  const [UserImg, setUserImg] = useState(
-    localStorage.getItem("img")
-      ? JSON.parse(localStorage.getItem("img"))
-      : false,
-  );
   const [Loggedin, setLoggedIn] = useState(
     localStorage.getItem("loggedin")
       ? JSON.parse(localStorage.getItem("loggedin"))
@@ -37,8 +32,6 @@ const ContextProvider = ({ children }) => {
     setFilterShow,
     fullscreen,
     setFullscreen,
-    UserImg,
-    setUserImg,
     User,
     setUser,
     Loggedin,

@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { TbWorld } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
-import { FaUserCircle, FaSlidersH } from "react-icons/fa";
+import { FaSlidersH } from "react-icons/fa";
+import UserPics from "../../../src/assets/User.jpg";
 import PopModal from "../SignUp";
 import FilterProperties from "../filterProperties";
 import "./Navbar.css";
@@ -17,7 +18,6 @@ const Navbar = () => {
     modalShow,
     setModalShow,
     setUser,
-    UserImg,
     User,
     Loggedin,
     setFilterShow,
@@ -100,7 +100,6 @@ const Navbar = () => {
   const handleLogOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("loggedin");
-    localStorage.removeItem("img");
     location.reload();
     Existing(setexisting);
     navigate("/");
@@ -161,13 +160,14 @@ const Navbar = () => {
               </div>
 
               {/* display user Image */}
-              {UserImg ? (
-                <div className="user-img">
-                  <img src={User?.Avatar} alt="" style={{ width: "100%" }} />
-                </div>
-              ) : (
-                <FaUserCircle className="iconAvatar" />
-              )}
+
+              <div className="user-img">
+                <img
+                  src={User?.Avatar || UserPics}
+                  alt=""
+                  style={{ width: "100%" }}
+                />
+              </div>
             </button>
           </div>
           {dropdown && (
