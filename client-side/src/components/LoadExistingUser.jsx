@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../Provider/Context";
 import httpClient from "../Services/httpclient";
 import { CiMail, CiMobile1 } from "react-icons/ci";
+import { FaUserCircle } from "react-icons/fa";
 const LoadExistingUser = ({ setshowOtp, setexisting, setshowCreateAcc }) => {
-  const { existingUser, setexistingUser, setmail } = useContext(Context);
+  const { existingUser, setexistingUser, setmail, UserImg } =
+    useContext(Context);
   const [loading, setloading] = useState(false);
 
   let email = JSON.parse(localStorage.getItem("user")).Email;
@@ -42,7 +44,11 @@ const LoadExistingUser = ({ setshowOtp, setexisting, setshowCreateAcc }) => {
   return (
     <div>
       <div className="existingImg m-auto">
-        <img src={existingUser?.Avatar} alt="" style={{ width: " 100% " }} />
+        {UserImg ? (
+          <img src={existingUser?.Avatar} alt="" style={{ width: " 100% " }} />
+        ) : (
+          <FaUserCircle className="iconImage " />
+        )}
       </div>
       <p className="text-center mt-3  ">
         {" "}

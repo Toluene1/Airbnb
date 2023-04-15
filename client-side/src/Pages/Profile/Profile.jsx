@@ -10,11 +10,18 @@ import { Context } from "../../Provider/Context";
 import Footer from "../../components/Footer/Footer";
 import LoginFooter from "../../components/LoginFooter/LoginFooter";
 import EditProfile from "../../utils/EditProfile";
-import { handleSaveUser } from "../../utils/setlocalstorage";
+import { ImgState, handleSaveUser } from "../../utils/setlocalstorage";
 const Profile = () => {
   const [editprofile, seteditprofile] = useState(false);
-  const { setUser, User, UserImg, setauthloading, authloading, setModalShow } =
-    useContext(Context);
+  const {
+    setUser,
+    User,
+    UserImg,
+    setUserImg,
+    setauthloading,
+    authloading,
+    setModalShow,
+  } = useContext(Context);
   const [loading, setloading] = useState(false);
   let isMounted = true;
 
@@ -34,6 +41,7 @@ const Profile = () => {
       });
       setUser(response.data.user);
       setloading(false);
+      ImgState(setUserImg);
       handleSaveUser(response.data.user);
     } catch (error) {
       console.log(error);
@@ -76,34 +84,35 @@ const Profile = () => {
             <div className="profile-badge">
               <section>
                 <div className="imageDiv shadow">
-                  {UserImg ? (
-                    <div className="profile-img m-auto d-flex justify-content-center align-items-center">
-                      {loading ? (
-                        <div className="spinner-border text-secondary "></div>
-                      ) : (
-                        <img
-                          src={User?.Avatar}
-                          alt=""
-                          style={{
-                            width: "100%",
-                          }}
-                        />
-                      )}
-                    </div>
-                  ) : (
-                    <FaUserCircle className="iconImage" />
-                  )}
-                  <form>
-                    <div className="file-input text-center my-3">
-                      <label htmlFor="my-file">Upload Photo</label>
-                      <input
-                        type="file"
-                        id="my-file"
-                        name="image"
-                        onChange={handleImageChange}
-                      />
-                    </div>
-                  </form>
+                  <div className="profile-img m-auto d-flex justify-content-center  align-items-center">
+                    {loading ? (
+                      <div className="spinner-border text-secondary "></div>
+                    ) : (
+                      <>
+                        {UserImg ? (
+                          <img
+                            src={User?.Avatar}
+                            alt=""
+                            style={{
+                              width: "100%",
+                            }}
+                          />
+                        ) : (
+                          <FaUserCircle className="iconImage " />
+                        )}
+                      </>
+                    )}
+                  </div>
+
+                  <div className="file-input text-center my-3">
+                    <label htmlFor="my-file">Upload Photo</label>
+                    <input
+                      type="file"
+                      id="my-file"
+                      name="image"
+                      onChange={handleImageChange}
+                    />
+                  </div>
                 </div>{" "}
               </section>
               <section className="ps-4 pb-3 detailsDiv">

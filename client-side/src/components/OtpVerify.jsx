@@ -6,7 +6,6 @@ import {
   handleSaveToken,
   handleSaveUser,
   setLogin,
-  UserImg,
 } from "../utils/setlocalstorage";
 
 const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
@@ -17,14 +16,8 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setloading] = useState(false);
-  const {
-    mail,
-    setModalShow,
-    setUserImg,
-    setLoggedIn,
-    setUser,
-    setauthloading,
-  } = useContext(Context);
+  const { mail, setModalShow, setLoggedIn, setUser, setauthloading } =
+    useContext(Context);
   const verify = useRef(null);
   useEffect(() => {
     verify.current.focus();
@@ -60,7 +53,7 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
       setUser(response.data.user);
       handleSaveUser(response.data.user);
       setLogin(setLoggedIn);
-      UserImg(setUserImg);
+
       setauthloading(false);
       if (location.pathname == "/") {
         navigate("/");
