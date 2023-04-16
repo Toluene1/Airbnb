@@ -250,6 +250,7 @@ function Accounts() {
                   <Link
                     className="ms-3 text-dark text-decoration-none mt-1"
                     style={{ width: "93%" }}
+                    to={"/profile"}
                   >
                     <span>{User.LastName}</span> <br />{" "}
                     <span className="fw-light">Show Profile</span>
