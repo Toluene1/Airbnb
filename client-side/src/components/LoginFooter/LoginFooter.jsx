@@ -1,5 +1,5 @@
-import React, { useState, useContext, useStyles, useEffect } from "react";
-import { json, Link } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./LoginFooter.css";
 import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
 import { BiUserCircle, BiMessageAlt } from "react-icons/bi";
