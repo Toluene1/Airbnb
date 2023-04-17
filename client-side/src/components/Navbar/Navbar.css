@@ -218,8 +218,8 @@
   padding: 4px;
 }
 .userButton:hover {
-  border: none;
-  box-shadow: 2px 2px lightgray;
+  border-width: thin;
+  box-shadow: 2px 2px rgba(210, 211, 211, 0.2);
   transition: 0.3s;
 }
 
