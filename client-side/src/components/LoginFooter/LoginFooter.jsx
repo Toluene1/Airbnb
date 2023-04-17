@@ -33,7 +33,7 @@ function LoginFooter() {
   return (
     <>
       {showfooter && (
-        <div className="footerDivMain animate__animated animate__fadeInUp ">
+        <div className="footerDivMai animate__animated animate__fadeInUp ">
           {Loggedin ? (
             <section>
               <div className="footerDiv2 text-dark text-center">
