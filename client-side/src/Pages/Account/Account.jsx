@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
 import "./Account.css";
-import { FaRegAddressCard, FaAirbnb, FaUserCircle } from "react-icons/fa";
+import { FaRegAddressCard, FaAirbnb } from "react-icons/fa";
 import { TfiShield } from "react-icons/tfi";
 import { RxSpeakerLoud } from "react-icons/rx";
+import UserPics from "../../../src/assets/User.jpg";
+
 import {
   BsCreditCard,
   BsFileEarmarkSpreadsheet,
@@ -27,7 +29,7 @@ function Accounts() {
   const {
     setUser,
     User,
-    UserImg,
+
     setModalShow,
     modalShow,
     authloading,
@@ -38,7 +40,6 @@ function Accounts() {
   const handleLogOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("loggedin");
-    localStorage.removeItem("img");
     navigate("/");
     location.reload();
     Existing(setexisting);
@@ -232,21 +233,18 @@ function Accounts() {
               <h1>Profile</h1>
               <section>
                 <div className="d-flex align-center mt-4  ">
-                  {UserImg ? (
-                    <div className="imgMobile">
-                      <img
-                        src={User?.Avatar}
-                        alt=""
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          borderRadius: "50%",
-                        }}
-                      />
-                    </div>
-                  ) : (
-                    <FaUserCircle className="iconAvatar" />
-                  )}
+                  <div className="imgMobile">
+                    <img
+                      src={User?.Avatar || UserPics}
+                      alt=""
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: "50%",
+                      }}
+                    />
+                  </div>
+
                   <Link
                     className="ms-3 text-dark text-decoration-none mt-1"
                     style={{ width: "93%" }}
