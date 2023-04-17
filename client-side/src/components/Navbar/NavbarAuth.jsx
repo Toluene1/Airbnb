@@ -3,7 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../Provider/Context";
 import "./Navbar.css";
 import { TbWorld } from "react-icons/tb";
-import { FaBars, FaUserCircle } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
+import UserPics from "../../../src/assets/User.jpg";
+
 import { Existing } from "../../utils/setlocalstorage";
 import httpAuth from "../../Services/config";
 
@@ -91,13 +93,14 @@ const NavbarAuth = () => {
             </div>
 
             {/* display user Image */}
-            {UserImg ? (
-              <div className="user-img">
-                <img src={User?.Avatar} alt="" style={{ width: "100%" }} />
-              </div>
-            ) : (
-              <FaUserCircle className="iconAvatar" />
-            )}
+
+            <div className="user-img">
+              <img
+                src={User?.Avatar || UserPics}
+                alt=""
+                style={{ width: "100%" }}
+              />
+            </div>
           </button>
         </div>
         {dropdown && (

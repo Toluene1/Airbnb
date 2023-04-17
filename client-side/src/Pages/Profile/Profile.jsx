@@ -1,27 +1,22 @@
 import NavbarAuth from "../../components/Navbar/NavbarAuth";
 import { BsShieldCheck, BsFillHouseDoorFill, BsBag } from "react-icons/bs";
 import React, { useState, useEffect, useContext } from "react";
-import { FaUserCircle } from "react-icons/fa";
+
 import { TiTick } from "react-icons/ti";
 import { FaMicrophoneAlt } from "react-icons/fa";
+import UserPics from "../../../src/assets/User.jpg";
+
 import "./Profile.css";
 import httpAuth from "../../Services/config";
 import { Context } from "../../Provider/Context";
 import Footer from "../../components/Footer/Footer";
 import LoginFooter from "../../components/LoginFooter/LoginFooter";
 import EditProfile from "../../utils/EditProfile";
-import { ImgState, handleSaveUser } from "../../utils/setlocalstorage";
+import { handleSaveUser } from "../../utils/setlocalstorage";
 const Profile = () => {
   const [editprofile, seteditprofile] = useState(false);
-  const {
-    setUser,
-    User,
-    UserImg,
-    setUserImg,
-    setauthloading,
-    authloading,
-    setModalShow,
-  } = useContext(Context);
+  const { setUser, User, setauthloading, authloading, setModalShow } =
+    useContext(Context);
   const [loading, setloading] = useState(false);
   let isMounted = true;
 
@@ -41,7 +36,6 @@ const Profile = () => {
       });
       setUser(response.data.user);
       setloading(false);
-      ImgState(setUserImg);
       handleSaveUser(response.data.user);
     } catch (error) {
       console.log(error);
@@ -88,19 +82,13 @@ const Profile = () => {
                     {loading ? (
                       <div className="spinner-border text-secondary "></div>
                     ) : (
-                      <>
-                        {UserImg ? (
-                          <img
-                            src={User?.Avatar}
-                            alt=""
-                            style={{
-                              width: "100%",
-                            }}
-                          />
-                        ) : (
-                          <FaUserCircle className="iconImage " />
-                        )}
-                      </>
+                      <img
+                        src={User?.Avatar || UserPics}
+                        alt=""
+                        style={{
+                          width: "100%",
+                        }}
+                      />
                     )}
                   </div>
 
@@ -182,23 +170,20 @@ const Profile = () => {
           <main className=" mobileProfile">
             <section className="mobileDiv">
               <div className="imageDiv shadow">
-                {UserImg ? (
-                  <div className="profile-img m-auto d-flex justify-content-center align-items-center">
-                    {loading ? (
-                      <div className="spinner-border text-secondary "></div>
-                    ) : (
-                      <img
-                        src={User?.Avatar}
-                        alt=""
-                        style={{
-                          width: "100%",
-                        }}
-                      />
-                    )}
-                  </div>
-                ) : (
-                  <FaUserCircle className="iconImage" />
-                )}
+                <div className="profile-img m-auto d-flex justify-content-center align-items-center">
+                  {loading ? (
+                    <div className="spinner-border text-secondary "></div>
+                  ) : (
+                    <img
+                      src={User?.Avatar || UserPics}
+                      alt=""
+                      style={{
+                        width: "100%",
+                      }}
+                    />
+                  )}
+                </div>
+
                 <form>
                   <div className="file-input text-center my-3">
                     <label htmlFor="my-file">Upload Photo</label>
