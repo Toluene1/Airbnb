@@ -48,82 +48,86 @@ function LoginFooter() {
                     Explore
                   </div>
                 </Link>
-              </div>
+                <div className=" divWithin ">
+                  <AiOutlineHeart className="iconFooter" /> <br />
+                  <span className="textFooter">Wishlists</span>
+                </div>
 
-              <div
-                className=" divWithin "
-                id="second"
-                onClick={clickedIconHandler}
-              >
-                <AiOutlineHeart
-                  className={`iconFooter ${
-                    activeButton === "second" ? `text-danger` : ""
-                  }`}
-                />
-                <div
-                  className={`textFooter ${
-                    activeButton === "second" ? `text-dark` : ""
-                  }`}
-                >
-                  Wishlists
-                </div>
-              </div>
-              <div
-                className=" divWithin "
-                id="third"
-                onClick={clickedIconHandler}
-              >
-                <FaAirbnb
-                  className={`iconFooter ${
-                    activeButton === "third" ? `text-danger` : ""
-                  }`}
-                />
-                <div
-                  className={`textFooter ${
-                    activeButton === "third" ? `text-danger` : ""
-                  }`}
-                >
-                  Trips
-                </div>
-              </div>
-              <div
-                className=" divWithin "
-                id="fourth"
-                onClick={clickedIconHandler}
-              >
-                <BiMessageAlt
-                  className={`iconFooter ${
-                    activeButton === "fourth" ? `text-danger` : ""
-                  }`}
-                />
-                <div
-                  className={`textFooter ${
-                    activeButton === "fourth" ? `text-danger` : ""
-                  }`}
-                >
-                  Inbox
-                </div>
-              </div>
-              <Link to={"/Accounts"} className="text-decoration-none  ">
                 <div
                   className=" divWithin "
-                  id="fifth"
+                  id="second"
                   onClick={clickedIconHandler}
                 >
-                  <BiUserCircle
+                  <AiOutlineHeart
                     className={`iconFooter ${
-                      activeButton === "fifth" ? `text-danger` : ""
+                      activeButton === "second" ? `text-danger` : ""
                     }`}
                   />
                   <div
                     className={`textFooter ${
-                      activeButton === "fifth" ? `text-danger` : ""
+                      activeButton === "second" ? `text-dark` : ""
                     }`}
                   >
-                    profile
+                    Wishlists
                   </div>
                 </div>
-              </Link>
+                <div
+                  className=" divWithin "
+                  id="third"
+                  onClick={clickedIconHandler}
+                >
+                  <FaAirbnb
+                    className={`iconFooter ${
+                      activeButton === "third" ? `text-danger` : ""
+                    }`}
+                  />
+                  <div
+                    className={`textFooter ${
+                      activeButton === "third" ? `text-danger` : ""
+                    }`}
+                  >
+                    Trips
+                  </div>
+                </div>
+                <div
+                  className=" divWithin "
+                  id="fourth"
+                  onClick={clickedIconHandler}
+                >
+                  <BiMessageAlt
+                    className={`iconFooter ${
+                      activeButton === "fourth" ? `text-danger` : ""
+                    }`}
+                  />
+                  <div
+                    className={`textFooter ${
+                      activeButton === "fourth" ? `text-danger` : ""
+                    }`}
+                  >
+                    Inbox
+                  </div>
+                </div>
+                <Link to={"/Accounts"} className="text-decoration-none  ">
+                  <div
+                    className=" divWithin "
+                    id="fifth"
+                    onClick={clickedIconHandler}
+                  >
+                    <BiUserCircle
+                      className={`iconFooter ${
+                        activeButton === "fifth" ? `text-danger` : ""
+                      }`}
+                    />
+                    <div
+                      className={`textFooter ${
+                        activeButton === "fifth" ? `text-danger` : ""
+                      }`}
+                    >
+                      profile
+                    </div>
+                  </div>
+                </Link>
+              </div>
             </div>
           </section>
         ) : (
