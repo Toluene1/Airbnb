@@ -6,6 +6,7 @@
   display: none;
   border: 1px solid lightgrey;
 }
+
 .footerDiv1 {
   width: 70%;
   height: 100%;
@@ -21,23 +22,26 @@
   display: flex;
   justify-content: space-around;
 }
-.divWithin {
-  width: 80px;
-}
 .iconFooter {
   font-size: 28px;
   padding: 0px;
   margin-top: 2px;
+  color: rgb(203, 173, 173);
+}
+.iconColor {
+  font-size: 28px;
+  padding: 0px;
+  margin-top: 2px;
+  color: rgb(202, 16, 75) !important
 }
 .textFooter {
-  color: black;
   font-size: 12px;
-  position: relative;
-  top: -2px;
+    color: rgb(203, 173, 173);
 }
 a:hover {
   color: black;
 }
+
 @media only screen and (max-width: 735px) {
   .footerDivMain {
     display: block;
