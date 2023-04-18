@@ -12,11 +12,11 @@ function LoginFooter() {
   const [activeButton, setActiveButton] = useState(
     localStorage.getItem("active")
       ? JSON.parse(localStorage.getItem("active"))
-      : "first"
+      : "first",
   );
   const [showfooter, setshowfooter] = useState(true);
   const [previouScrollPosition, setpreviousScrollPosition] = useState(
-    window.scrollY
+    window.scrollY,
   );
 
   const handleFooter = () => {
@@ -101,7 +101,7 @@ function LoginFooter() {
                   />
                   <div
                     className={`textFooter ${
-                      activeButton === "third" ? `text-danger` : ""
+                      activeButton === "third" ? `text-dark` : ""
                     }`}
                   >
                     Trips
@@ -119,7 +119,7 @@ function LoginFooter() {
                   />
                   <div
                     className={`textFooter ${
-                      activeButton === "fourth" ? `text-danger` : ""
+                      activeButton === "fourth" ? `text-dank` : ""
                     }`}
                   >
                     Inbox
@@ -141,7 +141,7 @@ function LoginFooter() {
                     />
                     <div
                       className={`textFooter ${
-                        activeButton === "fifth" ? `text-danger` : ""
+                        activeButton === "fifth" ? `text-dark` : ""
                       }`}
                     >
                       profile
@@ -155,37 +155,37 @@ function LoginFooter() {
               <div className="footerDiv1 text-dark text-center  bg-white">
                 <div
                   className=" divWithin "
-                  id="sixth"
+                  id="first"
                   onClick={clickedIconHandler}
                 >
                   <Link to={"/"} className="text-decoration-none ">
                     <AiOutlineSearch
                       className={`iconFooter ${
-                        activeButton === "sixth" ? `text-danger` : ""
+                        activeButton === "first" ? "text-danger" : ""
                       }`}
                     />
                     <div
                       className={`textFooter ${
-                        activeButton === "sixth" ? `text-danger` : ""
+                        activeButton === "first" ? "text-danger" : ""
                       }`}
                     >
-                      Explore1
+                      Explore
                     </div>
                   </Link>
                 </div>
                 <div
                   className=" divWithin "
-                  id="seven"
+                  id="second"
                   onClick={clickedIconHandler}
                 >
                   <AiOutlineHeart
                     className={`iconFooter ${
-                      activeButton === "seven" ? `text-danger` : ""
+                      activeButton === "second" ? `text-danger` : ""
                     }`}
                   />
                   <div
                     className={`textFooter ${
-                      activeButton === "seven" ? `text-danger` : ""
+                      activeButton === "second" ? `text-dark` : ""
                     }`}
                   >
                     Wishlists
@@ -208,7 +208,7 @@ function LoginFooter() {
                     />
                     <div
                       className={`textFooter ${
-                        activeButton === "eight" ? `text-danger` : ""
+                        activeButton === "eight" ? `text-dark` : ""
                       }`}
                     >
                       login
