@@ -1,12 +1,13 @@
 const mailer = require("../Config/Email");
 const events = require("events");
+const { GMAIL_USER } = require("../Config/config");
 
 const ev = new events.EventEmitter();
 ev.on("mail", (message, email) => {
   mailer.sendMail(
     {
       subject: "Airbnb reg",
-      from: "emekaseun.es@gmail.com",
+      from: GMAIL_USER,
       to: email,
       template: "register",
       ctx: {
