@@ -65,6 +65,8 @@ const verifyEmailOtp = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const user = await User.create({ ...req.body });
+    const message = `welcome to Airbnb ${user.FirstName}, enjoy your experience with Airbnb`;
+    ev.emit("mail", message, user.Email);
     const token = createJWT(user._id);
     res.status(200).json({ token, user });
   } catch (error) {
