@@ -1,13 +1,16 @@
 const nodemailer = require("nodemailer");
 const path = require("path");
 const { pugEngine } = require("nodemailer-pug-engine");
+const { GMAIL_PASS, GMAIL_USER } = require("./config");
 
 const mailer = nodemailer.createTransport({
-  host: "sandbox.smtp.mailtrap.io",
-  port: 2525,
+  service: "gmail",
   auth: {
-    user: "f88656b273673b",
-    pass: "9809d3ce22ed3b",
+    user: GMAIL_USER,
+    pass: GMAIL_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 });
 
@@ -16,6 +19,6 @@ mailer.use(
   pugEngine({
     templateDir: path.join(__dirname, "../templates"),
     pretty: true,
-  })
+  }),
 );
 module.exports = mailer;

@@ -9,7 +9,7 @@ const createEmailOtp = async (req, res) => {
   try {
     const { email } = req.body;
     const new_Otp = Math.floor(100000 + Math.random() * 900000);
-    // const message = `welcome to Airbnb ${email} please verify your email with the ${new_Otp}`;
+    const message = `welcome to Airbnb ${email} please verify your email with the ${new_Otp}`;
     const existing_Otp = await emailOtp.findOne({ Email: email });
 
     if (!existing_Otp) {
@@ -20,7 +20,7 @@ const createEmailOtp = async (req, res) => {
         expirededAt: Date.now() + 3600000,
       });
 
-      // ev.emit("mail", message, email);
+      ev.emit("mail", message, email);
       res.status(200).json({ message: "otp sent " });
       return;
     }
@@ -30,7 +30,7 @@ const createEmailOtp = async (req, res) => {
       { otp: new_Otp },
       { new: true },
     );
-    // ev.emit("mail", message, email);
+    ev.emit("mail", message, email);
     res.status(200).json({ message: "otp sent " });
   } catch (error) {
     res.status(500).json({ message: "please contact admin" });
