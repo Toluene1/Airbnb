@@ -27,7 +27,7 @@ function PopModal(props) {
       centered
       className="animate__animated animate__backInUp"
     >
-      <Modal.Header className="d-flex align-items-center">
+      <Modal.Header className="d-flex align-items-center ">
         {existing ? (
           <AiOutlineClose
             className="fs-6 Angle-left"
@@ -71,15 +71,11 @@ function PopModal(props) {
           ) : (
             <div>
               {showCreateAcc ? (
-                <div>
-                  <span className="fs-6"> Finish Signing up</span>
-                </div>
+                <p className=" mt-3 fs-6"> Finish Signing up</p>
               ) : (
                 <div>
                   {showOtp ? (
-                    <div>
-                      <span className="fs-6"> confirm your email</span>
-                    </div>
+                    <p className=" mt-3 fs-6"> confirm your email</p>
                   ) : (
                     <p className="mt-3 fs-6 ">login or Signup</p>
                   )}
@@ -97,14 +93,14 @@ function PopModal(props) {
             setshowCreateAcc={setshowCreateAcc}
           />
         ) : (
-          <div>
+          <div className="p-0 m-0">
             {showCreateAcc ? (
               <CreateAcc
                 setshowOtp={setshowOtp}
                 setshowCreateAcc={setshowCreateAcc}
               />
             ) : (
-              <div>
+              <div className="p-0 m-0">
                 {showOtp ? (
                   <OtpVerify
                     setshowCreateAcc={setshowCreateAcc}
