@@ -14,6 +14,7 @@ const PersonalInfo = React.lazy(() =>
   import("./Pages/PersonalInfo/PersonalInfo"),
 );
 const Profile = React.lazy(() => import("./Pages/Profile/Profile"));
+const Hosting = React.lazy(() => import("./Pages/Hosting/Hosting"));
 const Error404 = React.lazy(() => import("./Pages/error404"));
 
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile />,
+  },
+  {
+    path: "/become-a-host",
+    element: <Hosting />,
   },
 ]);
 
