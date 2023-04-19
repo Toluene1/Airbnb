@@ -6,12 +6,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContextProvider from "./Provider/Context";
+import AirbnbHome from "./Pages/AirbnbHome/AirbnbHome";
 
 const App = React.lazy(() => import("./App"));
 
 const Accounts = React.lazy(() => import("./Pages/Account/Account"));
 const PersonalInfo = React.lazy(() =>
-  import("./Pages/PersonalInfo/PersonalInfo"),
+  import("./Pages/PersonalInfo/PersonalInfo")
 );
 const Profile = React.lazy(() => import("./Pages/Profile/Profile"));
 const Hosting = React.lazy(() => import("./Pages/Hosting/Hosting"));
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
     path: "/become-a-host",
     element: <Hosting />,
   },
+  {
+    path: "/AirbnbHome",
+    element: <AirbnbHome />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -50,5 +55,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <RouterProvider router={router} />
       </Suspense>
     </ContextProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
