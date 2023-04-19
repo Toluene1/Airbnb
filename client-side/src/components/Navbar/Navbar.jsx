@@ -11,6 +11,7 @@ import "./Navbar.css";
 import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
 import { Existing } from "../../utils/setlocalstorage";
+import Airbnblogo from "../../assets/airbnb-logo.png";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef(null);
@@ -110,11 +111,7 @@ const Navbar = () => {
       <section className="divMain">
         <div className="navDiv1 ">
           <Link to={"/"} className="text-decoration-none">
-            <img
-              src="https://seeklogo.com/images/A/airbnb-logo-1D03C48906-seeklogo.com.png"
-              alt=""
-              className="imageDiv1"
-            />
+            <img src={Airbnblogo} alt="" className="imageDiv1" />
           </Link>
         </div>
         <div className="navDiv2 ">
@@ -129,7 +126,7 @@ const Navbar = () => {
           {Loggedin ? (
             <div>
               <Link
-                to={"/"}
+                to={"/become-a-host"}
                 className="text-decoration-none text-dark fw-normal"
               >
                 {" "}
