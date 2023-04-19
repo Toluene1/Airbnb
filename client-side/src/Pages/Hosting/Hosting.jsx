@@ -5,6 +5,7 @@ import { FaAngleRight } from "react-icons/fa";
 import { useContext, useEffect } from "react";
 import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
+import Airbnblogo from "../../assets/airbnb-logo.png";
 
 const Hosting = () => {
   const { setUser, User, setauthloading, authloading, setModalShow } =
@@ -38,11 +39,7 @@ const Hosting = () => {
         {/* web  */}
         <div>
           <Link to={"/"} className="text-decoration-none">
-            <img
-              src="https://seeklogo.com/images/A/airbnb-logo-1D03C48906-seeklogo.com.png"
-              alt=""
-              className="imageDiv1"
-            />
+            <img src={Airbnblogo} alt="" className="image" />
           </Link>
         </div>
         <div className=" d-flex ms-auto mx-4">
