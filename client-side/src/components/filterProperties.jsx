@@ -1,17 +1,8 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./Navbar/Navbar.css";
 import FilterBody from "./FilterBody";
 
 function FilterProperties(props) {
-  const [fullscreen, setFullscreen] = useState(true);
-
-  function handleShow(breakpoint) {
-    setFullscreen(breakpoint);
-    setShow(true);
-  }
-
   return (
     <>
       <div id="modalDisplay">
