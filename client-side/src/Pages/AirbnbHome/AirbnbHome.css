@@ -1,5 +1,110 @@
 .navDiv {
-    background-color: blue;
     height: 80px;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 8%;
+    padding-right: 8%;
+    position: relativw;
+    top: 0px;
+}
+.logo {
+ height: 32px;
+ width: 200px;
+margin-top: auto;
+margin-bottom: auto;
+}
+.divButton {
+    height: 47px;
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.ButtonNav {
+height: 47px;
+width: 215px;
+border-radius: 10px;
+background-color: white;
+float: right;
+border:  1px solid rgb(117, 101, 101);
+}
+.imageLogo {
+    height: 32px;
+    width: 32px;
+}
+.div-PriceMap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 15px;
+    padding-left: 15px;
+}
+.priceDiv {
+    height: 626px;
+    width: 600px;
+    /* background-color: blue  ; */
+}
+.mapDiv {
+    height: 626px;
+        width: 600px;
+        background-color: yellowgreen;
+}
+.custom-range{
+    width: 80%;
+    margin-top: 30px;
+}
+input[type=range] {
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    height: 5px;
+    background: lightgray;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    background: black;
+    margin-top: -10px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: black;
+}
+.input-address {
+    height: 64px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgb(223, 212, 212);
+    border-radius: 35px;
+    text-align: left;
+    margin-top: 25px;
+    display: flex;
+}
+.buttonSwitch {
+   width: 200px;
+   height: 50px;
+   margin-top: 25px;
+    background-image: linear-gradient(to right, rgb(174, 55, 55), rgb(205, 111, 148));
+    border-radius: 10px;
+    border: none;
+}
+@media only screen and (max-width: 1270px) {
+   .priceDiv {
+    width: 93%;
+   }
+   .mapDiv {
+    width: 93%;
+   }
 }
