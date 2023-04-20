@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./AirbnbHome.css";
 import Airbnblogo from "../../assets/airbnb-logo.png";
+import Airbnbsetup from "../../assets/airbnb-setup.webp";
+import Airbnbsetup2 from "../../assets/airbnbsetup2.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiHomeCircle } from "react-icons/bi";
@@ -19,7 +21,7 @@ function AirbnbHome() {
 
   return (
     <main>
-      <section className="navDiv  shadow">
+      <section className="navDiv sticky-top shadow">
         <div className="logo">
           <Link to={"/"} className="text-decoration-none">
             <img src={Airbnblogo} alt="" className="imageLogo" />
@@ -41,11 +43,7 @@ function AirbnbHome() {
           >
             Airbnb it.
           </h1>
-          <h1
-            style={{ fontSize: "50px", marginTop: "-15px", fontWeight: "700" }}
-          >
-            You could earn
-          </h1>
+          <h1 className="reduceText">You could earn</h1>
           <div>
             <h1 style={{ fontSize: "60px" }} className="fw-bolder">
               $ {rangeval}
@@ -95,6 +93,13 @@ function AirbnbHome() {
         </div>
         <div className="mapDiv">
           <h1>tolu</h1>
+        </div>
+      </section>
+      <section style={{ marginTop: "70px" }}>
+        <p className="airbnbText ">Airbnb it easily with Airbnb Setup</p>
+        <div className="imageDiv">
+          <img src={Airbnbsetup} className="airbnbSetup" alt="" />
+          <img src={Airbnbsetup2} className="airbnbSetup2" alt="" />
         </div>
       </section>
     </main>
