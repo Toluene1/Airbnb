@@ -15,7 +15,7 @@
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   width: 100%;
   background-color: white;
   position: sticky;
@@ -31,6 +31,7 @@
   border: 1px solid black;
 }
 .disabledbtn {
+  cursor: pointer;
   padding: 10px 20px;
   border-radius: 10px;
   background-color: rgb(238, 238, 238);
