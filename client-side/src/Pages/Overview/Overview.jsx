@@ -71,7 +71,7 @@ const Overview = () => {
       </section>
 
       <footer className="footer shadow">
-        <Link to={"/become-a-host/structure"}>
+        <Link to={"/become-a-host/structure"} className="text-white ">
           <div className="text-end">
             <button className="btn btn-danger p-2 fw-bold ">Get Started</button>
           </div>

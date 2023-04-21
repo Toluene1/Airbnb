@@ -15,12 +15,13 @@ import "./Structure.css";
 import { Link } from "react-router-dom";
 const Structure = () => {
   const [selected, setselected] = useState(null);
+  const [isDisabled, setisDisabled] = useState(true);
 
   const handleToggle = (id) => {
     if (selected == id) {
       return setselected(null);
     }
-
+    setisDisabled(false);
     setselected(id);
   };
   return (
@@ -136,7 +137,12 @@ const Structure = () => {
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/overview"}>Back</Link>
         </p>
-        <button>Next</button>
+        <button
+          disabled={isDisabled}
+          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+        >
+          Next
+        </button>
       </footer>
     </section>
   );
