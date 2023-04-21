@@ -135,7 +135,10 @@ const Navbar = () => {
             </div>
           ) : (
             <div>
-              <Link to={"/"} className="text-decoration-none text-dark">
+              <Link
+                to={"/AirbnbHome"}
+                className="text-decoration-none text-dark"
+              >
                 {" "}
                 Airbnb your home
               </Link>

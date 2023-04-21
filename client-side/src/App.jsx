@@ -10,8 +10,6 @@ function App() {
       <div>
         <Navbar />
         <h1>welcome to home</h1>
-      </div>
-      <div>
         <LoginFooter />
       </div>
     </section>
