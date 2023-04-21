@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./Hosting.css";
 import { BsHouseAdd } from "react-icons/bs";
 import { FaAngleRight } from "react-icons/fa";
+import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { useContext, useEffect } from "react";
 import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
@@ -70,6 +71,20 @@ const Hosting = () => {
                 <BsHouseAdd className="icon" />
               </p>
               <p className="mx-3 fs-6"> Create a new listing</p>
+            </p>
+            <p className="fs-5 pb-3">
+              {" "}
+              <FaAngleRight />
+            </p>
+          </div>
+          <div>
+            <p className="d-flex justify-content-between align-items-center">
+              {" "}
+              <p className="fs-2">
+                {" "}
+                <HiOutlineDocumentDuplicate />
+              </p>
+              <p className="mx-3 fs-6"> Duplicate an existing Listing</p>
             </p>
             <p className="fs-5 pb-3">
               {" "}
