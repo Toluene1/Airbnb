@@ -23,7 +23,7 @@
   align-items: center;
   border-radius: 20px;
   border: 1px solid rgb(180, 178, 178);
-  padding: 8px;
+  padding: 5px 15px;
 }
 .exitMobile:hover {
   border: 1px solid black;
@@ -36,7 +36,7 @@
   align-items: center;
   border-radius: 20px;
   border: 1px solid rgb(180, 178, 178);
-  padding: 8px;
+  padding: 5px 15px;
   display: none;
 }
 .exit:hover {

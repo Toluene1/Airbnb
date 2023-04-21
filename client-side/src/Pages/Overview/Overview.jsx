@@ -16,7 +16,7 @@ const Overview = () => {
           </Link>
         </div>
         <div className="  ms-auto mx-4">
-          <div className="exit "> save & exit </div>
+          <div className="saveexit "> save & exit </div>
         </div>
       </nav>
 
@@ -71,9 +71,11 @@ const Overview = () => {
       </section>
 
       <footer className="footer shadow">
-        <div className="text-end">
-          <button className="btn btn-danger p-2 fw-bold ">Get Started</button>
-        </div>
+        <Link to={"/become-a-host/structure"}>
+          <div className="text-end">
+            <button className="btn btn-danger p-2 fw-bold ">Get Started</button>
+          </div>
+        </Link>
       </footer>
     </>
   );

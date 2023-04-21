@@ -1,0 +1,74 @@
+.structure {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+.structure h2 {
+  padding: 0px 200px 0px 0px;
+}
+.structure main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.Navfooter {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  position: sticky;
+  bottom: 0px;
+  border-top: 3px solid grey;
+}
+.Navfooter button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  border: 1px solid black;
+}
+.structures {
+  min-width: 210px;
+  height: 100px;
+  border-radius: 8px;
+  border: 1px solid lightgrey;
+  margin: 10px 0px;
+  padding: 10px;
+}
+.structure p {
+  font-size: 30px;
+  font-weight: 400;
+}
+.structures:hover {
+  border: 2px solid black;
+}
+a:hover {
+  color: black;
+}
+.structuresClicked {
+  min-width: 210px;
+  height: 100px;
+  border-radius: 8px;
+  border: 2px solid black;
+  margin: 10px 0px;
+  padding: 10px;
+}
+@media only screen and (max-width: 635px) {
+  .structures {
+    min-width: 150px;
+    height: 100px;
+    border-radius: 8px;
+    border: 1px solid lightgrey;
+  }
+  .structure h2 {
+    font-size: 20px;
+    padding: 0px;
+  }
+  .structure {
+    max-width: 100%;
+    margin: 10px 0px;
+  }
+}
