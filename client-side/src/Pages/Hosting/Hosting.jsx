@@ -38,7 +38,7 @@ const Hosting = () => {
     <>
       <nav className=" web ">
         {/* web  */}
-        <div>
+        <div className="ms-4">
           <Link to={"/"} className="text-decoration-none">
             <img src={Airbnblogo} alt="" className="image" />
           </Link>
@@ -63,20 +63,22 @@ const Hosting = () => {
           <h3>Welcome Back, {User.FirstName}</h3>
 
           <h4 className="mt-5">Start a New Listing</h4>
-          <div>
-            <p className="d-flex justify-content-between align-items-center">
-              {" "}
-              <p>
+          <Link to={"/become-a-host/overview"}>
+            <div>
+              <p className="d-flex justify-content-between align-items-center">
                 {" "}
-                <BsHouseAdd className="icon" />
+                <p>
+                  {" "}
+                  <BsHouseAdd className="icon" />
+                </p>
+                <p className="mx-3 fs-6"> Create a new listing</p>
               </p>
-              <p className="mx-3 fs-6"> Create a new listing</p>
-            </p>
-            <p className="fs-5 pb-3">
-              {" "}
-              <FaAngleRight />
-            </p>
-          </div>
+              <p className="fs-5 pb-3">
+                {" "}
+                <FaAngleRight />
+              </p>
+            </div>
+          </Link>
           <div>
             <p className="d-flex justify-content-between align-items-center">
               {" "}
