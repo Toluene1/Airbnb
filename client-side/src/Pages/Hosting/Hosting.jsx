@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./Hosting.css";
 import { BsHouseAdd } from "react-icons/bs";
 import { FaAngleRight } from "react-icons/fa";
+import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { useContext, useEffect } from "react";
 import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
@@ -37,7 +38,7 @@ const Hosting = () => {
     <>
       <nav className=" web ">
         {/* web  */}
-        <div>
+        <div className="ms-4">
           <Link to={"/"} className="text-decoration-none">
             <img src={Airbnblogo} alt="" className="image" />
           </Link>
@@ -62,14 +63,30 @@ const Hosting = () => {
           <h3>Welcome Back, {User.FirstName}</h3>
 
           <h4 className="mt-5">Start a New Listing</h4>
+          <Link to={"/become-a-host/overview"}>
+            <div>
+              <p className="d-flex justify-content-between align-items-center">
+                {" "}
+                <p>
+                  {" "}
+                  <BsHouseAdd className="icon" />
+                </p>
+                <p className="mx-3 fs-6"> Create a new listing</p>
+              </p>
+              <p className="fs-5 pb-3">
+                {" "}
+                <FaAngleRight />
+              </p>
+            </div>
+          </Link>
           <div>
             <p className="d-flex justify-content-between align-items-center">
               {" "}
-              <p>
+              <p className="fs-2">
                 {" "}
-                <BsHouseAdd className="icon" />
+                <HiOutlineDocumentDuplicate />
               </p>
-              <p className="mx-3 fs-6"> Create a new listing</p>
+              <p className="mx-3 fs-6"> Duplicate an existing Listing</p>
             </p>
             <p className="fs-5 pb-3">
               {" "}
