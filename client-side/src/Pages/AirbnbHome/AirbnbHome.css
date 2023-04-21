@@ -14,14 +14,23 @@ margin-top: auto;
 margin-bottom: auto;
 }
 .divButton {
-    height: 47px;
-    width: 350px;
-    margin-top: auto;
-    margin-bottom: auto;
+    width: 450px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+}
+.button-scroll{
+    width: 200px;
+        height: 47px;
+        background-image: linear-gradient(to right, rgb(174, 55, 55), rgb(205, 111, 148));
+        border-radius: 10px;
+        border: none;
 }
 .ButtonNav {
 height: 47px;
 width: 215px;
+margin-left: 20px;
 border-radius: 10px;
 background-color: white;
 float: right;
@@ -39,9 +48,8 @@ border:  1px solid rgb(117, 101, 101);
     padding-right: 15px;
 }
 .priceDiv {
-    height: 626px;
+
     width: 600px;
-    /* background-color: blue  ; */
 }
 .mapDiv {
     height: 626px;
@@ -145,7 +153,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
         flex-wrap: nowrap;
         justify-content: space-between;
         overflow-x: scroll;
-        background-color: blue;
 }
 .divFriendlyApart::-webkit-scrollbar {
     display: none;
@@ -184,7 +191,7 @@ footer div {
 }
 
 .footer {
-    /* margin-top: 80px; */
+    margin-top: 80px;
     background-color: rgb(241, 240, 240);
     padding: 20px 60px;
 }
@@ -226,6 +233,19 @@ hr {
     font-size: 15px;
     color: rgb(83, 83, 83);
 }
+.divButtonSwitch2{
+    display: none;
+    width: 100%;
+    background-color: white;
+    padding-bottom: 15px;
+}
+.buttonSwitch2 {
+        width: 95%;
+        height: 40px;
+        background-image: linear-gradient(to right, rgb(174, 55, 55), rgb(205, 111, 148));
+        border-radius: 5px;
+        border: none;
+}
 @media only screen and (max-width: 420px){
     .reduceText {
         font-size: 40px;
@@ -238,6 +258,15 @@ hr {
    }
    .airbnbSetup {
    display: none;
+   }
+   .buttonSwitch {
+    display: none;
+   }
+   .divButtonSwitch2 {
+    display: block;
+   }
+   .button-scroll {
+    display: none;
    }
 }
 @media only screen and (max-width: 1270px) {

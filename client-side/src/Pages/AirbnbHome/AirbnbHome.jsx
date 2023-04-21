@@ -6,6 +6,7 @@ import Airbnbsetup2 from "../../assets/airbnbsetup2.webp";
 import divScroll1 from "../../assets/divScroll1.webp";
 import divScroll2 from "../../assets/divScroll2.webp";
 import divScroll3 from "../../assets/divSxroll3.webp";
+import map from "../../assets/map.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiHomeCircle } from "react-icons/bi";
@@ -20,6 +21,23 @@ import {
 function AirbnbHome() {
   const [rangeval, setRangeval] = useState("85");
   const [text, setText] = useState("Airbnb setup");
+  const [showSetup, setShowSetup] = useState(false);
+
+  const handleSetup = () => {
+    const currentscrollposition = window.scrollY;
+    if (currentscrollposition > 612) {
+      setShowSetup(true);
+    } else {
+      setShowSetup(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleSetup);
+    return () => {
+      window.removeEventListener("scroll", handleSetup);
+    };
+  }, [window.scrollY]);
 
   const changeText = () => {
     setText("Get started");
@@ -37,10 +55,22 @@ function AirbnbHome() {
           </Link>
         </div>
         <div className="divButton">
+          {showSetup && (
+            <button className="button-scroll">
+              <BiHomeCircle
+                style={{ fontSize: "30px", color: "white", marginTop: "-8px" }}
+              />
+              <span
+                style={{ color: "white", fontSize: "20px", marginLeft: "5px" }}
+              >
+                Airbnb setup
+              </span>
+            </button>
+          )}
           <button className="ButtonNav">Chat with a Superhost</button>
         </div>
       </section>
-      <section className="div-PriceMap text-center gap-3 mt-5">
+      <section className="div-PriceMap text-center gap-4 mt-5">
         <div className="priceDiv">
           <h1
             className="text-danger"
@@ -101,7 +131,7 @@ function AirbnbHome() {
           </div>
         </div>
         <div className="mapDiv">
-          <h1>tolu</h1>
+          <img src={map} alt="" />
         </div>
       </section>
       <section style={{ marginTop: "70px" }}>
@@ -177,78 +207,90 @@ function AirbnbHome() {
           </div>
         </div>
       </section>
-      <main className="footer">
-        <footer>
-          <div>
-            <h6>Support</h6>
-            <p>Help Center</p>
-            <p>Air cover</p>
-            <p>Supporting people with disabilities</p>
-            <p>Cancellation options</p>
-            <p>Our COVID-19 Response</p>
-            <p>Report a neighborhood concern</p>
-          </div>{" "}
-          <div>
-            <h6>Community</h6>
-            <p>Airbnb.org: disaster relief housing</p>
-            <p>Combating discrimination</p>
-          </div>{" "}
-          <div>
-            <h6>Hosting</h6>
-            <p>Airbnb your home</p>
-            <p>AirCover for Hosts</p>
-            <p>Explore hosting resources</p>
-            <p>Visit our community forum</p>
-            <p>How to host responsibly</p>
-            <p>Airbnb-friendly apartments</p>
+      <section>
+        <div className="footer">
+          <footer>
+            <div>
+              <h6>Support</h6>
+              <p>Help Center</p>
+              <p>Air cover</p>
+              <p>Supporting people with disabilities</p>
+              <p>Cancellation options</p>
+              <p>Our COVID-19 Response</p>
+              <p>Report a neighborhood concern</p>
+            </div>{" "}
+            <div>
+              <h6>Community</h6>
+              <p>Airbnb.org: disaster relief housing</p>
+              <p>Combating discrimination</p>
+            </div>{" "}
+            <div>
+              <h6>Hosting</h6>
+              <p>Airbnb your home</p>
+              <p>AirCover for Hosts</p>
+              <p>Explore hosting resources</p>
+              <p>Visit our community forum</p>
+              <p>How to host responsibly</p>
+              <p>Airbnb-friendly apartments</p>
+            </div>
+            <div>
+              <h6>Airbnb</h6>
+              <p>Learn about new features</p>
+              <p>AirCover for Hosts</p>
+              <p>Explore hosting resources</p>
+              <p>carrers</p>
+              <p>investors</p>
+              <p>Gift-card</p>
+            </div>
+          </footer>
+          <hr />
+          <div className="copyright">
+            <div>
+              <p>
+                {" "}
+                <FaRegCopyright />
+              </p>
+              <p>Airbnb,</p>
+              <p>Inc.</p>
+              <p> . </p>
+              <p>Terms . </p>
+              <p> site map . </p>
+              <p>Privacy . </p>
+              <p>Your Privacy choices</p>
+            </div>
+            <div className="icon">
+              <p>
+                <TbWorld />
+              </p>
+              <p>English (US) </p>
+              <p>$</p>
+              <p>USD</p>
+              <p>
+                {" "}
+                <AiFillFacebook className="fs-5" />{" "}
+              </p>
+              <p>
+                <AiOutlineInstagram className="text-dark fs-5" />
+              </p>
+              <p>
+                {" "}
+                <AiFillTwitterSquare className="fs-5" />
+              </p>
+            </div>
           </div>
-          <div>
-            <h6>Airbnb</h6>
-            <p>Learn about new features</p>
-            <p>AirCover for Hosts</p>
-            <p>Explore hosting resources</p>
-            <p>carrers</p>
-            <p>investors</p>
-            <p>Gift-card</p>
-          </div>
-        </footer>
-        <hr />
-
-        <main className="copyright">
-          <div>
-            <p>
-              {" "}
-              <FaRegCopyright />
-            </p>
-            <p>Airbnb,</p>
-            <p>Inc.</p>
-            <p> . </p>
-            <p>Terms . </p>
-            <p> site map . </p>
-            <p>Privacy . </p>
-            <p>Your Privacy choices</p>
-          </div>
-          <div className="icon">
-            <p>
-              <TbWorld />
-            </p>
-            <p>English (US) </p>
-            <p>$</p>
-            <p>USD</p>
-            <p>
-              {" "}
-              <AiFillFacebook className="fs-5" />{" "}
-            </p>
-            <p>
-              <AiOutlineInstagram className="text-dark fs-5" />
-            </p>
-            <p>
-              {" "}
-              <AiFillTwitterSquare className="fs-5" />
-            </p>
-          </div>
-        </main>
-      </main>
+        </div>
+      </section>
+      <section className="sticky-bottom divButtonSwitch2 text-center">
+        <span className="text-danger">ready to airbnb it?</span>
+        <button className="buttonSwitch2">
+          <BiHomeCircle
+            style={{ fontSize: "30px", color: "white", marginTop: "-8px" }}
+          />
+          <span style={{ color: "white", fontSize: "20px", marginLeft: "5px" }}>
+            {text}
+          </span>
+        </button>
+      </section>
     </main>
   );
 }
