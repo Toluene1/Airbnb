@@ -6,16 +6,15 @@
   display: none;
 }
 .mobile {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: sticky;
   top: 0px;
   border: 1px solid rgb(223, 223, 223);
+  padding: 20px;
   background-color: white;
-  padding: 20px;
 }
-.exitMobile {
+
+.saveexit {
+  width: 100px;
   font-weight: 400;
   display: flex;
   margin: 0px 10px;
@@ -23,65 +22,73 @@
   align-items: center;
   border-radius: 20px;
   border: 1px solid rgb(180, 178, 178);
-  padding: 5px 15px;
+  padding: 7px;
 }
-.exitMobile:hover {
+.saveexit:hover {
   border: 1px solid black;
 }
-.exit {
-  font-weight: 400;
-  display: flex;
-  margin: 0px 10px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  border: 1px solid rgb(180, 178, 178);
-  padding: 5px 15px;
-  display: none;
-}
-.exit:hover {
-  border: 1px solid black;
-  display: none;
-}
-.listing {
-  padding: 20px;
-  max-width: 600px;
-  margin: 50px auto;
-}
-.listing div {
+.overview {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 60px;
-  border-bottom: 1px solid rgb(197, 196, 196);
-}
-.icon {
-  font-size: 35px;
-}
-a {
-  text-decoration: none !important;
-  color: black;
+  padding: 0px 30px;
+  flex-wrap: wrap;
 }
 
-a :hover {
-  color: black;
+.airbnb {
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.airbnb h1 {
+  font-size: 30px;
+}
+.img {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  object-fit: cover;
+}
+article {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  align-items: center;
+  padding: 30px 0px;
+  border-bottom: 1px solid lightgray;
+}
+.img img {
+  width: 100%;
+}
+.footer {
+  padding: 20px;
+  border-top: 2px solid lightgray;
+  position: sticky;
+  bottom: 0px;
+  width: 100%;
+  background-color: white;
+}
+.footer button {
+  width: 100%;
+}
+
 @media only screen and (min-width: 735px) {
   .image {
     height: 30px;
     display: block;
   }
-  .exit {
+  .airbnb {
+    height: 100vh;
+    width: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .exit:hover {
-    border: 1px solid black;
-    display: block;
-  }
-  .exitMobile {
-    display: none;
+  .airbnb h1 {
+    font-size: 60px;
+    padding: 50px;
   }
   .web {
     display: flex;
@@ -95,5 +102,9 @@ a :hover {
   }
   .mobile {
     display: none;
+  }
+  .footer button {
+    width: 150px;
+    margin-right: 50px;
   }
 }
