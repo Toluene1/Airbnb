@@ -100,7 +100,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     border: none;
 }
 .imageDiv {
-    height: 423px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -124,6 +123,109 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     font-weight: 700;
     margin-top: -15px;
 }
+.divTextCover{
+    margin-top: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.divTexts {
+    width: 30%;
+    padding-left: 10px;
+}
+.divFriendlyApart{
+    width: 60%;
+    margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        overflow-x: scroll;
+        background-color: blue;
+}
+.divFriendlyApart::-webkit-scrollbar {
+    display: none;
+}
+.divScroll{
+    width: 285px;
+    min-width: 180px;
+}
+.imageScroll{
+    width: 100%;
+    border-radius: 20px;
+}
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+footer h6 {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 20px 0px;
+    color: rgb(75, 74, 74);
+}
+
+footer p {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: rgb(83, 83, 83);
+}
+
+footer div {
+    width: 250px;
+}
+
+.footer {
+    /* margin-top: 80px; */
+    background-color: rgb(241, 240, 240);
+    padding: 20px 60px;
+}
+
+footer p:hover {
+    text-decoration: underline;
+}
+
+hr {
+    color: grey;
+}
+
+.copyright {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.copyright div {
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright p {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: rgb(83, 83, 83);
+}
+
+.copyright .icon {
+    width: 240px;
+}
+
+.icon p {
+    font-weight: 700;
+    font-size: 15px;
+    color: rgb(83, 83, 83);
+}
 @media only screen and (max-width: 420px){
     .reduceText {
         font-size: 40px;
@@ -145,10 +247,33 @@ input[type=range]:focus::-webkit-slider-runnable-track {
    .mapDiv {
     width: 93%;
    }
+   .airbnbSetup2 {
+       display: block;
+       width: 100%;
+   }
+
+   .airbnbSetup {
+       display: none;
+   }
    .airbnbText {
     float: left;
     font-size: 30px;
     padding-left: 40px;
     padding-right: 40px;
+   }
+   .divTextCover {
+    width: 90%;
+   }
+   .divTexts {
+    width: 100%;
+   }
+   .divFriendlyApart {
+    float: left;
+    width: 95%;
+    margin-left: 20px;
+    margin-right: 40px;
+   }
+   .divScroll {
+    width: 340px;
    }
 }
