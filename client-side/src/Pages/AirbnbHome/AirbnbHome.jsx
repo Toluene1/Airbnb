@@ -56,16 +56,26 @@ function AirbnbHome() {
         </div>
         <div className="divButton">
           {showSetup && (
-            <button className="button-scroll">
-              <BiHomeCircle
-                style={{ fontSize: "30px", color: "white", marginTop: "-8px" }}
-              />
-              <span
-                style={{ color: "white", fontSize: "20px", marginLeft: "5px" }}
-              >
-                Airbnb setup
-              </span>
-            </button>
+            <Link to={"/become-a-host"} className="text-decoration-none">
+              <button className="button-scroll">
+                <BiHomeCircle
+                  style={{
+                    fontSize: "30px",
+                    color: "white",
+                    marginTop: "-8px",
+                  }}
+                />
+                <span
+                  style={{
+                    color: "white",
+                    fontSize: "20px",
+                    marginLeft: "5px",
+                  }}
+                >
+                  Airbnb setup
+                </span>
+              </button>
+            </Link>
           )}
           <button className="ButtonNav">Chat with a Superhost</button>
         </div>
@@ -116,22 +126,32 @@ function AirbnbHome() {
                 <p className="fw-light">Entire place - 2 bedrooms</p>
               </div>
             </div>
-            <button className="buttonSwitch">
-              <BiHomeCircle
-                style={{ fontSize: "30px", color: "white", marginTop: "-8px" }}
-              />
-              <span
-                style={{ color: "white", fontSize: "20px", marginLeft: "5px" }}
-                onMouseOver={changeText}
-                onMouseOut={normalText}
-              >
-                {text}
-              </span>
-            </button>
+            <Link to={"/become-a-host"} className="text-decoration-none">
+              <button className="buttonSwitch">
+                <BiHomeCircle
+                  style={{
+                    fontSize: "30px",
+                    color: "white",
+                    marginTop: "-8px",
+                  }}
+                />
+                <span
+                  style={{
+                    color: "white",
+                    fontSize: "20px",
+                    marginLeft: "5px",
+                  }}
+                  onMouseOver={changeText}
+                  onMouseOut={normalText}
+                >
+                  {text}
+                </span>
+              </button>
+            </Link>
           </div>
         </div>
         <div className="mapDiv">
-          <img src={map} alt="" />
+          <img src={map} alt="" className="mapImage" />
         </div>
       </section>
       <section style={{ marginTop: "70px" }}>
@@ -282,14 +302,18 @@ function AirbnbHome() {
       </section>
       <section className="sticky-bottom divButtonSwitch2 text-center">
         <span className="text-danger">ready to airbnb it?</span>
-        <button className="buttonSwitch2">
-          <BiHomeCircle
-            style={{ fontSize: "30px", color: "white", marginTop: "-8px" }}
-          />
-          <span style={{ color: "white", fontSize: "20px", marginLeft: "5px" }}>
-            {text}
-          </span>
-        </button>
+        <Link to={"/become-a-host"} className="text-decoration-none">
+          <button className="buttonSwitch2">
+            <BiHomeCircle
+              style={{ fontSize: "30px", color: "white", marginTop: "-8px" }}
+            />
+            <span
+              style={{ color: "white", fontSize: "20px", marginLeft: "5px" }}
+            >
+              {text}
+            </span>
+          </button>
+        </Link>
       </section>
     </main>
   );

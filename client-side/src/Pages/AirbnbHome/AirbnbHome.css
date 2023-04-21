@@ -52,9 +52,9 @@ border:  1px solid rgb(117, 101, 101);
     width: 600px;
 }
 .mapDiv {
-    height: 626px;
+    max-height: 550px;
+    margin-top: 35px;
         width: 600px;
-        background-color: yellowgreen;
 }
 .custom-range{
     width: 85%;
@@ -203,7 +203,6 @@ footer p:hover {
 hr {
     color: grey;
 }
-
 .copyright {
     display: flex;
     justify-content: space-between;
@@ -238,6 +237,7 @@ hr {
     width: 100%;
     background-color: white;
     padding-bottom: 15px;
+    padding-top: 10px;
 }
 .buttonSwitch2 {
         width: 95%;
@@ -245,6 +245,11 @@ hr {
         background-image: linear-gradient(to right, rgb(174, 55, 55), rgb(205, 111, 148));
         border-radius: 5px;
         border: none;
+}
+.mapImage {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
 }
 @media only screen and (max-width: 420px){
     .reduceText {
@@ -280,7 +285,9 @@ hr {
        display: block;
        width: 100%;
    }
-
+.mapDiv {
+    height: 400px;
+}
    .airbnbSetup {
        display: none;
    }
