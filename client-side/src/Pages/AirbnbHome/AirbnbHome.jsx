@@ -17,7 +17,7 @@ import {
   AiOutlineInstagram,
   AiFillTwitterSquare,
 } from "react-icons/ai";
-// import.meta.env.REACT_APP_GOOGLE_API_KEY; the map becomes blur with this..
+const google_APi_key = import.meta.env.REACT_APP_GOOGLE_API_KEY;
 function AirbnbHome() {
   const [rangeval, setRangeval] = useState("85");
   const [text, setText] = useState("Airbnb setup");
@@ -49,11 +49,10 @@ function AirbnbHome() {
   }
   useEffect(() => {
     getLocation();
-    console.log(long, lat);
   }, [long, lat]);
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyD3TowkzOzWU487Y377u219DGJtblu9sxQ",
+    googleMapsApiKey: google_APi_key,
   });
   const center = useMemo(() => ({ lat: lat, lng: long }), [lat, long]);
 
