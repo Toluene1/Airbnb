@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./AirbnbHome.css";
 import Airbnblogo from "../../assets/airbnb-logo.png";
 import Airbnbsetup from "../../assets/airbnb-setup.webp";
@@ -6,22 +6,24 @@ import Airbnbsetup2 from "../../assets/airbnbsetup2.webp";
 import divScroll1 from "../../assets/divScroll1.webp";
 import divScroll2 from "../../assets/divScroll2.webp";
 import divScroll3 from "../../assets/divSxroll3.webp";
-import map from "../../assets/map.webp";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiHomeCircle } from "react-icons/bi";
 import { FaRegCopyright } from "react-icons/fa";
-import { TbWorld } from "react-icons/tb";
+import { TfiWorld } from "react-icons/tfi";
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import {
   AiFillFacebook,
   AiOutlineInstagram,
   AiFillTwitterSquare,
 } from "react-icons/ai";
-
+// import.meta.env.REACT_APP_GOOGLE_API_KEY; the map becomes blur with this..
 function AirbnbHome() {
   const [rangeval, setRangeval] = useState("85");
   const [text, setText] = useState("Airbnb setup");
   const [showSetup, setShowSetup] = useState(false);
+  const [long, setlong] = useState(0);
+  const [lat, setlat] = useState(0);
 
   const handleSetup = () => {
     const currentscrollposition = window.scrollY;
@@ -31,6 +33,29 @@ function AirbnbHome() {
       setShowSetup(false);
     }
   };
+  //map functions  get cordinates
+  function showPosition(position) {
+    setlat(position.coords.latitude);
+    setlong(position.coords.longitude);
+    return;
+  }
+  //get location
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      setlat("Geolocation is not supported by this browser.");
+    }
+  }
+  useEffect(() => {
+    getLocation();
+    console.log(long, lat);
+  }, [long, lat]);
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: "AIzaSyD3TowkzOzWU487Y377u219DGJtblu9sxQ",
+  });
+  const center = useMemo(() => ({ lat: lat, lng: long }), [lat, long]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleSetup);
@@ -151,7 +176,19 @@ function AirbnbHome() {
           </div>
         </div>
         <div className="mapDiv">
-          <img src={map} alt="" className="mapImage" />
+          {!isLoaded ? (
+            <div className=" center-screen">
+              <div className="spinner-border text-danger "></div>
+            </div>
+          ) : (
+            <GoogleMap
+              mapContainerClassName="map-container"
+              center={center}
+              zoom={10}
+            >
+              <Marker position={{ lat: lat, lng: long }} />
+            </GoogleMap>
+          )}
         </div>
       </section>
       <section style={{ marginTop: "70px" }}>
@@ -280,7 +317,7 @@ function AirbnbHome() {
             </div>
             <div className="icon">
               <p>
-                <TbWorld />
+                <TfiWorld />
               </p>
               <p>English (US) </p>
               <p>$</p>

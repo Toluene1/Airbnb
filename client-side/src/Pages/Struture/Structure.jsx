@@ -9,8 +9,9 @@ import {
   GiSiegeTower,
   GiCaveEntrance,
   GiWindmill,
+  GiKrakenTentacle,
 } from "react-icons/Gi";
-import { TbTentOff } from "react-icons/Tb";
+// import { TbTentOff } from "react-icons/Tb";
 import "./Structure.css";
 import { Link } from "react-router-dom";
 const Structure = () => {
@@ -30,7 +31,7 @@ const Structure = () => {
 
       <section className="structure">
         <h2>Which of these best describes your place?</h2>
-        <main>
+        <main className="animate__animated animate__fadeInUp">
           <div
             id="1"
             className={`${selected == 1 ? "structuresClicked" : "structures"}`}
@@ -97,7 +98,7 @@ const Structure = () => {
             onClick={(e) => handleToggle(e.currentTarget.id)}
           >
             <p className="m-1">
-              <TbTentOff />
+              <GiKrakenTentacle />
             </p>
             <p className="fs-6">Tent</p>
           </div>

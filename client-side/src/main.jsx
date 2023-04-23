@@ -12,7 +12,7 @@ const App = React.lazy(() => import("./App"));
 
 const Accounts = React.lazy(() => import("./Pages/Account/Account"));
 const PersonalInfo = React.lazy(() =>
-  import("./Pages/PersonalInfo/PersonalInfo")
+  import("./Pages/PersonalInfo/PersonalInfo"),
 );
 const Profile = React.lazy(() => import("./Pages/Profile/Profile"));
 const Hosting = React.lazy(() => import("./Pages/Hosting/Hosting"));
@@ -65,5 +65,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <RouterProvider router={router} />
       </Suspense>
     </ContextProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
