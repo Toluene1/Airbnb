@@ -26,14 +26,14 @@ const Structure = () => {
     setselected(id);
     setstructure(val);
   };
-
+  console.log(structure);
   return (
     <section>
       <PropertyNav />
 
       <section className="structure">
         <h2>Which of these best describes your place?</h2>
-        <main className="animate__animated animate__fadeInUp">
+        <main className="animate__animated animate__fadeInUp animate__delay-0.5s">
           <div
             id="1"
             className={` ${selected == 1 ? "structuresClicked" : "structures"}`}

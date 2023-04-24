@@ -17,7 +17,7 @@ import {
   AiOutlineInstagram,
   AiFillTwitterSquare,
 } from "react-icons/ai";
-const google_APi_key = import.meta.env.REACT_APP_GOOGLE_API_KEY;
+export const google_APi_key = import.meta.env.REACT_APP_GOOGLE_API_KEY;
 function AirbnbHome() {
   const [rangeval, setRangeval] = useState("85");
   const [text, setText] = useState("Airbnb setup");
@@ -54,6 +54,7 @@ function AirbnbHome() {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: google_APi_key,
   });
+
   const center = useMemo(() => ({ lat: lat, lng: long }), [lat, long]);
 
   useEffect(() => {
