@@ -11,36 +11,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.Navfooter {
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  width: 100%;
-  background-color: white;
-  position: sticky;
-  bottom: 0px;
-  border-top: 3px solid grey;
-}
-.Navfooterbtn {
-  padding: 10px 20px;
-  border-radius: 10px;
-  background-color: black;
-  color: white;
-  font-weight: 600;
-  border: 1px solid black;
-}
-.disabledbtn {
-  cursor: pointer;
-  padding: 10px 20px;
-  border-radius: 10px;
-  background-color: rgb(238, 238, 238);
-  color: white;
-  font-weight: 600;
-  border-width: thin;
-  border-color: rgb(218, 216, 216);
-  outline: none;
-}
+
 .structures {
   min-width: 210px;
   height: 100px;
@@ -51,7 +22,7 @@
 }
 .structure p {
   font-size: 30px;
-  font-weight: 400;
+  font-weight: 500;
 }
 .structures:hover {
   border: 2px solid black;

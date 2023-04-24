@@ -22,7 +22,6 @@ const PropertyNav = () => {
         <div className="exitMobile "> save & exit </div>
         <div className=" exitMobile ">Questions?</div>
       </nav>
-      ;
     </>
   );
 };
