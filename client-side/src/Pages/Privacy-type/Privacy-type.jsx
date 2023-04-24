@@ -86,14 +86,14 @@ function PropertyType() {
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/structure"}>Back</Link>
         </p>
-        <button
-          disabled={isDisabled}
-          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
-        >
-          <Link to={"/become-a-host/location"} className="text-white">
+        <Link to={"/become-a-host/location"} className="text-white">
+          <button
+            disabled={isDisabled}
+            className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+          >
             Next
-          </Link>
-        </button>
+          </button>
+        </Link>
       </footer>
     </main>
   );
