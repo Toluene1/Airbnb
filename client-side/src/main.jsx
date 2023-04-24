@@ -19,6 +19,7 @@ const Hosting = React.lazy(() => import("./Pages/Hosting/Hosting"));
 const Overview = React.lazy(() => import("./Pages/Overview/Overview"));
 const Structure = React.lazy(() => import("./Pages/Struture/Structure"));
 const Location = React.lazy(() => import("./Pages/Location/Location"));
+const FloorPlan = React.lazy(() => import("./Pages/FloorPlan/FloorPlan"));
 const Error404 = React.lazy(() => import("./Pages/error404"));
 
 const router = createBrowserRouter([
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
   {
     path: "/become-a-host/location",
     element: <Location />,
+  },
+  {
+    path: "/become-a-host/floor-plan",
+    element: <FloorPlan />,
   },
 ]);
 
