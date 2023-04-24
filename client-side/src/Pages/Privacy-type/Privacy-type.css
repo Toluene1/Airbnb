@@ -1,0 +1,77 @@
+.mainPage {
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-bottom: 100px;
+}
+.privacyType {
+  max-width: 45%;
+  min-width: 340px;
+  background-color: white;
+  margin: auto;
+  border: 1px solid lightgray;
+  border-radius: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  padding: 15px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+.privacyType:hover {
+  border: 2px solid black;
+}
+.privacyTypeClicked {
+  max-width: 45%;
+  min-width: 340px;
+  background-color: rgb(242, 233, 233);
+  margin: auto;
+  border: 2px solid black;
+  border-radius: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  padding: 15px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+.Navfooter {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  background-color: white;
+  position: fixed;
+  bottom: 0px;
+  border-top: 3px solid grey;
+}
+
+.Navfooterbtn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  border: 1px solid black;
+}
+
+.disabledbtn {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: rgb(238, 238, 238);
+  color: white;
+  font-weight: 600;
+  border-width: thin;
+  border-color: rgb(218, 216, 216);
+  outline: none;
+}
+.divText {
+  width: 70%;
+}
+.divIcon {
+  width: 10%;
+  margin-top: 5px;
+}

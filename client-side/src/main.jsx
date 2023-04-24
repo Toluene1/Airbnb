@@ -7,7 +7,6 @@ import "animate.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContextProvider from "./Provider/Context";
 import AirbnbHome from "./Pages/AirbnbHome/AirbnbHome";
-// import AboutYourHome from "./Pages/About-your-place/About-your-place";
 
 const App = React.lazy(() => import("./App"));
 
@@ -19,6 +18,9 @@ const Profile = React.lazy(() => import("./Pages/Profile/Profile"));
 const Hosting = React.lazy(() => import("./Pages/Hosting/Hosting"));
 const Overview = React.lazy(() => import("./Pages/Overview/Overview"));
 const Structure = React.lazy(() => import("./Pages/Struture/Structure"));
+const PrivacyType = React.lazy(() =>
+  import("./Pages/Privacy-type/Privacy-type")
+);
 const AboutYourPlace = React.lazy(() =>
   import("./Pages/About-your-place/About-your-place")
 );
@@ -63,6 +65,10 @@ const router = createBrowserRouter([
   {
     path: "/become-a-host/about-your-place",
     element: <AboutYourPlace />,
+  },
+  {
+    path: "/become-a-host/privacy-type",
+    element: <PrivacyType />,
   },
 ]);
 

@@ -194,7 +194,9 @@ const Structure = () => {
           disabled={isDisabled}
           className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
         >
-          Next
+          <Link to={"/become-a-host/privacy-type"} className="text-white">
+            Next
+          </Link>
         </button>
       </footer>
     </section>

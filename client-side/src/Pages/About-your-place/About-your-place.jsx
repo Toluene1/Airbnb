@@ -8,9 +8,13 @@ function AboutYourPlace() {
   return (
     <main>
       <PropertyNav />
-      <section className="divCover gap-5">
+      <section className="divCover gap-5 animate__animated animate__fadeInUp">
         <div className="div1">
-          <img src={Airbnbhouse} style={{ width: "100%" }} alt="" />
+          <img
+            src={Airbnbhouse}
+            style={{ width: "100%", borderRadius: "20px" }}
+            alt=""
+          />
         </div>
         <div className="div2 fs-5">
           <p className="fs-3">Step 1</p>
@@ -26,9 +30,11 @@ function AboutYourPlace() {
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/overview"}>Back</Link>
         </p>
-        <Link to={"/become-a-host/structure"} className="text-white">
-          <button className="Navfooterbtn text-white">next</button>
-        </Link>
+        <button className="Navfooterbtn text-white">
+          <Link to={"/become-a-host/structure"} className="text-white">
+            Next
+          </Link>
+        </button>
       </footer>
     </main>
   );
