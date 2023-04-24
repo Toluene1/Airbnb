@@ -182,7 +182,7 @@ const Location = () => {
       )}
       <footer className="Navfooter">
         <p className="text-decoration-underline fw-bold">
-          <Link to={"/become-a-host/overview"}>Back</Link>
+          <Link to={"/become-a-host/privacy-type"}>Back</Link>
         </p>
         <button
           disabled={isDisabled}

@@ -91,9 +91,9 @@ function PropertyType() {
           disabled={isDisabled}
           className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
         >
-          {/* <Link to={"/become-a-host/privacy-type"} className="text-white"> */}
-          Next
-          {/* </Link> */}
+          <Link to={"/become-a-host/location"} className="text-white">
+            Next
+          </Link>
         </button>
       </footer>
     </main>
