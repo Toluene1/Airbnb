@@ -63,6 +63,8 @@ article {
   width: 100%;
 }
 .footer {
+  display: flex;
+  justify-content: end;
   padding: 20px;
   border-top: 2px solid lightgray;
   position: sticky;
@@ -105,6 +107,5 @@ article {
   }
   .footer button {
     width: 150px;
-    margin-right: 50px;
   }
 }

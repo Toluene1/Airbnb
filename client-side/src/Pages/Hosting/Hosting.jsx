@@ -7,10 +7,17 @@ import { useContext, useEffect } from "react";
 import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
 import Airbnblogo from "../../assets/airbnb-logo.png";
+import PopModal from "../../components/SignUp";
 
 const Hosting = () => {
-  const { setUser, User, setauthloading, authloading, setModalShow } =
-    useContext(Context);
+  const {
+    setUser,
+    User,
+    setauthloading,
+    authloading,
+    modalShow,
+    setModalShow,
+  } = useContext(Context);
   let isMounted = true;
 
   useEffect(() => {
@@ -95,6 +102,7 @@ const Hosting = () => {
           </div>
         </main>
       )}
+      <PopModal show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
 };
