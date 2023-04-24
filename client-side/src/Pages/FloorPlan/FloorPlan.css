@@ -1,0 +1,32 @@
+.floorplan {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+.count {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgb(212, 212, 212);
+  align-items: baseline;
+  padding: 15px 0px;
+  color: rgb(95, 95, 95);
+}
+.count button {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  font-size: 22px;
+  border-radius: 100%;
+  border: 1px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+.count div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+}

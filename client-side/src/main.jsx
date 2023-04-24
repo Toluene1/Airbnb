@@ -19,6 +19,7 @@ const Hosting = React.lazy(() => import("./Pages/Hosting/Hosting"));
 const Overview = React.lazy(() => import("./Pages/Overview/Overview"));
 const Structure = React.lazy(() => import("./Pages/Struture/Structure"));
 const Location = React.lazy(() => import("./Pages/Location/Location"));
+const FloorPlan = React.lazy(() => import("./Pages/FloorPlan/FloorPlan"));
 const StandOut = React.lazy(() => import("./Pages/Stand-out/Stand-out"));
 const PrivacyType = React.lazy(() =>
   import("./Pages/Privacy-type/Privacy-type")
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
   {
     path: "/become-a-host/location",
     element: <Location />,
+  },
+  {
+    path: "/become-a-host/floor-plan",
+    element: <FloorPlan />,
   },
   {
     path: "/become-a-host/about-your-place",
