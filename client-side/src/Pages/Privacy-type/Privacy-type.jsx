@@ -37,7 +37,7 @@ function PropertyType() {
             <div className="divText">
               <p className="fw-bold">An entire place</p>
               <p style={{ marginTop: "-10px" }} className="fw-light">
-                Guests have the whole place to themselves
+                Guests have the whole place to themselves.
               </p>
             </div>
             <div className="divIcon">
