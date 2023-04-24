@@ -1,32 +1,30 @@
-import React, { useState, useEffect, useMemo } from "react";
-import "./About-your-place.css";
-import Airbnbhouse3 from "../../assets/house3.jpg";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
+import "./Stand-out.css";
+import Airbnbhouse4 from "../../assets/house4.jpg";
 import { Link } from "react-router-dom";
 
-function AboutYourPlace() {
+function StandOut() {
   return (
     <main>
       <PropertyNav />
       <section className="divCover gap-5 animate__animated animate__fadeInUp">
         <div className="div1">
           <img
-            src={Airbnbhouse3}
+            src={Airbnbhouse4}
             style={{ width: "100%", borderRadius: "20px" }}
             alt=""
           />
         </div>
         <div className="div2 fs-5">
-          <p className="fs-3">Step 1</p>
-          <h1>Tell us about your place</h1>
+          <p className="fs-3">Step 2</p>
+          <h1>Make your place stand out</h1>
           <p>
-            In this step, we'll ask you which type of property you have and if
-            guests will book the entire place or just a room. Then let us know
-            the location and how many guests can stay.
+            In this step, you’ll add some of the amenities your place offers,
+            plus 5 or more photos. Then, you’ll create a title and description.
           </p>
         </div>
       </section>
-      <footer className="Navfooter sticky-bottom ">
+      <footer className="Navfooter ">
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/overview"}>Back</Link>
         </p>
@@ -40,4 +38,4 @@ function AboutYourPlace() {
   );
 }
 
-export default AboutYourPlace;
+export default StandOut;

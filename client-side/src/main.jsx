@@ -18,6 +18,7 @@ const Profile = React.lazy(() => import("./Pages/Profile/Profile"));
 const Hosting = React.lazy(() => import("./Pages/Hosting/Hosting"));
 const Overview = React.lazy(() => import("./Pages/Overview/Overview"));
 const Structure = React.lazy(() => import("./Pages/Struture/Structure"));
+const StandOut = React.lazy(() => import("./Pages/Stand-out/Stand-out"));
 const PrivacyType = React.lazy(() =>
   import("./Pages/Privacy-type/Privacy-type")
 );
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
   {
     path: "/become-a-host/privacy-type",
     element: <PrivacyType />,
+  },
+  {
+    path: "/become-a-host/stand-out",
+    element: <StandOut />,
   },
 ]);
 
