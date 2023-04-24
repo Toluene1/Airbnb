@@ -8,15 +8,14 @@ import { MdOutlineOtherHouses } from "react-icons/md";
 function PropertyType() {
   const [selected, setselected] = useState(null);
   const [isDisabled, setisDisabled] = useState(true);
-  const [structure, setstructure] = useState("");
-  const handleToggle = (id, val) => {
+  const [privacy, setprivacy] = useState("");
+  const handleToggle = (id) => {
     if (selected == id) {
       return setselected(null);
     }
     setisDisabled(false);
     setselected(id);
-    setstructure(val);
-    console.log(id);
+    setprivacy(id);
   };
 
   return (

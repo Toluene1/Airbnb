@@ -26,7 +26,7 @@ function AboutYourPlace() {
           </p>
         </div>
       </section>
-      <footer className="Navfooter sticky-bottom ">
+      <footer className="Navfooter ">
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/overview"}>Back</Link>
         </p>
