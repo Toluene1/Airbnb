@@ -40,7 +40,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -55,7 +55,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -70,7 +70,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -85,7 +85,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -100,7 +100,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -115,7 +115,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -130,7 +130,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -145,7 +145,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -160,7 +160,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -175,7 +175,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -188,7 +188,7 @@ const Structure = () => {
       </section>
       <footer className="Navfooter">
         <p className="text-decoration-underline fw-bold">
-          <Link to={"/become-a-host/overview"}>Back</Link>
+          <Link to={"/become-a-host/about-your-place"}>Back</Link>
         </p>
         <button
           disabled={isDisabled}
