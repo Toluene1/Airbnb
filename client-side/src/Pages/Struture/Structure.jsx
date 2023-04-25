@@ -32,14 +32,14 @@ const Structure = () => {
       <PropertyNav />
       <section className="structure">
         <h2>Which of these best describes your place?</h2>
-        <main className="animate__animated animate__fadeInUp animate__delay-0.5s">
+        <main className="animate__animated animate__fadeInRight animate__delay-0.5s">
           <div
             id="1"
             className={` ${selected == 1 ? "structuresClicked" : "structures"}`}
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -54,7 +54,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -69,7 +69,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -84,7 +84,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -99,7 +99,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -114,7 +114,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -129,7 +129,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -144,7 +144,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -159,7 +159,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >
@@ -174,7 +174,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
+                e.currentTarget.children[1].innerHTML
               )
             }
           >

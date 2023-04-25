@@ -1,0 +1,127 @@
+/* body {
+  padding-left: 15px;
+  padding-right: 15px;
+} */
+
+.sectionDiv {
+  margin-top: 30px;
+}
+.texts {
+  max-width: 650px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+.texts2 {
+  max-width: 680px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.button-addMore {
+  background-color: white;
+  border-radius: 30px;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid lightgrey;
+}
+.button-addMore:hover {
+  border: 1px solid black;
+}
+.photoBox {
+  max-width: 640px;
+  min-width: 320px;
+  height: 370px;
+  margin: auto;
+  border: 1px solid rgb(111, 103, 103);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.photoBox:hover {
+  border: 2px solid black;
+}
+.photoBoxdiv {
+  max-width: 680px;
+  min-width: 320px;
+  height: 460px;
+  margin: auto;
+  border: 1px solid rgb(111, 103, 103);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.photoBoxdiv:hover {
+  border: 2px solid black;
+}
+.photoBoxDivs {
+  max-width: 700px;
+  min-width: 320px;
+  margin: auto;
+  border: none;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 150px;
+}
+.singleDivs {
+  width: 333px;
+  height: 228px;
+  display: flex;
+  border: 1px solid rgb(151, 145, 145);
+  justify-content: center;
+  align-items: center;
+}
+.singleDivs:hover {
+  border: 2px solid black;
+}
+.file-input input {
+  display: none;
+}
+.file-input label {
+  text-decoration: underline;
+  color: black;
+  cursor: pointer;
+}
+.image-input input {
+  display: none;
+}
+.file-input label {
+  text-decoration: underline;
+  color: black;
+  cursor: pointer;
+}
+.reduceText {
+  font-size: 25px;
+}
+@media only screen and (max-width: 735px) {
+  .photoBox {
+    max-width: 640px;
+    min-width: 320px;
+    height: 220px;
+  }
+  .photoBoxdiv {
+    max-width: 640px;
+    min-width: 320px;
+    height: 400px;
+    min-height: auto;
+  }
+  .singleDivs {
+    max-width: 640px;
+    min-width: 320px;
+    height: 400px;
+    min-height: auto;
+  }
+  .reduceText {
+    font-size: 15px;
+  }
+  .singleDivs {
+    width: 100%;
+  }
+}

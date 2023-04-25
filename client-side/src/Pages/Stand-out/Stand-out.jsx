@@ -7,7 +7,7 @@ function StandOut() {
   return (
     <main>
       <PropertyNav />
-      <section className="divCover gap-5 animate__animated animate__fadeInUp">
+      <section className="divCover gap-5 animate__animated animate__fadeInRight">
         <div className="div1">
           <img
             src={Airbnbhouse4}
@@ -26,13 +26,11 @@ function StandOut() {
       </section>
       <footer className="Navfooter ">
         <p className="text-decoration-underline fw-bold">
-          <Link to={"/become-a-host/overview"}>Back</Link>
+          <Link to={"/become-a-host/floor-plan"}>Back</Link>
         </p>
-        <button className="Navfooterbtn text-white">
-          <Link to={"/become-a-host/structure"} className="text-white">
-            Next
-          </Link>
-        </button>
+        <Link to={"/become-a-host/amenities"} className="text-white">
+          <button className="Navfooterbtn text-white">Next</button>
+        </Link>
       </footer>
     </main>
   );

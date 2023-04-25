@@ -73,7 +73,7 @@ const Location = () => {
                 <Marker position={{ lat: lat, lng: long }} />
               </GoogleMap>
             )}
-            <div className="pointer animate__animated animate__fadeInDown shadow">
+            <div className="pointer animate__animated animate__fadeInRight shadow">
               <div className="d-flex align-items-baseline">
                 <p className="text-dark">
                   <ImLocation />{" "}
@@ -97,7 +97,7 @@ const Location = () => {
           </div>
         </section>
       ) : (
-        <section className="location animate__animated animate__fadeInUp animate__delay-0.5s">
+        <section className="location animate__animated animate__fadeInRight ">
           <h2 className="my-3">Confirm your address</h2>
           <p>
             Your address is only shared with guests after they’ve made a

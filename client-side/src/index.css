@@ -8,7 +8,9 @@ body,
 html {
   font-family: "Roboto", sans-serif !important;
 }
-
+body {
+  overflow-x: hidden;
+}
 /* sign up modal  */
 .modal-body {
   height: 380px;
@@ -120,5 +122,5 @@ html {
   outline: none;
 }
 a:hover {
-  color: black !important;
+  /* color: black !important; */
 }
