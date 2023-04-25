@@ -41,3 +41,6 @@
 .manual {
   cursor: pointer;
 }
+a:hover {
+  color: black !important;
+}
