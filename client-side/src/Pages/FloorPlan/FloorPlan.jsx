@@ -97,7 +97,9 @@ const FloorPlan = () => {
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/location"}>Back</Link>
         </p>
-        <button className="Navfooterbtn">Next</button>
+        <Link to={"/become-a-host/stand-out"} className="text-white">
+          <button className="Navfooterbtn">Next</button>
+        </Link>
       </footer>
     </>
   );

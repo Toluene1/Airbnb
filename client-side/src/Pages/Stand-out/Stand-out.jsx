@@ -26,7 +26,7 @@ function StandOut() {
       </section>
       <footer className="Navfooter ">
         <p className="text-decoration-underline fw-bold">
-          <Link to={"/become-a-host/overview"}>Back</Link>
+          <Link to={"/become-a-host/floor-plan"}>Back</Link>
         </p>
         <button className="Navfooterbtn text-white">
           <Link to={"/become-a-host/structure"} className="text-white">
