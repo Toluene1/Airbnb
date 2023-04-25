@@ -7,6 +7,7 @@ import {
   MdOutlineSoupKitchen,
   MdWork,
   MdPool,
+  MdOutdoorGrill,
 } from "react-icons/md";
 import { TbWashTemperature6, TbAirConditioning } from "react-icons/tb";
 import { AiFillCar } from "react-icons/ai";
@@ -159,7 +160,7 @@ const Amenities = () => {
               onClick={(e) => handleToggle(e.currentTarget.id)}
             >
               <p>
-                <AiOutlineWifi />
+                <MdOutdoorGrill />
               </p>
               <p className="fs-6 mt-3">BBQ grill</p>
             </div>{" "}
