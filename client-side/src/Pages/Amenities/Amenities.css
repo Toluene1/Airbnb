@@ -1,0 +1,96 @@
+.Amenities {
+  max-width: 600px;
+  margin: auto;
+  padding: 10px;
+}
+.Amenities div {
+  cursor: pointer;
+}
+.publish {
+  font-size: 18px;
+  color: grey;
+}
+.Amenities main {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.amenity {
+  width: 180px;
+  height: 100px;
+  border-radius: 8px;
+  border: 2px solid lightgrey;
+  margin: 10px 0px;
+  padding: 10px;
+}
+
+.amenityClicked {
+  width: 180px;
+  background-color: rgb(240, 240, 240);
+  height: 100px;
+  border-radius: 8px;
+  border: 2px solid black;
+  margin: 10px 0px;
+  padding: 10px;
+}
+.amenityClicked p {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0px;
+  padding: 0px;
+}
+
+.amenity p {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0px;
+  padding: 0px;
+}
+.amenity:hover {
+  border: 2px solid black;
+}
+
+@media only screen and (max-width: 635px) {
+  .amenity {
+    width: 160px;
+    height: 100px;
+    border-radius: 8px;
+    border: 1px solid lightgrey;
+    margin: 10px 0px;
+    padding: 10px;
+  }
+  .amenityClicked {
+    width: 160px;
+    background-color: rgb(223, 222, 222);
+    height: 100px;
+    border-radius: 8px;
+    border: 1px solid lightgrey;
+    margin: 10px 0px;
+    padding: 10px;
+  }
+
+  .Amenities {
+    width: 100%;
+    margin: 10px auto;
+  }
+  .Amenities h3 {
+    font-size: 22px;
+  }
+  .amenityClicked p {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0px;
+    padding: 0px;
+  }
+  .amenity p {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0px;
+    padding: 0px;
+  }
+  .amenity:hover {
+    border: 1px solid lightgrey;
+  }
+}
