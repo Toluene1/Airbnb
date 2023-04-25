@@ -184,12 +184,14 @@ const Location = () => {
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/privacy-type"}>Back</Link>
         </p>
-        <button
-          disabled={isDisabled}
-          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
-        >
-          Next
-        </button>
+        <Link to={"/become-a-host/floor-plan"}>
+          <button
+            disabled={isDisabled}
+            className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+          >
+            Next
+          </button>
+        </Link>
       </footer>
     </>
   );

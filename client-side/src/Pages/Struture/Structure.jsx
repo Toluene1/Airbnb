@@ -30,7 +30,6 @@ const Structure = () => {
   return (
     <section>
       <PropertyNav />
-
       <section className="structure">
         <h2>Which of these best describes your place?</h2>
         <main className="animate__animated animate__fadeInUp animate__delay-0.5s">
@@ -40,7 +39,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -55,7 +54,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -70,7 +69,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -85,7 +84,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -100,7 +99,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -115,7 +114,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -130,7 +129,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -145,7 +144,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -160,7 +159,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -175,7 +174,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -186,18 +185,20 @@ const Structure = () => {
           </div>
         </main>
       </section>
+      <br /> <br /> <br />
       <footer className="Navfooter">
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/about-your-place"}>Back</Link>
         </p>
-        <button
-          disabled={isDisabled}
-          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
-        >
-          <Link to={"/become-a-host/privacy-type"} className="text-white">
+
+        <Link to={"/become-a-host/privacy-type"} className="text-white">
+          <button
+            disabled={isDisabled}
+            className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+          >
             Next
-          </Link>
-        </button>
+          </button>
+        </Link>
       </footer>
     </section>
   );

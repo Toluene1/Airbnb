@@ -75,6 +75,10 @@ article {
 .footer button {
   width: 100%;
 }
+.footer div {
+  width: 200px;
+  margin-left: auto;
+}
 
 @media only screen and (min-width: 735px) {
   .image {

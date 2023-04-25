@@ -30,11 +30,9 @@ function AboutYourPlace() {
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/overview"}>Back</Link>
         </p>
-        <button className="Navfooterbtn text-white">
-          <Link to={"/become-a-host/structure"} className="text-white">
-            Next
-          </Link>
-        </button>
+        <Link to={"/become-a-host/structure"} className="text-white">
+          <button className="Navfooterbtn text-white">Next</button>
+        </Link>
       </footer>
     </main>
   );

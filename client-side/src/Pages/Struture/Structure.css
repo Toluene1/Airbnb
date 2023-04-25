@@ -32,6 +32,7 @@ a:hover {
 }
 .structuresClicked {
   min-width: 210px;
+  background-color: rgb(240, 240, 240);
   height: 100px;
   border-radius: 8px;
   border: 2px solid black;
@@ -49,6 +50,7 @@ a:hover {
     min-width: 150px;
     height: 100px;
     border-radius: 8px;
+    background-color: rgb(240, 240, 240);
     border: 2px solid black;
     margin: 10px 0px;
     padding: 10px;
