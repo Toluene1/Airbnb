@@ -13,12 +13,12 @@ const FloorPlan = () => {
 
   const increaseQty = (e) => {
     const plantype = e.target.id;
-    setplan({ ...plan, [plantype]: plan[plantype] + 1 });
+    setplan({ ...plan, [plantype]: (plan[plantype] += 1) });
   };
 
   const decreaseQty = (e) => {
     const plantype = e.target.id;
-    setplan({ ...plan, [plantype]: plan[plantype] - 1 });
+    setplan({ ...plan, [plantype]: (plan[plantype] -= 1) });
   };
 
   return (

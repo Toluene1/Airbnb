@@ -12,7 +12,7 @@ const App = React.lazy(() => import("./App"));
 
 const Accounts = React.lazy(() => import("./Pages/Account/Account"));
 const PersonalInfo = React.lazy(() =>
-  import("./Pages/PersonalInfo/PersonalInfo")
+  import("./Pages/PersonalInfo/PersonalInfo"),
 );
 const Profile = React.lazy(() => import("./Pages/Profile/Profile"));
 const Hosting = React.lazy(() => import("./Pages/Hosting/Hosting"));
@@ -21,11 +21,12 @@ const Structure = React.lazy(() => import("./Pages/Struture/Structure"));
 const Location = React.lazy(() => import("./Pages/Location/Location"));
 const FloorPlan = React.lazy(() => import("./Pages/FloorPlan/FloorPlan"));
 const StandOut = React.lazy(() => import("./Pages/Stand-out/Stand-out"));
+const Amenities = React.lazy(() => import("./Pages/Amenities/Amenities"));
 const PrivacyType = React.lazy(() =>
-  import("./Pages/Privacy-type/Privacy-type")
+  import("./Pages/Privacy-type/Privacy-type"),
 );
 const AboutYourPlace = React.lazy(() =>
-  import("./Pages/About-your-place/About-your-place")
+  import("./Pages/About-your-place/About-your-place"),
 );
 const Error404 = React.lazy(() => import("./Pages/error404"));
 
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
     path: "/become-a-host/stand-out",
     element: <StandOut />,
   },
+  {
+    path: "/become-a-host/amenities",
+    element: <Amenities />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -94,5 +99,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <RouterProvider router={router} />
       </Suspense>
     </ContextProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
