@@ -9,6 +9,7 @@ body {
 .texts {
   max-width: 650px;
   margin: auto;
+  margin-bottom: 40px;
 }
 .texts2 {
   max-width: 680px;
@@ -67,6 +68,7 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+  margin-bottom: 150px;
 }
 .singleDivs {
   width: 333px;

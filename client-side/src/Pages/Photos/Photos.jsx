@@ -3,6 +3,7 @@ import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import "./Photos.css";
 import photoDemo from "../../../src/assets/photoDemo.jpg";
 import { BsPlus } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 function Photos() {
   const [photos, setPhotos] = useState(true);
@@ -61,7 +62,7 @@ function Photos() {
                 </div>
               </div>
             </div>
-            <div className="photoBoxdiv">
+            <div className="photoBoxdiv mt-3">
               <div className="image-input text-center my-3">
                 <label htmlFor="my-file">
                   <img
@@ -113,11 +114,8 @@ function Photos() {
               <div className="singleDivs">
                 <div className="image-input text-center my-3">
                   <label htmlFor="my-file">
-                    <img
-                      src={photoDemo}
-                      style={{ width: "60px", height: "60px" }}
-                      alt=""
-                    />
+                    <BsPlus className="fs-1" />
+                    <p className="">Add more</p>
                   </label>
                   <input type="file" id="my-file" name="image" />
                 </div>
@@ -125,6 +123,16 @@ function Photos() {
             </div>
           </section>
         )}
+        <section>
+          <footer className="Navfooter">
+            <p className="text-decoration-underline fw-bold">
+              {/* <Link to={"/become-a-host/location"}>Back</Link> */}
+            </p>
+            {/* <Link to={"/become-a-host/stand-out"} className="text-white"> */}
+            <button className="Navfooterbtn">Next</button>
+            {/* </Link> */}
+          </footer>
+        </section>
       </section>
     </main>
   );
