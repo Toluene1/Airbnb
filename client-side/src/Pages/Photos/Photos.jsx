@@ -14,9 +14,9 @@ function Photos() {
   return (
     <main>
       <PropertyNav />
-      <section>
+      <section className="px-3">
         {photos ? (
-          <section className="sectionDiv">
+          <section className="sectionDiv animate__animated animate__fadeInRight">
             <div className="texts">
               <h3>Add some photos of your castle</h3>
               <p className="fw-light" style={{ fontSize: "18px" }}>
@@ -123,17 +123,15 @@ function Photos() {
             </div>
           </section>
         )}
-        <section>
-          <footer className="Navfooter">
-            <p className="text-decoration-underline fw-bold">
-              <Link to={"/become-a-host/location"}>Back</Link>
-            </p>
-            {/* <Link to={"/become-a-host/stand-out"} className="text-white"> */}
-            <button className="Navfooterbtn">Next</button>
-            {/* </Link> */}
-          </footer>
-        </section>
       </section>
+      <footer className="Navfooter">
+        <p className="text-decoration-underline fw-bold">
+          <Link to={"/become-a-host/amenities"}>Back</Link>
+        </p>
+        {/* <Link to={"/become-a-host/stand-out"} className="text-white"> */}
+        <button className="Navfooterbtn">Next</button>
+        {/* </Link> */}
+      </footer>
     </main>
   );
 }

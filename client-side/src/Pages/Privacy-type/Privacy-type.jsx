@@ -25,7 +25,7 @@ function PropertyType() {
         <h1 className="text-center mb-5">
           What type of place will guests have?
         </h1>
-        <main className="animate__animated animate__fadeInUp">
+        <main className="animate__animated animate__fadeInRight">
           <div
             id="entire-place"
             value="entire-place"

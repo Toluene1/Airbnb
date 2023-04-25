@@ -8,7 +8,7 @@ function AboutYourPlace() {
   return (
     <main>
       <PropertyNav />
-      <section className="divCover gap-5 animate__animated animate__fadeInUp">
+      <section className="divCover gap-5 animate__animated animate__fadeInRight">
         <div className="div1">
           <img
             src={Airbnbhouse3}

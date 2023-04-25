@@ -201,10 +201,10 @@ const Amenities = () => {
       <br /> <br /> <br /> <br />
       <footer className="Navfooter">
         <p className="text-decoration-underline fw-bold">
-          <Link to={"/become-a-host/about-your-place"}>Back</Link>
+          <Link to={"/become-a-host/stand-out"}>Back</Link>
         </p>
 
-        <Link to={"/become-a-host/privacy-type"} className="text-white">
+        <Link to={"/become-a-host/photos"} className="text-white">
           <button
             disabled={isDisabled}
             className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
