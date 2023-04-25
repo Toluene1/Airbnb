@@ -126,7 +126,7 @@ function Photos() {
         <section>
           <footer className="Navfooter">
             <p className="text-decoration-underline fw-bold">
-              {/* <Link to={"/become-a-host/location"}>Back</Link> */}
+              <Link to={"/become-a-host/location"}>Back</Link>
             </p>
             {/* <Link to={"/become-a-host/stand-out"} className="text-white"> */}
             <button className="Navfooterbtn">Next</button>
