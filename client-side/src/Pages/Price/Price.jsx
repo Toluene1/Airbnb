@@ -40,7 +40,7 @@ const Price = () => {
       </section>
       <footer className="Navfooter">
         <p className="text-decoration-underline fw-bold">
-          <Link to={"/become-a-host/about-your-place"}>Back</Link>
+          <Link to={"/become-a-host/finish-setup"}>Back</Link>
         </p>
 
         <Link to={"/become-a-host/privacy-type"} className="text-white">
