@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 function Photos() {
   const [photos, setPhotos] = useState(true);
-  //   const [photoDemo, setPhotoDemo] = useState(true);
   const showImages = () => {
     setPhotos(false);
   };
@@ -124,12 +123,12 @@ function Photos() {
           </section>
         )}
       </section>
-      <footer className="Navfooters">
+      <footer className="Navfooter">
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/amenities"}>Back</Link>
         </p>
         <Link to={"/become-a-host/title"} className="text-white">
-          <button className="Navfooterbtns">Next</button>
+          <button className="Navfooterbtn">Next</button>
         </Link>
       </footer>
     </main>

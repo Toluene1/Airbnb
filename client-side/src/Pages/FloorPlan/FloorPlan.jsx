@@ -24,7 +24,7 @@ const FloorPlan = () => {
   return (
     <>
       <PropertyNav />
-      <section className="floorplan">
+      <section className="floorplan  animate__animated animate__fadeInUp">
         <h2> Let's start with the basics</h2>
         <h5 className="my-5">How many people can stay here?</h5>
         <div className="count">

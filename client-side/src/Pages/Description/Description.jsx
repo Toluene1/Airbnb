@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 function Title() {
   const [About, setAbout] = useState(
-    "Feel refreshed when you stay in this rustic gem."
+    "Feel refreshed when you stay in this rustic gem.",
   );
   const [count, setCount] = useState(0);
   const [isDisabled, setisDisabled] = useState(true);
@@ -25,7 +25,10 @@ function Title() {
   return (
     <main>
       <PropertyNav />
-      <section className="px-3 animate__animated animate__fadeInRight">
+      <section
+        className="px-3 animate__animated animate__fadeInRight "
+        style={{ marginBottom: "100px" }}
+      >
         <div className="sectionDiv">
           <div className="texts">
             <h2>Create your description</h2>
@@ -49,7 +52,7 @@ function Title() {
             <p className="count mt-2">{count} / 500</p>
           </div>
         </div>
-      </section>
+      </section>{" "}
       <footer className="Navfooter">
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/title"}>Back</Link>
