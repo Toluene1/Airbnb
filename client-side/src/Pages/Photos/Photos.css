@@ -34,15 +34,13 @@
   min-width: 320px;
   height: 370px;
   margin: auto;
-  border: 1px solid rgb(111, 103, 103);
+  border: 1px dotted rgb(111, 103, 103);
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.photoBox:hover {
-  border: 2px solid black;
-}
+
 .photoBoxdiv {
   max-width: 680px;
   min-width: 320px;
