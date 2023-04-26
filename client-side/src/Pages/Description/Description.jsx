@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
-import "./Title.css";
+import "./Description.css";
 import { useEffect, useState } from "react";
 
 function Title() {
-  const [About, setAbout] = useState("");
+  const [About, setAbout] = useState(
+    "Feel refreshed when you stay in this rustic gem."
+  );
   const [count, setCount] = useState(0);
   const [isDisabled, setisDisabled] = useState(true);
 
@@ -15,7 +17,7 @@ function Title() {
   console.log(About);
 
   useEffect(() => {
-    if (count == 5) {
+    if (count == 50) {
       setisDisabled(false);
     }
   }, [count]);
@@ -26,10 +28,9 @@ function Title() {
       <section className="px-3 animate__animated animate__fadeInRight">
         <div className="sectionDiv">
           <div className="texts">
-            <h2>Now, let's give your castle a title</h2>
+            <h2>Create your description</h2>
             <p className="fw-light mt-2" style={{ fontSize: "18px" }}>
-              Short titles work best. Have fun with it—you can always change it
-              later.
+              Share what makes your place special.
             </p>
           </div>
           <div>
@@ -43,25 +44,25 @@ function Title() {
               placeholder="Castle Title"
               cols="30"
               rows="10"
-              maxLength={32}
+              maxLength={500}
             ></textarea>
-            <p className="count mt-2">{count} / 32</p>
+            <p className="count mt-2">{count} / 500</p>
           </div>
         </div>
       </section>
       <footer className="Navfooter">
         <p className="text-decoration-underline fw-bold">
-          <Link to={"/become-a-host/photos"}>Back</Link>
+          <Link to={"/become-a-host/title"}>Back</Link>
         </p>
 
-        <Link to={"/become-a-host/description"} className="text-white">
-          <button
-            disabled={isDisabled}
-            className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
-          >
-            Next
-          </button>
-        </Link>
+        {/* <Link to={"/become-a-host/privacy-type"} className="text-white"> */}
+        <button
+          disabled={isDisabled}
+          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+        >
+          Next
+        </button>
+        {/* </Link> */}
       </footer>
     </main>
   );

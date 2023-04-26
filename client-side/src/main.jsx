@@ -24,6 +24,7 @@ const Photos = React.lazy(() => import("./Pages/Photos/Photos"));
 const StandOut = React.lazy(() => import("./Pages/Stand-out/Stand-out"));
 const Amenities = React.lazy(() => import("./Pages/Amenities/Amenities"));
 const Title = React.lazy(() => import("./Pages/Title/Title"));
+const Description = React.lazy(() => import("./Pages/Description/Description"));
 const PrivacyType = React.lazy(() =>
   import("./Pages/Privacy-type/Privacy-type")
 );
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
   {
     path: "/become-a-host/title",
     element: <Title />,
+  },
+  {
+    path: "/become-a-host/description",
+    element: <Description />,
   },
 ]);
 
