@@ -34,15 +34,13 @@
   min-width: 320px;
   height: 370px;
   margin: auto;
-  border: 1px solid rgb(111, 103, 103);
+  border: 1px dotted rgb(111, 103, 103);
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.photoBox:hover {
-  border: 2px solid black;
-}
+
 .photoBoxdiv {
   max-width: 680px;
   min-width: 320px;
@@ -100,6 +98,26 @@
 .reduceText {
   font-size: 25px;
 }
+.Navfooters {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  background-color: white;
+  position: sticky;
+  bottom: 0px;
+  border-top: 3px solid grey;
+}
+.Navfooterbtns {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: black;
+  color: white !important;
+  font-weight: 600;
+  border: 1px solid black;
+}
+
 @media only screen and (max-width: 735px) {
   .photoBox {
     max-width: 640px;

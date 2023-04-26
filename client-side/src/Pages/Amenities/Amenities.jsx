@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import "./Amenities.css";
 import { AiOutlineWifi } from "react-icons/ai";
+import { GrAnchor } from "react-icons/gr";
+
 import {
   MdOutlineMonitor,
   MdOutlineSoupKitchen,
   MdWork,
   MdPool,
+  MdOutdoorGrill,
+  MdCameraAlt,
 } from "react-icons/md";
 import { TbWashTemperature6, TbAirConditioning } from "react-icons/tb";
 import { AiFillCar } from "react-icons/ai";
@@ -29,6 +33,8 @@ const Amenities = () => {
     bbqgrill: false,
     gym: false,
     beach: false,
+    camera: false,
+    Weapons: false,
   });
   const [isDisabled, setisDisabled] = useState(true);
   const [Amenities, SetAmenities] = useState([]);
@@ -159,7 +165,7 @@ const Amenities = () => {
               onClick={(e) => handleToggle(e.currentTarget.id)}
             >
               <p>
-                <AiOutlineWifi />
+                <MdOutdoorGrill />
               </p>
               <p className="fs-6 mt-3">BBQ grill</p>
             </div>{" "}
@@ -194,6 +200,31 @@ const Amenities = () => {
                 <FaUmbrellaBeach />
               </p>
               <p className="fs-6 mt-3">BeachAccess</p>
+            </div>
+          </main>
+        </div>
+        <div>
+          <h6 className="my-2">Does your place have any of these?</h6>
+          <main>
+            <div
+              id="camera"
+              className={` ${amenity.camera ? "amenityClicked" : "amenity"}`}
+              onClick={(e) => handleToggle(e.currentTarget.id)}
+            >
+              <p>
+                <MdCameraAlt />
+              </p>
+              <p className="fs-6 mt-3">Security camera(s) </p>
+            </div>
+            <div
+              id="Weapons"
+              className={` ${amenity.Weapons ? "amenityClicked" : "amenity"}`}
+              onClick={(e) => handleToggle(e.currentTarget.id)}
+            >
+              <p>
+                <GrAnchor />
+              </p>
+              <p className="fs-6 mt-3">Weapons</p>
             </div>
           </main>
         </div>
