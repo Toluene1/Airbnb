@@ -55,14 +55,14 @@ function Title() {
           <Link to={"/become-a-host/title"}>Back</Link>
         </p>
 
-        {/* <Link to={"/become-a-host/privacy-type"} className="text-white"> */}
-        <button
-          disabled={isDisabled}
-          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
-        >
-          Next
-        </button>
-        {/* </Link> */}
+        <Link to={"/become-a-host/finish-setup"} className="text-white">
+          <button
+            disabled={isDisabled}
+            className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+          >
+            Next
+          </button>
+        </Link>
       </footer>
     </main>
   );

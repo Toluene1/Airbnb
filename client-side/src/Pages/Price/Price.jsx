@@ -13,7 +13,7 @@ const Price = () => {
   return (
     <>
       <PropertyNav />
-      <section className="Price   animate__animated animate__fadeInUp animate__delay-0.5s">
+      <section className="Price   animate__animated animate__fadeInRight animate__delay-0.5s">
         <h2>Now, set your price</h2>
         <p className="time"> You can change it anytime.</p>
         <main>
@@ -43,9 +43,9 @@ const Price = () => {
           <Link to={"/become-a-host/finish-setup"}>Back</Link>
         </p>
 
-        <Link to={"/become-a-host/privacy-type"} className="text-white">
-          <button className="Navfooterbtn">Next</button>
-        </Link>
+        {/* <Link to={"/become-a-host/privacy-type"} className="text-white"> */}
+        <button className="Navfooterbtn">Next</button>
+        {/* </Link> */}
       </footer>
     </>
   );
