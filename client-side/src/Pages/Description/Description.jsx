@@ -4,17 +4,17 @@ import "./Description.css";
 import { useEffect, useState } from "react";
 
 function Title() {
-  const [About, setAbout] = useState(
+  const [description, setDescription] = useState(
     "Feel refreshed when you stay in this rustic gem.",
   );
   const [count, setCount] = useState(0);
   const [isDisabled, setisDisabled] = useState(true);
 
   const about = (e) => {
-    setAbout(e.target.value);
+    setDescription(e.target.value);
     setCount(e.target.value.length);
   };
-  console.log(About);
+  console.log(description);
 
   useEffect(() => {
     if (count == 50) {
@@ -38,7 +38,7 @@ function Title() {
           </div>
           <div>
             <textarea
-              value={About}
+              value={description}
               id="about"
               required
               type="text"
