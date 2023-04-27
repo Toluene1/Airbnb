@@ -82,7 +82,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await httpAuth.get("/fetchUser");
+        const response = await httpAuth.get("/user/fetchUser");
         setUser(response.data.user);
       } catch (error) {
         console.log(error.response.data.msg);
