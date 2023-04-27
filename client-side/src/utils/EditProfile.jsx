@@ -58,7 +58,7 @@ const EditProfile = ({ seteditprofile }) => {
   const postUserEmail = async () => {
     try {
       setloading(true);
-      const response = await httpAuth.post("/updateProfile", profile);
+      const response = await httpAuth.post("/user/updateProfile", profile);
       setUser(response.data.user);
       handleSaveUser(response.data.user);
       seteditprofile(false);

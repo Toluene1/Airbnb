@@ -39,7 +39,9 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const postUserOtp = async () => {
     try {
       setloading(true);
-      const response = await httpClient.post("/verifyEmailOtp", { user_Otp });
+      const response = await httpClient.post("/user/verifyEmailOtp", {
+        user_Otp,
+      });
       setalert(true);
       setalertMessage(response.data.message);
       setloading(false);

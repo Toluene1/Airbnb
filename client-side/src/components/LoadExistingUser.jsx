@@ -32,7 +32,7 @@ const LoadExistingUser = ({ setshowOtp, setexisting, setshowCreateAcc }) => {
   const postUserEmail = async () => {
     try {
       setloading(true);
-      await httpClient.post("/createEmailOtp", { email });
+      await httpClient.post("/user/createEmailOtp", { email });
       setmail(email);
       continueSameAcc();
       setloading(false);

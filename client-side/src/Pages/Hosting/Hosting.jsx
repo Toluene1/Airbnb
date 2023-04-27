@@ -24,7 +24,7 @@ const Hosting = () => {
     const fetchUser = async () => {
       try {
         setauthloading(true);
-        const response = await httpAuth.get("/fetchUser");
+        const response = await httpAuth.get("/user/fetchUser");
         setUser(response.data.user);
         setauthloading(false);
       } catch (error) {

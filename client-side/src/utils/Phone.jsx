@@ -22,7 +22,7 @@ const Phone = ({ seteditphone }) => {
   const postUserEmail = async () => {
     try {
       setloading(true);
-      const response = await httpAuth.post("/updatePhone", edit.current);
+      const response = await httpAuth.post("/user/updatePhone", edit.current);
       setUser(response.data.user);
       handleSaveUser(response.data.user);
       seteditphone(false);
