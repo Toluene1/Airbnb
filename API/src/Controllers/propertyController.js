@@ -9,7 +9,7 @@ const createProperty = async (req, res) => {
       host: _id,
     });
 
-    // const prop = await Property.findOne({ _id: propId }).populate("host");
+    //find 1 property by id from req.params and populate  const prop = await Property.findOne({ _id: propId }).populate("host");
     res.status(200).json({ prop: property });
   } catch (error) {
     console.log(error);
