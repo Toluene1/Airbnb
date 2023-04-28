@@ -61,8 +61,8 @@ const Location = () => {
           </p>
           <div className="maps">
             {!isLoaded ? (
-              <div className=" center-screen">
-                <div className="spinner-border text-danger "></div>
+              <div className=" d-flex">
+                <div className="spinner-border text-danger m-auto "></div>
               </div>
             ) : (
               <GoogleMap

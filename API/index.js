@@ -4,14 +4,16 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const { PORT, MONGO_URL } = require("./src/Config/config");
 const Error404 = require("./src/middleware/error404");
-const userRoute = require("./src/Routes/userRoute");
+const userRouter = require("./src/Routes/userRoute");
+const propertyRouter = require("./src/Routes/propertyRoute");
 const auth = require("./src/middleware/auth");
 //middleware
 app.use(cors());
 app.use(express.json());
 
 //Routes
-app.use("/api/v1/user", userRoute);
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/property", [auth], propertyRouter);
 
 app.use(Error404); // unavailable route
 

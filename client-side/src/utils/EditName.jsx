@@ -21,7 +21,7 @@ const EditName = ({ seteditname }) => {
   const postUserEmail = async () => {
     try {
       setloading(true);
-      const response = await httpAuth.post("/updateName", edit.current);
+      const response = await httpAuth.post("/user/updateName", edit.current);
       setUser(response.data.user);
       handleSaveUser(response.data.user);
       seteditname(false);

@@ -27,9 +27,9 @@ function AboutYourPlace() {
         </div>
       </section>
       <footer className="Navfooter ">
-        <p className="text-decoration-underline fw-bold">
-          <Link to={"/become-a-host/overview"}>Back</Link>
-        </p>
+        <Link to={"/become-a-host/overview"}>
+          <p className="text-decoration-underline fw-bold text-dark">Back</p>
+        </Link>
         <Link to={"/become-a-host/structure"} className="text-white">
           <button className="Navfooterbtn text-white">Next</button>
         </Link>

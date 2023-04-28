@@ -13,7 +13,7 @@ function Welcome({ setshowOtp }) {
   const postUserEmail = async () => {
     try {
       setloading(true);
-      await httpClient.post("/createEmailOtp", state.current);
+      await httpClient.post("/user/createEmailOtp", state.current);
       setmail(state.current.email);
       setshowOtp(true);
       setloading(false);

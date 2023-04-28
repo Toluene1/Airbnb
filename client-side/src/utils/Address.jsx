@@ -20,7 +20,7 @@ const Address = ({ seteditaddress }) => {
     try {
       setloading(true);
       const response = await httpAuth.post(
-        "/createAddress",
+        "/user/createAddress",
         editAddress.current,
       );
       setUser(response.data.user);

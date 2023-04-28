@@ -171,13 +171,13 @@ const updateProfile = async (req, res) => {
 const uploadPhoto = async (req, res) => {
   try {
     const { _id } = req.user;
-    const user = await User.findOne({ _id: _id });
+
     const form = formidable();
     form.parse(req, async (err, fields, files) => {
       if (err) throw new Error(err);
       const filePath = files["image"].filepath;
       const result = await cloudinary.uploader.upload(filePath, {
-        public_id: user._id,
+        public_id: _id,
         folder: "profile_pics",
         width: 300,
         crop: "scale",

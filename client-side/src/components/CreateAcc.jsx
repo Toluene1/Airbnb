@@ -42,7 +42,7 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
   //post user details  to server
   const postUserDetails = async () => {
     try {
-      const response = await httpClient.post("/createUser", state.current);
+      const response = await httpClient.post("/user/createUser", state.current);
       handleSaveToken(response.data.token);
       setUser(response.data.user);
       backToWelcome();

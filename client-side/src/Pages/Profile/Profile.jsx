@@ -29,7 +29,7 @@ const Profile = () => {
 
     try {
       setloading(true);
-      const response = await httpAuth("/uploadPhoto", {
+      const response = await httpAuth("/user/uploadPhoto", {
         method: "post",
         data: data,
         headers: { "Content-Type": "multipart/form-data" },
@@ -46,7 +46,7 @@ const Profile = () => {
     const fetchUser = async () => {
       try {
         setauthloading(true);
-        const response = await httpAuth.get("/fetchUser");
+        const response = await httpAuth.get("/user/fetchUser");
         setUser(response.data.user);
         setauthloading(false);
       } catch (error) {

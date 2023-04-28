@@ -31,7 +31,7 @@ const EmergencyContact = ({ seteditcontact }) => {
     try {
       setloading(true);
       const response = await httpAuth.post(
-        "/emergContact",
+        "/user/emergContact",
         editContact.current,
       );
       setUser(response.data.user);

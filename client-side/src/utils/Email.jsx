@@ -13,7 +13,10 @@ const Email = ({ seteditmail }) => {
   const postUserEmail = async () => {
     try {
       setloading(true);
-      const response = await httpAuth.post("/updateEmail", editEmail.current);
+      const response = await httpAuth.post(
+        "/user/updateEmail",
+        editEmail.current,
+      );
       setUser(response.data.user);
       handleSaveUser(response.data.user);
       seteditmail(false);
