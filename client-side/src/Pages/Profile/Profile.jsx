@@ -29,7 +29,7 @@ const Profile = () => {
 
     try {
       setloading(true);
-      const response = await httpAuth("/uploadPhoto", {
+      const response = await httpAuth("/user/uploadPhoto", {
         method: "post",
         data: data,
         headers: { "Content-Type": "multipart/form-data" },
