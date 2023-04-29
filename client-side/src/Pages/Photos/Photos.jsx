@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import "./Photos.css";
 import photoDemo from "../../../src/assets/photoDemo.jpg";
@@ -6,10 +6,20 @@ import { BsPlus } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 function Photos() {
-  const [photos, setPhotos] = useState(true);
+  const [photos, setPhotos] = useState(false);
+
   const showImages = () => {
     setPhotos(false);
   };
+
+  const handleUploadImage = async (e) => {
+    const data = new FormData();
+    const file = e.target.files[0];
+    data.append(e.target.id, file);
+    const creatImgSrc = await URL.createObjectURL(file);
+    e.target.closest("div").nextElementSibling.src = creatImgSrc;
+  };
+
   return (
     <main>
       <PropertyNav />
@@ -74,42 +84,51 @@ function Photos() {
               </div>
             </div>
             <div className="photoBoxDivs gap-3">
-              <div className="singleDivs">
-                <div className="image-input text-center my-3">
-                  <label htmlFor="my-file">
+              {/* second  */}
+
+              <div className="singleDivs  position-relative ">
+                <div className="image-input text-center my-3 bg-danger position-absolute">
+                  <label htmlFor="file">
                     <img
                       src={photoDemo}
                       style={{ width: "60px", height: "60px" }}
                       alt=""
                     />
                   </label>
-                  <input type="file" id="my-file" name="image" />
+                  <input type="file" id="file" onChange={handleUploadImage} />
                 </div>
+                <img src="" alt="" style={{ width: "100%" }} />
               </div>
-              <div className="singleDivs">
-                <div className="image-input text-center my-3">
-                  <label htmlFor="my-file">
+              {/* third */}
+              <div className="singleDivs position-relative ">
+                <div className="image-input text-center my-3 bg-danger position-absolute">
+                  <label htmlFor="file1">
                     <img
                       src={photoDemo}
                       style={{ width: "60px", height: "60px" }}
                       alt=""
                     />
                   </label>
-                  <input type="file" id="my-file" name="image" />
+                  <input type="file" id="file1" onChange={handleUploadImage} />
                 </div>
+                <img src="" alt="" style={{ width: "100%" }} />
               </div>
+
+              {/* fourth  */}
+
               <div className="singleDivs">
-                <div className="image-input text-center my-3">
-                  <label htmlFor="my-file">
+                <div className="image-input text-center my-3 bg-danger position-absolute">
+                  <label htmlFor="file2">
                     <img
                       src={photoDemo}
                       style={{ width: "60px", height: "60px" }}
                       alt=""
                     />
                   </label>
-                  <input type="file" id="my-file" name="image" />
+                  <input type="file" id="file2" name="image" />
                 </div>
               </div>
+
               <div className="singleDivs">
                 <div className="image-input text-center my-3">
                   <label htmlFor="my-file">

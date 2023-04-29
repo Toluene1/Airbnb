@@ -65,6 +65,8 @@
   margin-bottom: 150px;
 }
 .singleDivs {
+  object-fit: contain;
+  overflow: hidden;
   width: 333px;
   height: 228px;
   display: flex;

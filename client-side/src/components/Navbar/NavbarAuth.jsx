@@ -64,7 +64,10 @@ const NavbarAuth = () => {
       <div className="webNav1  ">
         {Loggedin ? (
           <div>
-            <Link to={"/"} className="text-decoration-none text-dark fw-normal">
+            <Link
+              to={"/become-a-host"}
+              className="text-decoration-none text-dark fw-normal"
+            >
               {" "}
               Switch to hosting
             </Link>
