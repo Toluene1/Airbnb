@@ -4,22 +4,43 @@ import "./Photos.css";
 import photoDemo from "../../../src/assets/photoDemo.jpg";
 import { BsPlus } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import httpAuth from "../../Services/config";
 
 function Photos() {
   const [photos, setPhotos] = useState(true);
+  const [details, setDetails] = useState([]);
 
   const showImages = () => {
     setPhotos(false);
   };
 
   const handleUploadImage = async (e) => {
-    setPhotos(false);
     const data = new FormData();
     const file = e.target.files[0];
     data.append(e.target.id, file);
+    setDetails([
+      ...details,
+      { file_id: e.target.id, uploaded_file: e.target.files[0] },
+    ]);
     const creatImgSrc = await URL.createObjectURL(file);
     e.target.closest("div").nextElementSibling.src = creatImgSrc;
   };
+
+  //   const postPropertyImages = async () => {
+  //     try {
+  //       const response = await httpAuth.post("/user/updateProfile", profile);
+  //       setUser(response.data.user);
+  //       handleSaveUser(response.data.user);
+  //       seteditprofile(false);
+  //       setloading(false);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(details);
+  }
 
   return (
     <main>
@@ -43,7 +64,7 @@ function Photos() {
                 />
                 <h5>Choose at least 5 photos</h5>
                 <div className="file-input text-center my-3">
-                  <label htmlFor="my-file">Upload Photo</label>
+                  <label htmlFor="coverPhoto">Upload Photo</label>
                   <input
                     type="file"
                     id="coverPhoto"
@@ -74,20 +95,26 @@ function Photos() {
             </div>
             {/* cover photo */}
             <div className="photoBoxdiv mt-3">
-              <div className="image-input text-center my-3">
-                <label htmlFor="coverPhoto">
-                  <img
-                    src={photoDemo}
-                    style={{ width: "100px", height: "100px" }}
-                    alt=""
+              <div className="singleDivsCover  position-relative ">
+                <div className="image-input text-center my-3 bg-danger position-absolute">
+                  <label htmlFor="coverPhoto">
+                    <img
+                      src={photoDemo}
+                      style={{ width: "60px", height: "60px" }}
+                      alt=""
+                    />
+                  </label>
+                  <input
+                    type="file"
+                    id="coverPhoto"
+                    onChange={handleUploadImage}
                   />
-                </label>
-                <input type="file" id="coverPhoto" name="image" />
+                </div>
+                <img src="" alt="" style={{ width: "100%" }} />
               </div>
             </div>
             <div className="photoBoxDivs gap-3">
               {/* second  */}
-
               <div className="singleDivs  position-relative ">
                 <div className="image-input text-center my-3 bg-danger position-absolute">
                   <label htmlFor="file">
@@ -210,9 +237,11 @@ function Photos() {
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/amenities"}>Back</Link>
         </p>
-        <Link to={"/become-a-host/title"} className="text-white">
-          <button className="Navfooterbtn">Next</button>
-        </Link>
+        {/* <Link to={"/become-a-host/title"} className="text-white"> */}
+        <button className="Navfooterbtn" onClick={handleSubmit}>
+          Next
+        </button>
+        {/* </Link> */}
       </footer>
     </main>
   );
