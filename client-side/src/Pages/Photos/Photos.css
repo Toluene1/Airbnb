@@ -3,7 +3,7 @@
   margin-bottom: 100px;
 }
 .texts {
-  max-width: 650px;
+  max-width: 670px;
   margin: auto;
   margin-bottom: 40px;
 }
@@ -12,6 +12,7 @@
   margin: auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .button-addMore {
   background-color: white;
@@ -59,7 +60,7 @@
   text-align: center;
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   margin-top: 10px;
   margin-bottom: 150px;
@@ -67,7 +68,7 @@
 .singleDivs {
   object-fit: contain;
   overflow: hidden;
-  width: 331px;
+  width: 332px;
   height: 228px;
   display: flex;
   border: 1px solid rgb(151, 145, 145);
