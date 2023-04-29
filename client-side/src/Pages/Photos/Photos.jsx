@@ -6,13 +6,14 @@ import { BsPlus } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 function Photos() {
-  const [photos, setPhotos] = useState(false);
+  const [photos, setPhotos] = useState(true);
 
   const showImages = () => {
     setPhotos(false);
   };
 
   const handleUploadImage = async (e) => {
+    setPhotos(false);
     const data = new FormData();
     const file = e.target.files[0];
     data.append(e.target.id, file);
@@ -45,7 +46,7 @@ function Photos() {
                   <label htmlFor="my-file">Upload Photo</label>
                   <input
                     type="file"
-                    id="my-file"
+                    id="coverPhoto"
                     name="image"
                     onChange={showImages}
                   />
@@ -71,16 +72,17 @@ function Photos() {
                 </div>
               </div>
             </div>
+            {/* cover photo */}
             <div className="photoBoxdiv mt-3">
               <div className="image-input text-center my-3">
-                <label htmlFor="my-file">
+                <label htmlFor="coverPhoto">
                   <img
                     src={photoDemo}
                     style={{ width: "100px", height: "100px" }}
                     alt=""
                   />
                 </label>
-                <input type="file" id="my-file" name="image" />
+                <input type="file" id="coverPhoto" name="image" />
               </div>
             </div>
             <div className="photoBoxDivs gap-3">
@@ -116,7 +118,7 @@ function Photos() {
 
               {/* fourth  */}
 
-              <div className="singleDivs">
+              <div className="singleDivs position-relative ">
                 <div className="image-input text-center my-3 bg-danger position-absolute">
                   <label htmlFor="file2">
                     <img
@@ -125,18 +127,80 @@ function Photos() {
                       alt=""
                     />
                   </label>
-                  <input type="file" id="file2" name="image" />
+                  <input type="file" id="file2" onChange={handleUploadImage} />
                 </div>
+                <img src="" alt="" style={{ width: "100%" }} />
               </div>
+              {/* fifth */}
 
-              <div className="singleDivs">
-                <div className="image-input text-center my-3">
-                  <label htmlFor="my-file">
-                    <BsPlus className="fs-1" />
-                    <p className="">Add more</p>
+              <div className="singleDivs position-relative ">
+                <div className="image-input text-center my-3 bg-danger position-absolute">
+                  <label htmlFor="file3">
+                    <img
+                      src={photoDemo}
+                      style={{ width: "60px", height: "60px" }}
+                      alt=""
+                    />
                   </label>
-                  <input type="file" id="my-file" name="image" />
+                  <input type="file" id="file3" onChange={handleUploadImage} />
                 </div>
+                <img src="" alt="" style={{ width: "100%" }} />
+              </div>
+              {/* sixth */}
+              <div className="singleDivs position-relative ">
+                <div className="image-input text-center my-3 bg-danger position-absolute">
+                  <label htmlFor="file4">
+                    <img
+                      src={photoDemo}
+                      style={{ width: "60px", height: "60px" }}
+                      alt=""
+                    />
+                  </label>
+                  <input type="file" id="file4" onChange={handleUploadImage} />
+                </div>
+                <img src="" alt="" style={{ width: "100%" }} />
+              </div>
+              {/* seventh */}
+              <div className="singleDivs position-relative ">
+                <div className="image-input text-center my-3 bg-danger position-absolute">
+                  <label htmlFor="file5">
+                    <img
+                      src={photoDemo}
+                      style={{ width: "60px", height: "60px" }}
+                      alt=""
+                    />
+                  </label>
+                  <input type="file" id="file5" onChange={handleUploadImage} />
+                </div>
+                <img src="" alt="" style={{ width: "100%" }} />
+              </div>
+              {/* eight */}
+              <div className="singleDivs position-relative ">
+                <div className="image-input text-center my-3 bg-danger position-absolute">
+                  <label htmlFor="file6">
+                    <img
+                      src={photoDemo}
+                      style={{ width: "60px", height: "60px" }}
+                      alt=""
+                    />
+                  </label>
+                  <input type="file" id="file6" onChange={handleUploadImage} />
+                </div>
+                <img src="" alt="" style={{ width: "100%" }} />
+              </div>
+              {/* ninth */}
+              <div className="singleDivs position-relative ">
+                <div className="image-input text-center my-3 bg-danger position-absolute">
+                  <label htmlFor="file7">
+                    <img
+                      src={photoDemo}
+                      style={{ width: "60px", height: "60px" }}
+                      alt=""
+                    />
+                  </label>
+                  <input type="file" id="file7" onChange={handleUploadImage} />
+                </div>
+                <img src="" alt="" style={{ width: "100%" }} />
               </div>
             </div>
           </section>

@@ -52,14 +52,14 @@
   border: 2px solid black;
 }
 .photoBoxDivs {
-  max-width: 700px;
+  max-width: 680px;
   min-width: 320px;
   margin: auto;
   border: none;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   margin-top: 10px;
   margin-bottom: 150px;
@@ -67,7 +67,7 @@
 .singleDivs {
   object-fit: contain;
   overflow: hidden;
-  width: 333px;
+  width: 331px;
   height: 228px;
   display: flex;
   border: 1px solid rgb(151, 145, 145);
@@ -120,5 +120,13 @@
   }
   .singleDivs {
     width: 100%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .singleDivs {
+    height: 250px;
+  }
+  .photoBoxdiv {
+    height: 320px;
   }
 }
