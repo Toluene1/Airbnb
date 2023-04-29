@@ -27,7 +27,7 @@
 .structures:hover {
   border: 2px solid black;
 }
-a:hover {
+p a:hover {
   color: black;
 }
 .structuresClicked {
