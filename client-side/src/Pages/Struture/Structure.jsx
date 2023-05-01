@@ -13,11 +13,16 @@ import {
 } from "react-icons/Gi";
 
 import "./Structure.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { setId } from "../../utils/setlocalstorage";
+import httpAuth from "../../Services/config";
 const Structure = () => {
   const [selected, setselected] = useState(null);
   const [isDisabled, setisDisabled] = useState(true);
   const [structure, setstructure] = useState("");
+  const [loading, setloading] = useState(false);
+  const navigate = useNavigate();
+
   const handleToggle = (id, val) => {
     if (selected == id) {
       return setselected(null);
@@ -27,6 +32,20 @@ const Structure = () => {
     setstructure(val);
   };
   console.log(structure);
+
+  const postStructure = async () => {
+    try {
+      setloading(true);
+
+      const response = await httpAuth.post("/property/create", { structure });
+      setloading(false);
+      setId(response.data.prop);
+      navigate("/become-a-host/privacy-type");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <section>
       <PropertyNav />
@@ -39,7 +58,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -54,7 +73,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -69,7 +88,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -84,7 +103,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -99,7 +118,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -114,7 +133,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -129,7 +148,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -144,7 +163,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -159,7 +178,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -174,7 +193,7 @@ const Structure = () => {
             onClick={(e) =>
               handleToggle(
                 e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML
+                e.currentTarget.children[1].innerHTML,
               )
             }
           >
@@ -191,14 +210,17 @@ const Structure = () => {
           <Link to={"/become-a-host/about-your-place"}>Back</Link>
         </p>
 
-        <Link to={"/become-a-host/privacy-type"} className="text-white">
-          <button
-            disabled={isDisabled}
-            className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
-          >
-            Next
-          </button>
-        </Link>
+        <button
+          disabled={isDisabled}
+          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+          onClick={postStructure}
+        >
+          {loading ? (
+            <span className="spinner-border text-secondary"></span>
+          ) : (
+            "Next"
+          )}
+        </button>
       </footer>
     </section>
   );

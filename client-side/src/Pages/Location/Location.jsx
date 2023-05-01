@@ -1,11 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import "./Location.css";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { google_APi_key } from "../AirbnbHome/AirbnbHome";
 import { ImLocation } from "react-icons/im";
 import { country_code } from "../../utils/CountryCodes";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import httpAuth from "../../Services/config";
+import { Context } from "../../Provider/Context";
 
 const Location = () => {
   const [long, setlong] = useState(0);
@@ -13,6 +15,10 @@ const Location = () => {
   const [showAddress, setshowAddress] = useState(false);
   const [ManualAdd, setManualAdd] = useState(false);
   const [isDisabled, setisDisabled] = useState(true);
+  const [loading, setloading] = useState(false);
+  const { propertyId } = useContext(Context);
+
+  const navigate = useNavigate();
   const location = useRef({
     country: "",
     address: "",
@@ -49,6 +55,19 @@ const Location = () => {
     setisDisabled(false);
   };
 
+  const postLocation = async () => {
+    try {
+      setloading(true);
+      await httpAuth.post(
+        `/property/updatepropertylocation/${propertyId}`,
+        location.current,
+      );
+      setloading(false);
+      navigate("/become-a-host/floor-plan");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <PropertyNav />
@@ -103,18 +122,18 @@ const Location = () => {
             Your address is only shared with guests after they’ve made a
             reservation.
           </p>
-          <form action="" className="form-control m-0 p-0 border-0 ">
+          <div className="form-control m-0 p-0 border-0 ">
             {/* country  */}
             <div className="form-floating py-2">
               <select
                 name=""
                 id="Country/Region"
                 className="form-control p-3"
-                onClick={(e) => (location.current.country = e.target.value)}
+                onChange={(e) => (location.current.country = e.target.value)}
               >
                 {country_code.map((country) => (
                   <option key={country?.name} value={country?.name}>
-                    {country?.name} ({country?.dial_code})
+                    {country?.name}
                   </option>
                 ))}
               </select>
@@ -172,7 +191,7 @@ const Location = () => {
               />
               <label htmlFor="postal">Postal Code</label>
             </div>
-          </form>
+          </div>
           <br />
           <br />
           <br />
@@ -184,14 +203,18 @@ const Location = () => {
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/privacy-type"}>Back</Link>
         </p>
-        <Link to={"/become-a-host/floor-plan"}>
-          <button
-            disabled={isDisabled}
-            className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
-          >
-            Next
-          </button>
-        </Link>
+
+        <button
+          disabled={isDisabled}
+          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+          onClick={postLocation}
+        >
+          {loading ? (
+            <span className="spinner-border text-secondary"></span>
+          ) : (
+            "Next"
+          )}
+        </button>
       </footer>
     </>
   );

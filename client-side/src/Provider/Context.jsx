@@ -11,6 +11,12 @@ const ContextProvider = ({ children }) => {
   const [authloading, setauthloading] = useState(true);
   const [existingUser, setexistingUser] = useState({});
 
+  const [propertyId, setproperyId] = useState(
+    localStorage.getItem("propId")
+      ? JSON.parse(localStorage.getItem("propId"))
+      : "",
+  );
+
   const [Loggedin, setLoggedIn] = useState(
     localStorage.getItem("loggedin")
       ? JSON.parse(localStorage.getItem("loggedin"))
@@ -42,6 +48,8 @@ const ContextProvider = ({ children }) => {
     setexistingUser,
     authloading,
     setauthloading,
+    propertyId,
+    setproperyId,
   };
 
   return <Context.Provider value={initialState}>{children}</Context.Provider>;
