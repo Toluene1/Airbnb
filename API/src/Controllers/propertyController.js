@@ -12,6 +12,39 @@ const createProperty = async (req, res) => {
     });
 
     //find 1 property by id from req.params and populate  const prop = await Property.findOne({ _id: propId }).populate("host");
+    res.status(200).json({ prop: property._id });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
+
+const updateProperty = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const property = await Property.findOneAndUpdate({ _id: id }, req.body, {
+      new: true,
+    });
+
+    res.status(200).json({ prop: property });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
+
+const updatePropertyLocation = async (req, res) => {
+  const { id } = req.params;
+  console.log(req.body);
+  try {
+    const property = await Property.findOneAndUpdate(
+      { _id: id },
+      { location: req.body },
+      {
+        new: true,
+      },
+    );
+
     res.status(200).json({ prop: property });
   } catch (error) {
     console.log(error);
@@ -21,7 +54,7 @@ const createProperty = async (req, res) => {
 
 const uploadPropertyImages = async (req, res) => {
   try {
-    const { _id } = req.params;
+    const { id } = req.params;
     const { Email } = req.user;
     const imagesUri = [];
     const uploadResults = [];
@@ -48,7 +81,7 @@ const uploadPropertyImages = async (req, res) => {
       console.log(images);
 
       const property = Property.findOneAndUpdate(
-        { _id: _id },
+        { _id: id },
         { images: images },
         { new: true },
       );
@@ -60,4 +93,9 @@ const uploadPropertyImages = async (req, res) => {
   }
 };
 
-module.exports = { createProperty, uploadPropertyImages };
+module.exports = {
+  createProperty,
+  uploadPropertyImages,
+  updateProperty,
+  updatePropertyLocation,
+};
