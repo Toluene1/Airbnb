@@ -10,5 +10,5 @@ const router = Router();
 router.post("/create", [auth], createProperty);
 router.post("/updateproperty/:id", [auth], updateProperty);
 router.post("/updatepropertylocation/:id", [auth], updatePropertyLocation);
-router.post("/uploadimages", [auth], uploadPropertyImages);
+router.post("/uploadimages/:id", [auth], uploadPropertyImages);
 module.exports = router;

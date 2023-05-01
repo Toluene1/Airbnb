@@ -4,10 +4,9 @@ const cloudinary = require("../utils/cloudinary");
 
 const createProperty = async (req, res) => {
   const { _id } = req.user;
-  const { structure } = req.body;
+
   try {
     const property = await Property.create({
-      structure: structure,
       host: _id,
     });
 
@@ -35,11 +34,11 @@ const updateProperty = async (req, res) => {
 
 const updatePropertyLocation = async (req, res) => {
   const { id } = req.params;
-  console.log(req.body);
+
   try {
     const property = await Property.findOneAndUpdate(
       { _id: id },
-      { location: req.body },
+      { Location: req.body },
       {
         new: true,
       },
@@ -62,6 +61,8 @@ const uploadPropertyImages = async (req, res) => {
     const form = formidable();
     form.parse(req, async (err, fields, files) => {
       if (err) throw new Error(err);
+      console.log(files);
+
       const fileArray = Object.values(files);
 
       for (let index = 0; index < fileArray.length; index++) {

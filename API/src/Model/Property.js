@@ -33,20 +33,20 @@ const propertySchema = new Schema(
       },
     },
     guests: {
-      type: Schema.Types.String,
-      default: "",
+      type: Schema.Types.Number,
+      default: 0,
     },
     Bedrooms: {
-      type: Schema.Types.String,
-      default: "",
+      type: Schema.Types.Number,
+      default: 0,
     },
     Beds: {
-      type: Schema.Types.String,
-      default: "",
+      type: Schema.Types.Number,
+      default: 0,
     },
     Bathrooms: {
-      type: Schema.Types.String,
-      default: "",
+      type: Schema.Types.Number,
+      default: 0,
     },
     Amenities: {
       type: Schema.Types.Array,
