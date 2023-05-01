@@ -55,19 +55,6 @@ const EditProfile = ({ seteditprofile }) => {
     });
   };
 
-  const postUserEmail = async () => {
-    try {
-      setloading(true);
-      const response = await httpAuth.post("/user/updateProfile", profile);
-      setUser(response.data.user);
-      handleSaveUser(response.data.user);
-      seteditprofile(false);
-      setloading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const updateNames = (e) => {
     e.preventDefault();
     postUserEmail();
