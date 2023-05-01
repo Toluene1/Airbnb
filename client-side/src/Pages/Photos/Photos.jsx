@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import "./Photos.css";
 import photoDemo from "../../../src/assets/photoDemo.jpg";
 import { BsPlus } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import httpAuth from "../../Services/config";
+import { Context } from "../../Provider/Context";
 
 function Photos() {
   const [photos, setPhotos] = useState(false);
   const [details, setDetails] = useState([]);
-
+  const [loading, setloading] = useState(false);
+  const navigate = useNavigate();
+  const { propertyId } = useContext(Context);
+  const data = new FormData();
   const handleUploadImage = async (e) => {
-    const data = new FormData();
     const file = e.target.files[0];
     data.append(e.target.id, file);
     setPhotos(true);
@@ -20,10 +23,20 @@ function Photos() {
     e.target.closest("div").nextElementSibling.src = creatImgSrc;
   };
 
-  function handleSubmit(e) {
-    // e.preventDefault();
-    console.log(details);
-  }
+  const postPhotos = async () => {
+    try {
+      setloading(true);
+      await httpAuth(`/property/uploadimages/${propertyId}`, {
+        method: "post",
+        body: data,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      setloading(false);
+      navigate("/become-a-host/title");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <main>
@@ -201,11 +214,15 @@ function Photos() {
           <Link to={"/become-a-host/amenities"}>Back</Link>
         </p>
         <button
-          onClick={handleSubmit}
+          onClick={postPhotos}
           className={`${details.length >= 5 ? "Navfooterbtn" : "disabledbtn"}`}
           disabled={details.length >= 5 ? false : true}
         >
-          Next
+          {loading ? (
+            <span className="spinner-border text-secondary"></span>
+          ) : (
+            "Next"
+          )}
         </button>
       </footer>
     </main>

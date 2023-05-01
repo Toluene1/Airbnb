@@ -11,7 +11,7 @@ const ContextProvider = ({ children }) => {
   const [authloading, setauthloading] = useState(true);
   const [existingUser, setexistingUser] = useState({});
 
-  const [propertyId, setproperyId] = useState(
+  const [propertyId, setpropertyId] = useState(
     localStorage.getItem("propId")
       ? JSON.parse(localStorage.getItem("propId"))
       : "",
@@ -49,7 +49,7 @@ const ContextProvider = ({ children }) => {
     authloading,
     setauthloading,
     propertyId,
-    setproperyId,
+    setpropertyId,
   };
 
   return <Context.Provider value={initialState}>{children}</Context.Provider>;

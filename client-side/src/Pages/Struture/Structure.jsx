@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import { BsHouseCheck, BsFillCupHotFill } from "react-icons/bs";
 import { AiOutlineApartment } from "react-icons/ai";
@@ -16,11 +16,14 @@ import "./Structure.css";
 import { Link, useNavigate } from "react-router-dom";
 import { setId } from "../../utils/setlocalstorage";
 import httpAuth from "../../Services/config";
+import { Context } from "../../Provider/Context";
 const Structure = () => {
   const [selected, setselected] = useState(null);
   const [isDisabled, setisDisabled] = useState(true);
   const [structure, setstructure] = useState("");
   const [loading, setloading] = useState(false);
+  const { propertyId } = useContext(Context);
+
   const navigate = useNavigate();
 
   const handleToggle = (id, val) => {
@@ -35,10 +38,10 @@ const Structure = () => {
   const postStructure = async () => {
     try {
       setloading(true);
-
-      const response = await httpAuth.post("/property/create", { structure });
+      await httpAuth.post(`/property/updateproperty/${propertyId}`, {
+        structure,
+      });
       setloading(false);
-      setId(response.data.prop);
       navigate("/become-a-host/privacy-type");
     } catch (error) {
       console.log(error);

@@ -1,10 +1,28 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 import "./About-your-place.css";
 import Airbnbhouse3 from "../../assets/house3.jpg";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../../Provider/Context";
+import httpAuth from "../../Services/config";
+import { setId } from "../../utils/setlocalstorage";
 
 function AboutYourPlace() {
+  const { setpropertyId } = useContext(Context);
+  const [loading, setloading] = useState();
+  const navigate = useNavigate();
+  const createProperty = async () => {
+    try {
+      setloading(true);
+      const response = await httpAuth.post("/property/create");
+      setloading(false);
+      setId(setpropertyId, response.data.prop);
+      navigate("/become-a-host/structure");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <main>
       <PropertyNav />
@@ -30,9 +48,14 @@ function AboutYourPlace() {
         <Link to={"/become-a-host/overview"}>
           <p className="text-decoration-underline fw-bold text-dark">Back</p>
         </Link>
-        <Link to={"/become-a-host/structure"} className="text-white">
-          <button className="Navfooterbtn text-white">Next</button>
-        </Link>
+
+        <button className="Navfooterbtn text-white" onClick={createProperty}>
+          {loading ? (
+            <span className="spinner-border text-secondary"></span>
+          ) : (
+            "Next"
+          )}
+        </button>
       </footer>
     </main>
   );

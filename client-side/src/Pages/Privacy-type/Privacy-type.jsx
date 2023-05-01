@@ -22,7 +22,7 @@ function PropertyType() {
     setselected(id);
     setprivacy(id);
   };
-
+  console.log(propertyId);
   const postPrivacy = async () => {
     try {
       setloading(true);
