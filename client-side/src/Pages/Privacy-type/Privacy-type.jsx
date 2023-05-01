@@ -35,7 +35,7 @@ function PropertyType() {
       console.log(error);
     }
   };
-  console.log(privacy);
+
   return (
     <main>
       <PropertyNav />

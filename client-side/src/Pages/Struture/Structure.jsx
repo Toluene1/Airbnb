@@ -31,7 +31,6 @@ const Structure = () => {
     setselected(id);
     setstructure(val);
   };
-  console.log(structure);
 
   const postStructure = async () => {
     try {
