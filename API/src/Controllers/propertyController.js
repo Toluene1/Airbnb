@@ -91,9 +91,32 @@ const uploadPropertyImages = async (req, res) => {
   }
 };
 
+const findProperty = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const property = await Property.findOne({ _id: id });
+    res.status(200).json({ prop: property });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
+
+const getAllProperty = async (req, res) => {
+  try {
+    const property = await Property.find({});
+    res.status(200).json({ prop: property });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
+
 module.exports = {
   createProperty,
   uploadPropertyImages,
   updateProperty,
   updatePropertyLocation,
+  findProperty,
+  getAllProperty,
 };
