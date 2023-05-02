@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import "./Title.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../../Provider/Context";
+import httpAuth from "../../Services/config";
 
 function Title() {
   const [About, setAbout] = useState("");
   const [count, setCount] = useState(0);
+  const { propertyId } = useContext(Context);
+  const [loading, setloading] = useState(false);
   const [isDisabled, setisDisabled] = useState(true);
+  const navigate = useNavigate();
 
   const about = (e) => {
     setAbout(e.target.value);
@@ -20,6 +25,18 @@ function Title() {
     }
   }, [count]);
 
+  const postAbout = async () => {
+    try {
+      setloading(true);
+      await httpAuth.post(`/property/updateproperty/${propertyId}`, {
+        About,
+      });
+      setloading(false);
+      navigate("/become-a-host/description");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <main>
       <PropertyNav />
@@ -54,14 +71,17 @@ function Title() {
           <Link to={"/become-a-host/photos"}>Back</Link>
         </p>
 
-        <Link to={"/become-a-host/description"} className="text-white">
-          <button
-            disabled={isDisabled}
-            className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
-          >
-            Next
-          </button>
-        </Link>
+        <button
+          disabled={isDisabled}
+          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+          onClick={postAbout}
+        >
+          {loading ? (
+            <span className="spinner-border text-secondary"></span>
+          ) : (
+            "Next"
+          )}
+        </button>
       </footer>
     </main>
   );
