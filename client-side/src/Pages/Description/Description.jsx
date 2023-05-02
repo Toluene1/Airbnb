@@ -7,7 +7,7 @@ import { Context } from "../../Provider/Context";
 
 function Title() {
   const [description, setDescription] = useState(
-    "Feel refreshed when you stay in this rustic gem."
+    "Feel refreshed when you stay in this rustic gem.",
   );
   const [count, setCount] = useState(0);
   const [isDisabled, setisDisabled] = useState(true);
@@ -22,8 +22,11 @@ function Title() {
   console.log(description);
 
   useEffect(() => {
-    if (count == 50) {
+    setCount(description.length);
+    if (count >= 48) {
       setisDisabled(false);
+    } else {
+      setisDisabled(true);
     }
   }, [count]);
   const postdescription = async () => {

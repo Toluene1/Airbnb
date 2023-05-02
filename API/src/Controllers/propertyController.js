@@ -61,8 +61,6 @@ const uploadPropertyImages = async (req, res) => {
     const form = formidable();
     form.parse(req, async (err, fields, files) => {
       if (err) throw new Error(err);
-      console.log(files);
-
       const fileArray = Object.values(files);
 
       for (let index = 0; index < fileArray.length; index++) {
@@ -79,9 +77,8 @@ const uploadPropertyImages = async (req, res) => {
       for (let index = 0; index < uploadResults.length; index++) {
         images.push(uploadResults[index].secure_url);
       }
-      console.log(images);
 
-      const property = Property.findOneAndUpdate(
+      const property = await Property.findOneAndUpdate(
         { _id: id },
         { images: images },
         { new: true },
@@ -94,9 +91,32 @@ const uploadPropertyImages = async (req, res) => {
   }
 };
 
+const findProperty = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const property = await Property.findOne({ _id: id });
+    res.status(200).json({ prop: property });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
+
+const getAllProperty = async (req, res) => {
+  try {
+    const property = await Property.find({});
+    res.status(200).json({ prop: property });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
+
 module.exports = {
   createProperty,
   uploadPropertyImages,
   updateProperty,
   updatePropertyLocation,
+  findProperty,
+  getAllProperty,
 };
