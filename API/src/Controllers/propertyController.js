@@ -94,7 +94,7 @@ const uploadPropertyImages = async (req, res) => {
 const findProperty = async (req, res) => {
   const { id } = req.params;
   try {
-    const property = await Property.findOne({ _id: id });
+    const property = await Property.findOne({ _id: id }).populate("host");
     res.status(200).json({ prop: property });
   } catch (error) {
     console.log(error);
