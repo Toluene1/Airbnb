@@ -3,7 +3,34 @@ import "./Review.css";
 import { Link, useNavigate } from "react-router-dom";
 import { BiNote } from "react-icons/bi";
 import { BsCalendar4Week, BsPen } from "react-icons/bs";
+import { useContext, useEffect, useState } from "react";
+import httpAuth from "../../Services/config";
+import { Context } from "../../Provider/Context";
 function Review() {
+  const [property, setProperty] = useState({});
+  const { propertyId } = useContext(Context);
+  let isMounted = true;
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await httpAuth.get(
+          `property/findproperty/${propertyId}`
+        );
+        setProperty(response.data.prop);
+      } catch (error) {
+        console.log(error.response.data.msg);
+      }
+    };
+
+    if (isMounted) {
+      fetchUser();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+  console.log(property);
+
   return (
     <main>
       <PropertyNav />
@@ -15,7 +42,9 @@ function Review() {
           </p>
         </div>
         <div className="sectionsDiv gap-3">
-          <div className="getImages shadow"></div>
+          <div className="getImages shadow">
+            <h1>Tolu</h1>
+          </div>
           <div className="getDetails">
             <h3>What's next?</h3>
             <div className="d-flex mb-1">
