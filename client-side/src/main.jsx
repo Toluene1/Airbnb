@@ -26,6 +26,7 @@ const Amenities = React.lazy(() => import("./Pages/Amenities/Amenities"));
 const Price = React.lazy(() => import("./Pages/Price/Price"));
 const Finish = React.lazy(() => import("./Pages/Finish-Setup/FinishSetup"));
 const Title = React.lazy(() => import("./Pages/Title/Title"));
+const Review = React.lazy(() => import("./Pages/Review/Review"));
 const Description = React.lazy(() => import("./Pages/Description/Description"));
 const PrivacyType = React.lazy(() =>
   import("./Pages/Privacy-type/Privacy-type")
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
   {
     path: "/become-a-host/description",
     element: <Description />,
+  },
+  {
+    path: "/become-a-host/review",
+    element: <Review />,
   },
 ]);
 
