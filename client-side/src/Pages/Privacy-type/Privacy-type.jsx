@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./Privacy-type.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import { BsHouseDoor, BsDoorOpen } from "react-icons/bs";
 import { MdOutlineOtherHouses } from "react-icons/md";
+import { Context } from "../../Provider/Context";
+import httpAuth from "../../Services/config";
 
 function PropertyType() {
   const [selected, setselected] = useState(null);
   const [isDisabled, setisDisabled] = useState(true);
+  const { propertyId } = useContext(Context);
   const [privacy, setprivacy] = useState("");
+  const [loading, setloading] = useState(false);
+  const navigate = useNavigate();
   const handleToggle = (id) => {
     if (selected == id) {
       return setselected(null);
@@ -16,6 +21,19 @@ function PropertyType() {
     setisDisabled(false);
     setselected(id);
     setprivacy(id);
+  };
+  console.log(propertyId);
+  const postPrivacy = async () => {
+    try {
+      setloading(true);
+      await httpAuth.post(`/property/updateproperty/${propertyId}`, {
+        privacy,
+      });
+      setloading(false);
+      navigate("/become-a-host/location");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -70,7 +88,7 @@ function PropertyType() {
             onClick={(e) => handleToggle(e.currentTarget.id)}
           >
             <div className="divText">
-              <p className="fw-bold">An entire place</p>
+              <p className="fw-bold">A Shared room</p>
               <p style={{ marginTop: "-10px" }}>
                 Guests sleep in a room or common areas that may be shared with
                 others
@@ -86,14 +104,18 @@ function PropertyType() {
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/structure"}>Back</Link>
         </p>
-        <Link to={"/become-a-host/location"} className="text-white">
-          <button
-            disabled={isDisabled}
-            className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
-          >
-            Next
-          </button>
-        </Link>
+
+        <button
+          disabled={isDisabled}
+          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+          onClick={postPrivacy}
+        >
+          {loading ? (
+            <span className="spinner-border text-secondary"></span>
+          ) : (
+            "Next"
+          )}
+        </button>
       </footer>
     </main>
   );

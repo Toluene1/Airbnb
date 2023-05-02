@@ -1,16 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import "./FloorPlan.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import httpAuth from "../../Services/config";
+import { Context } from "../../Provider/Context";
 const FloorPlan = () => {
-  const [isDisabled, setisDisabled] = useState(true);
   const [plan, setplan] = useState({
     guests: 4,
     Bedrooms: 1,
     Beds: 1,
     Bathrooms: 1,
   });
-
+  const { propertyId } = useContext(Context);
+  const [loading, setloading] = useState();
+  const navigate = useNavigate();
   const increaseQty = (e) => {
     const plantype = e.target.id;
     setplan({ ...plan, [plantype]: (plan[plantype] += 1) });
@@ -19,6 +22,18 @@ const FloorPlan = () => {
   const decreaseQty = (e) => {
     const plantype = e.target.id;
     setplan({ ...plan, [plantype]: (plan[plantype] -= 1) });
+  };
+  const postFloorPlan = async () => {
+    try {
+      setloading(true);
+      await httpAuth.post(`/property/updateproperty/${propertyId}`, {
+        ...plan,
+      });
+      setloading(false);
+      navigate("/become-a-host/stand-out");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -97,9 +112,14 @@ const FloorPlan = () => {
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/location"}>Back</Link>
         </p>
-        <Link to={"/become-a-host/stand-out"} className="text-white">
-          <button className="Navfooterbtn">Next</button>
-        </Link>
+
+        <button className="Navfooterbtn" onClick={postFloorPlan}>
+          {loading ? (
+            <span className="spinner-border text-secondary"></span>
+          ) : (
+            "Next"
+          )}
+        </button>
       </footer>
     </>
   );

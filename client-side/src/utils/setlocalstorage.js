@@ -15,3 +15,7 @@ export function Existing(setexisting) {
   localStorage.setItem("existing", JSON.stringify(true));
   setexisting(true);
 }
+export function setId(setpropertyId, res) {
+  setpropertyId(res);
+  localStorage.setItem("propId", JSON.stringify(res));
+}

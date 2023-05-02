@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import "./Amenities.css";
 import { AiOutlineWifi } from "react-icons/ai";
@@ -16,7 +16,9 @@ import { TbWashTemperature6, TbAirConditioning } from "react-icons/tb";
 import { AiFillCar } from "react-icons/ai";
 import { CgGym, CgPiano } from "react-icons/cg";
 import { FaUmbrellaBeach } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import httpAuth from "../../Services/config";
+import { Context } from "../../Provider/Context";
 
 const Amenities = () => {
   const [amenity, setamenity] = useState({
@@ -27,7 +29,7 @@ const Amenities = () => {
     freeparking: false,
     paidparking: false,
     airconditioning: false,
-    dedicated: false,
+    dedicated_workspace: false,
     pool: false,
     piano: false,
     bbqgrill: false,
@@ -38,7 +40,9 @@ const Amenities = () => {
   });
   const [isDisabled, setisDisabled] = useState(true);
   const [Amenities, SetAmenities] = useState([]);
-
+  const [loading, setloading] = useState(false);
+  const navigate = useNavigate();
+  const { propertyId } = useContext(Context);
   const handleToggle = (id) => {
     setamenity({ ...amenity, [id]: !amenity[id] });
 
@@ -54,8 +58,20 @@ const Amenities = () => {
     } else {
       setisDisabled(true);
     }
-    console.log(Amenities);
   }, [Amenities]);
+
+  const postAmenities = async () => {
+    try {
+      setloading(true);
+      await httpAuth.post(`/property/updateproperty/${propertyId}`, {
+        Amenities,
+      });
+      setloading(false);
+      navigate("/become-a-host/photos");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -133,8 +149,10 @@ const Amenities = () => {
             <p className="fs-6 mt-3">air conditioning</p>
           </div>{" "}
           <div
-            id="dedicated"
-            className={`amenity ${amenity.dedicated && "amenityClicked"}`}
+            id="dedicated_workspace"
+            className={`amenity ${
+              amenity.dedicated_workspace && "amenityClicked"
+            }`}
             onClick={(e) => handleToggle(e.currentTarget.id)}
           >
             <p>
@@ -235,14 +253,17 @@ const Amenities = () => {
           <Link to={"/become-a-host/stand-out"}>Back</Link>
         </p>
 
-        <Link to={"/become-a-host/photos"} className="text-white">
-          <button
-            disabled={isDisabled}
-            className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
-          >
-            Next
-          </button>
-        </Link>
+        <button
+          disabled={isDisabled}
+          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+          onClick={postAmenities}
+        >
+          {loading ? (
+            <span className="spinner-border text-secondary"></span>
+          ) : (
+            "Next"
+          )}
+        </button>
       </footer>
     </>
   );
