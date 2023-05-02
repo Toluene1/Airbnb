@@ -1,14 +1,33 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import "./Price.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import httpAuth from "../../Services/config";
+import { Context } from "../../Provider/Context";
 const Price = () => {
   const [price, setprice] = useState(52);
+  const { propertyId } = useContext(Context);
+  const [loading, setloading] = useState(false);
+  const navigate = useNavigate();
   const handleIncreasePrice = () => {
     setprice((prev) => (prev += 5));
   };
   const handleDecreasePrice = () => {
     setprice((prev) => (prev -= 5));
+  };
+  console.log(price);
+
+  const postPrice = async () => {
+    try {
+      setloading(true);
+      await httpAuth.post(`/property/updateproperty/${propertyId}`, {
+        price,
+      });
+      setloading(false);
+      navigate("/become-a-host/finish-setup");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
@@ -43,9 +62,13 @@ const Price = () => {
           <Link to={"/become-a-host/finish-setup"}>Back</Link>
         </p>
 
-        {/* <Link to={"/become-a-host/privacy-type"} className="text-white"> */}
-        <button className="Navfooterbtn">Next</button>
-        {/* </Link> */}
+        <button className="Navfooterbtn" onClick={postPrice}>
+          {loading ? (
+            <span className="spinner-border text-secondary"></span>
+          ) : (
+            "Next"
+          )}{" "}
+        </button>
       </footer>
     </>
   );
