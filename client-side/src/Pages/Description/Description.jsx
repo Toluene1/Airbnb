@@ -1,14 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
 import "./Description.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import httpAuth from "../../Services/config";
+import { Context } from "../../Provider/Context";
 
 function Title() {
   const [description, setDescription] = useState(
-    "Feel refreshed when you stay in this rustic gem.",
+    "Feel refreshed when you stay in this rustic gem."
   );
   const [count, setCount] = useState(0);
   const [isDisabled, setisDisabled] = useState(true);
+  const { propertyId } = useContext(Context);
+  const [loading, setloading] = useState(false);
+  const navigate = useNavigate();
 
   const about = (e) => {
     setDescription(e.target.value);
@@ -21,7 +26,18 @@ function Title() {
       setisDisabled(false);
     }
   }, [count]);
-
+  const postdescription = async () => {
+    try {
+      setloading(true);
+      await httpAuth.post(`/property/updateproperty/${propertyId}`, {
+        description,
+      });
+      setloading(false);
+      navigate("/become-a-host/finish-setup");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <main>
       <PropertyNav />
@@ -58,14 +74,17 @@ function Title() {
           <Link to={"/become-a-host/title"}>Back</Link>
         </p>
 
-        <Link to={"/become-a-host/finish-setup"} className="text-white">
-          <button
-            disabled={isDisabled}
-            className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
-          >
-            Next
-          </button>
-        </Link>
+        <button
+          disabled={isDisabled}
+          className={`${isDisabled ? "disabledbtn" : "Navfooterbtn"}`}
+          onClick={postdescription}
+        >
+          {loading ? (
+            <span className="spinner-border text-secondary"></span>
+          ) : (
+            "Next"
+          )}
+        </button>
       </footer>
     </main>
   );
