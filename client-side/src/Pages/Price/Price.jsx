@@ -24,7 +24,7 @@ const Price = () => {
         price,
       });
       setloading(false);
-      navigate("/become-a-host/finish-setup");
+      navigate("/become-a-host/review");
     } catch (error) {
       console.log(error);
     }
