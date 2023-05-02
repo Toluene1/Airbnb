@@ -13,10 +13,11 @@ function Photos() {
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
   const { propertyId } = useContext(Context);
-  const data = new FormData();
+
   const handleUploadImage = async (e) => {
     const file = e.target.files[0];
-    data.append(e.target.id, file);
+    const formdata = new FormData();
+    formdata.append(e.target.id, file);
     setPhotos(true);
     setDetails([...details, { file_id: e.target.id, uploaded_file: file }]);
     const creatImgSrc = await URL.createObjectURL(file);
@@ -24,11 +25,15 @@ function Photos() {
   };
 
   const postPhotos = async () => {
+    const data = new FormData();
+    for (let index = 0; index < details.length; index++) {
+      data.append(details[index].file_id, details[index].uploaded_file);
+    }
     try {
       setloading(true);
       await httpAuth(`/property/uploadimages/${propertyId}`, {
         method: "post",
-        body: data,
+        data: data,
         headers: { "Content-Type": "multipart/form-data" },
       });
       setloading(false);
@@ -37,7 +42,6 @@ function Photos() {
       console.log(error);
     }
   };
-
   return (
     <main>
       <PropertyNav />

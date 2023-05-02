@@ -17,12 +17,12 @@ function Title() {
     setAbout(e.target.value);
     setCount(e.target.value.length);
   };
-  console.log(About);
 
   useEffect(() => {
-    if (count == 5) {
-      setisDisabled(false);
+    if (count >= 5) {
+      return setisDisabled(false);
     }
+    setisDisabled(true);
   }, [count]);
 
   const postAbout = async () => {
