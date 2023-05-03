@@ -127,6 +127,100 @@ body {
   border-color: rgb(218, 216, 216);
   outline: none;
 }
+.navFilter {
+  width: 100%;
+  height: 75px;
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 70px;
+  background-color: white;
+}
+.navFilter main {
+  width: 80%;
+  display: flex;
+  margin-bottom: 0px;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.navFilter div {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 100px;
+  height: 70px;
+  cursor: pointer;
+}
+.property {
+  margin-top: 150px;
+}
+.clickeddiv {
+  border-bottom: 2px solid rgb(32, 32, 32);
+}
+.catload {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(233, 231, 231);
+}
+
+.navFilter div:hover {
+  border-bottom: 2px solid rgb(8, 8, 8);
+}
+.navFilter p {
+  font-size: 14px;
+  color: rgb(90, 90, 90);
+}
+.navFilter button {
+  width: 100px;
+  border-radius: 10px;
+  border: 1px solid rgb(170, 170, 170);
+  background-color: transparent;
+  padding: 13px;
+  display: flex;
+  color: black;
+  justify-content: space-between;
+  align-items: center;
+}
 a:hover {
   color: black !important;
+}
+@media only screen and (max-width: 735px) {
+  .navFilter button {
+    display: none;
+  }
+  .navFilter {
+    height: 75px;
+    width: 100%;
+    border-bottom: 1px solid grey;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 54px;
+    border-top: none;
+    background-color: white;
+  }
+  .navFilter main {
+    /* height: 60px; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: auto;
+  }
+  .navFilter div {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    min-width: 100px;
+    height: 70px;
+  }
+
+  .navFilter main::-webkit-scrollbar {
+    display: none;
+  }
 }
