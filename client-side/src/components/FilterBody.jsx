@@ -4,7 +4,7 @@ import { BsBuildings } from "react-icons/bs";
 import { TbBuildingHospital } from "react-icons/tb";
 import { BsHouses } from "react-icons/bs";
 
-function FilterBody() {
+function FilterBody(props) {
   const [selected, setSelected] = useState(0);
   const [bed, setbed] = useState(0);
   const [property, setProperty] = useState(false);
@@ -365,6 +365,22 @@ function FilterBody() {
             </ul>
             <hr />
           </div>
+          <section className="divFilterFooter fixed-bottom py-2 px-3">
+            <div>
+              <a href="#" className="text-dark clearAll">
+                clear all
+              </a>
+            </div>
+            <div>
+              <button
+                onClick={props.onHide}
+                type="submit"
+                className="footerButton"
+              >
+                Show *** stays
+              </button>
+            </div>
+          </section>
         </section>
       </form>
     </section>
