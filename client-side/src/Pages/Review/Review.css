@@ -1,7 +1,6 @@
 .texts {
   max-width: 850px;
   margin: auto;
-  /* margin-bottom: 60px; */
 }
 .sectionsDiv {
   max-width: 850px;
@@ -64,6 +63,9 @@
   height: 500px;
   overflow: auto;
 }
+.modalBody::-webkit-scrollbar {
+  display: none;
+}
 .divImage {
   width: 444px;
   height: 420px;
@@ -73,7 +75,6 @@
 }
 .divtextPreview {
   width: 490px;
-  background-color: aqua;
   overflow-y: scroll;
   height: 420px;
 }
@@ -109,13 +110,16 @@
     width: 70%;
   }
 }
+@media only screen and (max-width: 575px) {
+  .modalBody {
+    height: 88vh;
+  }
+}
 @media only screen and (max-width: 490px) {
   .getImages {
     width: 100%;
   }
-  .modalBody {
-    height: 88vh;
-  }
+
   .divImage {
     height: 320px;
   }

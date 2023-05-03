@@ -38,7 +38,7 @@ function Review(props) {
       isMounted = false;
     };
   }, []);
-  console.log(property);
+
   return (
     <main>
       <PropertyNav />
@@ -78,7 +78,8 @@ function Review(props) {
                 </p>
               </div>
               <div>
-                new <BsStarFill style={{ fontSize: "12px" }} />
+                new{" "}
+                <BsStarFill style={{ fontSize: "12px", marginTop: "-2px" }} />
               </div>
             </div>
           </div>
@@ -167,7 +168,6 @@ function Review(props) {
             </div>
           </Modal.Header>
           <Modal.Body className="modalBody">
-            <h4>Centered Modal</h4>
             <div className="ModalBigDiv gap-4">
               <div className="divImage">
                 {loading ? (
@@ -192,8 +192,8 @@ function Review(props) {
                       {property?.privacy} hosted by {property?.host?.LastName}
                     </p>
                     <p style={{ marginTop: "-16px" }}>
-                      {property.guests} guests - {property.Bedrooms} Bedroom -{" "}
-                      {property.Beds} Bed - {property.Bathrooms} Bath
+                      {property.guests} guests - {property.Bedrooms} Bedrooms -{" "}
+                      {property.Beds} Beds - {property.Bathrooms} Baths
                     </p>
                   </div>
                   <div className="UserImage">
@@ -208,48 +208,30 @@ function Review(props) {
                     />
                   </div>
                 </div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Recusandae facere ipsa velit iure quod. Molestias, quia!
-                  Corporis illo officia omnis reiciendis, similique vel!
-                  Accusamus animi voluptate culpa asperiores tenetur atque et
-                  quasi facilis molestiae perspiciatis nulla adipisci nostrum
-                  delectus consectetur dignissimos, placeat eius, deleniti
-                  tempora, consequuntur provident. Deleniti enim dicta, ab at
-                  provident esse deserunt aliquid recusandae unde, adipisci
-                  ratione labore delectus veniam accusantium dolorem, libero
-                  odio debitis rem alias qui corporis! At voluptatibus similique
-                  accusamus cupiditate fugit, vel libero? Quidem aut vel quis
-                  mollitia consequatur facilis blanditiis delectus ut. Quo,
-                  voluptatum nemo qui obcaecati deserunt dicta quaerat magnam
-                  cupiditate, ullam vitae alias vel accusantium ducimus hic
-                  perferendis. Perferendis eum, explicabo amet ea rerum culpa
-                  nulla at tenetur quisquam impedit corporis dolore quis, quo
-                  quibusdam itaque? Necessitatibus laboriosam similique eius
-                  obcaecati iste temporibus unde dolores, incidunt nobis
-                  voluptate sed, eos quidem molestias reiciendis porro
-                  recusandae earum iusto cum assumenda maxime quisquam? Animi
-                  praesentium libero error, cumque ducimus, perferendis incidunt
-                  fuga, molestias quia et recusandae quas corrupti atque
-                  mollitia consectetur totam magni adipisci iure. Ipsam
-                  architecto nesciunt animi culpa eaque dignissimos voluptatibus
-                  quisquam neque officia magnam esse dolore odit eos laborum,
-                  quos molestias repellat perspiciatis amet iusto ut itaque quo
-                  recusandae. Corrupti quia reiciendis iste illo expedita
-                  deserunt, delectus atque porro itaque, magni voluptatibus ad
-                  repudiandae quam! Tenetur magnam nam sit placeat possimus
-                  voluptatum blanditiis, consectetur quas ad officiis tempore
-                  itaque accusantium quaerat temporibus eligendi ducimus
-                  voluptatibus delectus similique officia repellat. Hic, rerum
-                  delectus! Maxime, earum. Cupiditate incidunt veniam ea.
-                  Asperiores dolorum culpa facilis magnam alias. Cumque tenetur
-                  dolorem magnam voluptates voluptate a omnis architecto maiores
-                  officiis ullam. Aspernatur vitae iusto porro dignissimos modi
-                  dolorem voluptatum voluptas repellat neque. Corporis quos
-                  reprehenderit aut illum eaque totam deserunt, eum nulla
-                  doloribus! Cupiditate pariatur esse consequuntur. Ipsam
-                  debitis incidunt, ipsa doloribus necessitatibus nostrum!
-                </p>
+                <hr className="my-4" />
+                <div>
+                  <p className="fs-5">
+                    Make some memories at this unique and family-friendly place.
+                  </p>
+                </div>
+                <hr className="my-4" />
+                <div>
+                  <p className="fw-bold">Amenities</p>
+                  <ul>
+                    {property?.Amenities?.map((Amenities, index) => (
+                      <li key={index}>{Amenities}</li>
+                    ))}
+                  </ul>
+                </div>
+                <hr className="my-4" />
+                <div>
+                  <p className="fw-bold">Location</p>
+                  <p>
+                    {property?.Location?.address}, {property?.Location?.city},{" "}
+                    {property?.Location?.state}, {property?.Location?.country},{" "}
+                    {property?.Location?.postal_code}.{" "}
+                  </p>
+                </div>
               </div>
             </div>
           </Modal.Body>
