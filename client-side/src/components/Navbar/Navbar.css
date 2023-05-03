@@ -63,6 +63,19 @@
   font-size: 13px;
   font-weight: lighter;
 }
+.divCoverHeader {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.modalButtonHeader1 {
+  position: absolute;
+  left: 10px;
+  border: none;
+  margin-top: -3px;
+  background-color: white;
+}
 @media only screen and (max-width: 735px) {
   .divMain {
     display: none;
@@ -373,7 +386,12 @@ a :hover {
 .clearAll {
   font-weight: 600;
   text-decoration: underline;
-  margin-left: -150px;
+}
+.divFilterFooter {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  justify-content: space-between;
 }
 .colorBorder {
   background-color: rgb(243, 238, 238);
