@@ -1,16 +1,20 @@
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
+import React from "react";
 import "./Review.css";
 import { Link, useNavigate } from "react-router-dom";
+import UserPics from "../../../src/assets/User.jpg";
 import { BiNote } from "react-icons/bi";
 import { BsCalendar4Week, BsPen, BsStarFill } from "react-icons/bs";
 import { useContext, useEffect, useState } from "react";
 import httpAuth from "../../Services/config";
+import { MdCancel } from "react-icons/md";
 import { Context } from "../../Provider/Context";
-function Review() {
+import Modal from "react-bootstrap/Modal";
+function Review(props) {
   const [property, setProperty] = useState({});
   const { propertyId } = useContext(Context);
   const [loading, setloading] = useState(true);
-  const [img, setimg] = useState("");
+  const [modalShow, setModalShow] = useState(false);
   let isMounted = true;
   useEffect(() => {
     const fetchUser = async () => {
@@ -46,7 +50,10 @@ function Review() {
           </p>
         </div>
         <div className="sectionsDiv gap-4 ">
-          <div className="getImages shadow px-3">
+          <div
+            className="getImages shadow px-3"
+            onClick={() => setModalShow(true)}
+          >
             <div className="Images">
               {loading ? (
                 <span className="spinner-border text-secondary"></span>
@@ -71,7 +78,8 @@ function Review() {
                 </p>
               </div>
               <div>
-                new <BsStarFill style={{ fontSize: "12px" }} />
+                new{" "}
+                <BsStarFill style={{ fontSize: "12px", marginTop: "-2px" }} />
               </div>
             </div>
           </div>
@@ -135,6 +143,100 @@ function Review() {
 
         <button className="Navfooterbtn">Next</button>
       </footer>
+      <section>
+        <Modal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          {...props}
+          size="xl"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header>
+            <div className="divCover">
+              <div>
+                <button
+                  className="modalButtonHeader"
+                  onClick={() => setModalShow(false)}
+                >
+                  <MdCancel className="fs-3" />
+                </button>
+              </div>
+              <div>
+                <span className="fw-bold">Full Preview</span>
+              </div>
+            </div>
+          </Modal.Header>
+          <Modal.Body className="modalBody">
+            <div className="ModalBigDiv gap-4">
+              <div className="divImage">
+                {loading ? (
+                  <span className="spinner-border text-secondary"></span>
+                ) : (
+                  <img
+                    src={property.images[0]}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: "10px",
+                    }}
+                    alt=""
+                  />
+                )}
+              </div>
+              <div className="divtextPreview">
+                <h2>{property.About}</h2>
+                <div className="divCover3">
+                  <div>
+                    <p className="fs-4">
+                      {property?.privacy} hosted by {property?.host?.LastName}
+                    </p>
+                    <p style={{ marginTop: "-16px" }}>
+                      {property.guests} guests - {property.Bedrooms} Bedrooms -{" "}
+                      {property.Beds} Beds - {property.Bathrooms} Baths
+                    </p>
+                  </div>
+                  <div className="UserImage">
+                    <img
+                      src={property?.host?.Avatar || UserPics}
+                      alt=""
+                      style={{
+                        width: "100%",
+                        borderRadius: "50px",
+                        height: "100%",
+                      }}
+                    />
+                  </div>
+                </div>
+                <hr className="my-4" />
+                <div>
+                  <p className="fs-5">
+                    Make some memories at this unique and family-friendly place.
+                  </p>
+                </div>
+                <hr className="my-4" />
+                <div>
+                  <p className="fw-bold">Amenities</p>
+                  <ul>
+                    {property?.Amenities?.map((Amenities, index) => (
+                      <li key={index}>{Amenities}</li>
+                    ))}
+                  </ul>
+                </div>
+                <hr className="my-4" />
+                <div>
+                  <p className="fw-bold">Location</p>
+                  <p>
+                    {property?.Location?.address}, {property?.Location?.city},{" "}
+                    {property?.Location?.state}, {property?.Location?.country},{" "}
+                    {property?.Location?.postal_code}.{" "}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
+      </section>
     </main>
   );
 }
