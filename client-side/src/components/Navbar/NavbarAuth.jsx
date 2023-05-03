@@ -4,7 +4,7 @@ import { Context } from "../../Provider/Context";
 import "./Navbar.css";
 import { TbWorld } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
-import UserPics from "../../../src/assets/User.jpg";
+import Airlogo from "../../../src/assets/airbnb-logo.png";
 
 import { Existing } from "../../utils/setlocalstorage";
 import httpAuth from "../../Services/config";
@@ -12,7 +12,7 @@ import httpAuth from "../../Services/config";
 const NavbarAuth = () => {
   const [dropdown, setDropdown] = useState(false);
 
-  const { Loggedin, UserImg, User, setModalShow, setexisting, setUser } =
+  const { Loggedin, User, setModalShow, setexisting, setUser } =
     useContext(Context);
 
   let isMounted = true;
@@ -53,11 +53,7 @@ const NavbarAuth = () => {
     <nav className=" p-3 webNav">
       <div>
         <Link to={"/"} className="text-decoration-none">
-          <img
-            src="https://seeklogo.com/images/A/airbnb-logo-1D03C48906-seeklogo.com.png"
-            alt=""
-            className="image"
-          />
+          <img src={Airlogo} alt="" className="image" />
         </Link>
       </div>
 

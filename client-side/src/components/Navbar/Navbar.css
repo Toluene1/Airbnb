@@ -4,9 +4,6 @@
   justify-content: space-between;
 }
 .navMain {
-  position: fixed;
-  width: 100%;
-  top: 0px;
   background-color: white;
   box-shadow: 0px 1px lightgray;
 }
@@ -253,6 +250,7 @@
   background-color: white;
   padding: 10px;
   border-radius: 8px;
+  z-index: 1000 !important;
 }
 .dropdown p {
   color: grey;
