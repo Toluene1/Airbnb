@@ -9,7 +9,8 @@ function App() {
   const [loading, setloading] = useState(false);
   const [loadingCatgory, setloadingCategory] = useState(true);
   const [categories, setcategories] = useState([]);
-  const [clickedFilter, setclickedFilter] = useState("House");
+  const [clickedFilter, setclickedFilter] = useState("All");
+  const [query, setquery] = useState("");
   const [property, setProperty] = useState([]);
   const { setFilterShow } = useContext(Context);
   const [index, setIndex] = useState(0);
@@ -26,8 +27,15 @@ function App() {
     setFilterShow(true);
   }
   const handleClickFilter = (category) => {
+    if (category == "All") {
+      setclickedFilter(category);
+      return setquery("");
+    }
     setclickedFilter(category);
+    setquery(category);
   };
+
+  useEffect(() => {}, []);
 
   // fetchCategories
   useEffect(() => {
@@ -35,7 +43,7 @@ function App() {
       try {
         setloadingCategory(true);
         const response = await httpClient.get(`/category/getallcategory`);
-        setcategories(response.data.category);
+        setcategories(["All", ...response.data.category]);
         setloadingCategory(false);
       } catch (error) {
         setcategories([]);
@@ -62,7 +70,7 @@ function App() {
       try {
         setloading(true);
         const response = await httpClient.get(
-          `property/getallproperty/?structure=${clickedFilter}`,
+          `property/getallproperty/?structure=${query}`,
         );
         setProperty(response.data.prop);
         setloading(false);
@@ -81,7 +89,7 @@ function App() {
       isMounted = false;
     };
   }, [clickedFilter]);
-  console.log(property);
+  // console.log(property);
 
   return (
     <>
