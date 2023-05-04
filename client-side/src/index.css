@@ -153,14 +153,13 @@ body {
   height: 70px;
   cursor: pointer;
 }
-.property {
-  margin-top: 150px;
-}
+
 .main_nav {
   position: fixed;
   width: 100%;
   background-color: white;
   top: 0px;
+  z-index: 4000;
 }
 .clickeddiv {
   border-bottom: 2px solid rgb(32, 32, 32);
@@ -176,7 +175,7 @@ body {
     box-shadow: none;
   }
   50% {
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.5);
   }
   100% {
     box-shadow: none;
@@ -208,6 +207,37 @@ body {
 a:hover {
   color: black !important;
 }
+
+.property {
+  padding: 20px;
+  margin-top: 150px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.property img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+}
+.carousel {
+  width: 300px;
+}
+.foot {
+  width: 300px;
+}
+.foot h3 {
+  font-size: 16px;
+}
+.foot h5 {
+  font-size: 15px;
+}
+.foot h6 {
+  color: rgb(109, 109, 109);
+  font-size: 15px;
+}
 @media only screen and (max-width: 735px) {
   .navFilter button {
     display: none;
@@ -234,10 +264,32 @@ a:hover {
     justify-content: center;
     align-items: end;
     min-width: 100px;
+    margin-left: 5px;
     height: 70px;
   }
 
   .navFilter main::-webkit-scrollbar {
     display: none;
+  }
+  .property {
+    width: 100%;
+    padding: 20px;
+    margin-top: 150px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .property {
+    width: 100%;
+    padding: 20px;
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }
