@@ -5,7 +5,7 @@ import "./Navbar.css";
 import { TbWorld } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
 import Airlogo from "../../../src/assets/airbnb-logo.png";
-
+import UserPics from "../../../src/assets/User.jpg";
 import { Existing } from "../../utils/setlocalstorage";
 import httpAuth from "../../Services/config";
 
