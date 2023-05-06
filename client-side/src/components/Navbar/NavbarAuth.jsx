@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect,useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../Provider/Context";
 import "./Navbar.css";
@@ -11,6 +11,7 @@ import httpAuth from "../../Services/config";
 
 const NavbarAuth = () => {
   const [dropdown, setDropdown] = useState(false);
+  const dropdownRef = useRef(null);
 
   const { Loggedin, User, setModalShow, setexisting, setUser } =
     useContext(Context);
@@ -21,6 +22,19 @@ const NavbarAuth = () => {
     setModalShow(true);
     setDropdown(false);
   }
+
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
@@ -103,7 +117,7 @@ const NavbarAuth = () => {
           </button>
         </div>
         {dropdown && (
-          <div className="dropdown shadow px-0 text-start">
+          <div ref={dropdownRef} className="dropdown shadow px-0 text-start">
             {Loggedin ? (
               <div>
                 <p>
