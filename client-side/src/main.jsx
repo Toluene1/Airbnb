@@ -43,9 +43,9 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <Error404 />,
   },
-  
+
   {
-    path: "/property",
+    path: "/property/:id",
     element: <Property />,
   },
 

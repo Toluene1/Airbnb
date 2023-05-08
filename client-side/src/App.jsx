@@ -5,6 +5,7 @@ import httpClient from "./Services/httpclient";
 import { FaSlidersH } from "react-icons/fa";
 import { Context } from "./Provider/Context";
 import Carousel from "react-bootstrap/Carousel";
+import { Link } from "react-router-dom";
 function App() {
   const [loading, setloading] = useState(false);
   const [loadingCatgory, setloadingCategory] = useState(true);
@@ -145,32 +146,38 @@ function App() {
             {property.length > 0 ? (
               <>
                 {property.map((property) => (
-                  <div key={property._id} className=" shadow">
-                    <Carousel onSelect={handleSelect}>
-                      {property.images.map((images) => (
-                        <Carousel.Item
-                          activeindex={index}
-                          style={{ width: "300px", height: "200px" }}
-                          key={images}
-                        >
-                          <img src={images} alt="" />
-                        </Carousel.Item>
-                      ))}
-                    </Carousel>
-                    <div className="foot my-3 p-2">
-                      <h3>
-                        {property?.Location?.city +
-                          "," +
-                          " " +
-                          property?.Location?.country}{" "}
-                      </h3>
-                      <h6>
-                        stay with {property?.host?.FirstName} . Works as a{" "}
-                        {property?.host?.Work}{" "}
-                      </h6>
-                      <h5>${property?.price} night</h5>
-                    </div>
-                  </div>
+                  <Link
+                    to={`/property/${property._id}`}
+                    className="prop"
+                    key={property._id}
+                  >
+                    <li className=" shadow">
+                      <Carousel onSelect={handleSelect}>
+                        {property.images.map((images) => (
+                          <Carousel.Item
+                            activeindex={index}
+                            style={{ width: "300px", height: "200px" }}
+                            key={images}
+                          >
+                            <img src={images} alt="" />
+                          </Carousel.Item>
+                        ))}
+                      </Carousel>
+                      <div className="foot my-3 p-2">
+                        <h3>
+                          {property?.Location?.city +
+                            "," +
+                            " " +
+                            property?.Location?.country}{" "}
+                        </h3>
+                        <h6>
+                          stay with {property?.host?.FirstName} . Works as a{" "}
+                          {property?.host?.Work}{" "}
+                        </h6>
+                        <h5>${property?.price} night</h5>
+                      </div>
+                    </li>
+                  </Link>
                 ))}
               </>
             ) : (
