@@ -8,10 +8,69 @@
 .propertyiweb {
   display: none;
 }
+.propmain {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0px 20px;
+}
+a {
+  color: black !important;
+}
+.imagesprop {
+  width: 155px;
+  height: 155px;
+  object-fit: cover;
+  overflow: hidden;
+}
+.imagesprop img {
+  width: 100%;
+  height: auto;
+}
+.owner {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* gap: 10px; */
+}
+.reserve {
+  display: none;
+}
+.user {
+  max-width: 650px;
+}
+.img {
+  width: 37px;
+  height: 37px;
+  border-radius: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+.main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.feature {
+  margin-top: 10px;
+  display: flex;
+  justify-content: start;
+  padding: 10px;
+  width: 210px;
+  height: 80px;
+  border: 1px solid rgb(222, 221, 221);
+  border-radius: 8px;
+}
+.stick {
+  position: sticky;
+  top: 100px;
+}
 @media only screen and (min-width: 735px) {
   .WEB {
     padding: 10px;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid rgb(196, 196, 196);
   }
   .imageDiv1 {
     height: 30px;
@@ -114,5 +173,52 @@
     height: 30px;
     padding: 5px;
     color: white;
+  }
+  .imagesprop {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    overflow: hidden;
+  }
+  .imagesprop img {
+    width: 100%;
+    height: 300px;
+  }
+  .reserve {
+    display: block;
+    width: 360px;
+    height: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(210, 210, 210);
+  }
+  .grey {
+    color: grey;
+  }
+  .date {
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    border: 1px solid rgb(210, 209, 209);
+  }
+  .calender {
+    display: flex;
+    border-bottom: 1px solid grey;
+    width: 100%;
+    height: 60px;
+  }
+  .drop {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .check-out {
+    border-left: 1px solid grey;
+    height: 60px;
+    width: 50%;
+  }
+  .guests {
+    font-size: 12px;
   }
 }

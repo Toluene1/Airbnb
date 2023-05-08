@@ -9,7 +9,15 @@ import Airbnblogo from "../../assets/airbnb-logo.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Context } from "../../Provider/Context";
 import { TbWorld } from "react-icons/tb";
-import { FaBars } from "react-icons/fa";
+import {
+  FaBars,
+  FaStar,
+  FaBed,
+  FaShower,
+  FaHouseUser,
+  FaAngleDown,
+} from "react-icons/fa";
+import { AiOutlineWifi } from "react-icons/ai";
 import UserPics from "../../../src/assets/User.jpg";
 import httpAuth from "../../Services/config";
 import PopModal from "../../components/SignUp";
@@ -18,7 +26,8 @@ const Property = () => {
   const [dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef(null);
   const [property, setproperty] = useState({});
-  const [loading, setloading] = useState(false);
+  const [loading, setloading] = useState(true);
+  const [sticky, setSticky] = useState(true);
   const { User, Loggedin, setUser, modalShow, setModalShow } =
     useContext(Context);
   const { id } = useParams();
@@ -28,6 +37,14 @@ const Property = () => {
     setModalShow(true);
     setDropdown(false);
   }
+  const handleSetup = () => {
+    if (window.scrollY > 720) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+    console.log(window.scrollY);
+  };
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
@@ -48,6 +65,14 @@ const Property = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleSetup);
+
+    return () => {
+      window.removeEventListener("scroll", handleSetup);
+    };
+  }, [window.scrollY]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -250,6 +275,202 @@ const Property = () => {
           </p>
         </div>
       </nav>
+
+      {loading ? (
+        <div className="center-screen">
+          <span className="spinner-border text-danger"></span>
+        </div>
+      ) : (
+        <section className="propmain">
+          <h3 className="mt-4">{property?.About}</h3>
+          <div className="d-flex juistify-content-center align-items-center">
+            <span>
+              <FaStar />
+            </span>
+            <span className="mx-2">{property.review || 4.98}</span>
+            <span className="mx-4">
+              superhost . {property?.Location?.city}{" "}
+              {property?.Location?.country}
+            </span>
+          </div>
+          {/* images  */}
+          <div className="d-flex flex-wrap gap-2  mt-3">
+            {property.images.map((images, index) => (
+              <div className="imagesprop " key={index}>
+                <img src={images} alt="" />
+              </div>
+            ))}
+          </div>
+          {/* bedroom and beds  */}
+          <main className="owner">
+            <div className="user mt-2">
+              <header className="d-flex justify-content-between align-items-baseline">
+                <h5>
+                  {property.structure} in a villa hosted by{" "}
+                  {property.host.FirstName}
+                </h5>
+                <div className="img">
+                  <img
+                    src={property.host.Avatar}
+                    alt=""
+                    style={{ width: "100%" }}
+                  />
+                </div>
+              </header>
+              <main className="main">
+                <div className="feature">
+                  <p>
+                    <FaBed className="fs-5 ms-1" />
+                  </p>
+                  <p className="mx-4">
+                    <h6 className="m-0">{property.Bedrooms}bedrooms</h6>
+                    <h6 className="m-0">{property.Beds}beds</h6>
+                  </p>
+                </div>
+                <div className="feature">
+                  <p>
+                    <FaShower className="fs-5 ms-1" />
+                  </p>
+                  <p className="mx-4">
+                    <h6>private bathroom</h6>
+                  </p>
+                </div>
+                <div className="feature">
+                  <p>
+                    <FaHouseUser className="fs-5 ms-1" />
+                  </p>
+                  <p className="mx-4">
+                    <h6> Host or others may share home</h6>
+                  </p>
+                </div>
+              </main>
+              <hr />
+              {/* shared   */}
+              <div className="d-flex my-3">
+                <p>
+                  <FaBed className="fs-5" />
+                </p>
+                <div className="mx-3">
+                  <h6>Room in a condo</h6>
+                  <p className="grey">
+                    Your own room in a home, plus access to shared spaces.
+                  </p>
+                </div>
+              </div>
+              {/* wifi */}
+              <div className="d-flex ">
+                <p>
+                  <AiOutlineWifi className="fs-5" />
+                </p>
+                <div className="mx-3">
+                  <h6>Fast wifi</h6>
+                  <p className="grey">
+                    At 90 Mbps, you can take video calls and stream videos for
+                    your whole group.
+                  </p>
+                </div>
+              </div>
+              <hr />
+              {/* aircover  */}
+              <h2>
+                {" "}
+                <span className="text-danger">air</span>cover
+              </h2>
+              <p>
+                Every booking includes free protection from Host cancellations,
+                listing inaccuracies, and other issues like trouble checking in.
+              </p>
+              <h6 className="text-decoration-underline">Learn more</h6>
+              <hr />
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Praesentium dolorum quasi recusandae ipsum architecto! Provident
+              numquam vel corporis nesciunt. Officiis cupiditate voluptatem
+              dignissimos quibusdam aliquid libero qui amet sequi commodi. Aut
+              nobis minima possimus a, incidunt odio minus at fuga expedita
+              molestias magni asperiores adipisci, in eos consequatur nostrum
+              qui error iusto fugit atque molestiae illum cumque aliquam
+              obcaecati! Impedit! Expedita vel nam nisi in culpa quasi vero
+              minus dolor soluta consequatur molestiae nihil enim, quaerat
+              incidunt ipsam voluptatum cupiditate, ullam perferendis sint.
+              possimus laborum veritatis voluptatibus porro! Ad culpa possimus
+              numquam quisquam.
+            </div>
+            {/* reserve */}
+
+            <div className={`reserve shadow ${sticky && "stick"}`}>
+              <div className="d-flex justify-content-between">
+                {" "}
+                <h5 className="fw-bold">
+                  ${property.price}{" "}
+                  <span className="fw-normal fs-6">night</span>{" "}
+                </h5>
+                <p>
+                  {" "}
+                  <FaStar className="mb-1" /> {property.review || 4.98}
+                </p>
+              </div>
+
+              <div className="date mt-3">
+                <div className="calender">
+                  <div className="w-50">
+                    {" "}
+                    <span className="m-3">check-in</span>
+                  </div>
+                  <div className="check-out">
+                    {" "}
+                    <span className="m-3"> check-out </span>
+                  </div>
+                </div>
+                <div className="drop">
+                  <p>
+                    <span className="guests">GUESTS</span> <br />
+                    <span> 1 guests</span>
+                  </p>
+                  <p>
+                    <FaAngleDown />
+                  </p>
+                </div>
+              </div>
+              <button className="w-100 p-2 btn btn-danger mt-4">Reserve</button>
+              <p className="text-center mt-3">You won't be charged yet</p>
+
+              <main className="my-3">
+                <div className="d-flex justify-content-between">
+                  {" "}
+                  <span className="text-decoration-underline">
+                    ${property.price} x 5 nights{" "}
+                  </span>
+                  <span className="fw-bold">${property.price * 5}</span>
+                </div>
+
+                <div className="d-flex justify-content-between my-3">
+                  {" "}
+                  <span className="text-decoration-underline">
+                    cleaning fee
+                  </span>
+                  <span className="fw-bold">$33</span>
+                </div>
+
+                <div className="d-flex justify-content-between my-3">
+                  {" "}
+                  <span className="text-decoration-underline">
+                    Airbnbservice fee
+                  </span>
+                  <span className="fw-bold">$87</span>
+                </div>
+              </main>
+              <hr />
+
+              <div className="d-flex justify-content-between my-3">
+                {" "}
+                <h6>Total before taxes</h6>
+                <span className="fw-bold">${property.price * 5 + 33 + 87}</span>
+              </div>
+            </div>
+          </main>
+        </section>
+      )}
+
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
