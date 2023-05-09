@@ -423,7 +423,7 @@ const Property = () => {
                       </span>
                     </div>
                     <div>
-                      <h5 className="m-0">{property.Review || 1}</h5>
+                      <h5 className="m-0">{property.Review || 2}</h5>
                       <p style={{ fontSize: "12px", margin: "0px" }}>
                         {" "}
                         Reviews
