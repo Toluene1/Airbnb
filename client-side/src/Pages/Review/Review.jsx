@@ -21,7 +21,7 @@ function Review(props) {
       try {
         setloading(true);
         const response = await httpAuth.get(
-          `property/findproperty/${propertyId}`,
+          `property/findproperty/${propertyId}`
         );
         setProperty(response.data.prop);
         setloading(false);
@@ -140,8 +140,9 @@ function Review(props) {
         <p className="text-decoration-underline fw-bold">
           <Link to={"/become-a-host/price"}>Back</Link>
         </p>
-
-        <button className="Navfooterbtn">Next</button>
+        <Link to={"/become-a-host/publish-celebration"}>
+          <button className="Navfooterbtn">Next</button>
+        </Link>
       </footer>
       <section>
         <Modal
