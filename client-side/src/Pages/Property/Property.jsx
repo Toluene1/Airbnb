@@ -4,7 +4,7 @@ import httpClient from "../../Services/httpclient";
 import "./Property.css";
 import { FaAngleLeft } from "react-icons/fa";
 import { FiShare } from "react-icons/fi";
-import { GiSelfLove } from "react-icons/gi";
+// import { GiSelfLove } from "react-icons/gi";
 import Airbnblogo from "../../assets/airbnb-logo.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Context } from "../../Provider/Context";
@@ -27,7 +27,7 @@ const Property = () => {
   const dropdownRef = useRef(null);
   const [property, setproperty] = useState({});
   const [loading, setloading] = useState(true);
-  const [sticky, setSticky] = useState(true);
+  const [sticky, setSticky] = useState(false);
   const { User, Loggedin, setUser, modalShow, setModalShow } =
     useContext(Context);
   const { id } = useParams();
@@ -37,13 +37,12 @@ const Property = () => {
     setModalShow(true);
     setDropdown(false);
   }
-  const handleSetup = () => {
+  const handleStick = () => {
     if (window.scrollY > 720) {
       setSticky(true);
     } else {
       setSticky(false);
     }
-    console.log(window.scrollY);
   };
 
   const handleLogOut = () => {
@@ -67,10 +66,10 @@ const Property = () => {
   }, [dropdownRef]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleSetup);
+    window.addEventListener("scroll", handleStick);
 
     return () => {
-      window.removeEventListener("scroll", handleSetup);
+      window.removeEventListener("scroll", handleStick);
     };
   }, [window.scrollY]);
 
@@ -270,12 +269,24 @@ const Property = () => {
           <p>
             <FiShare />
           </p>
-          <p className="mx-4">
-            <GiSelfLove />
-          </p>
+          <p className="mx-4">{/* <GiSelfLove /> */}</p>
         </div>
       </nav>
 
+      {/* stick nav  */}
+      {sticky && (
+        <nav
+          className={`stickyNavbar ${
+            sticky && " animate__animated animate__fadeInDown"
+          }`}
+        >
+          <main>
+            <p>Photos</p>
+            <p> Amenities</p>
+            <p>Reviews</p>
+          </main>
+        </nav>
+      )}
       {loading ? (
         <div className="center-screen">
           <span className="spinner-border text-danger"></span>
@@ -382,18 +393,36 @@ const Property = () => {
               </p>
               <h6 className="text-decoration-underline">Learn more</h6>
               <hr />
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Praesentium dolorum quasi recusandae ipsum architecto! Provident
-              numquam vel corporis nesciunt. Officiis cupiditate voluptatem
-              dignissimos quibusdam aliquid libero qui amet sequi commodi. Aut
-              nobis minima possimus a, incidunt odio minus at fuga expedita
-              molestias magni asperiores adipisci, in eos consequatur nostrum
-              qui error iusto fugit atque molestiae illum cumque aliquam
-              obcaecati! Impedit! Expedita vel nam nisi in culpa quasi vero
-              minus dolor soluta consequatur molestiae nihil enim, quaerat
-              incidunt ipsam voluptatum cupiditate, ullam perferendis sint.
-              possimus laborum veritatis voluptatibus porro! Ad culpa possimus
-              numquam quisquam.
+              {/* host  */}
+              <h3 className="my-2">Meet your host</h3>
+
+              <article>
+                <div className="host_Profile shadow">
+                  <div>
+                    <div className="hostPhoto">
+                      <img src={property?.host?.Avatar} alt="" />
+                    </div>
+                    <h3 className="fw-bold m-0">{property?.host?.FirstName}</h3>
+                    <span className="fw-normal text-center">superhost</span>
+                  </div>
+                  <div>
+                    <h5 className="m-0">{property.Review || 1}</h5>
+                    <p style={{ fontSize: "12px", margin: "0px" }}> Reviews</p>
+                    <hr />
+                    <h5 className="m-0">
+                      5.0 <FaStar />
+                    </h5>
+                    <p style={{ fontSize: "12px", margin: "0px" }}> Reviews</p>
+                    <hr />
+                    <h5 className="m-0">{property.Review || 1}</h5>
+                    <p style={{ fontSize: "12px", margin: "0px" }}>
+                      {" "}
+                      months hosting
+                    </p>
+                    <hr />
+                  </div>
+                </div>
+              </article>
             </div>
             {/* reserve */}
 
@@ -454,7 +483,7 @@ const Property = () => {
                 <div className="d-flex justify-content-between my-3">
                   {" "}
                   <span className="text-decoration-underline">
-                    Airbnbservice fee
+                    Airbnb service fee
                   </span>
                   <span className="fw-bold">$87</span>
                 </div>
