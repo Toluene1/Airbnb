@@ -35,15 +35,11 @@ function PublishCelebration() {
     <main>
       <section className="mainDiv ">
         <div className="divWithin1">
-          {/* <video
-            src="blob:https://www.airbnb.com/ef6e0ca8-d80e-4673-b9eb-e5b4b65e3d32"
+          <img
+            src="https://ef6vv97s4m7.exactdn.com/wp-content/uploads/2022/03/Airbnb-Photo-68.jpg?lossy=1&ssl=1"
+            alt=""
             style={{ width: "100%", height: "100%" }}
-          ></video> */}
-          {/* <video
-            preload="auto"
-            // style="object-fit: cover;"
-            src="blob:https://www.airbnb.com/ef6e0ca8-d80e-4673-b9eb-e5b4b65e3d32"
-          ></video> */}
+          />
         </div>
         <div className="divWithin2">
           <div className="divTexts">
