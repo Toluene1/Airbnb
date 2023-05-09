@@ -101,10 +101,38 @@ const findProperty = async (req, res) => {
     res.status(500).json({ msg: "please contact the admin " });
   }
 };
+const findPropertynoAuth = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const property = await Property.findOne({ _id: id }).populate("host");
+    res.status(200).json({ prop: property });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
+
+const getHostProperty = async (req, res) => {
+  const { _id } = req.user;
+
+  try {
+    const property = await Property.find({ host: _id });
+    res.status(200).json({ prop: property });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
 
 const getAllProperty = async (req, res) => {
+  const { structure } = req.query;
+  const queryObject = {};
+
+  if (structure) {
+    queryObject.structure = structure;
+  }
   try {
-    const property = await Property.find({});
+    const property = await Property.find(queryObject).populate("host");
     res.status(200).json({ prop: property });
   } catch (error) {
     console.log(error);
@@ -119,4 +147,6 @@ module.exports = {
   updatePropertyLocation,
   findProperty,
   getAllProperty,
+  getHostProperty,
+  findPropertynoAuth,
 };

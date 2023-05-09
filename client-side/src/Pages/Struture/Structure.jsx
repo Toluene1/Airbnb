@@ -112,7 +112,7 @@ const Structure = () => {
             <p className="m-1">
               <BsFillCupHotFill />
             </p>
-            <p className="fs-6"> Breakfast</p>
+            <p className="fs-6">Breakfast</p>
           </div>
           <div
             id="5"

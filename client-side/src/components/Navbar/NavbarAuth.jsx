@@ -1,18 +1,19 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect,useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../Provider/Context";
 import "./Navbar.css";
 import { TbWorld } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
+import Airlogo from "../../../src/assets/airbnb-logo.png";
 import UserPics from "../../../src/assets/User.jpg";
-
 import { Existing } from "../../utils/setlocalstorage";
 import httpAuth from "../../Services/config";
 
 const NavbarAuth = () => {
   const [dropdown, setDropdown] = useState(false);
+  const dropdownRef = useRef(null);
 
-  const { Loggedin, UserImg, User, setModalShow, setexisting, setUser } =
+  const { Loggedin, User, setModalShow, setexisting, setUser } =
     useContext(Context);
 
   let isMounted = true;
@@ -21,6 +22,19 @@ const NavbarAuth = () => {
     setModalShow(true);
     setDropdown(false);
   }
+
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
@@ -53,11 +67,7 @@ const NavbarAuth = () => {
     <nav className=" p-3 webNav">
       <div>
         <Link to={"/"} className="text-decoration-none">
-          <img
-            src="https://seeklogo.com/images/A/airbnb-logo-1D03C48906-seeklogo.com.png"
-            alt=""
-            className="image"
-          />
+          <img src={Airlogo} alt="" className="image" />
         </Link>
       </div>
 
@@ -107,7 +117,7 @@ const NavbarAuth = () => {
           </button>
         </div>
         {dropdown && (
-          <div className="dropdown shadow px-0 text-start">
+          <div ref={dropdownRef} className="dropdown shadow px-0 text-start">
             {Loggedin ? (
               <div>
                 <p>

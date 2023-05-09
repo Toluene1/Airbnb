@@ -34,7 +34,6 @@ function FilterProperties(props) {
           <Modal.Body className="ms-2">
             <FilterBody />
           </Modal.Body>
-          <Modal.Footer></Modal.Footer>
         </Modal>
       </div>
     </>

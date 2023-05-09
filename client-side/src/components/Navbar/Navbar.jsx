@@ -109,9 +109,10 @@ const Navbar = () => {
   return (
     <nav className=" navMain p-0  text-center ">
       <section className="divMain">
-        <div className="navDiv1 ">
+        <div className="navDiv1  ">
           <Link to={"/"} className="text-decoration-none">
             <img src={Airbnblogo} alt="" className="imageDiv1" />
+            <h6 className="mx-3 text-danger">AirBnb Clone</h6>
           </Link>
         </div>
         <div className="navDiv2 ">
@@ -174,36 +175,36 @@ const Navbar = () => {
             <div ref={dropdownRef} className="dropdown shadow px-0 text-start">
               {Loggedin ? (
                 <div>
-                  <p>
+                  <Link className="fw-bold  text-black">
                     {" "}
-                    <Link className="fw-bold  text-dark">Messages</Link>
-                  </p>
-                  <p>
+                    <p> Messages</p>
+                  </Link>
+                  <Link>
                     {" "}
-                    <Link>Trips</Link>
-                  </p>
-                  <p>
+                    <p> Trips</p>
+                  </Link>
+                  <Link>
                     {" "}
-                    <Link onClick={HideDropdown}>Wishlist</Link>
-                  </p>
+                    <p> Wishlist</p>
+                  </Link>
                   <hr />
-                  <p>
+                  <Link>
                     {" "}
-                    <Link>Manage listings</Link>
-                  </p>
+                    <p> Manage listings</p>
+                  </Link>
                   <p>
                     {" "}
                     <Link>Manage experiences</Link>
                   </p>
-                  <p>
+                  <Link to={"/Accounts"}>
                     {" "}
-                    <Link to={"/Accounts"}>Account</Link>
-                  </p>
+                    <p> Account</p>
+                  </Link>
                   <hr />
-                  <p>
+                  <Link>
                     {" "}
-                    <Link>Help </Link>
-                  </p>
+                    <p> Help</p>
+                  </Link>
                   <button
                     className="border-0 bg-white mx-2 p-0"
                     onClick={handleLogOut}
@@ -219,16 +220,18 @@ const Navbar = () => {
                   </p>{" "}
                   <p onClick={HideDropdown}>Sign Up</p>
                   <hr />
-                  <p>
-                    <Link>Airbnb your home</Link>
-                  </p>
-                  <p>
+                  <Link>
                     {" "}
-                    <Link>Host an experience</Link>{" "}
-                  </p>
-                  <p>
-                    <Link>Help</Link>
-                  </p>
+                    <p>Airbnb your home</p>
+                  </Link>
+                  <Link>
+                    {" "}
+                    <p> Host an experience </p>
+                  </Link>
+                  <Link>
+                    {" "}
+                    <p>Help</p>
+                  </Link>
                 </div>
               )}
             </div>

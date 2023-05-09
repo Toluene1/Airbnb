@@ -6,6 +6,7 @@ const { PORT, MONGO_URL } = require("./src/Config/config");
 const Error404 = require("./src/middleware/error404");
 const userRouter = require("./src/Routes/userRoute");
 const propertyRouter = require("./src/Routes/propertyRoute");
+const categoryRouter = require("./src/Routes/categoryRoute");
 //middleware
 app.use(cors());
 app.use(express.json());
@@ -13,6 +14,7 @@ app.use(express.json());
 //Routes
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/property", propertyRouter);
+app.use("/api/v1/category", categoryRouter);
 
 app.use(Error404); // unavailable route
 

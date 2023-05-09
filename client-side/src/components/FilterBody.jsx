@@ -365,7 +365,7 @@ function FilterBody(props) {
             </ul>
             <hr />
           </div>
-          <section className="divFilterFooter fixed-bottom py-2 px-3">
+          <section className="divFilterFooter ">
             <div>
               <a href="#" className="text-dark clearAll">
                 clear all
