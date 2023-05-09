@@ -151,7 +151,7 @@ function App() {
                     className="prop"
                     key={property._id}
                   >
-                    <li className=" shadow">
+                    <div className=" shadow">
                       <Carousel onSelect={handleSelect}>
                         {property.images.map((images) => (
                           <Carousel.Item
@@ -176,7 +176,7 @@ function App() {
                         </h6>
                         <h5>${property?.price} night</h5>
                       </div>
-                    </li>
+                    </div>
                   </Link>
                 ))}
               </>
