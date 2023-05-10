@@ -7,12 +7,14 @@ import httpAuth from "../../Services/config";
 import { AiOutlineDelete } from "react-icons/ai";
 import "./Wishlist.css";
 import Alert from "../../components/Alert";
+import LoginFooter from "../../components/LoginFooter/LoginFooter";
 const Wishlist = () => {
   const { wishlist, setwishlist, modalShow, setModalShow } =
     useContext(Context);
   const [loading, setloading] = useState(true);
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
+  const [showDeletebtn, setshowDeletebtn] = useState(false);
 
   let isMounted = true;
 
@@ -52,6 +54,7 @@ const Wishlist = () => {
       const response = await httpAuth.delete(`/wishlist/${id}`);
       setwishlist(response.data.wish);
       setalert(true);
+
       setalertMessage("property removed from wishlist");
     } catch (error) {
       setalert(true);
@@ -75,11 +78,12 @@ const Wishlist = () => {
           {wishlist.length > 0 ? (
             <article>
               {wishlist.map((wish, index) => (
-                <Link to={`/property/${wish?.property?._id}`}>
-                  <main key={index} className="shadow">
+                <Link to={`/property/${wish?.property?._id}`} key={index}>
+                  <main className="shadow">
                     <div>
                       <img src={wish?.property.images[0]} alt="" />
                     </div>
+
                     <button onClick={(e) => deleteWishlist(e, wish._id)}>
                       {" "}
                       <AiOutlineDelete />
@@ -96,6 +100,7 @@ const Wishlist = () => {
         </section>
       )}
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
+      <LoginFooter />
     </>
   );
 };

@@ -678,9 +678,13 @@ const Property = () => {
         </>
       )}
       <div className="mobilefooter shadow">
-        <h5>
-          ${property.price} <span className="fw-normal">night</span>{" "}
-        </h5>
+        {loading ? (
+          <span className="spinner-border text-danger"></span>
+        ) : (
+          <h5>
+            ${property.price} <span className="fw-normal">night</span>{" "}
+          </h5>
+        )}
 
         <button className="btn btn-danger p-2"> Reserve </button>
       </div>

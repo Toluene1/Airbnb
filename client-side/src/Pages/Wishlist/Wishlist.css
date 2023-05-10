@@ -32,10 +32,13 @@
   height: 100%;
 }
 .wishlist button {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
   border: none;
-  background-color: transparent;
-  color: black;
-  font-size: 25px;
+  background-color: white;
+  color: grey;
+  font-size: 22px;
   position: absolute;
   top: 0px;
   right: 0px;
