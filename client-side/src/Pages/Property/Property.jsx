@@ -2,9 +2,9 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import httpClient from "../../Services/httpclient";
 import "./Property.css";
-import { FaAngleLeft } from "react-icons/fa";
+import { FaAngleLeft, FaRegHeart } from "react-icons/fa";
 import { FiShare } from "react-icons/fi";
-// import { GiSelfLove } from "react-icons/gi";
+
 import Airbnblogo from "../../assets/airbnb-logo.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Context } from "../../Provider/Context";
@@ -275,7 +275,10 @@ const Property = () => {
           <p>
             <FiShare />
           </p>
-          <p className="mx-4"> {/* <GiSelfLove />{" "} */}</p>
+          <p className="mx-4">
+            {" "}
+            <FaRegHeart />
+          </p>
         </div>
       </nav>
 
