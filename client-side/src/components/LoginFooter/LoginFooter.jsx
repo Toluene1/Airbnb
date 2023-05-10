@@ -8,12 +8,8 @@ import { Context } from "../../Provider/Context";
 import PopModal from "../SignUp";
 
 function LoginFooter() {
-  const { Loggedin, modalShow, setModalShow } = useContext(Context);
-  const [activeButton, setActiveButton] = useState(
-    localStorage.getItem("active")
-      ? JSON.parse(localStorage.getItem("active"))
-      : "first",
-  );
+  const { Loggedin, modalShow, setModalShow, activeButton, setActiveButton } =
+    useContext(Context);
   const [showfooter, setshowfooter] = useState(true);
   const [previouScrollPosition, setpreviousScrollPosition] = useState(
     window.scrollY,

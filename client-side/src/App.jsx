@@ -18,7 +18,8 @@ function App() {
   const [property, setProperty] = useState([]);
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
-  const { setFilterShow, modalShow, setModalShow } = useContext(Context);
+  const { setFilterShow, modalShow, setModalShow, setActiveButton } =
+    useContext(Context);
   const [index, setIndex] = useState(0);
   const [_id, setId] = useState("");
   let isMounted = true;
@@ -115,6 +116,9 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    setActiveButton("first");
+  });
   return (
     <>
       <div>

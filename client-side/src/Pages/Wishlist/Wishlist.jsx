@@ -14,7 +14,6 @@ const Wishlist = () => {
   const [loading, setloading] = useState(true);
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
-  const [showDeletebtn, setshowDeletebtn] = useState(false);
 
   let isMounted = true;
 

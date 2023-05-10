@@ -34,10 +34,19 @@ const Property = () => {
   const [property, setproperty] = useState({});
   const [loading, setloading] = useState(true);
   const [sticky, setSticky] = useState(false);
-  const { User, Loggedin, setUser, modalShow, setModalShow } =
-    useContext(Context);
+  const {
+    User,
+    Loggedin,
+    setUser,
+    modalShow,
+    setModalShow,
+    wishlist,
+    setwishlist,
+  } = useContext(Context);
   const { id } = useParams();
   const [drop, setdrop] = useState(false);
+  const [showWish, setshowWish] = useState(false);
+
   let isMounted = true;
 
   function HideDropdown() {
@@ -97,6 +106,37 @@ const Property = () => {
       isMounted = false;
     };
   }, []);
+
+  useEffect(() => {
+    const fetchWishlist = async () => {
+      try {
+        const response = await httpAuth.get("/wishlist");
+        setwishlist(response.data.wish);
+      } catch (error) {
+        if (error.response.data.msg == "unauthorised") {
+          return setshowWish(false);
+        }
+        setwishlist([]);
+        setloading(true);
+        console.log(error.response.data.msg);
+      }
+    };
+
+    if (isMounted) {
+      fetchWishlist();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [wishlist]);
+
+  useEffect(() => {
+    if (wishlist.length < 1) {
+      setshowWish(false);
+    } else {
+      setshowWish(true);
+    }
+  }, [wishlist]);
 
   useEffect(() => {
     const FetchProperty = async () => {
@@ -170,7 +210,7 @@ const Property = () => {
             {/* bars */}
             <div>
               <button
-                className="userButton "
+                className="userButton postition-relative "
                 onClick={() => setDropdown(!dropdown)}
               >
                 <div>
@@ -186,6 +226,11 @@ const Property = () => {
                     style={{ width: "100%" }}
                   />
                 </div>
+                {showWish && (
+                  <div className="length">
+                    <span>{wishlist.length} </span>
+                  </div>
+                )}
               </button>
             </div>
             {dropdown && (
@@ -203,9 +248,17 @@ const Property = () => {
                       {" "}
                       <p> Trips</p>
                     </Link>
-                    <Link>
+                    <Link to={"/wishlist"}>
                       {" "}
-                      <p> Wishlist</p>
+                      <p>
+                        {" "}
+                        Wishlist
+                        {showWish && (
+                          <span className="text-danger mx-3 ">
+                            ({wishlist.length})
+                          </span>
+                        )}
+                      </p>
                     </Link>
                     <hr />
                     <Link>
