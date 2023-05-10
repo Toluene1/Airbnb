@@ -6,10 +6,14 @@ import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
 import { AiOutlineDelete } from "react-icons/ai";
 import "./Wishlist.css";
+import Alert from "../../components/Alert";
 const Wishlist = () => {
   const { wishlist, setwishlist, modalShow, setModalShow } =
     useContext(Context);
   const [loading, setloading] = useState(true);
+  const [alert, setalert] = useState(false);
+  const [alertMessage, setalertMessage] = useState("");
+
   let isMounted = true;
 
   useEffect(() => {
@@ -37,6 +41,24 @@ const Wishlist = () => {
     };
   }, []);
 
+  const closeAlert = () => {
+    setalert(false);
+  };
+
+  const deleteWishlist = async (e, id) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      const response = await httpAuth.delete(`/wishlist/${id}`);
+      setwishlist(response.data.wish);
+      setalert(true);
+      setalertMessage("property removed from wishlist");
+    } catch (error) {
+      setalert(true);
+      setalertMessage(error.response.data.msg);
+    }
+  };
+
   return (
     <>
       <NavbarAuth />
@@ -47,7 +69,9 @@ const Wishlist = () => {
       ) : (
         <section className="wishlist">
           <h2>Wishlist</h2>
-
+          {alert && (
+            <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
+          )}
           {wishlist.length > 0 ? (
             <article>
               {wishlist.map((wish, index) => (
@@ -56,7 +80,7 @@ const Wishlist = () => {
                     <div>
                       <img src={wish?.property.images[0]} alt="" />
                     </div>
-                    <button>
+                    <button onClick={(e) => deleteWishlist(e, wish._id)}>
                       {" "}
                       <AiOutlineDelete />
                     </button>

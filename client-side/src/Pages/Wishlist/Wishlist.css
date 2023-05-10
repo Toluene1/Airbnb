@@ -24,7 +24,7 @@
 .wishlist article {
   display: flex;
   gap: 20px;
-  justify-content: space-between;
+  justify-content: start;
   flex-wrap: wrap;
 }
 .wishlist img {

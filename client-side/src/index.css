@@ -213,7 +213,7 @@ a:hover {
   padding: 20px;
   margin-top: 150px;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   flex-wrap: wrap;
   gap: 20px;
 }
