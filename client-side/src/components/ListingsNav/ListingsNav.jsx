@@ -31,7 +31,6 @@ const ListingsNav = () => {
       isMounted = false;
     };
   }, []);
-  console.log(User);
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
