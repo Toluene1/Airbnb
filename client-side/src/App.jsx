@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import httpAuth from "./Services/config";
 import Alert from "./components/Alert";
 import PopModal from "./components/SignUp";
+import FilterWebProperties from "./components/FilterWebProperties";
 function App() {
   const [loading, setloading] = useState(false);
   const [loadingCatgory, setloadingCategory] = useState(true);
@@ -18,8 +19,14 @@ function App() {
   const [property, setProperty] = useState([]);
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
-  const { setFilterShow, modalShow, setModalShow, setActiveButton } =
-    useContext(Context);
+  const {
+    setFilterShow,
+    modalShow,
+    setModalShow,
+    setActiveButton,
+    filterWeb,
+    setFilterWeb,
+  } = useContext(Context);
   const [index, setIndex] = useState(0);
   const [_id, setId] = useState("");
   let isMounted = true;
@@ -29,8 +36,8 @@ function App() {
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
-  function showFilter() {
-    setFilterShow(true);
+  function showFilterWeb() {
+    setFilterWeb(true);
   }
   const handleClickFilter = (category) => {
     if (category == "All") {
@@ -77,7 +84,7 @@ function App() {
       try {
         setloading(true);
         const response = await httpClient.get(
-          `property/getallproperty/?structure=${query}`,
+          `property/getallproperty/?structure=${query}`
         );
         setProperty(response.data.prop);
         setloading(false);
@@ -135,7 +142,7 @@ function App() {
                     </div>
                   ))}
                 </main>
-                <button onClick={showFilter}>
+                <button onClick={showFilterWeb}>
                   <FaSlidersH className="searchIcon2" /> filters
                 </button>
               </>
@@ -154,7 +161,7 @@ function App() {
                     </div>
                   ))}
                 </main>
-                <button onClick={showFilter}>
+                <button onClick={showFilterWeb}>
                   <FaSlidersH className="searchIcon2" /> filters
                 </button>
               </>
@@ -227,6 +234,10 @@ function App() {
             )}
           </section>
         )}
+        <FilterWebProperties
+          show={filterWeb}
+          onHide={() => setFilterWeb(false)}
+        />
       </div>
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
 

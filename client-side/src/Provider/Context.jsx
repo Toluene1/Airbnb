@@ -6,6 +6,7 @@ const ContextProvider = ({ children }) => {
   const [mail, setmail] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [filterShow, setFilterShow] = useState(false);
+  const [filterWeb, setFilterWeb] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [User, setUser] = useState({});
   const [authloading, setauthloading] = useState(true);
@@ -15,25 +16,25 @@ const ContextProvider = ({ children }) => {
   const [activeButton, setActiveButton] = useState(
     localStorage.getItem("active")
       ? JSON.parse(localStorage.getItem("active"))
-      : "first",
+      : "first"
   );
 
   const [propertyId, setpropertyId] = useState(
     localStorage.getItem("propId")
       ? JSON.parse(localStorage.getItem("propId"))
-      : "",
+      : ""
   );
 
   const [Loggedin, setLoggedIn] = useState(
     localStorage.getItem("loggedin")
       ? JSON.parse(localStorage.getItem("loggedin"))
-      : false,
+      : false
   );
 
   const [existing, setexisting] = useState(
     localStorage.getItem("existing")
       ? JSON.parse(localStorage.getItem("existing"))
-      : false,
+      : false
   );
 
   const initialState = {
@@ -61,6 +62,8 @@ const ContextProvider = ({ children }) => {
     setwishlist,
     activeButton,
     setActiveButton,
+    filterWeb,
+    setFilterWeb,
   };
 
   return <Context.Provider value={initialState}>{children}</Context.Provider>;

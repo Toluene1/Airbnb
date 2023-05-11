@@ -18,6 +18,9 @@
   border: 1px solid lightgrey;
   box-shadow: 3px 3px lightgrey;
 }
+.modal-Body {
+  height: 80vh;
+}
 .inputButton1 {
   float: left;
   margin-top: 7px;
@@ -388,7 +391,7 @@ a :hover {
 }
 .divFilterFooter {
   width: 100%;
-  height: 80px;
+  /* height: 80px; */
   display: flex;
   align-items: center;
   justify-content: space-between;

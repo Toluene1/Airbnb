@@ -363,8 +363,8 @@ function FilterBody(props) {
                 </span>
               </li>
             </ul>
-            <hr />
           </div>
+          <hr />
           <section className="divFilterFooter ">
             <div>
               <a href="#" className="text-dark clearAll">
