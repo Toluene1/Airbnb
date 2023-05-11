@@ -1,0 +1,88 @@
+.firstSection {
+  width: 64%;
+  margin: auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.createButton {
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(91, 86, 86);
+}
+.plusButton {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border: 1px solid rgb(91, 86, 86);
+  display: none;
+}
+.Listings {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0px 20px;
+}
+.Listings main {
+  margin-top: 20px;
+  height: 250px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+}
+.Listings div {
+  border-radius: 8px;
+  border: 1px solid rgb(239, 239, 239);
+  height: 230px;
+  width: 280px;
+  min-width: fit-content;
+  object-fit: cover;
+  overflow: hidden;
+}
+.Listings article {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.Listings img {
+  width: 100%;
+  height: 100%;
+}
+.Listings button {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  border: none;
+  background-color: white;
+  color: grey;
+  font-size: 22px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 1000;
+}
+
+@media only screen and (max-width: 735px) {
+  .createButton {
+    display: none;
+  }
+  .plusButton {
+    display: block;
+  }
+  .firstSection {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 980px) {
+  .Listings article {
+    justify-content: start;
+  }
+}

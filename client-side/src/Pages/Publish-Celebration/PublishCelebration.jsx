@@ -56,21 +56,25 @@ function PublishCelebration() {
           </div>
           <section>
             <div className="publishFooter">
-              <button className="buttonFooter px-4 py-2">
-                Let's get started
-              </button>
+              <Link to={"/listings"} className="text-decoration-none">
+                <button className="buttonFooter px-4 py-2">
+                  Let's get started
+                </button>
+              </Link>
             </div>
           </section>
         </div>
       </section>
       <section className="sticky-bottom divButtonSwitch2 px-3 text-center">
-        {/* <Link to={} className="text-decoration-none"> */}
-        <button className="buttonSwitch2">
-          <span style={{ color: "white", fontSize: "20px", marginLeft: "5px" }}>
-            Let's get started
-          </span>
-        </button>
-        {/* </Link> */}
+        <Link to={"/listings"} className="text-decoration-none">
+          <button className="buttonSwitch2">
+            <span
+              style={{ color: "white", fontSize: "20px", marginLeft: "5px" }}
+            >
+              Let's get started
+            </span>
+          </button>
+        </Link>
       </section>
     </main>
   );
