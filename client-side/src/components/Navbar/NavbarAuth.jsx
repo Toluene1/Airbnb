@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect,useRef } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../Provider/Context";
 import "./Navbar.css";
@@ -12,9 +12,17 @@ import httpAuth from "../../Services/config";
 const NavbarAuth = () => {
   const [dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const [showWish, setshowWish] = useState(false);
 
-  const { Loggedin, User, setModalShow, setexisting, setUser } =
-    useContext(Context);
+  const {
+    Loggedin,
+    User,
+    setModalShow,
+    setexisting,
+    setUser,
+    setwishlist,
+    wishlist,
+  } = useContext(Context);
 
   let isMounted = true;
   const navigate = useNavigate();
@@ -22,7 +30,36 @@ const NavbarAuth = () => {
     setModalShow(true);
     setDropdown(false);
   }
+  useEffect(() => {
+    const fetchWishlist = async () => {
+      try {
+        const response = await httpAuth.get("/wishlist");
+        setwishlist(response.data.wish);
+      } catch (error) {
+        if (error.response.data.msg == "unauthorised") {
+          return setshowWish(false);
+        }
+        setwishlist([]);
+        setloading(true);
+        console.log(error.response.data.msg);
+      }
+    };
 
+    if (isMounted) {
+      fetchWishlist();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [wishlist]);
+
+  useEffect(() => {
+    if (wishlist.length < 1) {
+      setshowWish(false);
+    } else {
+      setshowWish(true);
+    }
+  }, [wishlist]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -98,7 +135,7 @@ const NavbarAuth = () => {
         {/* bars */}
         <div>
           <button
-            className="userButton "
+            className="userButton postition-relative "
             onClick={() => setDropdown(!dropdown)}
           >
             <div>
@@ -114,6 +151,11 @@ const NavbarAuth = () => {
                 style={{ width: "100%" }}
               />
             </div>
+            {showWish && (
+              <div className="wishlength">
+                <span>{wishlist.length} </span>
+              </div>
+            )}
           </button>
         </div>
         {dropdown && (
@@ -130,7 +172,14 @@ const NavbarAuth = () => {
                 </p>
                 <p>
                   {" "}
-                  <Link onClick={HideDropdown}>Wishlist</Link>
+                  <Link to={"/wishlist"}>
+                    Wishlist
+                    {showWish && (
+                      <span className="text-danger mx-3 ">
+                        ({wishlist.length})
+                      </span>
+                    )}
+                  </Link>
                 </p>
                 <hr />
                 <p>

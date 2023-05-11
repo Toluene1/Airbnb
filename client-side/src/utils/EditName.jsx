@@ -4,9 +4,9 @@ import httpAuth from "../Services/config";
 import { handleSaveUser } from "./setlocalstorage";
 
 const EditName = ({ seteditname }) => {
-  const edit = useRef({ FirstName: "", LastName: "" });
   const [loading, setloading] = useState(false);
   const { setUser, User } = useContext(Context);
+  const edit = useRef({ FirstName: User.FirstName, LastName: User.LastName });
   const [firstname, setFirstName] = useState(User.FirstName);
   const [lastname, setlastname] = useState(User.LastName);
 

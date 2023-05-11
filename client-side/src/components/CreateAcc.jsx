@@ -14,7 +14,7 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
     useContext(Context);
 
   const navigate = useNavigate();
-  const location = useLocation();
+  const Location = useLocation();
   const state = useRef({
     FirstName: "",
     LastName: "",
@@ -50,10 +50,12 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
       setLogin(setLoggedIn);
       handleSaveUser(response.data.user);
       setauthloading(false);
-      if (location.pathname == "/") {
-        return navigate("/");
+      if (Location.pathname == "/") {
+        navigate("/");
+        return location.reload();
       }
-      navigate(location.pathname);
+      navigate(Location.pathname);
+      location.reload();
     } catch (error) {
       setalert(true);
       setalertMessage(error.response.data.message);

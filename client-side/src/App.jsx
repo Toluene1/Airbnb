@@ -2,10 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import LoginFooter from "./components/LoginFooter/LoginFooter";
 import httpClient from "./Services/httpclient";
-import { FaSlidersH } from "react-icons/fa";
+import { FaSlidersH, FaRegHeart } from "react-icons/fa";
 import { Context } from "./Provider/Context";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
+import httpAuth from "./Services/config";
+import Alert from "./components/Alert";
+import PopModal from "./components/SignUp";
 function App() {
   const [loading, setloading] = useState(false);
   const [loadingCatgory, setloadingCategory] = useState(true);
@@ -13,17 +16,19 @@ function App() {
   const [clickedFilter, setclickedFilter] = useState("All");
   const [query, setquery] = useState("");
   const [property, setProperty] = useState([]);
-  const { setFilterShow } = useContext(Context);
+  const [alert, setalert] = useState(false);
+  const [alertMessage, setalertMessage] = useState("");
+  const { setFilterShow, modalShow, setModalShow, setActiveButton } =
+    useContext(Context);
   const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
-
+  const [_id, setId] = useState("");
   let isMounted = true;
   let isMountedCat = true;
   let catload = [];
 
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
   function showFilter() {
     setFilterShow(true);
   }
@@ -36,8 +41,9 @@ function App() {
     setquery(category);
   };
 
-  useEffect(() => {}, []);
-
+  const closeAlert = () => {
+    setalert(false);
+  };
   // fetchCategories
   useEffect(() => {
     const FetchCategories = async () => {
@@ -92,6 +98,27 @@ function App() {
   }, [clickedFilter]);
   // console.log(property);
 
+  const addToWishlist = async (e, _id) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setId(_id);
+
+    try {
+      const response = await httpAuth.post("/wishlist/create", { _id });
+      setalert(true);
+      setalertMessage(response.data.msg);
+    } catch (error) {
+      if (error.response.data.msg == "unauthorised") {
+        return setModalShow(true);
+      }
+      setalert(true);
+      setalertMessage(error.response.data.msg);
+    }
+  };
+
+  useEffect(() => {
+    setActiveButton("first");
+  });
   return (
     <>
       <div>
@@ -145,13 +172,17 @@ function App() {
           <section className="property">
             {property.length > 0 ? (
               <>
+                {alert && (
+                  <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
+                )}
                 {property.map((property) => (
                   <Link
                     to={`/property/${property._id}`}
                     className="prop"
                     key={property._id}
                   >
-                    <li className=" shadow">
+                    {/* carousel  */}
+                    <div className="  position-relative">
                       <Carousel onSelect={handleSelect}>
                         {property.images.map((images) => (
                           <Carousel.Item
@@ -163,7 +194,13 @@ function App() {
                           </Carousel.Item>
                         ))}
                       </Carousel>
-                      <div className="foot my-3 p-2">
+                      <button
+                        className="love"
+                        onClick={(e) => addToWishlist(e, property._id)}
+                      >
+                        <FaRegHeart className="fs-5 " />
+                      </button>
+                      <div className="foot my-3 ">
                         <h3>
                           {property?.Location?.city +
                             "," +
@@ -176,7 +213,7 @@ function App() {
                         </h6>
                         <h5>${property?.price} night</h5>
                       </div>
-                    </li>
+                    </div>
                   </Link>
                 ))}
               </>
@@ -191,6 +228,8 @@ function App() {
           </section>
         )}
       </div>
+      <PopModal show={modalShow} onHide={() => setModalShow(false)} />
+
       <LoginFooter />
     </>
   );

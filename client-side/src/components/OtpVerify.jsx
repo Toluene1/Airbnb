@@ -14,7 +14,7 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
   const [alertMessage, setalertMessage] = useState("");
   const [disableBtn, setdiasbleBtn] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
+  const Location = useLocation();
   const [loading, setloading] = useState(false);
   const { mail, setModalShow, setLoggedIn, setUser, setauthloading } =
     useContext(Context);
@@ -57,11 +57,13 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
       setLogin(setLoggedIn);
 
       setauthloading(false);
-      if (location.pathname == "/") {
+      if (Location.pathname == "/") {
         navigate("/");
+        location.reload();
         return;
       }
-      navigate(location.pathname);
+      navigate(Location.pathname);
+      location.reload();
     } catch (error) {
       setalert(true);
       setalertMessage(error.response.data.message);

@@ -7,6 +7,8 @@ const Error404 = require("./src/middleware/error404");
 const userRouter = require("./src/Routes/userRoute");
 const propertyRouter = require("./src/Routes/propertyRoute");
 const categoryRouter = require("./src/Routes/categoryRoute");
+const wishlistRouter = require("./src/Routes/wishlistRoute");
+const auth = require("./src/middleware/auth");
 //middleware
 app.use(cors());
 app.use(express.json());
@@ -15,6 +17,7 @@ app.use(express.json());
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/property", propertyRouter);
 app.use("/api/v1/category", categoryRouter);
+app.use("/api/v1/wishlist", [auth], wishlistRouter);
 
 app.use(Error404); // unavailable route
 
