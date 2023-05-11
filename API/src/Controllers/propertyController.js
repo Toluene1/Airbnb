@@ -124,6 +124,19 @@ const getHostProperty = async (req, res) => {
   }
 };
 
+const deleteHostProperty = async (req, res) => {
+  const { _id } = req.user;
+  const { id } = req.params;
+  try {
+    await Property.findOneAndDelete({ host: _id, _id: id });
+    const prop = await Property.find({ host: _id });
+    res.status(200).json({ prop: prop });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
+
 const getAllProperty = async (req, res) => {
   const { structure } = req.query;
   const queryObject = {};
@@ -149,4 +162,5 @@ module.exports = {
   getAllProperty,
   getHostProperty,
   findPropertynoAuth,
+  deleteHostProperty,
 };
