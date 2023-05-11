@@ -10,6 +10,8 @@ import httpAuth from "./Services/config";
 import Alert from "./components/Alert";
 import PopModal from "./components/SignUp";
 import FilterWebProperties from "./components/FilterWebProperties";
+import Airbnblogo from "../src/assets/airbnb-logo.png";
+
 function App() {
   const [loading, setloading] = useState(false);
   const [loadingCatgory, setloadingCategory] = useState(true);
@@ -19,14 +21,8 @@ function App() {
   const [property, setProperty] = useState([]);
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
-  const {
-    setFilterShow,
-    modalShow,
-    setModalShow,
-    setActiveButton,
-    filterWeb,
-    setFilterWeb,
-  } = useContext(Context);
+  const { modalShow, setModalShow, setActiveButton, filterWeb, setFilterWeb } =
+    useContext(Context);
   const [index, setIndex] = useState(0);
   const [_id, setId] = useState("");
   let isMounted = true;
@@ -84,7 +80,7 @@ function App() {
       try {
         setloading(true);
         const response = await httpClient.get(
-          `property/getallproperty/?structure=${query}`
+          `property/getallproperty/?structure=${query}`,
         );
         setProperty(response.data.prop);
         setloading(false);
@@ -190,17 +186,27 @@ function App() {
                   >
                     {/* carousel  */}
                     <div className="  position-relative">
-                      <Carousel onSelect={handleSelect}>
-                        {property.images.map((images) => (
-                          <Carousel.Item
-                            activeindex={index}
-                            style={{ width: "300px", height: "200px" }}
-                            key={images}
-                          >
-                            <img src={images} alt="" />
-                          </Carousel.Item>
-                        ))}
-                      </Carousel>
+                      {property.images.length > 0 ? (
+                        <Carousel onSelect={handleSelect}>
+                          {property.images.map((images) => (
+                            <Carousel.Item
+                              activeindex={index}
+                              style={{ width: "300px", height: "200px" }}
+                              key={images}
+                            >
+                              <img src={images} alt="" />
+                            </Carousel.Item>
+                          ))}
+                        </Carousel>
+                      ) : (
+                        <div className="repimages shadow">
+                          <img
+                            src={Airbnblogo}
+                            alt=""
+                            style={{ width: "50px", height: "50px" }}
+                          />
+                        </div>
+                      )}
                       <button
                         className="love"
                         onClick={(e) => addToWishlist(e, property._id)}
@@ -216,9 +222,9 @@ function App() {
                         </h3>
                         <h6>
                           stay with {property?.host?.FirstName} . Works as a{" "}
-                          {property?.host?.Work}{" "}
+                          {property?.host?.Work || "***"}{" "}
                         </h6>
-                        <h5>${property?.price} night</h5>
+                        <h5>${property?.price || "***"} night</h5>
                       </div>
                     </div>
                   </Link>

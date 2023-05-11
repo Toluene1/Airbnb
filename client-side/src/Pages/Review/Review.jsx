@@ -21,7 +21,7 @@ function Review(props) {
       try {
         setloading(true);
         const response = await httpAuth.get(
-          `property/findproperty/${propertyId}`
+          `property/findproperty/${propertyId}`,
         );
         setProperty(response.data.prop);
         setloading(false);
@@ -153,8 +153,8 @@ function Review(props) {
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
-          <Modal.Header>
-            <div className="divCover">
+          <Modal.Header className=" reviewheader">
+            <div>
               <div>
                 <button
                   className="modalButtonHeader"

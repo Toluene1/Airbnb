@@ -71,6 +71,10 @@ const Wishlist = () => {
       ) : (
         <section className="wishlist">
           <h2>Wishlist</h2>
+          <Link to={"/"}>
+            {" "}
+            <p className="btn btn-secondary p-3 ">Explore Properties </p>
+          </Link>
           {alert && (
             <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
           )}
