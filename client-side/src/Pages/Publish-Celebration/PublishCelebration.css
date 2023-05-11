@@ -1,0 +1,72 @@
+.mainDiv {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.divWithin1 {
+  width: 49%;
+  height: 100vh;
+  /* background-color: blue; */
+}
+.divWithin2 {
+  width: 50%;
+  height: 100vh;
+  background-color: black;
+  color: #ffffff;
+}
+.divTexts {
+  width: 70%;
+  margin: auto;
+  margin-top: 185px;
+}
+.publishFooter {
+  padding: 15px;
+  width: 47%;
+  position: fixed;
+  bottom: 0px;
+  border-top: 1px solid rgb(71, 67, 67);
+  text-align: right;
+}
+.buttonFooter {
+  padding: 7px;
+  background-image: linear-gradient(
+    to right,
+    rgb(174, 55, 55),
+    rgb(205, 111, 148)
+  );
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.divButtonSwitch2 {
+  display: none;
+  width: 100%;
+  background-color: black;
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+@media only screen and (max-width: 735px) {
+  .divWithin1 {
+    width: 100%;
+    height: 50vh;
+  }
+  .divWithin2 {
+    width: 100%;
+    height: 50vh;
+    display: block;
+  }
+  .divTexts {
+    margin-left: 10px;
+    margin-top: 30px;
+    width: 90%;
+  }
+  .publishFooter {
+    display: none;
+  }
+  .divButtonSwitch2 {
+    display: block;
+  }
+}

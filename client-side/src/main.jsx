@@ -12,7 +12,7 @@ const App = React.lazy(() => import("./App"));
 
 const Accounts = React.lazy(() => import("./Pages/Account/Account"));
 const PersonalInfo = React.lazy(() =>
-  import("./Pages/PersonalInfo/PersonalInfo"),
+  import("./Pages/PersonalInfo/PersonalInfo")
 );
 const Profile = React.lazy(() => import("./Pages/Profile/Profile"));
 const Hosting = React.lazy(() => import("./Pages/Hosting/Hosting"));
@@ -31,10 +31,10 @@ const Description = React.lazy(() => import("./Pages/Description/Description"));
 const Property = React.lazy(() => import("./Pages/Property/Property"));
 const Wishlist = React.lazy(() => import("./Pages/Wishlist/Wishlist"));
 const PrivacyType = React.lazy(() =>
-  import("./Pages/Privacy-type/Privacy-type"),
+  import("./Pages/Privacy-type/Privacy-type")
 );
 const AboutYourPlace = React.lazy(() =>
-  import("./Pages/About-your-place/About-your-place"),
+  import("./Pages/About-your-place/About-your-place")
 );
 const Error404 = React.lazy(() => import("./Pages/error404"));
 
@@ -140,5 +140,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <RouterProvider router={router} />
       </Suspense>
     </ContextProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

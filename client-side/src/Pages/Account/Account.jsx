@@ -230,7 +230,7 @@ function Accounts() {
           {/* //MOBILE SECTION  */}
           <main className="px-4 mobileAccount ">
             <div>
-              <h1>Profile</h1>
+              <h1 className="mt-2">Profile</h1>
               <section>
                 <div className="d-flex align-center mt-4  ">
                   <div className="imgMobile">
