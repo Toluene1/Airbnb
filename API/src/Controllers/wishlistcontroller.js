@@ -5,7 +5,7 @@ const createWishlist = async (req, res) => {
   const { _id: propId } = req.body;
 
   try {
-    const findProp = await Wishlist.findOne({ property: propId });
+    const findProp = await Wishlist.findOne({ property: propId, user: _id });
     if (findProp) {
       return res
         .status(403)
