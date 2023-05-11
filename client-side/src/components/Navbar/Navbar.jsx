@@ -285,6 +285,7 @@ const Navbar = () => {
           )}
         </div>
       </section>
+      {/* Mobile section */}
       <section>
         <div className="inputNav">
           <button className="inputButton1">
