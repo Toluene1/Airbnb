@@ -182,7 +182,7 @@ function App() {
                     key={property._id}
                   >
                     {/* carousel  */}
-                    <div className=" shadow position-relative">
+                    <div className="  position-relative">
                       <Carousel onSelect={handleSelect}>
                         {property.images.map((images) => (
                           <Carousel.Item
@@ -200,7 +200,7 @@ function App() {
                       >
                         <FaRegHeart className="fs-5 " />
                       </button>
-                      <div className="foot my-3 p-2">
+                      <div className="foot my-3 ">
                         <h3>
                           {property?.Location?.city +
                             "," +
