@@ -18,9 +18,7 @@
   border: 1px solid lightgrey;
   box-shadow: 3px 3px lightgrey;
 }
-.modal-Body {
-  height: 80vh;
-}
+
 .inputButton1 {
   float: left;
   margin-top: 7px;
@@ -359,7 +357,6 @@ a :hover {
 }
 .divPropType {
   display: flex;
-  /* flex-wrap: wrap; */
 }
 .propertyType {
   width: 330px;

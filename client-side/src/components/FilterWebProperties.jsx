@@ -32,7 +32,7 @@ function FilterWebProperties(props) {
             </div>
           </div>
         </Modal.Header>
-        <Modal.Body className="ms-2 modal-Body">
+        <Modal.Body className="ms-2" style={{ height: "80vh" }}>
           <FilterBody />
         </Modal.Body>
       </Modal>
