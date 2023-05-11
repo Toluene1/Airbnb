@@ -34,6 +34,7 @@ const Property = () => {
   const [property, setproperty] = useState({});
   const [loading, setloading] = useState(true);
   const [sticky, setSticky] = useState(false);
+  const [readmore, setreadmore] = useState(false);
   const {
     User,
     Loggedin,
@@ -524,6 +525,7 @@ const Property = () => {
                       <p>
                         <BsFillBagHeartFill />
                       </p>
+
                       <p className="mx-4 ">About: {property.host.About}</p>
                     </div>
                     <div className="d-flex ">
@@ -556,7 +558,18 @@ const Property = () => {
                 <div className="my-3">
                   <h3>About this place</h3>
                   <p>{property.About}</p>
-                  <p>{property.description}</p>
+                  <p>
+                    {}
+                    {readmore
+                      ? property.description
+                      : `${property.description.substring(0, 60)}...`}
+                    <button
+                      className="fs-6 border-0 text-decoration-underline bg-white text-dark fw-bold "
+                      onClick={() => setreadmore(!readmore)}
+                    >
+                      {readmore ? "Read less" : "Read more"}
+                    </button>
+                  </p>
                 </div>
                 <hr />
                 <div id="amenities" className="mt-5">

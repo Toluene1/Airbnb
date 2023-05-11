@@ -14,6 +14,7 @@ const Wishlist = () => {
   const [loading, setloading] = useState(true);
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
+  const [id, setid] = useState(null);
 
   let isMounted = true;
 
@@ -46,14 +47,22 @@ const Wishlist = () => {
     setalert(false);
   };
 
+  const handleShowDel = (e, id) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setid(id);
+  };
+
   const deleteWishlist = async (e, id) => {
     e.preventDefault();
     e.stopPropagation();
     try {
+      setloading(true);
       const response = await httpAuth.delete(`/wishlist/${id}`);
       setwishlist(response.data.wish);
+      setid(null);
       setalert(true);
-
+      setloading(false);
       setalertMessage("property removed from wishlist");
     } catch (error) {
       setalert(true);
@@ -71,24 +80,50 @@ const Wishlist = () => {
       ) : (
         <section className="wishlist">
           <h2>Wishlist</h2>
+          <Link to={"/"}>
+            {" "}
+            <p className="btn btn-secondary p-3 ">Explore Properties </p>
+          </Link>
           {alert && (
             <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
           )}
           {wishlist.length > 0 ? (
             <article>
               {wishlist.map((wish, index) => (
-                <Link to={`/property/${wish?.property?._id}`} key={index}>
-                  <main className="shadow">
-                    <div>
-                      <img src={wish?.property.images[0]} alt="" />
-                    </div>
+                <>
+                  <Link to={`/property/${wish?.property?._id}`} key={index}>
+                    <main className="shadow">
+                      <div>
+                        <img src={wish?.property.images[0]} alt="" />
+                      </div>
 
-                    <button onClick={(e) => deleteWishlist(e, wish._id)}>
-                      {" "}
-                      <AiOutlineDelete />
-                    </button>
-                  </main>
-                </Link>
+                      <span onClick={(e) => handleShowDel(e, index)}>
+                        {" "}
+                        <AiOutlineDelete />
+                      </span>
+                    </main>
+                  </Link>
+                  <aside className={id == index ? "d-block" : "d-none"}>
+                    <h6 className="text-danger">
+                      Are you sure you want to remove from wishlist?
+                    </h6>
+                    <p>
+                      <button
+                        className="btn btn-danger "
+                        onClick={(e) => deleteWishlist(e, wish._id)}
+                      >
+                        {" "}
+                        Yes
+                      </button>
+                      <button
+                        className="btn btn-dark mx-3"
+                        onClick={() => setid(null)}
+                      >
+                        No
+                      </button>
+                    </p>
+                  </aside>
+                </>
               ))}
             </article>
           ) : (

@@ -34,11 +34,11 @@
   display: flex;
   justify-content: space-between;
 }
-.divCover {
-  width: 100%;
+.reviewheader {
+  height: 100px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 .modalButtonHeader {
   position: absolute;
