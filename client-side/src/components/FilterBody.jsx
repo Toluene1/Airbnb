@@ -1,8 +1,9 @@
 import { MdOutlineWarehouse } from "react-icons/md";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsBuildings } from "react-icons/bs";
 import { TbBuildingHospital } from "react-icons/tb";
 import { BsHouses } from "react-icons/bs";
+import httpClient from "../Services/httpclient";
 
 function FilterBody(props) {
   const [selected, setSelected] = useState(0);
@@ -12,7 +13,9 @@ function FilterBody(props) {
   const [property3, setProperty3] = useState(false);
   const [property4, setProperty4] = useState(false);
   const [bathroom, setbathroom] = useState(0);
-
+  const [loading, setloading] = useState(false);
+  const [filterProp, setFilterProp] = useState([]);
+  let isMounted = true;
   const lists = [
     { title: "any" },
     { title: "1" },
@@ -47,6 +50,28 @@ function FilterBody(props) {
   const ChangePropertyDiv4 = () => {
     setProperty4(!property4);
   };
+
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        setloading(true);
+        const response = await httpClient.get(`property/getallproperty/`);
+        setFilterProp(response.data.prop);
+        setloading(false);
+      } catch (error) {
+        setFilterProp([]);
+        setloading(true);
+        console.log(error.response.data.msg);
+      }
+    };
+
+    if (isMounted) {
+      fetchProperties();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <section>
@@ -377,7 +402,11 @@ function FilterBody(props) {
                 type="submit"
                 className="footerButton"
               >
-                Show *** stays
+                {loading ? (
+                  <span className="spinner-border text-secondary "></span>
+                ) : (
+                  <span>Show {filterProp.length} stays</span>
+                )}
               </button>
             </div>
           </section>
