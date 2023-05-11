@@ -7,18 +7,14 @@ const EditProfile = ({ seteditprofile }) => {
   const { setUser, User } = useContext(Context);
 
   const [profile, setprofile] = useState({
-    about: "",
+    about: User.about,
     language: [],
-    location: "",
-    work: "",
+    location: User.location,
+    work: User.work,
   });
   const [loading, setloading] = useState(false);
-  const [About, setAbout] = useState(User.About);
-  const [Location, setLocation] = useState(User.Location);
-  const [Work, setWork] = useState(User.Work);
 
   const about = (e) => {
-    setAbout(e.target.value);
     setprofile({
       ...profile,
       about: e.target.value,
@@ -26,8 +22,6 @@ const EditProfile = ({ seteditprofile }) => {
   };
 
   const location = (e) => {
-    setLocation(e.target.value);
-
     setprofile({
       ...profile,
       location: e.target.value,
@@ -48,28 +42,38 @@ const EditProfile = ({ seteditprofile }) => {
     }
   };
   const work = (e) => {
-    setWork(e.target.value);
     setprofile({
       ...profile,
       work: e.target.value,
     });
   };
 
-  const updateNames = (e) => {
+  const postUserInfo = async () => {
+    try {
+      setloading(true);
+      const response = await httpAuth.post("/user/updateProfile", profile);
+      setUser(response.data.user);
+      handleSaveUser(response.data.user);
+      setloading(false);
+      seteditprofile(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const updateInfo = (e) => {
     e.preventDefault();
-    postUserEmail();
+    postUserInfo();
   };
 
   return (
     <div>
-      <form onSubmit={updateNames} className="form-control border-0 p-0">
+      <form onSubmit={updateInfo} className="form-control border-0 p-0">
         <main className="justify-content-start border-0  ">
           <div className=" mx-4 mt-4">
             <label htmlFor="About" className="label">
               About
             </label>
             <textarea
-              value={About}
               id="about"
               required
               type="text"
@@ -86,7 +90,6 @@ const EditProfile = ({ seteditprofile }) => {
               location
             </label>
             <input
-              value={Location}
               id="location"
               required
               type="text"
@@ -192,7 +195,6 @@ const EditProfile = ({ seteditprofile }) => {
               work
             </label>
             <input
-              value={Work}
               id="work"
               required
               type="text"
