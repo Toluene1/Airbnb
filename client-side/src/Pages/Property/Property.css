@@ -21,6 +21,9 @@ a {
   height: 155px;
   object-fit: cover;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .imagesprop img {
   width: 100%;
@@ -229,10 +232,12 @@ article span {
     height: 300px;
     object-fit: cover;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .imagesprop img {
     width: 100%;
-    height: 300px;
   }
   .reserve {
     display: block;

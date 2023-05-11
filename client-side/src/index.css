@@ -160,7 +160,7 @@ body {
   width: 100%;
   background-color: white;
   top: 0px;
-  z-index: 1;
+  z-index: 1000;
 }
 .clickeddiv {
   border-bottom: 2px solid rgb(32, 32, 32);
@@ -210,12 +210,14 @@ a:hover {
 }
 
 .property {
-  padding: 20px;
-  margin-top: 150px;
+  margin: 150px auto;
   display: flex;
+  padding: 20px 65px;
   justify-content: start;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  width: 100%;
+  gap: 8px 60px;
 }
 
 .property img {
@@ -248,7 +250,7 @@ a:hover {
   border: none;
   right: 5px;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 500;
 }
 .length {
   position: absolute;
@@ -267,7 +269,16 @@ a:hover {
   color: white;
   font-size: 13px;
 }
-
+.repimages {
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  object-fit: cover;
+  overflow: "hidden";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .wishlength {
   position: absolute;
   width: 20px;
