@@ -117,7 +117,7 @@ function Listings() {
                       </Link>
                       <aside className={list == index ? "d-block" : "d-none"}>
                         <h6 className="text-danger">
-                          Are you sure you want to remove from wishlist?
+                          Are you sure you want to delete property?
                         </h6>
                         <p>
                           <button
