@@ -29,9 +29,7 @@ const Title = React.lazy(() => import("./Pages/Title/Title"));
 const Review = React.lazy(() => import("./Pages/Review/Review"));
 const Description = React.lazy(() => import("./Pages/Description/Description"));
 const Property = React.lazy(() => import("./Pages/Property/Property"));
-const PublishCelebration = React.lazy(() =>
-  import("./Pages/Publish-Celebration/PublishCelebration")
-);
+const Wishlist = React.lazy(() => import("./Pages/Wishlist/Wishlist"));
 const PrivacyType = React.lazy(() =>
   import("./Pages/Privacy-type/Privacy-type")
 );
@@ -130,8 +128,8 @@ const router = createBrowserRouter([
     element: <Review />,
   },
   {
-    path: "/become-a-host/publish-celebration",
-    element: <PublishCelebration />,
+    path: "/wishlist",
+    element: <Wishlist />,
   },
 ]);
 

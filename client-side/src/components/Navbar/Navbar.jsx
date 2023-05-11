@@ -14,6 +14,7 @@ import { Existing } from "../../utils/setlocalstorage";
 import Airbnblogo from "../../assets/airbnb-logo.png";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
+  const [showWish, setshowWish] = useState(false);
   const dropdownRef = useRef(null);
   const {
     modalShow,
@@ -26,6 +27,8 @@ const Navbar = () => {
     fullscreen,
     setFullscreen,
     setexisting,
+    wishlist,
+    setwishlist,
   } = useContext(Context);
   const navigate = useNavigate();
   let isMounted = true;
@@ -97,6 +100,37 @@ const Navbar = () => {
     };
   }, []);
 
+  // fetch wishlist length
+  useEffect(() => {
+    const fetchWishlist = async () => {
+      try {
+        const response = await httpAuth.get("/wishlist");
+        setwishlist(response.data.wish);
+      } catch (error) {
+        if (error.response.data.msg == "unauthorised") {
+          return setshowWish(false);
+        }
+        setwishlist([]);
+        setloading(true);
+        console.log(error.response.data.msg);
+      }
+    };
+
+    if (isMounted) {
+      fetchWishlist();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [wishlist]);
+
+  useEffect(() => {
+    if (wishlist.length < 1) {
+      setshowWish(false);
+    } else {
+      setshowWish(true);
+    }
+  }, [wishlist]);
   // log Out
   const handleLogOut = () => {
     localStorage.removeItem("token");
@@ -153,7 +187,7 @@ const Navbar = () => {
           {/* bars */}
           <div>
             <button
-              className="userButton "
+              className="userButton  position-relative "
               onClick={() => setDropdown(!dropdown)}
             >
               <div>
@@ -169,6 +203,11 @@ const Navbar = () => {
                   style={{ width: "100%" }}
                 />
               </div>
+              {showWish && (
+                <div className="length">
+                  <span>{wishlist.length} </span>
+                </div>
+              )}
             </button>
           </div>
           {dropdown && (
@@ -183,9 +222,17 @@ const Navbar = () => {
                     {" "}
                     <p> Trips</p>
                   </Link>
-                  <Link>
+                  <Link to={"/wishlist"}>
                     {" "}
-                    <p> Wishlist</p>
+                    <p>
+                      {" "}
+                      Wishlist{" "}
+                      {showWish && (
+                        <span className="text-danger mx-3 ">
+                          ({wishlist.length})
+                        </span>
+                      )}
+                    </p>
                   </Link>
                   <hr />
                   <Link>

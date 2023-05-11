@@ -1,0 +1,67 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+footer h6 {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 20px 0px;
+  color: rgb(75, 74, 74);
+}
+footer p {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: rgb(83, 83, 83);
+}
+footer div {
+  max-width: 250px;
+}
+.footers {
+  margin-top: 80px;
+  background-color: rgb(241, 240, 240);
+  padding: 20px 60px;
+  width: 100%;
+}
+footer p:hover {
+  text-decoration: underline;
+}
+hr {
+  color: grey;
+}
+.copyright {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.copyright div {
+  width: 450px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.copyright p {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: rgb(83, 83, 83);
+}
+.copyright .icon {
+  width: 240px;
+}
+.icon p {
+  font-weight: 700;
+  font-size: 15px;
+  color: rgb(83, 83, 83);
+}
+@media only screen and (max-width: 735px) {
+  .footers {
+    margin-top: 80px;
+    background-color: white;
+    padding: 20px 60px;
+    width: 100%;
+    margin-bottom: 100px;
+  }
+}
