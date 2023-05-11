@@ -30,6 +30,9 @@ const Review = React.lazy(() => import("./Pages/Review/Review"));
 const Description = React.lazy(() => import("./Pages/Description/Description"));
 const Property = React.lazy(() => import("./Pages/Property/Property"));
 const Wishlist = React.lazy(() => import("./Pages/Wishlist/Wishlist"));
+const PublishCelebration = React.lazy(() =>
+  import("./Pages/Publish-Celebration/PublishCelebration")
+);
 const PrivacyType = React.lazy(() =>
   import("./Pages/Privacy-type/Privacy-type")
 );
@@ -126,6 +129,10 @@ const router = createBrowserRouter([
   {
     path: "/become-a-host/review",
     element: <Review />,
+  },
+  {
+    path: "/become-a-host/publish-celebration",
+    element: <PublishCelebration />,
   },
   {
     path: "/wishlist",
