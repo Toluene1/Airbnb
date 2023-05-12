@@ -65,6 +65,9 @@ function Listings() {
       isMounted = false;
     };
   }, []);
+  const closeAlert = () => {
+    setalert(false);
+  };
   return (
     <main>
       <ListingsNav />
@@ -73,11 +76,14 @@ function Listings() {
           <span className="spinner-border text-danger"></span>
         </div>
       ) : (
-        <main>
-          <section className="px-4">
-            <div className="firstSection">
+        <main className="mb-5">
+          <section className="firstSection">
+            <main className="d-flex justify-content-between  align-items-center">
               <div>
-                <h2>{listings.length > 0 && listings?.length}listings</h2>
+                <h4>
+                  {listings.length > 0 && listings?.length}{" "}
+                  <span className="fs-4">listings</span>{" "}
+                </h4>
               </div>
               <div>
                 <Link to={"/become-a-host/overview"}>
@@ -92,10 +98,9 @@ function Listings() {
                   </button>
                 </Link>
               </div>
-            </div>
-          </section>
-          <section>
-            <section className="Listings mb-5">
+            </main>
+
+            <section className="Listings ">
               {alert && (
                 <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
               )}

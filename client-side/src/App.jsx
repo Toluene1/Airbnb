@@ -13,7 +13,7 @@ import FilterWebProperties from "./components/FilterWebProperties";
 import Airbnblogo from "../src/assets/airbnb-logo.png";
 
 function App() {
-  const [loading, setloading] = useState(false);
+  const [loading, setloading] = useState(true);
   const [loadingCatgory, setloadingCategory] = useState(true);
   const [categories, setcategories] = useState([]);
   const [clickedFilter, setclickedFilter] = useState("All");

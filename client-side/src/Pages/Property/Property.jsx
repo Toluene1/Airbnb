@@ -16,6 +16,7 @@ import {
   FaShower,
   FaHouseUser,
   FaAngleDown,
+  FaAngleUp,
 } from "react-icons/fa";
 import { AiOutlineWifi } from "react-icons/ai";
 import {
@@ -617,9 +618,15 @@ const Property = () => {
                       <span className="guests">GUESTS</span> <br />
                       <span> 1 guests</span>
                     </p>
-                    <p>
-                      <FaAngleDown />
-                    </p>
+                    {drop ? (
+                      <p>
+                        <FaAngleDown />
+                      </p>
+                    ) : (
+                      <p>
+                        <FaAngleUp />
+                      </p>
+                    )}
                     {/* dropdown */}
                     {drop && (
                       <main className="guest-info shadow p-3">
@@ -688,7 +695,7 @@ const Property = () => {
                           infants. Pets aren't allowed.
                         </span>
                         <p
-                          className=" text-decoration-underline text-end"
+                          className=" text-decoration-underline text-end fw-bold"
                           onCanPlay={() => setdrop(false)}
                         >
                           {" "}
