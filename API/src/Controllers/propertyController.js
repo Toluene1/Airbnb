@@ -9,8 +9,6 @@ const createProperty = async (req, res) => {
     const property = await Property.create({
       host: _id,
     });
-
-    //find 1 property by id from req.params and populate  const prop = await Property.findOne({ _id: propId }).populate("host");
     res.status(200).json({ prop: property._id });
   } catch (error) {
     console.log(error);
@@ -138,12 +136,23 @@ const deleteHostProperty = async (req, res) => {
 };
 
 const getAllProperty = async (req, res) => {
-  const { structure } = req.query;
+  const { structure, privacy, Bedrooms, Beds } = req.query;
   const queryObject = {};
 
   if (structure) {
     queryObject.structure = structure;
   }
+  if (privacy) {
+    queryObject.privacy = privacy;
+  }
+
+  if (Bedrooms) {
+    queryObject.Bedrooms = Bedrooms;
+  }
+  if (Beds) {
+    queryObject.Bedrooms = Bedrooms;
+  }
+
   try {
     const property = await Property.find(queryObject).populate("host");
     res.status(200).json({ prop: property });
