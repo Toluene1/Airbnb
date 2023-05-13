@@ -12,29 +12,30 @@ const ContextProvider = ({ children }) => {
   const [authloading, setauthloading] = useState(true);
   const [existingUser, setexistingUser] = useState({});
   const [wishlist, setwishlist] = useState([]);
+  const [property, setProperty] = useState([]);
 
   const [activeButton, setActiveButton] = useState(
     localStorage.getItem("active")
       ? JSON.parse(localStorage.getItem("active"))
-      : "first"
+      : "first",
   );
 
   const [propertyId, setpropertyId] = useState(
     localStorage.getItem("propId")
       ? JSON.parse(localStorage.getItem("propId"))
-      : ""
+      : "",
   );
 
   const [Loggedin, setLoggedIn] = useState(
     localStorage.getItem("loggedin")
       ? JSON.parse(localStorage.getItem("loggedin"))
-      : false
+      : false,
   );
 
   const [existing, setexisting] = useState(
     localStorage.getItem("existing")
       ? JSON.parse(localStorage.getItem("existing"))
-      : false
+      : false,
   );
 
   const initialState = {
@@ -64,6 +65,8 @@ const ContextProvider = ({ children }) => {
     setActiveButton,
     filterWeb,
     setFilterWeb,
+    property,
+    setProperty,
   };
 
   return <Context.Provider value={initialState}>{children}</Context.Provider>;

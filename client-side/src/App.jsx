@@ -18,11 +18,17 @@ function App() {
   const [categories, setcategories] = useState([]);
   const [clickedFilter, setclickedFilter] = useState("All");
   const [query, setquery] = useState("");
-  const [property, setProperty] = useState([]);
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
-  const { modalShow, setModalShow, setActiveButton, filterWeb, setFilterWeb } =
-    useContext(Context);
+  const {
+    modalShow,
+    setModalShow,
+    setActiveButton,
+    filterWeb,
+    setFilterWeb,
+    property,
+    setProperty,
+  } = useContext(Context);
   const [index, setIndex] = useState(0);
   const [_id, setId] = useState("");
   let isMounted = true;
@@ -98,7 +104,7 @@ function App() {
     return () => {
       isMounted = false;
     };
-  }, [clickedFilter]);
+  }, [query]);
   // console.log(property);
 
   const addToWishlist = async (e, _id) => {

@@ -6,9 +6,10 @@ import { useContext } from "react";
 import { Context } from "../Provider/Context";
 
 function FilterWebProperties(props) {
-  const { setFilterWeb } = useContext(Context);
+  const { setFilterWeb, setFilterShow } = useContext(Context);
 
-  function hideFilterWeb() {
+  function hideFilter() {
+    setFilterShow(false);
     setFilterWeb(false);
   }
 
@@ -23,7 +24,7 @@ function FilterWebProperties(props) {
         <Modal.Header>
           <div className="divCoverHeader">
             <div>
-              <button className="modalButtonHeader1" onClick={hideFilterWeb}>
+              <button className="modalButtonHeader1" onClick={hideFilter}>
                 <MdCancel className="fs-3" />
               </button>
             </div>
@@ -33,7 +34,7 @@ function FilterWebProperties(props) {
           </div>
         </Modal.Header>
         <Modal.Body className="ms-2" style={{ height: "80vh" }}>
-          <FilterBody />
+          <FilterBody hideFilter={hideFilter} />
         </Modal.Body>
       </Modal>
     </main>
