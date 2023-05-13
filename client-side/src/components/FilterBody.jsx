@@ -7,13 +7,14 @@ import httpClient from "../Services/httpclient";
 import { Context } from "../Provider/Context";
 
 function FilterBody({ hideFilter }) {
-  const [selected, setSelected] = useState(0);
-  const [bed, setbed] = useState(0);
+  const [bedrooms, setbedrooms] = useState({ color: 0, qty: "" });
+  const [bed, setbed] = useState({ color: 0, qty: "" });
+  const [bathroom, setbathroom] = useState({ color: 0, qty: "" });
+
   const [property1, setProperty1] = useState({ toggle: false, type: "" });
   const [property2, setProperty2] = useState({ toggle: false, type: "" });
   const [property3, setProperty3] = useState({ toggle: false, type: "" });
   const [property4, setProperty4] = useState({ toggle: false, type: "" });
-  const [bathroom, setbathroom] = useState(0);
   const [loading, setloading] = useState(false);
   const [filterProp, setFilterProp] = useState([]);
   const { setProperty } = useContext(Context);
@@ -30,17 +31,31 @@ function FilterBody({ hideFilter }) {
     { title: "7" },
     { title: "8+" },
   ];
+
+  //filter by bedrooms
   const handleColor = (row) => {
-    setSelected(row);
-  };
-  const handleColorBed = (row) => {
-    setbed(row);
-  };
-  const handleColorBath = (row) => {
-    setbathroom(row);
+    if (row == 0) {
+      return setbedrooms({ ...bedrooms, color: row, qty: "" });
+    }
+    setbedrooms({ ...bedrooms, color: row, qty: row });
   };
 
-  //properties house,apartment function
+  //filter by Beds
+  const handleColorBed = (row) => {
+    if (row == 0) {
+      return setbed({ ...bed, color: row, qty: "" });
+    }
+    setbed({ ...bed, color: row, qty: row });
+  };
+  //filter by bathroom
+  const handleColorBath = (row) => {
+    if (row == 0) {
+      return setbathroom({ ...bathroom, color: row, qty: "" });
+    }
+    setbathroom({ ...bathroom, color: row, qty: row });
+  };
+
+  //Filter by Structure
   const handleHouseFilter = (e) => {
     if (property1.toggle == false) {
       setProperty1({ ...property1, type: e.currentTarget.id, toggle: true });
@@ -71,13 +86,12 @@ function FilterBody({ hideFilter }) {
     }
     setProperty4({ ...property4, type: "", toggle: false });
   };
-  console.log(property4.type);
   useEffect(() => {
     const fetchProperties = async () => {
       try {
         setloading(true);
         const response = await httpClient.get(
-          `property/getallproperty/?structure=${property1.type}&structure=${property2.type}&structure=${property3.type}&structure=${property4.type}`,
+          `property/getallproperty/?structure=${property1.type}&Bedrooms=${bedrooms.qty}&Beds=${bed.qty}&Bathrooms=${bathroom.qty}`,
         );
         setFilterProp(response.data.prop);
         setloading(false);
@@ -88,13 +102,21 @@ function FilterBody({ hideFilter }) {
       }
     };
     if (isMounted) {
-      console.log("emeka");
       fetchProperties();
+      console.log(bedrooms.qty);
     }
     return () => {
       isMounted = false;
     };
-  }, [property1.type, property2.type, property3.type, property4.type]);
+  }, [
+    property1.type,
+    property2.type,
+    property3.type,
+    property4.type,
+    bedrooms.qty,
+    bed.qty,
+    bathroom.qty,
+  ]);
   const handleSubmitFilter = () => {
     setProperty(filterProp);
     hideFilter();
@@ -182,8 +204,8 @@ function FilterBody({ hideFilter }) {
               key={index}
               onClick={() => handleColor(index)}
               style={{
-                backgroundColor: index === selected ? "black" : "",
-                color: index === selected ? "white" : "",
+                backgroundColor: index === bedrooms.color ? "black" : "",
+                color: index === bedrooms.color ? "white" : "",
               }}
             >
               {list.title}
@@ -199,8 +221,8 @@ function FilterBody({ hideFilter }) {
               key={index}
               onClick={() => handleColorBed(index)}
               style={{
-                backgroundColor: index === bed ? "black" : "",
-                color: index === bed ? "white" : "",
+                backgroundColor: index === bed.color ? "black" : "",
+                color: index === bed.color ? "white" : "",
               }}
             >
               {list.title}
@@ -216,8 +238,8 @@ function FilterBody({ hideFilter }) {
               key={index}
               onClick={() => handleColorBath(index)}
               style={{
-                backgroundColor: index === bathroom ? "black" : "",
-                color: index === bathroom ? "white" : "",
+                backgroundColor: index === bathroom.color ? "black" : "",
+                color: index === bathroom.color ? "white" : "",
               }}
             >
               {list.title}

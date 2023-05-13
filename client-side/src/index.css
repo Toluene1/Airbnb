@@ -210,14 +210,14 @@ a:hover {
 }
 
 .property {
-  margin: 160px auto;
+  margin: 150px auto;
   display: flex;
-  /* padding: 20px 70px; */
-  justify-content: space-between;
+  padding: 20px 70px;
+  justify-content: start;
   align-items: center;
   flex-wrap: wrap;
-  width: 94%;
-  gap: 8px;
+  width: 100%;
+  gap: 8px 60px;
 }
 
 .property img {
