@@ -21,6 +21,6 @@ router.get("/findproperty/:id", [auth], findProperty);
 router.get("/property/:id", findPropertynoAuth);
 router.delete("/:id", [auth], deleteHostProperty);
 router.get("/findhostproperty/", [auth], getHostProperty);
-router.get("/:id", [auth], editHostProperty);
+router.get("/edithostproperty:id", [auth], editHostProperty);
 router.get("/getallproperty/", getAllProperty);
 module.exports = router;

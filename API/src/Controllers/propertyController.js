@@ -139,7 +139,7 @@ const editHostProperty = async (req, res) => {
   const { _id } = req.user;
   const { id } = req.params;
   try {
-    const property = await Property.find({ host: _id, _id: id });
+    const property = await Property.findOne({ host: _id, _id: id });
     res.status(200).json({ prop: property });
   } catch (error) {
     console.log(error);
