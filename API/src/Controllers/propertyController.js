@@ -135,10 +135,22 @@ const deleteHostProperty = async (req, res) => {
   }
 };
 
-const getAllProperty = async (req, res) => {
-  const { structure, privacy, Bedrooms, Beds } = req.query;
-  const queryObject = {};
+const editHostProperty = async (req, res) => {
+  const { _id } = req.user;
+  const { id } = req.params;
+  try {
+    const property = await Property.find({ host: _id, _id: id });
+    res.status(200).json({ prop: property });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
 
+const getAllProperty = async (req, res) => {
+  const { structure, privacy, Bedrooms, Beds, Bathrooms } = req.query;
+  const queryObject = {};
+  console.log(req.query);
   if (structure) {
     queryObject.structure = structure;
   }
@@ -150,11 +162,15 @@ const getAllProperty = async (req, res) => {
     queryObject.Bedrooms = Bedrooms;
   }
   if (Beds) {
-    queryObject.Bedrooms = Bedrooms;
+    queryObject.Beds = Beds;
+  }
+  if (Bathrooms) {
+    queryObject.Bathrooms = Bathrooms;
   }
 
   try {
     const property = await Property.find(queryObject).populate("host");
+    console.log(property.length);
     res.status(200).json({ prop: property });
   } catch (error) {
     console.log(error);
@@ -172,4 +188,5 @@ module.exports = {
   getHostProperty,
   findPropertynoAuth,
   deleteHostProperty,
+  editHostProperty,
 };
