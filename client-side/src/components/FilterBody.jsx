@@ -10,11 +10,8 @@ function FilterBody({ hideFilter }) {
   const [bedrooms, setbedrooms] = useState({ color: 0, qty: "" });
   const [bed, setbed] = useState({ color: 0, qty: "" });
   const [bathroom, setbathroom] = useState({ color: 0, qty: "" });
-
-  const [property1, setProperty1] = useState({ toggle: false, type: "" });
-  const [property2, setProperty2] = useState({ toggle: false, type: "" });
-  const [property3, setProperty3] = useState({ toggle: false, type: "" });
-  const [property4, setProperty4] = useState({ toggle: false, type: "" });
+  const [structure, setstructure] = useState("");
+  const [privacy, setprivacy] = useState("");
   const [loading, setloading] = useState(false);
   const [filterProp, setFilterProp] = useState([]);
   const { setProperty } = useContext(Context);
@@ -56,42 +53,27 @@ function FilterBody({ hideFilter }) {
   };
 
   //Filter by Structure
-  const handleHouseFilter = (e) => {
-    if (property1.toggle == false) {
-      setProperty1({ ...property1, type: e.currentTarget.id, toggle: true });
+  const handleStructureFilter = (e) => {
+    if (structure == e.currentTarget.id) {
+      setstructure("");
       return;
     }
-    setProperty1({ ...property1, type: "", toggle: false });
+    setstructure(e.currentTarget.id);
   };
 
-  const handleApartmentFilter = (e) => {
-    if (property2.toggle == false) {
-      setProperty2({ ...property2, type: e.currentTarget.id, toggle: true });
+  const handlePrivacyFilter = (e) => {
+    if (privacy == e.currentTarget.id) {
+      setprivacy("");
       return;
     }
-    setProperty2({ ...property2, type: "", toggle: false });
-  };
-
-  const handleCavesFilter = (e) => {
-    if (property3.toggle == false) {
-      setProperty3({ ...property3, type: e.currentTarget.id, toggle: true });
-      return;
-    }
-    setProperty3({ ...property3, type: "", toggle: false });
-  };
-  const handleTowerFilter = (e) => {
-    if (property4.toggle == false) {
-      setProperty4({ ...property4, type: e.currentTarget.id, toggle: true });
-      return;
-    }
-    setProperty4({ ...property4, type: "", toggle: false });
+    setprivacy(e.currentTarget.id);
   };
   useEffect(() => {
     const fetchProperties = async () => {
       try {
         setloading(true);
         const response = await httpClient.get(
-          `property/getallproperty/?structure=${property1.type}&Bedrooms=${bedrooms.qty}&Beds=${bed.qty}&Bathrooms=${bathroom.qty}`,
+          `property/getallproperty/?structure=${structure}&Bedrooms=${bedrooms.qty}&Beds=${bed.qty}&Bathrooms=${bathroom.qty}&privacy=${privacy}`,
         );
         setFilterProp(response.data.prop);
         setloading(false);
@@ -108,15 +90,7 @@ function FilterBody({ hideFilter }) {
     return () => {
       isMounted = false;
     };
-  }, [
-    property1.type,
-    property2.type,
-    property3.type,
-    property4.type,
-    bedrooms.qty,
-    bed.qty,
-    bathroom.qty,
-  ]);
+  }, [structure, bedrooms.qty, bed.qty, bathroom.qty, privacy]);
   const handleSubmitFilter = () => {
     setProperty(filterProp);
     hideFilter();
@@ -145,7 +119,7 @@ function FilterBody({ hideFilter }) {
         <div className="mt-3 pb-2">
           <span className="fw-bold">Type of place</span>
           <ul className="list-group mt-2 ul">
-            <li>
+            <li id="entire-place" onClick={handlePrivacyFilter}>
               <label
                 className="form-check-label labelStyle"
                 htmlFor="firstCheckbox"
@@ -158,10 +132,15 @@ function FilterBody({ hideFilter }) {
                   type="checkbox"
                   value=""
                   id="firstCheckbox"
+                  checked={privacy == "entire-place" ? true : false}
                 />
               </span>
             </li>
-            <li className="mt-3">
+            <li
+              className="mt-3"
+              id="private-room"
+              onClick={handlePrivacyFilter}
+            >
               <label className=" accent  labelStyle" htmlFor="secondCheckbox">
                 Private room <br /> Your own room in a home or a hotel, plus
                 some shared common spaces
@@ -172,10 +151,11 @@ function FilterBody({ hideFilter }) {
                   type="checkbox"
                   value=""
                   id="secondCheckbox"
+                  checked={privacy == "private-room" ? true : false}
                 />
               </span>
             </li>
-            <li className="mt-3">
+            <li className="mt-3" id="shared-room" onClick={handlePrivacyFilter}>
               <label className=" accent  labelStyle" htmlFor="secondCheckbox">
                 shared room <br /> A sleeping space and common areas that may be
                 shared with others
@@ -186,6 +166,7 @@ function FilterBody({ hideFilter }) {
                   type="checkbox"
                   value=""
                   id="secondCheckbox"
+                  checked={privacy == "shared-room" ? true : false}
                 />
               </span>
             </li>
@@ -253,8 +234,10 @@ function FilterBody({ hideFilter }) {
         <div className="divPropType">
           <span
             id="House"
-            className={`propertyType ms-2 ${property1.toggle && "colorBorder"}`}
-            onClick={handleHouseFilter}
+            className={`propertyType ms-2 ${
+              structure == "House" && "colorBorder"
+            }`}
+            onClick={handleStructureFilter}
           >
             <span>
               <MdOutlineWarehouse className="iconProp" />
@@ -263,8 +246,10 @@ function FilterBody({ hideFilter }) {
           </span>
           <div
             id="Apartments"
-            className={`propertyType ms-2 ${property2.toggle && "colorBorder"}`}
-            onClick={handleApartmentFilter}
+            className={`propertyType ms-2 ${
+              structure == "Apartments" && "colorBorder"
+            }`}
+            onClick={handleStructureFilter}
           >
             <span>
               <BsBuildings className="iconProp" />
@@ -275,8 +260,10 @@ function FilterBody({ hideFilter }) {
         <div className="divPropType mt-3">
           <div
             id="Caves"
-            className={`propertyType ms-2 ${property3.toggle && "colorBorder"}`}
-            onClick={handleCavesFilter}
+            className={`propertyType ms-2 ${
+              structure == "Caves" && "colorBorder"
+            }`}
+            onClick={handleStructureFilter}
           >
             <span>
               <TbBuildingHospital className="iconProp" />
@@ -284,8 +271,10 @@ function FilterBody({ hideFilter }) {
             <p className="divWithinProp">Caves</p>
           </div>
           <div
-            className={`propertyType ms-2 ${property4.toggle && "colorBorder"}`}
-            onClick={handleTowerFilter}
+            className={`propertyType ms-2 ${
+              structure == "Tower" && "colorBorder"
+            }`}
+            onClick={handleStructureFilter}
             id="Tower"
           >
             <span>

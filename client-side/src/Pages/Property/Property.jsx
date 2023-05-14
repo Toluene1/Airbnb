@@ -432,7 +432,7 @@ const Property = () => {
                     <FaBed className="fs-5" />
                   </p>
                   <div className="mx-3">
-                    <h6>Room in a condo</h6>
+                    <h6>{property.privacy} in a condo</h6>
                     <p className="grey">
                       Your own room in a home, plus access to shared spaces.
                     </p>
