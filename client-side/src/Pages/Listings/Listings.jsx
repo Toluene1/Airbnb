@@ -86,7 +86,7 @@ function Listings() {
                 </h4>
               </div>
               <div>
-                <Link to={"/become-a-host/overview"}>
+                <Link to={"/become-a-host"}>
                   <button className="createButton">
                     <BiPlus className="fs-5" />
                     <span className="ms-2">Create Listing</span>
@@ -107,13 +107,12 @@ function Listings() {
               {listings.length > 0 ? (
                 <article>
                   {listings.map((listings, index) => (
-                    <>
-                      <Link to={`/property/${listings?._id}`} key={index}>
+                    <section key={index}>
+                      <Link to={`/manage-your-space/${listings?._id}/details`}>
                         <main className="shadow">
                           <div>
                             <img src={listings.images[0]} alt="" />
                           </div>
-
                           <span onClick={(e) => handleShowDelete(e, index)}>
                             {" "}
                             <AiOutlineDelete />
@@ -140,7 +139,7 @@ function Listings() {
                           </button>
                         </p>
                       </aside>
-                    </>
+                    </section>
                   ))}
                 </article>
               ) : (

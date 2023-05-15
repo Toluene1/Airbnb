@@ -120,7 +120,13 @@ article span {
   padding: 25px;
   overflow-x: hidden;
 }
+.mobile-prop {
+  margin-bottom: 80px;
+}
 @media only screen and (min-width: 735px) {
+  .mobile-prop {
+    margin-bottom: 0px;
+  }
   .WEB {
     padding: 10px;
     border-bottom: 1px solid rgb(196, 196, 196);

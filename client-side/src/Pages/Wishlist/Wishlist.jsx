@@ -90,7 +90,7 @@ const Wishlist = () => {
           {wishlist.length > 0 ? (
             <article>
               {wishlist.map((wish, index) => (
-                <>
+                <section>
                   <Link to={`/property/${wish?.property?._id}`} key={index}>
                     <main className="shadow">
                       <div>
@@ -123,7 +123,7 @@ const Wishlist = () => {
                       </button>
                     </p>
                   </aside>
-                </>
+                </section>
               ))}
             </article>
           ) : (

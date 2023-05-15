@@ -15,6 +15,18 @@ const ListingsNav = () => {
   let isMounted = true;
 
   useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
+
+  useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await httpAuth.get("/user/fetchUser");
@@ -45,7 +57,7 @@ const ListingsNav = () => {
         <section>
           <nav className=" web ">
             {/* web  */}
-            <div className="ms-4">
+            <div>
               <Link to={"/"} className="text-decoration-none">
                 <img src={Airbnblogo} alt="" className="image" />
               </Link>

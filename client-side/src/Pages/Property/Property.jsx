@@ -361,8 +361,8 @@ const Property = () => {
           <span className="spinner-border text-danger"></span>
         </div>
       ) : (
-        <>
-          <section id="photos" className="propmain">
+        <div className="mobile-prop">
+          <section id="photos" className="propmain ">
             <h3 className="mt-4">{property?.About}</h3>
             <div className="d-flex juistify-content-center align-items-center">
               <span>
@@ -748,7 +748,7 @@ const Property = () => {
             </main>
           </section>
           <FooterProp />
-        </>
+        </div>
       )}
       <div className="mobilefooter shadow">
         {loading ? (
