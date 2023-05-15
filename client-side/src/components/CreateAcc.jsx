@@ -9,7 +9,7 @@ import {
   setLogin,
 } from "../utils/setlocalstorage";
 
-const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
+const CreateAcc = () => {
   const { mail, setModalShow, setLoggedIn, setUser, setauthloading } =
     useContext(Context);
 
@@ -34,10 +34,6 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
   }
 
   //back to welcome page before logout
-  function backToWelcome() {
-    setshowCreateAcc(false);
-    setshowOtp(false);
-  }
 
   //post user details  to server
   const postUserDetails = async () => {
@@ -45,7 +41,6 @@ const CreateAcc = ({ setshowOtp, setshowCreateAcc }) => {
       const response = await httpClient.post("/user/createUser", state.current);
       handleSaveToken(response.data.token);
       setUser(response.data.user);
-      backToWelcome();
       setModalShow(false);
       setLogin(setLoggedIn);
       handleSaveUser(response.data.user);

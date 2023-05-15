@@ -25,7 +25,6 @@ function PopModal(props) {
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      className="animate__animated animate__backInUp"
     >
       <Modal.Header className="d-flex align-items-center ">
         {existing ? (
@@ -95,17 +94,11 @@ function PopModal(props) {
         ) : (
           <div className="p-0 m-0">
             {showCreateAcc ? (
-              <CreateAcc
-                setshowOtp={setshowOtp}
-                setshowCreateAcc={setshowCreateAcc}
-              />
+              <CreateAcc />
             ) : (
               <div className="p-0 m-0">
                 {showOtp ? (
-                  <OtpVerify
-                    setshowCreateAcc={setshowCreateAcc}
-                    setshowOtp={setshowOtp}
-                  />
+                  <OtpVerify setshowCreateAcc={setshowCreateAcc} />
                 ) : (
                   <Welcome setshowOtp={setshowOtp} />
                 )}
