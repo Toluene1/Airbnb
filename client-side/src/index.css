@@ -130,7 +130,6 @@ body {
 .navFilter {
   width: 100%;
   height: 75px;
-  border-bottom: 1px solid grey;
   border-top: 1px solid grey;
   display: flex;
   justify-content: space-around;
@@ -147,11 +146,7 @@ body {
 }
 
 .navFilter div {
-  display: flex;
-  justify-content: center;
-  align-items: end;
   width: 100px;
-  height: 70px;
   cursor: pointer;
 }
 
@@ -188,7 +183,7 @@ body {
 }
 
 .navFilter div:hover {
-  border-bottom: 2px solid rgb(8, 8, 8);
+  border-bottom: 2px solid rgb(169, 168, 168);
 }
 .navFilter p {
   font-size: 14px;
@@ -328,7 +323,6 @@ a:hover {
   .navFilter {
     height: 75px;
     width: 100%;
-    border-bottom: 1px solid grey;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -343,12 +337,8 @@ a:hover {
     overflow-x: auto;
   }
   .navFilter div {
-    display: flex;
-    justify-content: center;
-    align-items: end;
     min-width: 100px;
     margin-left: 5px;
-    height: 70px;
   }
 
   .navFilter main::-webkit-scrollbar {
