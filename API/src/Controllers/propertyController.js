@@ -148,9 +148,10 @@ const editHostProperty = async (req, res) => {
 };
 
 const getAllProperty = async (req, res) => {
-  const { structure, privacy, Bedrooms, Beds, Bathrooms } = req.query;
+  const { structure, privacy, Bedrooms, Beds, Bathrooms, Amenities } =
+    req.query;
+
   const queryObject = {};
-  console.log(req.query);
   if (structure) {
     queryObject.structure = structure;
   }
@@ -167,10 +168,13 @@ const getAllProperty = async (req, res) => {
   if (Bathrooms) {
     queryObject.Bathrooms = Bathrooms;
   }
+  if (Amenities) {
+    const amenities = Amenities.split(",");
+    queryObject.Amenities = { $all: amenities };
+  }
 
   try {
     const property = await Property.find(queryObject).populate("host");
-    console.log(property.length);
     res.status(200).json({ prop: property });
   } catch (error) {
     console.log(error);
