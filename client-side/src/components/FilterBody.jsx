@@ -12,9 +12,20 @@ function FilterBody({ hideFilter }) {
   const [bathroom, setbathroom] = useState({ color: 0, qty: "" });
   const [structure, setstructure] = useState("");
   const [privacy, setprivacy] = useState("");
+  const [amenities, setamenities] = useState([]);
   const [loading, setloading] = useState(false);
   const [filterProp, setFilterProp] = useState([]);
   const { setProperty } = useContext(Context);
+
+  const [amenity, setamenity] = useState({
+    wifi: false,
+    tv: false,
+    kitchen: false,
+    washer: false,
+    airconditioning: false,
+    pool: false,
+    piano: false,
+  });
 
   let isMounted = true;
   const lists = [
@@ -28,6 +39,41 @@ function FilterBody({ hideFilter }) {
     { title: "7" },
     { title: "8+" },
   ];
+
+  // Clear All
+  const handleClearAll = () => {
+    setamenity({
+      wifi: false,
+      tv: false,
+      kitchen: false,
+      washer: false,
+      airconditioning: false,
+      pool: false,
+      piano: false,
+    });
+    setamenities([]);
+    setprivacy("");
+    setstructure("");
+    setbathroom({ ...bathroom, color: 0, qty: "" });
+    setbedrooms({ ...bedrooms, color: 0, qty: "" });
+    setbed({ ...bed, color: 0, qty: "" });
+  };
+
+  // filter Amenities
+  const handleToggleAmenities = (e) => {
+    setamenity({
+      ...amenity,
+      [e.currentTarget.id]: !amenity[e.currentTarget.id],
+    });
+
+    if (!amenity[e.currentTarget.id]) {
+      setamenities([...amenities, e.currentTarget.id]);
+    } else {
+      setamenities([
+        ...amenities.filter((amenity) => amenity !== e.currentTarget.id),
+      ]);
+    }
+  };
 
   //filter by bedrooms
   const handleColor = (row) => {
@@ -44,6 +90,7 @@ function FilterBody({ hideFilter }) {
     }
     setbed({ ...bed, color: row, qty: row });
   };
+
   //filter by bathroom
   const handleColorBath = (row) => {
     if (row == 0) {
@@ -73,7 +120,7 @@ function FilterBody({ hideFilter }) {
       try {
         setloading(true);
         const response = await httpClient.get(
-          `property/getallproperty/?structure=${structure}&Bedrooms=${bedrooms.qty}&Beds=${bed.qty}&Bathrooms=${bathroom.qty}&privacy=${privacy}`,
+          `property/getallproperty/?structure=${structure}&Bedrooms=${bedrooms.qty}&Beds=${bed.qty}&Bathrooms=${bathroom.qty}&privacy=${privacy}&Amenities=${amenities}`,
         );
         setFilterProp(response.data.prop);
         setloading(false);
@@ -85,12 +132,11 @@ function FilterBody({ hideFilter }) {
     };
     if (isMounted) {
       fetchProperties();
-      console.log(bedrooms.qty);
     }
     return () => {
       isMounted = false;
     };
-  }, [structure, bedrooms.qty, bed.qty, bathroom.qty, privacy]);
+  }, [structure, bedrooms.qty, bed.qty, bathroom.qty, privacy, amenities]);
   const handleSubmitFilter = () => {
     setProperty(filterProp);
     hideFilter();
@@ -119,10 +165,10 @@ function FilterBody({ hideFilter }) {
         <div className="mt-3 pb-2">
           <span className="fw-bold">Type of place</span>
           <ul className="list-group mt-2 ul">
-            <li id="entire-place" onClick={handlePrivacyFilter}>
+            <li>
               <label
                 className="form-check-label labelStyle"
-                htmlFor="firstCheckbox"
+                htmlFor="entire-place"
               >
                 Entire place <br /> A place to yourself
               </label>
@@ -131,17 +177,14 @@ function FilterBody({ hideFilter }) {
                   className=" me-1 float-end mt-2 accent addStyle"
                   type="checkbox"
                   value=""
-                  id="firstCheckbox"
+                  id="entire-place"
                   checked={privacy == "entire-place" ? true : false}
+                  onChange={handlePrivacyFilter}
                 />
               </span>
             </li>
-            <li
-              className="mt-3"
-              id="private-room"
-              onClick={handlePrivacyFilter}
-            >
-              <label className=" accent  labelStyle" htmlFor="secondCheckbox">
+            <li className="mt-3">
+              <label className=" accent  labelStyle" htmlFor="private-room">
                 Private room <br /> Your own room in a home or a hotel, plus
                 some shared common spaces
               </label>
@@ -150,13 +193,14 @@ function FilterBody({ hideFilter }) {
                   className=" me-1 float-end mt-2 addStyle accent"
                   type="checkbox"
                   value=""
-                  id="secondCheckbox"
+                  id="private-room"
                   checked={privacy == "private-room" ? true : false}
+                  onChange={handlePrivacyFilter}
                 />
               </span>
             </li>
-            <li className="mt-3" id="shared-room" onClick={handlePrivacyFilter}>
-              <label className=" accent  labelStyle" htmlFor="secondCheckbox">
+            <li className="mt-3">
+              <label className=" accent  labelStyle" htmlFor="shared-room">
                 shared room <br /> A sleeping space and common areas that may be
                 shared with others
               </label>
@@ -165,8 +209,9 @@ function FilterBody({ hideFilter }) {
                   className=" me-1 float-end mt-2 addStyle accent"
                   type="checkbox"
                   value=""
-                  id="secondCheckbox"
+                  id="shared-room"
                   checked={privacy == "shared-room" ? true : false}
+                  onChange={handlePrivacyFilter}
                 />
               </span>
             </li>
@@ -285,13 +330,15 @@ function FilterBody({ hideFilter }) {
         </div>
       </section>
       <hr className="mt-5" />
+
+      {/* Amenties  */}
       <section>
         <p className="fw-bold">Amenities</p>
         <p className="fw-bold">Essentials</p>
         <div className="mt-3 pb-2">
           <ul className="list-group mt-2 ul">
             <li>
-              <label htmlFor="Checkbox1" className="form-check-label">
+              <label htmlFor="wifi" className="accent">
                 wifi
               </label>
               <span>
@@ -299,12 +346,14 @@ function FilterBody({ hideFilter }) {
                   className=" me-1 float-end accent addStyle"
                   type="checkbox"
                   value=""
-                  id="Checkbox1"
+                  id="wifi"
+                  checked={amenity.wifi == true ? true : false}
+                  onChange={handleToggleAmenities}
                 />
               </span>
             </li>
             <li className="mt-3">
-              <label className=" accent" htmlFor="Checkbox2">
+              <label className=" accent" htmlFor="kitchen">
                 kitchen
               </label>
               <span>
@@ -312,12 +361,14 @@ function FilterBody({ hideFilter }) {
                   className=" me-1 float-end mt-2 addStyle accent"
                   type="checkbox"
                   value=""
-                  id="Checkbox2"
+                  id="kitchen"
+                  onChange={handleToggleAmenities}
+                  checked={amenity.kitchen == true ? true : false}
                 />
               </span>
             </li>
             <li className="mt-3">
-              <label htmlFor="Checkbox3" className=" accent">
+              <label htmlFor="washer" className=" accent">
                 washer
               </label>
               <span>
@@ -325,12 +376,14 @@ function FilterBody({ hideFilter }) {
                   className=" me-1 float-end mt-2 addStyle accent"
                   type="checkbox"
                   value=""
-                  id="Checkbox3"
+                  id="washer"
+                  onChange={handleToggleAmenities}
+                  checked={amenity.washer == true ? true : false}
                 />
               </span>
             </li>
             <li className="mt-3">
-              <label htmlFor="Checkbox4" className=" accent">
+              <label htmlFor="airconditioning" className=" accent">
                 Air Conditioning
               </label>
               <span>
@@ -338,25 +391,29 @@ function FilterBody({ hideFilter }) {
                   className=" me-1 float-end mt-2 addStyle accent"
                   type="checkbox"
                   value=""
-                  id="Checkbox4"
+                  id="airconditioning"
+                  onChange={handleToggleAmenities}
+                  checked={amenity.airconditioning == true ? true : false}
                 />
               </span>
             </li>
             <li className="mt-3">
-              <label className=" accent" htmlFor="Checkbox5">
-                Heating
+              <label className=" accent" htmlFor="pool">
+                Pool
               </label>
               <span>
                 <input
                   className=" me-1 float-end mt-2 addStyle accent"
                   type="checkbox"
                   value=""
-                  id="Checkbox5"
+                  id="pool"
+                  onChange={handleToggleAmenities}
+                  checked={amenity.pool == true ? true : false}
                 />
               </span>
             </li>
             <li className="mt-3">
-              <label className=" accent" htmlFor="Checkbox6">
+              <label className=" accent" htmlFor="tv">
                 TV
               </label>
               <span>
@@ -364,7 +421,9 @@ function FilterBody({ hideFilter }) {
                   className=" me-1 float-end mt-2 addStyle accent"
                   type="checkbox"
                   value=""
-                  id="Checkbox6"
+                  id="tv"
+                  onChange={handleToggleAmenities}
+                  checked={amenity.tv == true ? true : false}
                 />
               </span>
             </li>
@@ -432,11 +491,12 @@ function FilterBody({ hideFilter }) {
         </div>
         <hr />
         <section className="divFilterFooter ">
-          <div>
-            <a href="#" className="text-dark clearAll">
-              clear all
-            </a>
-          </div>
+          <button
+            className="text-dark clearAll  border-0 bg-white"
+            onClick={handleClearAll}
+          >
+            clear all
+          </button>
           <div>
             <button onClick={handleSubmitFilter} className="footerButton">
               {loading ? (
