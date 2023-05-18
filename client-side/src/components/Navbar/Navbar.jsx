@@ -12,13 +12,11 @@ import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
 import { Existing } from "../../utils/setlocalstorage";
 import Airbnblogo from "../../assets/airbnb-logo.png";
+import SearchDropdown from "../SearchDropdown/SearchDropdown";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
-  const [searchDropdown, setSearchDropdown] = useState(false);
   const [showWish, setshowWish] = useState(false);
-  const [SearchBar, setSearchBar] = useState(true);
   const dropdownRef = useRef(null);
-  const SearchDropdownRef = useRef(null);
   const {
     modalShow,
     setModalShow,
@@ -76,22 +74,6 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef]);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (
-        SearchDropdownRef.current &&
-        !SearchDropdownRef.current.contains(e.target)
-      ) {
-        setSearchDropdown(false);
-        setSearchBar(true);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [SearchDropdownRef]);
 
   useEffect(() => {
     window.addEventListener("resize", checkmodalShow);
@@ -173,68 +155,8 @@ const Navbar = () => {
             <img src={Airbnblogo} alt="" className="imageDiv1" />
           </Link>
         </div>
-        <div className="navDiv2" onClick={showSearchDropdown}>
-          {SearchBar ? (
-            <div>
-              <button className="div2Button1">Anywhere</button>
-              <button className="div2Button2">Any Week</button>
-              <button className="div2Button3">
-                <span className="anyGuest">Any guest</span>
-                <AiOutlineSearch className="iconButton" />
-              </button>
-            </div>
-          ) : (
-            <section>
-              <div>
-                <button className="divSearch">Stays</button>
-                <button className="divSearch">Experiences</button>
-                <button className="divSearch">Online experiences</button>
-              </div>
-              {searchDropdown && (
-                <div ref={SearchDropdownRef} className="searchDropdown shadow">
-                  <div>
-                    <button className="alignTexts searchButton1">
-                      <span style={{ float: "left", fontWeight: "bold" }}>
-                        where
-                      </span>{" "}
-                      <br />
-                      <span style={{ float: "left", fontWeight: "lighter" }}>
-                        search destinations
-                      </span>
-                    </button>
-                    <button className="alignTexts searchButton2">
-                      <span style={{ float: "left", fontWeight: "bold" }}>
-                        Check-in
-                      </span>{" "}
-                      <br />
-                      <span style={{ float: "left", fontWeight: "lighter" }}>
-                        Add dates
-                      </span>
-                    </button>
-                    <button className="alignTexts searchButton2">
-                      <span style={{ float: "left", fontWeight: "bold" }}>
-                        Check-out
-                      </span>{" "}
-                      <br />
-                      <span style={{ float: "left", fontWeight: "lighter" }}>
-                        Add dates
-                      </span>
-                    </button>
-                    <button className="alignTexts searchButton1">
-                      <span style={{ float: "left", fontWeight: "bold" }}>
-                        where
-                      </span>{" "}
-                      <br />
-                      <span style={{ float: "left", fontWeight: "lighter" }}>
-                        search destinations
-                      </span>
-                    </button>
-                  </div>
-                </div>
-              )}
-            </section>
-          )}
-        </div>
+        {/* added the searchDropdown */}
+        <SearchDropdown />
         <div className="navDiv3 ">
           {Loggedin ? (
             <div>

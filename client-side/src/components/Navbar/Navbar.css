@@ -203,8 +203,8 @@
 }
 .divSearch {
   height: 43px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 12px;
+  padding-right: 12px;
   border: none;
   transition: 0.3s;
   background-color: white;
@@ -277,7 +277,7 @@
   border-radius: 8px;
   z-index: 1000 !important;
 }
-.searchDropdown div {
+.searchDropdown-div {
   width: 700px;
   margin: auto;
   background-color: rgb(233, 228, 228);
@@ -302,6 +302,40 @@
 .searchButton1:hover {
   background-color: lightgrey;
 }
+.searchButton4 {
+  width: 250px;
+  border-radius: 30px;
+  padding-left: 15px;
+  background-color: transparent;
+  border: none;
+  transition: 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+.searchButton4:hover {
+  background-color: lightgrey;
+}
+.activeTab1 {
+  width: 250px;
+  border-radius: 30px;
+  padding-left: 15px;
+  border: none;
+  transition: 0.2s;
+  background-color: white;
+}
+.activeTab4 {
+  width: 250px;
+  border-radius: 30px;
+  padding-left: 15px;
+  background-color: white;
+  border: none;
+  transition: 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
 .searchButton2 {
   width: 100px;
   border-radius: 30px;
@@ -311,6 +345,24 @@
 }
 .searchButton2:hover {
   background-color: lightgray;
+}
+.activeTab2 {
+  width: 100px;
+  border-radius: 30px;
+  padding-left: 20px;
+  background-color: white;
+  border: none;
+}
+.SearchButtonDrop {
+  background-color: red;
+  color: white;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 20px;
 }
 .dropdown p {
   color: grey;
