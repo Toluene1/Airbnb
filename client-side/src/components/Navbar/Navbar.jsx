@@ -171,7 +171,6 @@ const Navbar = () => {
         <div className="navDiv1  ">
           <Link to={"/"} className="text-decoration-none">
             <img src={Airbnblogo} alt="" className="imageDiv1" />
-            <h6 className="mx-3 text-danger">AirBnb Clone</h6>
           </Link>
         </div>
         <div className="navDiv2" onClick={showSearchDropdown}>

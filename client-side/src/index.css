@@ -205,26 +205,28 @@ a:hover {
 }
 
 .property {
-  margin: 150px auto;
-  display: flex;
-  padding: 20px 70px;
-  justify-content: start;
-  align-items: center;
+  margin: auto;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 10px 50px;
+  justify-content: space-between;
+  align-content: center;
   flex-wrap: wrap;
-  width: 100%;
-  gap: 8px 60px;
+  width: 94%;
+  gap: 20px;
 }
 
 .property img {
   display: block;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 .carousel {
   width: 300px;
 }
 .foot {
-  width: 300px;
+  min-width: 300px;
   height: 120px;
 }
 .foot h3 {
@@ -233,9 +235,9 @@ a:hover {
 .foot h5 {
   font-size: 15px;
 }
-.foot h6 {
+.foot p {
   color: rgb(109, 109, 109);
-  font-size: 15px;
+  font-size: 17px;
 }
 .love {
   position: absolute;
@@ -364,10 +366,42 @@ a {
   .property {
     width: 100%;
     padding: 20px;
-    margin-top: 150px;
+    margin: auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .navFilter {
+    height: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: none;
+    background-color: white;
+  }
+  .navFilter main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: auto;
+  }
+  .navFilter div {
+    min-width: 100px;
+    margin-left: 5px;
+  }
+
+  .navFilter main::-webkit-scrollbar {
+    display: none;
+  }
+  .property {
+    width: 100%;
+    padding: 20px;
+    margin: auto;
     gap: 20px;
   }
 }

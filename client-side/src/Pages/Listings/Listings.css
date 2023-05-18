@@ -41,10 +41,12 @@
   overflow: hidden;
 }
 .Listings article {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 10px;
+  justify-content: space-between;
+  align-content: center;
+  justify-content: start;
 }
 .Listings img {
   width: 100%;
