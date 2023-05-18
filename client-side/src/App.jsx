@@ -112,7 +112,7 @@ function App() {
       try {
         setloading(true);
         const response = await httpClient.get(
-          `property/getallproperty/?structure=${query}`,
+          `property/getallproperty/?structure=${query}`
         );
         setProperty(response.data.prop);
         setloading(false);
