@@ -1,0 +1,13 @@
+.tabcontent {
+  display: none;
+}
+.mainDiv {
+  width: 700px;
+  margin-top: 40px;
+  margin: auto;
+  background-color: white;
+  height: 400px;
+  display: flex;
+  border-radius: 30px;
+  justify-content: start;
+}

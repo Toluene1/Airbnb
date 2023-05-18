@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import RecentSearches from "../../utils/SearchDrops/RecentSearches";
 
 const SearchDropdown = () => {
   const [toggle, settoggle] = useState(0);
@@ -51,57 +52,15 @@ const SearchDropdown = () => {
               <button className="divSearch">Online experiences</button>
             </div>
             {searchDropdown && (
-              <div ref={SearchDropdownRef} className="searchDropdown shadow">
-                <div className="searchDropdown-div">
-                  <button
-                    className={` ${
-                      toggle == 0 ? "activeTab1 shadow" : "searchButton1"
-                    } alignTexts`}
-                    onClick={() => handleTab(0)}
-                  >
-                    <span style={{ float: "left", fontWeight: "bold" }}>
-                      where
-                    </span>{" "}
-                    <br />
-                    <span style={{ float: "left", fontWeight: "lighter" }}>
-                      search destinations
-                    </span>
-                  </button>
-                  <button
-                    className={` ${
-                      toggle == 1 ? "activeTab2 shadow" : "searchButton2"
-                    } alignTexts`}
-                    onClick={() => handleTab(1)}
-                  >
-                    <span style={{ float: "left", fontWeight: "bold" }}>
-                      Check-in
-                    </span>{" "}
-                    <br />
-                    <span style={{ float: "left", fontWeight: "lighter" }}>
-                      Add dates
-                    </span>
-                  </button>
-                  <button
-                    className={` ${
-                      toggle == 2 ? "activeTab2 shadow" : "searchButton2"
-                    } alignTexts`}
-                    onClick={() => handleTab(2)}
-                  >
-                    <span style={{ float: "left", fontWeight: "bold" }}>
-                      Check-out
-                    </span>{" "}
-                    <br />
-                    <span style={{ float: "left", fontWeight: "lighter" }}>
-                      Add dates
-                    </span>
-                  </button>
-                  <button
-                    className={` ${
-                      toggle == 3 ? "activeTab4 shadow" : "searchButton4"
-                    } alignTexts`}
-                    onClick={() => handleTab(3)}
-                  >
-                    <div className="d-block">
+              <main className="searchDropdown">
+                <div ref={SearchDropdownRef} className=" bg-light py-2 shadow">
+                  <div className="searchDropdown-div">
+                    <button
+                      className={` ${
+                        toggle == 0 ? "activeTab1 shadow" : "searchButton1"
+                      } alignTexts`}
+                      onClick={() => handleTab(0)}
+                    >
                       <span style={{ float: "left", fontWeight: "bold" }}>
                         where
                       </span>{" "}
@@ -109,16 +68,62 @@ const SearchDropdown = () => {
                       <span style={{ float: "left", fontWeight: "lighter" }}>
                         search destinations
                       </span>
-                    </div>
-                    <div>
-                      <button className="SearchButtonDrop">
-                        <AiOutlineSearch />
-                        <span className="ms-2">Search</span>
-                      </button>
-                    </div>
-                  </button>
+                    </button>
+                    <button
+                      className={` ${
+                        toggle == 1 ? "activeTab2 shadow" : "searchButton2"
+                      } alignTexts`}
+                      onClick={() => handleTab(1)}
+                    >
+                      <span style={{ float: "left", fontWeight: "bold" }}>
+                        Check-in
+                      </span>{" "}
+                      <br />
+                      <span style={{ float: "left", fontWeight: "lighter" }}>
+                        Add dates
+                      </span>
+                    </button>
+                    <button
+                      className={` ${
+                        toggle == 2 ? "activeTab2 shadow" : "searchButton2"
+                      } alignTexts`}
+                      onClick={() => handleTab(2)}
+                    >
+                      <span style={{ float: "left", fontWeight: "bold" }}>
+                        Check-out
+                      </span>{" "}
+                      <br />
+                      <span style={{ float: "left", fontWeight: "lighter" }}>
+                        Add dates
+                      </span>
+                    </button>
+                    <button
+                      className={` ${
+                        toggle == 3 ? "activeTab4 shadow" : "searchButton4"
+                      } alignTexts`}
+                      onClick={() => handleTab(3)}
+                    >
+                      <div className="d-block">
+                        <span style={{ float: "left", fontWeight: "bold" }}>
+                          where
+                        </span>{" "}
+                        <br />
+                        <span style={{ float: "left", fontWeight: "lighter" }}>
+                          search destinations
+                        </span>
+                      </div>
+                      <div>
+                        <button className="SearchButtonDrop">
+                          <AiOutlineSearch />
+                          <span className="ms-2">Search</span>
+                        </button>
+                      </div>
+                    </button>
+                  </div>
                 </div>
-              </div>
+                <RecentSearches toggle={toggle} />
+                <div className="opacity-div"></div>
+              </main>
             )}
           </section>
         )}
