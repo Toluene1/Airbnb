@@ -15,7 +15,6 @@ const Price = () => {
   const handleDecreasePrice = () => {
     setprice((prev) => (prev -= 5));
   };
-  console.log(price);
 
   const postPrice = async () => {
     try {
