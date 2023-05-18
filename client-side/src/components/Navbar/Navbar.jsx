@@ -12,6 +12,7 @@ import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
 import { Existing } from "../../utils/setlocalstorage";
 import Airbnblogo from "../../assets/airbnb-logo.png";
+import SearchDropdown from "../SearchDropdown/SearchDropdown";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
   const [showWish, setshowWish] = useState(false);
@@ -48,6 +49,12 @@ const Navbar = () => {
   function HideDropdown() {
     setModalShow(true);
     setDropdown(false);
+  }
+
+  //showSearchDropdown
+  function showSearchDropdown() {
+    setSearchBar(false);
+    setSearchDropdown(true);
   }
 
   const checkInnerwidth = () => {
@@ -148,14 +155,8 @@ const Navbar = () => {
             <img src={Airbnblogo} alt="" className="imageDiv1" />
           </Link>
         </div>
-        <div className="navDiv2 ">
-          <button className="div2Button1">Anywhere</button>
-          <button className="div2Button2">Any Week</button>
-          <button className="div2Button3">
-            <span className="anyGuest">Any guest</span>
-            <AiOutlineSearch className="iconButton" />
-          </button>
-        </div>
+        {/* added the searchDropdown */}
+        <SearchDropdown />
         <div className="navDiv3 ">
           {Loggedin ? (
             <div>
