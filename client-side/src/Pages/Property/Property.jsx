@@ -403,25 +403,25 @@ const Property = () => {
                     <p>
                       <FaBed className="fs-5 ms-1" />
                     </p>
-                    <p className="mx-4">
-                      <h6 className="m-0">{property.Bedrooms}bedrooms</h6>
-                      <h6 className="m-0">{property.Beds}beds</h6>
+                    <p className="mx-2">
+                      <p className="m-0">{property.Bedrooms}bedrooms</p>
+                      <p className="m-0">{property.Beds}beds</p>
                     </p>
                   </div>
                   <div className="feature">
                     <p>
                       <FaShower className="fs-5 ms-1" />
                     </p>
-                    <p className="mx-4">
-                      <h6>private bathroom</h6>
+                    <p className="mx-2">
+                      <p>private bathroom</p>
                     </p>
                   </div>
                   <div className="feature">
                     <p>
                       <FaHouseUser className="fs-5 ms-1" />
                     </p>
-                    <p className="mx-4">
-                      <h6> Host or others may share home</h6>
+                    <p className="mx-2">
+                      <p> Host or others may share home</p>
                     </p>
                   </div>
                 </main>

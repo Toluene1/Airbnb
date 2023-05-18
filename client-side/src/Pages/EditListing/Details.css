@@ -3,6 +3,7 @@
   margin: 40px auto;
 }
 .side {
+  display: block;
   width: 20%;
   position: sticky;
   top: 10px;
@@ -12,11 +13,19 @@
   min-width: max-content;
 }
 .content {
-  width: 60%;
+  width: 65%;
 }
-.side p {
+.clickedTab {
+  color: black;
+  border-left: 2px solid black;
+  padding: 8px 20px;
+  min-width: 100%;
+  margin: 0px;
+  font-weight: bold;
+}
+.sidep {
   color: rgb(55, 54, 54);
-  padding: 8px 10px;
+  padding: 8px 20px;
   margin: 0px;
   border-left: 1px solid rgb(177, 177, 177);
   min-width: 100%;
@@ -24,4 +33,82 @@
 }
 h6 {
   width: max-content;
+}
+.Photo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: scroll;
+  gap: 20px;
+  position: relative;
+}
+.Photo div {
+  height: 150px;
+  min-width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  object-fit: contain;
+  margin: 20px 0px;
+}
+.Photo::-webkit-scrollbar {
+  display: none;
+}
+.Photo img {
+  width: 100%;
+  height: 100%;
+}
+.Photo h4 {
+  position: sticky;
+  top: 70px;
+  right: 0px;
+  color: black;
+}
+.round_btn {
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+}
+.mobile_tab {
+  display: none;
+}
+@media only screen and (max-width: 735px) {
+  .side {
+    display: none;
+  }
+  .content {
+    width: 100%;
+  }
+  .details {
+    width: 100%;
+    padding: 10px;
+    margin: 10px auto;
+  }
+  .details h3 {
+    font-size: 18px;
+  }
+  .mobile_tab {
+    margin: 30px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+  }
+  .clickedtab {
+    border-bottom: 2px solid black;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+  }
+  .mobile_tab::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile_tab p {
+    min-width: max-content;
+    padding: 10px;
+  }
 }

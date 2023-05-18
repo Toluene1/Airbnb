@@ -90,8 +90,8 @@ const Wishlist = () => {
           {wishlist.length > 0 ? (
             <article>
               {wishlist.map((wish, index) => (
-                <section>
-                  <Link to={`/property/${wish?.property?._id}`} key={index}>
+                <section key={index}>
+                  <Link to={`/property/${wish?.property?._id}`}>
                     <main className="shadow">
                       <div>
                         <img src={wish?.property.images[0]} alt="" />

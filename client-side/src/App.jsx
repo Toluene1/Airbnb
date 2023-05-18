@@ -170,7 +170,7 @@ function App() {
                     </div>
                   ))}
                 </main>
-                <button onClick={showFilterWeb}>
+                <button onClick={showFilterWeb} className="mx-5">
                   <FaSlidersH className="searchIcon2" /> filters
                 </button>
               </>
@@ -196,7 +196,7 @@ function App() {
                     );
                   })}
                 </main>
-                <button onClick={showFilterWeb}>
+                <button onClick={showFilterWeb} className="mx-5">
                   <FaSlidersH className="searchIcon2" /> filters
                 </button>
               </>
@@ -211,72 +211,78 @@ function App() {
             <span className="spinner-border text-danger"></span>
           </div>
         ) : (
-          <section className="property">
-            {property.length > 0 ? (
-              <>
-                {alert && (
-                  <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
-                )}
-                {property.map((property) => (
-                  <Link
-                    to={`/property/${property._id}`}
-                    className="prop"
-                    key={property._id}
-                  >
-                    {/* carousel  */}
-                    <div className="  position-relative">
-                      {property.images.length > 0 ? (
-                        <Carousel onSelect={handleSelect}>
-                          {property.images.map((images) => (
-                            <Carousel.Item
-                              activeindex={index}
-                              style={{ width: "300px", height: "200px" }}
-                              key={images}
-                            >
-                              <img src={images} alt="" />
-                            </Carousel.Item>
-                          ))}
-                        </Carousel>
-                      ) : (
-                        <div className="repimages shadow">
-                          <img
-                            src={Airbnblogo}
-                            alt=""
-                            style={{ width: "50px", height: "50px" }}
-                          />
-                        </div>
-                      )}
-                      <button
-                        className="love"
-                        onClick={(e) => addToWishlist(e, property._id)}
-                      >
-                        <FaRegHeart className="fs-5 " />
-                      </button>
-                      <div className="foot my-3 ">
-                        <h3>
-                          {property?.Location?.city +
-                            "," +
-                            " " +
-                            property?.Location?.country}{" "}
-                        </h3>
-                        <h6>
-                          stay with {property?.host?.FirstName} . Works as a{" "}
-                          {property?.host?.Work || "***"}{" "}
-                        </h6>
-                        <h5>${property?.price || "***"} night</h5>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </>
-            ) : (
-              <div className="">
-                {" "}
-                <h6 className="text-danger">
-                  properties of the selected category cant be found
-                </h6>
-              </div>
+          <section style={{ marginTop: "150px", padding: "0px 10px" }}>
+            {alert && (
+              <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
             )}
+
+            <section className="property">
+              {property.length > 0 ? (
+                <>
+                  {property.map((property) => (
+                    <Link
+                      to={`/property/${property._id}`}
+                      className="prop"
+                      key={property._id}
+                    >
+                      {/* carousel  */}
+                      <div
+                        className="  position-relative"
+                        style={{ maxWidth: "300px" }}
+                      >
+                        {property.images.length > 0 ? (
+                          <Carousel onSelect={handleSelect}>
+                            {property.images.map((images) => (
+                              <Carousel.Item
+                                activeindex={index}
+                                style={{ width: "300px", height: "200px" }}
+                                key={images}
+                              >
+                                <img src={images} alt="" />
+                              </Carousel.Item>
+                            ))}
+                          </Carousel>
+                        ) : (
+                          <div className="repimages shadow">
+                            <img
+                              src={Airbnblogo}
+                              alt=""
+                              style={{ width: "50px", height: "50px" }}
+                            />
+                          </div>
+                        )}
+                        <button
+                          className="love"
+                          onClick={(e) => addToWishlist(e, property._id)}
+                        >
+                          <FaRegHeart className="fs-5 " />
+                        </button>
+                        <div className="foot my-3 ">
+                          <h3>
+                            {property?.Location?.city +
+                              "," +
+                              " " +
+                              property?.Location?.country}{" "}
+                          </h3>
+                          <p>
+                            stay with {property?.host?.FirstName} . Works as a{" "}
+                            {property?.host?.Work || "***"}{" "}
+                          </p>
+                          <h5>${property?.price || "***"} night</h5>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </>
+              ) : (
+                <div className="">
+                  {" "}
+                  <h6 className="text-danger">
+                    properties of the selected category cant be found
+                  </h6>
+                </div>
+              )}
+            </section>
           </section>
         )}
         <FilterWebProperties
