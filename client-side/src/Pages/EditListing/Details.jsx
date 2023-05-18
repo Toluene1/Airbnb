@@ -26,7 +26,7 @@ const Details = () => {
     if (currentscrollposition > 382 && currentscrollposition < 777) {
       return setcolor("Listing basics");
     }
-    if (currentscrollposition >= 780) {
+    if (currentscrollposition == 780) {
       return setcolor("Amenities");
     }
   };
@@ -147,7 +147,7 @@ const Details = () => {
                       Property and rooms
                     </p>
                   </a>
-                  <p>Accessibility</p>
+                  <p className="sidep">Accessibility</p>
                 </div>
 
                 <div className="mt-3">

@@ -36,7 +36,6 @@
   border: 1px solid rgb(239, 239, 239);
   height: 230px;
   width: 280px;
-  min-width: fit-content;
   object-fit: cover;
   overflow: hidden;
 }
@@ -46,7 +45,6 @@
   grid-gap: 10px;
   justify-content: space-between;
   align-content: center;
-  justify-content: start;
 }
 .Listings img {
   width: 100%;
@@ -93,10 +91,5 @@
   }
   .firstSection {
     width: 100%;
-  }
-}
-@media only screen and (min-width: 980px) {
-  .Listings article {
-    justify-content: start;
   }
 }
