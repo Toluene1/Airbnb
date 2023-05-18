@@ -2,7 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import LoginFooter from "./components/LoginFooter/LoginFooter";
 import httpClient from "./Services/httpclient";
-import { FaSlidersH, FaRegHeart } from "react-icons/fa";
+import {
+  FaSlidersH,
+  FaRegHeart,
+  FaHouseUser,
+  FaAirbnb,
+  FaRenren,
+  FaKhanda,
+  FaIcons,
+  FaHotTub,
+  FaIgloo,
+  FaKeyboard,
+  FaLifeRing,
+  FaRainbow,
+  FaTicketAlt,
+} from "react-icons/fa";
 import { Context } from "./Provider/Context";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
@@ -13,22 +27,40 @@ import FilterWebProperties from "./components/FilterWebProperties";
 import Airbnblogo from "../src/assets/airbnb-logo.png";
 
 function App() {
-  const [loading, setloading] = useState(false);
+  const [loading, setloading] = useState(true);
   const [loadingCatgory, setloadingCategory] = useState(true);
   const [categories, setcategories] = useState([]);
   const [clickedFilter, setclickedFilter] = useState("All");
   const [query, setquery] = useState("");
-  const [property, setProperty] = useState([]);
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
-  const { modalShow, setModalShow, setActiveButton, filterWeb, setFilterWeb } =
-    useContext(Context);
+  const {
+    modalShow,
+    setModalShow,
+    setActiveButton,
+    filterWeb,
+    setFilterWeb,
+    property,
+    setProperty,
+  } = useContext(Context);
   const [index, setIndex] = useState(0);
   const [_id, setId] = useState("");
   let isMounted = true;
   let isMountedCat = true;
   let catload = [];
-
+  let icons = [
+    FaAirbnb,
+    FaHouseUser,
+    FaRenren,
+    FaKhanda,
+    FaIcons,
+    FaHotTub,
+    FaIgloo,
+    FaKeyboard,
+    FaLifeRing,
+    FaRainbow,
+    FaTicketAlt,
+  ];
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
@@ -98,7 +130,7 @@ function App() {
     return () => {
       isMounted = false;
     };
-  }, [clickedFilter]);
+  }, [query]);
   // console.log(property);
 
   const addToWishlist = async (e, _id) => {
@@ -145,17 +177,24 @@ function App() {
             ) : (
               <>
                 <main>
-                  {categories.map((category, index) => (
-                    <div
-                      key={index}
-                      onClick={() => handleClickFilter(category)}
-                      className={`${
-                        category == clickedFilter ? "clickeddiv" : ""
-                      }`}
-                    >
-                      <p>{category}</p>
-                    </div>
-                  ))}
+                  {categories.map((category, index) => {
+                    const Icon = icons[index];
+
+                    return (
+                      <div
+                        key={index}
+                        onClick={() => handleClickFilter(category)}
+                        className={` ${
+                          category == clickedFilter ? "clickeddiv" : ""
+                        }`}
+                      >
+                        <p className=" text-center fs-5 m-0">
+                          <Icon />
+                        </p>
+                        <p className="text-center mb-2">{category}</p>
+                      </div>
+                    );
+                  })}
                 </main>
                 <button onClick={showFilterWeb}>
                   <FaSlidersH className="searchIcon2" /> filters

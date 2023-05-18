@@ -1,7 +1,6 @@
 footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   flex-wrap: wrap;
 }
@@ -58,10 +57,7 @@ hr {
 }
 @media only screen and (max-width: 735px) {
   .footers {
-    margin-top: 80px;
-    background-color: white;
-    padding: 20px 60px;
+    padding: 10px;
     width: 100%;
-    margin-bottom: 100px;
   }
 }

@@ -12,7 +12,7 @@ function LoginFooter() {
     useContext(Context);
   const [showfooter, setshowfooter] = useState(true);
   const [previouScrollPosition, setpreviousScrollPosition] = useState(
-    window.scrollY
+    window.scrollY,
   );
 
   const handleFooter = () => {
@@ -72,18 +72,20 @@ function LoginFooter() {
                   id="second"
                   onClick={clickedIconHandler}
                 >
-                  <AiOutlineHeart
-                    className={`iconFooter ${
-                      activeButton === "second" ? `text-danger` : ""
-                    }`}
-                  />
-                  <div
-                    className={`textFooter ${
-                      activeButton === "second" ? `text-dark` : ""
-                    }`}
-                  >
-                    Wishlists
-                  </div>
+                  <Link to={"/wishlist"}>
+                    <AiOutlineHeart
+                      className={`iconFooter ${
+                        activeButton === "second" ? `text-danger` : ""
+                      }`}
+                    />
+                    <div
+                      className={`textFooter ${
+                        activeButton === "second" ? `text-dark` : ""
+                      }`}
+                    >
+                      Wishlists
+                    </div>
+                  </Link>
                 </div>
                 <div
                   className=" divWithin "

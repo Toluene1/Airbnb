@@ -16,6 +16,7 @@ import {
   FaShower,
   FaHouseUser,
   FaAngleDown,
+  FaAngleUp,
 } from "react-icons/fa";
 import { AiOutlineWifi } from "react-icons/ai";
 import {
@@ -262,7 +263,7 @@ const Property = () => {
                       </p>
                     </Link>
                     <hr />
-                    <Link>
+                    <Link to={"/listings"}>
                       {" "}
                       <p> Manage listings</p>
                     </Link>
@@ -360,8 +361,8 @@ const Property = () => {
           <span className="spinner-border text-danger"></span>
         </div>
       ) : (
-        <>
-          <section id="photos" className="propmain">
+        <div className="mobile-prop">
+          <section id="photos" className="propmain ">
             <h3 className="mt-4">{property?.About}</h3>
             <div className="d-flex juistify-content-center align-items-center">
               <span>
@@ -431,7 +432,7 @@ const Property = () => {
                     <FaBed className="fs-5" />
                   </p>
                   <div className="mx-3">
-                    <h6>Room in a condo</h6>
+                    <h6>{property.privacy} in a condo</h6>
                     <p className="grey">
                       Your own room in a home, plus access to shared spaces.
                     </p>
@@ -617,9 +618,15 @@ const Property = () => {
                       <span className="guests">GUESTS</span> <br />
                       <span> 1 guests</span>
                     </p>
-                    <p>
-                      <FaAngleDown />
-                    </p>
+                    {drop ? (
+                      <p>
+                        <FaAngleDown />
+                      </p>
+                    ) : (
+                      <p>
+                        <FaAngleUp />
+                      </p>
+                    )}
                     {/* dropdown */}
                     {drop && (
                       <main className="guest-info shadow p-3">
@@ -688,7 +695,7 @@ const Property = () => {
                           infants. Pets aren't allowed.
                         </span>
                         <p
-                          className=" text-decoration-underline text-end"
+                          className=" text-decoration-underline text-end fw-bold"
                           onCanPlay={() => setdrop(false)}
                         >
                           {" "}
@@ -741,7 +748,7 @@ const Property = () => {
             </main>
           </section>
           <FooterProp />
-        </>
+        </div>
       )}
       <div className="mobilefooter shadow">
         {loading ? (

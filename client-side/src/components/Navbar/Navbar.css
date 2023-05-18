@@ -365,6 +365,7 @@ a :hover {
   border-radius: 20px;
   border: 1px solid rgb(169, 156, 156);
   transition: 0.3s;
+  cursor: pointer;
 }
 .propertyType:hover {
   border: 1px solid black;

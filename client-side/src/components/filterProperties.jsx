@@ -32,7 +32,7 @@ function FilterProperties(props) {
             </div>
           </Modal.Header>
           <Modal.Body className="ms-2">
-            <FilterBody />
+            <FilterBody hideFilter={hideFilter} />
           </Modal.Body>
         </Modal>
       </div>

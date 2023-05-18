@@ -78,7 +78,7 @@ const Wishlist = () => {
           <span className="spinner-border text-danger"></span>
         </div>
       ) : (
-        <section className="wishlist">
+        <section className="wishlist mb-3">
           <h2>Wishlist</h2>
           <Link to={"/"}>
             {" "}
@@ -90,7 +90,7 @@ const Wishlist = () => {
           {wishlist.length > 0 ? (
             <article>
               {wishlist.map((wish, index) => (
-                <>
+                <section>
                   <Link to={`/property/${wish?.property?._id}`} key={index}>
                     <main className="shadow">
                       <div>
@@ -123,7 +123,7 @@ const Wishlist = () => {
                       </button>
                     </p>
                   </aside>
-                </>
+                </section>
               ))}
             </article>
           ) : (

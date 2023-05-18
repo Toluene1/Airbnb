@@ -235,7 +235,7 @@ const Navbar = () => {
                     </p>
                   </Link>
                   <hr />
-                  <Link>
+                  <Link to={"/listings"}>
                     {" "}
                     <p> Manage listings</p>
                   </Link>

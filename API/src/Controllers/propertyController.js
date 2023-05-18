@@ -9,8 +9,6 @@ const createProperty = async (req, res) => {
     const property = await Property.create({
       host: _id,
     });
-
-    //find 1 property by id from req.params and populate  const prop = await Property.findOne({ _id: propId }).populate("host");
     res.status(200).json({ prop: property._id });
   } catch (error) {
     console.log(error);
@@ -124,13 +122,57 @@ const getHostProperty = async (req, res) => {
   }
 };
 
-const getAllProperty = async (req, res) => {
-  const { structure } = req.query;
-  const queryObject = {};
+const deleteHostProperty = async (req, res) => {
+  const { _id } = req.user;
+  const { id } = req.params;
+  try {
+    await Property.findOneAndDelete({ host: _id, _id: id });
+    const prop = await Property.find({ host: _id });
+    res.status(200).json({ prop: prop });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
 
+const editHostProperty = async (req, res) => {
+  const { _id } = req.user;
+  const { id } = req.params;
+  try {
+    const property = await Property.findOne({ host: _id, _id: id });
+    res.status(200).json({ prop: property });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "please contact the admin " });
+  }
+};
+
+const getAllProperty = async (req, res) => {
+  const { structure, privacy, Bedrooms, Beds, Bathrooms, Amenities } =
+    req.query;
+
+  const queryObject = {};
   if (structure) {
     queryObject.structure = structure;
   }
+  if (privacy) {
+    queryObject.privacy = privacy;
+  }
+
+  if (Bedrooms) {
+    queryObject.Bedrooms = Bedrooms;
+  }
+  if (Beds) {
+    queryObject.Beds = Beds;
+  }
+  if (Bathrooms) {
+    queryObject.Bathrooms = Bathrooms;
+  }
+  if (Amenities) {
+    const amenities = Amenities.split(",");
+    queryObject.Amenities = { $all: amenities };
+  }
+
   try {
     const property = await Property.find(queryObject).populate("host");
     res.status(200).json({ prop: property });
@@ -149,4 +191,6 @@ module.exports = {
   getAllProperty,
   getHostProperty,
   findPropertynoAuth,
+  deleteHostProperty,
+  editHostProperty,
 };

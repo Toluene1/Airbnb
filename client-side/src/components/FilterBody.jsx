@@ -1,20 +1,32 @@
 import { MdOutlineWarehouse } from "react-icons/md";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsBuildings } from "react-icons/bs";
 import { TbBuildingHospital } from "react-icons/tb";
 import { BsHouses } from "react-icons/bs";
 import httpClient from "../Services/httpclient";
+import { Context } from "../Provider/Context";
 
-function FilterBody(props) {
-  const [selected, setSelected] = useState(0);
-  const [bed, setbed] = useState(0);
-  const [property, setProperty] = useState(false);
-  const [property2, setProperty2] = useState(false);
-  const [property3, setProperty3] = useState(false);
-  const [property4, setProperty4] = useState(false);
-  const [bathroom, setbathroom] = useState(0);
+function FilterBody({ hideFilter }) {
+  const [bedrooms, setbedrooms] = useState({ color: 0, qty: "" });
+  const [bed, setbed] = useState({ color: 0, qty: "" });
+  const [bathroom, setbathroom] = useState({ color: 0, qty: "" });
+  const [structure, setstructure] = useState("");
+  const [privacy, setprivacy] = useState("");
+  const [amenities, setamenities] = useState([]);
   const [loading, setloading] = useState(false);
   const [filterProp, setFilterProp] = useState([]);
+  const { setProperty } = useContext(Context);
+
+  const [amenity, setamenity] = useState({
+    wifi: false,
+    tv: false,
+    kitchen: false,
+    washer: false,
+    airconditioning: false,
+    pool: false,
+    piano: false,
+  });
+
   let isMounted = true;
   const lists = [
     { title: "any" },
@@ -27,35 +39,89 @@ function FilterBody(props) {
     { title: "7" },
     { title: "8+" },
   ];
+
+  // Clear All
+  const handleClearAll = () => {
+    setamenity({
+      wifi: false,
+      tv: false,
+      kitchen: false,
+      washer: false,
+      airconditioning: false,
+      pool: false,
+      piano: false,
+    });
+    setamenities([]);
+    setprivacy("");
+    setstructure("");
+    setbathroom({ ...bathroom, color: 0, qty: "" });
+    setbedrooms({ ...bedrooms, color: 0, qty: "" });
+    setbed({ ...bed, color: 0, qty: "" });
+  };
+
+  // filter Amenities
+  const handleToggleAmenities = (e) => {
+    setamenity({
+      ...amenity,
+      [e.currentTarget.id]: !amenity[e.currentTarget.id],
+    });
+
+    if (!amenity[e.currentTarget.id]) {
+      setamenities([...amenities, e.currentTarget.id]);
+    } else {
+      setamenities([
+        ...amenities.filter((amenity) => amenity !== e.currentTarget.id),
+      ]);
+    }
+  };
+
+  //filter by bedrooms
   const handleColor = (row) => {
-    setSelected(row);
+    if (row == 0) {
+      return setbedrooms({ ...bedrooms, color: row, qty: "" });
+    }
+    setbedrooms({ ...bedrooms, color: row, qty: row });
   };
+
+  //filter by Beds
   const handleColorBed = (row) => {
-    setbed(row);
+    if (row == 0) {
+      return setbed({ ...bed, color: row, qty: "" });
+    }
+    setbed({ ...bed, color: row, qty: row });
   };
+
+  //filter by bathroom
   const handleColorBath = (row) => {
-    setbathroom(row);
+    if (row == 0) {
+      return setbathroom({ ...bathroom, color: row, qty: "" });
+    }
+    setbathroom({ ...bathroom, color: row, qty: row });
   };
 
-  //properties house,apartment function
-  const ChangePropertyDiv = () => {
-    setProperty(!property);
-  };
-  const ChangePropertyDiv2 = () => {
-    setProperty2(!property2);
-  };
-  const ChangePropertyDiv3 = () => {
-    setProperty3(!property3);
-  };
-  const ChangePropertyDiv4 = () => {
-    setProperty4(!property4);
+  //Filter by Structure
+  const handleStructureFilter = (e) => {
+    if (structure == e.currentTarget.id) {
+      setstructure("");
+      return;
+    }
+    setstructure(e.currentTarget.id);
   };
 
+  const handlePrivacyFilter = (e) => {
+    if (privacy == e.currentTarget.id) {
+      setprivacy("");
+      return;
+    }
+    setprivacy(e.currentTarget.id);
+  };
   useEffect(() => {
     const fetchProperties = async () => {
       try {
         setloading(true);
-        const response = await httpClient.get(`property/getallproperty/`);
+        const response = await httpClient.get(
+          `property/getallproperty/?structure=${structure}&Bedrooms=${bedrooms.qty}&Beds=${bed.qty}&Bathrooms=${bathroom.qty}&privacy=${privacy}&Amenities=${amenities}`,
+        );
         setFilterProp(response.data.prop);
         setloading(false);
       } catch (error) {
@@ -64,15 +130,17 @@ function FilterBody(props) {
         console.log(error.response.data.msg);
       }
     };
-
     if (isMounted) {
       fetchProperties();
     }
     return () => {
       isMounted = false;
     };
-  }, []);
-
+  }, [structure, bedrooms.qty, bed.qty, bathroom.qty, privacy, amenities]);
+  const handleSubmitFilter = () => {
+    setProperty(filterProp);
+    hideFilter();
+  };
   return (
     <section>
       <div className="topModal">
@@ -91,327 +159,355 @@ function FilterBody(props) {
         <span className="ms-2 me-2">-</span>
         <input type="text" className="inputPrice p-2" placeholder="max" />
       </div>
-      <form>
-        <section>
+
+      <section>
+        <hr />
+        <div className="mt-3 pb-2">
+          <span className="fw-bold">Type of place</span>
+          <ul className="list-group mt-2 ul">
+            <li>
+              <label
+                className="form-check-label labelStyle"
+                htmlFor="entire-place"
+              >
+                Entire place <br /> A place to yourself
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end mt-2 accent addStyle"
+                  type="checkbox"
+                  value=""
+                  id="entire-place"
+                  checked={privacy == "entire-place" ? true : false}
+                  onChange={handlePrivacyFilter}
+                />
+              </span>
+            </li>
+            <li className="mt-3">
+              <label className=" accent  labelStyle" htmlFor="private-room">
+                Private room <br /> Your own room in a home or a hotel, plus
+                some shared common spaces
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end mt-2 addStyle accent"
+                  type="checkbox"
+                  value=""
+                  id="private-room"
+                  checked={privacy == "private-room" ? true : false}
+                  onChange={handlePrivacyFilter}
+                />
+              </span>
+            </li>
+            <li className="mt-3">
+              <label className=" accent  labelStyle" htmlFor="shared-room">
+                shared room <br /> A sleeping space and common areas that may be
+                shared with others
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end mt-2 addStyle accent"
+                  type="checkbox"
+                  value=""
+                  id="shared-room"
+                  checked={privacy == "shared-room" ? true : false}
+                  onChange={handlePrivacyFilter}
+                />
+              </span>
+            </li>
+          </ul>
           <hr />
-          <div className="mt-3 pb-2">
-            <span className="fw-bold">Type of place</span>
-            <ul className="list-group mt-2 ul">
-              <li>
-                <label
-                  className="form-check-label labelStyle"
-                  htmlFor="firstCheckbox"
-                >
-                  Entire place <br /> A place to yourself
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end mt-2 accent addStyle"
-                    type="checkbox"
-                    value=""
-                    id="firstCheckbox"
-                  />
-                </span>
-              </li>
-              <li className="mt-3">
-                <label className=" accent  labelStyle" htmlFor="secondCheckbox">
-                  Private room <br /> Your own room in a home or a hotel, plus
-                  some shared common spaces
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end mt-2 addStyle accent"
-                    type="checkbox"
-                    value=""
-                    id="secondCheckbox"
-                  />
-                </span>
-              </li>
-              <li className="mt-3">
-                <label className=" accent  labelStyle" htmlFor="secondCheckbox">
-                  shared room <br /> A sleeping space and common areas that may
-                  be shared with others
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end mt-2 addStyle accent"
-                    type="checkbox"
-                    value=""
-                    id="secondCheckbox"
-                  />
-                </span>
-              </li>
-            </ul>
-            <hr />
-          </div>
-        </section>
-        <section>
-          <p className="fw-bold">Room and Beds</p>
-          <p className="fw-bold">Bedrooms</p>
-          <div className="divBed">
-            {lists.map((list, index) => (
-              <button
-                type="button"
-                className="bedButtonRest"
-                key={index}
-                onClick={() => handleColor(index)}
-                style={{
-                  backgroundColor: index === selected ? "black" : "",
-                  color: index === selected ? "white" : "",
-                }}
-              >
-                {list.title}
-              </button>
-            ))}
-          </div>
-          <p className="fw-bold mt-3">Beds</p>
-          <div className="divBed">
-            {lists.map((list, index) => (
-              <button
-                type="button"
-                className="bedButtonRest"
-                key={index}
-                onClick={() => handleColorBed(index)}
-                style={{
-                  backgroundColor: index === bed ? "black" : "",
-                  color: index === bed ? "white" : "",
-                }}
-              >
-                {list.title}
-              </button>
-            ))}
-          </div>
-          <p className="fw-bold mt-3">Bathrooms</p>
-          <div className="divBed">
-            {lists.map((list, index) => (
-              <button
-                type="button"
-                className="bedButtonRest"
-                key={index}
-                onClick={() => handleColorBath(index)}
-                style={{
-                  backgroundColor: index === bathroom ? "black" : "",
-                  color: index === bathroom ? "white" : "",
-                }}
-              >
-                {list.title}
-              </button>
-            ))}
-          </div>
-          <hr className="mt-4" />
-        </section>
-        <section>
-          <p className="fw-bold ">Property type</p>
-          <div className="divPropType">
-            <span
-              className={`propertyType ms-2 ${property && "colorBorder"}`}
-              onClick={ChangePropertyDiv}
+        </div>
+      </section>
+      <section>
+        <p className="fw-bold">Room and Beds</p>
+        <p className="fw-bold">Bedrooms</p>
+        <div className="divBed">
+          {lists.map((list, index) => (
+            <button
+              type="button"
+              className="bedButtonRest"
+              key={index}
+              onClick={() => handleColor(index)}
+              style={{
+                backgroundColor: index === bedrooms.color ? "black" : "",
+                color: index === bedrooms.color ? "white" : "",
+              }}
             >
-              <span>
-                <MdOutlineWarehouse className="iconProp" />
-              </span>
-              <div className="divWithinProp">house</div>
-            </span>
-            <span
-              className={`propertyType ms-2 ${property2 && "colorBorder"}`}
-              onClick={ChangePropertyDiv2}
+              {list.title}
+            </button>
+          ))}
+        </div>
+        <p className="fw-bold mt-3">Beds</p>
+        <div className="divBed">
+          {lists.map((list, index) => (
+            <button
+              type="button"
+              className="bedButtonRest"
+              key={index}
+              onClick={() => handleColorBed(index)}
+              style={{
+                backgroundColor: index === bed.color ? "black" : "",
+                color: index === bed.color ? "white" : "",
+              }}
             >
-              <span>
-                <BsBuildings className="iconProp" />
-              </span>
-              <div className="divWithinProp">Apartment</div>
-            </span>
-          </div>
-          <div className="divPropType mt-3">
-            <span
-              className={`propertyType ms-2 ${property3 && colorBorder}`}
-              onClick={ChangePropertyDiv3}
+              {list.title}
+            </button>
+          ))}
+        </div>
+        <p className="fw-bold mt-3">Bathrooms</p>
+        <div className="divBed">
+          {lists.map((list, index) => (
+            <button
+              type="button"
+              className="bedButtonRest"
+              key={index}
+              onClick={() => handleColorBath(index)}
+              style={{
+                backgroundColor: index === bathroom.color ? "black" : "",
+                color: index === bathroom.color ? "white" : "",
+              }}
             >
-              <span>
-                <TbBuildingHospital className="iconProp" />
-              </span>
-              <div className="divWithinProp">Guesthouse</div>
+              {list.title}
+            </button>
+          ))}
+        </div>
+        <hr className="mt-4" />
+      </section>
+      <section>
+        <p className="fw-bold ">Property type</p>
+        <div className="divPropType">
+          <span
+            id="House"
+            className={`propertyType ms-2 ${
+              structure == "House" && "colorBorder"
+            }`}
+            onClick={handleStructureFilter}
+          >
+            <span>
+              <MdOutlineWarehouse className="iconProp" />
             </span>
-            <span
-              className={`propertyType ms-2 ${property4 && "colorBorder"}`}
-              onClick={ChangePropertyDiv4}
-            >
-              <span>
-                <BsHouses className="iconProp" />
-              </span>
-              <div className="divWithinProp">Hotel</div>
+            <div className="divWithinProp">House</div>
+          </span>
+          <div
+            id="Apartments"
+            className={`propertyType ms-2 ${
+              structure == "Apartments" && "colorBorder"
+            }`}
+            onClick={handleStructureFilter}
+          >
+            <span>
+              <BsBuildings className="iconProp" />
+            </span>{" "}
+            <p className="divWithinProp">Apartments</p>
+          </div>
+        </div>
+        <div className="divPropType mt-3">
+          <div
+            id="Caves"
+            className={`propertyType ms-2 ${
+              structure == "Caves" && "colorBorder"
+            }`}
+            onClick={handleStructureFilter}
+          >
+            <span>
+              <TbBuildingHospital className="iconProp" />
             </span>
+            <p className="divWithinProp">Caves</p>
           </div>
-        </section>
-        <hr className="mt-5" />
-        <section>
-          <p className="fw-bold">Amenities</p>
-          <p className="fw-bold">Essentials</p>
-          <div className="mt-3 pb-2">
-            <ul className="list-group mt-2 ul">
-              <li>
-                <label htmlFor="Checkbox1" className="form-check-label">
-                  wifi
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end accent addStyle"
-                    type="checkbox"
-                    value=""
-                    id="Checkbox1"
-                  />
-                </span>
-              </li>
-              <li className="mt-3">
-                <label className=" accent" htmlFor="Checkbox2">
-                  kitchen
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end mt-2 addStyle accent"
-                    type="checkbox"
-                    value=""
-                    id="Checkbox2"
-                  />
-                </span>
-              </li>
-              <li className="mt-3">
-                <label htmlFor="Checkbox3" className=" accent">
-                  washer
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end mt-2 addStyle accent"
-                    type="checkbox"
-                    value=""
-                    id="Checkbox3"
-                  />
-                </span>
-              </li>
-              <li className="mt-3">
-                <label htmlFor="Checkbox4" className=" accent">
-                  Air Conditioning
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end mt-2 addStyle accent"
-                    type="checkbox"
-                    value=""
-                    id="Checkbox4"
-                  />
-                </span>
-              </li>
-              <li className="mt-3">
-                <label className=" accent" htmlFor="Checkbox5">
-                  Heating
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end mt-2 addStyle accent"
-                    type="checkbox"
-                    value=""
-                    id="Checkbox5"
-                  />
-                </span>
-              </li>
-              <li className="mt-3">
-                <label className=" accent" htmlFor="Checkbox6">
-                  TV
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end mt-2 addStyle accent"
-                    type="checkbox"
-                    value=""
-                    id="Checkbox6"
-                  />
-                </span>
-              </li>
-            </ul>
-            <hr />
+          <div
+            className={`propertyType ms-2 ${
+              structure == "Tower" && "colorBorder"
+            }`}
+            onClick={handleStructureFilter}
+            id="Tower"
+          >
+            <span>
+              <BsHouses className="iconProp" />
+            </span>
+            <p className="divWithinProp">Tower</p>
           </div>
-        </section>
-        <section>
-          <p className="fw-bold">Host Language</p>
-          <div className="mt-3 pb-2">
-            <ul className="list-group mt-2 ul">
-              <li>
-                <label className="form-check-label" htmlFor="Language1">
-                  English
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end accent addStyle"
-                    type="checkbox"
-                    value=""
-                    id="Language1"
-                  />
-                </span>
-              </li>
-              <li className="mt-3">
-                <label className=" accent" htmlFor="Lamguage2">
-                  French
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end mt-2 addStyle accent"
-                    type="checkbox"
-                    value=""
-                    id="Language2"
-                  />
-                </span>
-              </li>
-              <li className="mt-3">
-                <label className=" accent" htmlFor="Language3">
-                  German
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end mt-2 addStyle accent"
-                    type="checkbox"
-                    value=""
-                    id="Language3"
-                  />
-                </span>
-              </li>
-              <li className="mt-3">
-                <label className=" accent" htmlFor="Language4">
-                  Spanish
-                </label>
-                <span>
-                  <input
-                    className=" me-1 float-end mt-2 addStyle accent"
-                    type="checkbox"
-                    value=""
-                    id="Language4"
-                  />
-                </span>
-              </li>
-            </ul>
-          </div>
+        </div>
+      </section>
+      <hr className="mt-5" />
+
+      {/* Amenties  */}
+      <section>
+        <p className="fw-bold">Amenities</p>
+        <p className="fw-bold">Essentials</p>
+        <div className="mt-3 pb-2">
+          <ul className="list-group mt-2 ul">
+            <li>
+              <label htmlFor="wifi" className="accent">
+                wifi
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end accent addStyle"
+                  type="checkbox"
+                  value=""
+                  id="wifi"
+                  checked={amenity.wifi == true ? true : false}
+                  onChange={handleToggleAmenities}
+                />
+              </span>
+            </li>
+            <li className="mt-3">
+              <label className=" accent" htmlFor="kitchen">
+                kitchen
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end mt-2 addStyle accent"
+                  type="checkbox"
+                  value=""
+                  id="kitchen"
+                  onChange={handleToggleAmenities}
+                  checked={amenity.kitchen == true ? true : false}
+                />
+              </span>
+            </li>
+            <li className="mt-3">
+              <label htmlFor="washer" className=" accent">
+                washer
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end mt-2 addStyle accent"
+                  type="checkbox"
+                  value=""
+                  id="washer"
+                  onChange={handleToggleAmenities}
+                  checked={amenity.washer == true ? true : false}
+                />
+              </span>
+            </li>
+            <li className="mt-3">
+              <label htmlFor="airconditioning" className=" accent">
+                Air Conditioning
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end mt-2 addStyle accent"
+                  type="checkbox"
+                  value=""
+                  id="airconditioning"
+                  onChange={handleToggleAmenities}
+                  checked={amenity.airconditioning == true ? true : false}
+                />
+              </span>
+            </li>
+            <li className="mt-3">
+              <label className=" accent" htmlFor="pool">
+                Pool
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end mt-2 addStyle accent"
+                  type="checkbox"
+                  value=""
+                  id="pool"
+                  onChange={handleToggleAmenities}
+                  checked={amenity.pool == true ? true : false}
+                />
+              </span>
+            </li>
+            <li className="mt-3">
+              <label className=" accent" htmlFor="tv">
+                TV
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end mt-2 addStyle accent"
+                  type="checkbox"
+                  value=""
+                  id="tv"
+                  onChange={handleToggleAmenities}
+                  checked={amenity.tv == true ? true : false}
+                />
+              </span>
+            </li>
+          </ul>
           <hr />
-          <section className="divFilterFooter ">
-            <div>
-              <a href="#" className="text-dark clearAll">
-                clear all
-              </a>
-            </div>
-            <div>
-              <button
-                onClick={props.onHide}
-                type="submit"
-                className="footerButton"
-              >
-                {loading ? (
-                  <span className="spinner-border text-secondary "></span>
-                ) : (
-                  <span>Show {filterProp.length} stays</span>
-                )}
-              </button>
-            </div>
-          </section>
+        </div>
+      </section>
+      <section>
+        <p className="fw-bold">Host Language</p>
+        <div className="mt-3 pb-2">
+          <ul className="list-group mt-2 ul">
+            <li>
+              <label className="form-check-label" htmlFor="Language1">
+                English
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end accent addStyle"
+                  type="checkbox"
+                  value=""
+                  id="Language1"
+                />
+              </span>
+            </li>
+            <li className="mt-3">
+              <label className=" accent" htmlFor="Lamguage2">
+                French
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end mt-2 addStyle accent"
+                  type="checkbox"
+                  value=""
+                  id="Language2"
+                />
+              </span>
+            </li>
+            <li className="mt-3">
+              <label className=" accent" htmlFor="Language3">
+                German
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end mt-2 addStyle accent"
+                  type="checkbox"
+                  value=""
+                  id="Language3"
+                />
+              </span>
+            </li>
+            <li className="mt-3">
+              <label className=" accent" htmlFor="Language4">
+                Spanish
+              </label>
+              <span>
+                <input
+                  className=" me-1 float-end mt-2 addStyle accent"
+                  type="checkbox"
+                  value=""
+                  id="Language4"
+                />
+              </span>
+            </li>
+          </ul>
+        </div>
+        <hr />
+        <section className="divFilterFooter ">
+          <button
+            className="text-dark clearAll  border-0 bg-white"
+            onClick={handleClearAll}
+          >
+            clear all
+          </button>
+          <div>
+            <button onClick={handleSubmitFilter} className="footerButton">
+              {loading ? (
+                <span className="spinner-border text-secondary "></span>
+              ) : (
+                <span>Show {filterProp.length} stays</span>
+              )}
+            </button>
+          </div>
         </section>
-      </form>
+      </section>
     </section>
   );
 }

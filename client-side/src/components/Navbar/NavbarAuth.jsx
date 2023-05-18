@@ -184,7 +184,7 @@ const NavbarAuth = () => {
                 <hr />
                 <p>
                   {" "}
-                  <Link>Manage listings</Link>
+                  <Link to={"/listings"}>Manage listings</Link>
                 </p>
                 <p>
                   {" "}

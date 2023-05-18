@@ -8,7 +8,7 @@ import {
   setLogin,
 } from "../utils/setlocalstorage";
 
-const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
+const OtpVerify = ({ setshowCreateAcc }) => {
   const [user_Otp, setuser_Otp] = useState("");
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
@@ -31,11 +31,6 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
     }
   }, [user_Otp]);
 
-  function backToWelcome() {
-    setshowCreateAcc(false);
-    setshowOtp(false);
-  }
-
   const postUserOtp = async () => {
     try {
       setloading(true);
@@ -49,7 +44,7 @@ const OtpVerify = ({ setshowCreateAcc, setshowOtp }) => {
         setshowCreateAcc(true);
         return;
       }
-      backToWelcome();
+
       handleSaveToken(response.data.token);
       setModalShow(false);
       setUser(response.data.user);
