@@ -11,3 +11,42 @@
   border-radius: 30px;
   justify-content: start;
 }
+.mainDivGuest {
+  width: 350px;
+  margin-top: 40px;
+  margin: auto;
+  background-color: white;
+  height: 400px;
+  display: flex;
+  border-radius: 30px;
+  justify-content: start;
+}
+.divContain {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+.sideDiv1 {
+  width: 40%;
+  height: 100%;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+.sideDiv2 {
+  width: 60%;
+  height: 100%;
+  text-align: left;
+  padding: 20px;
+}
+.flexDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.regionDivs {
+  background-color: aqua;
+  width: 115px;
+  height: 115px;
+}

@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import RecentSearches from "../../utils/SearchDrops/RecentSearches";
+import CheckInDates from "../../utils/SearchDrops/CheckInDates";
+import CheckOutDates from "../../utils/SearchDrops/CheckOutDate";
+import Guests from "../../utils/SearchDrops/Guests";
 
 const SearchDropdown = () => {
   const [toggle, settoggle] = useState(0);
@@ -122,6 +125,9 @@ const SearchDropdown = () => {
                   </div>
                 </div>
                 <RecentSearches toggle={toggle} />
+                <CheckInDates toggle={toggle} />
+                <CheckOutDates toggle={toggle} />
+                <Guests toggle={toggle} />
                 <div className="opacity-div"></div>
               </main>
             )}
