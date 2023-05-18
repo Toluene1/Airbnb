@@ -3,13 +3,41 @@ import { Link, useParams } from "react-router-dom";
 import ListingsNav from "../../components/ListingsNav/ListingsNav";
 import httpAuth from "../../Services/config";
 import FooterProp from "../../components/FooterProp.jsx/FooterProp";
-
 import "./Details.css";
+import { FaAngleRight } from "react-icons/fa";
 const Details = () => {
   const { id } = useParams();
   const [details, setdetails] = useState({});
   const [loading, setloading] = useState(true);
+  const [color, setcolor] = useState("Photos");
+  const [tab, settab] = useState("listing");
+
   let isMounted = true;
+
+  const handleToggleColor = (e) => {
+    setcolor(e.currentTarget.textContent);
+  };
+
+  const handleWindowToggle = () => {
+    const currentscrollposition = window.scrollY;
+    if (currentscrollposition > 0 && currentscrollposition < 382) {
+      return setcolor("Photos");
+    }
+    if (currentscrollposition > 382 && currentscrollposition < 777) {
+      return setcolor("Listing basics");
+    }
+    if (currentscrollposition >= 780) {
+      return setcolor("Amenities");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleWindowToggle);
+    return () => {
+      window.removeEventListener("scroll", handleWindowToggle);
+    };
+  }, [window.scrollY]);
+
   useEffect(() => {
     const EditListing = async () => {
       try {
@@ -30,7 +58,7 @@ const Details = () => {
       isMounted = false;
     };
   }, []);
-  console.log(details);
+
   return (
     <>
       <ListingsNav />
@@ -41,17 +69,24 @@ const Details = () => {
       ) : (
         <>
           <main className="details">
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-baseline">
               <div>
                 <h3>{details.About}</h3>
               </div>
               <div>
                 <Link to={`/property/${details._id}`}>
-                  <button className="btn btn-outline-dark">
-                    preview lisiting
-                  </button>
+                  <button className="btn btn-dark">preview lisiting</button>
                 </Link>
               </div>
+            </div>
+            <div className="mobile_tab">
+              <p className={`${tab == "listing" ? "clickedtab" : ""}`}>
+                Listing Details
+              </p>
+              <p>Pricing and availability</p>
+              <p>Policies and rules</p>
+              <p>info for guest</p>
+              <p>Co-Hosts</p>
             </div>
             <section className="d-flex justify-content-between mt-3 ">
               <main className="side">
@@ -59,12 +94,59 @@ const Details = () => {
                   Listing details
                 </button>
 
-                <div className="mt-3">
-                  <p>Photos</p>
-                  <p>Listing basics</p>
-                  <p>Amenities</p>
-                  <p>Location</p>
-                  <p>Property and rooms</p>
+                <div className="mt-3" style={{ cursor: "pointer" }}>
+                  <a href="#photos">
+                    {" "}
+                    <p
+                      className={`${
+                        color == "Photos" ? "clickedTab" : "sidep"
+                      }`}
+                      onClick={handleToggleColor}
+                    >
+                      Photos
+                    </p>
+                  </a>
+                  <a href="#list">
+                    {" "}
+                    <p
+                      className={`${
+                        color == "Listing basics" ? "clickedTab" : "sidep"
+                      }`}
+                      onClick={handleToggleColor}
+                    >
+                      Listing basics
+                    </p>
+                  </a>
+                  <a href="#amenity">
+                    <p
+                      className={`${
+                        color == "Amenities" ? "clickedTab" : "sidep"
+                      }`}
+                      onClick={handleToggleColor}
+                    >
+                      Amenities
+                    </p>
+                  </a>
+                  <a href="#location">
+                    <p
+                      className={`${
+                        color == "Location" ? "clickedTab" : "sidep"
+                      }`}
+                      onClick={handleToggleColor}
+                    >
+                      Location
+                    </p>
+                  </a>{" "}
+                  <a href="#prop">
+                    <p
+                      className={`${
+                        color == "Property and rooms" ? "clickedTab" : "sidep"
+                      }`}
+                      onClick={handleToggleColor}
+                    >
+                      Property and rooms
+                    </p>
+                  </a>
                   <p>Accessibility</p>
                 </div>
 
@@ -77,63 +159,133 @@ const Details = () => {
               </main>
 
               <main className="content">
-                Explicabo, in vel architecto quas distinctio dolorem! Assumenda
-                veritatis amet sed sit maxime perspiciatis officia distinctio
-                non! Repellat, nemo aut saepe illum facilis deserunt odio, eos
-                animi obcaecati repellendus pariatur sunt et dolore? Nemo facere
-                quo temporibus possimus cupiditate iusto dolorum accusantium
-                eligendi cum inventore minus numquam necessitatibus similique,
-                officia voluptates atque qui in animi ullam quos itaque omnis!
-                Aspernatur eveniet veniam vitae! Numquam corrupti id omnis illum
-                modi error minus officia dignissimos voluptates minima. Corporis
-                accusantium totam ipsa id minus tempore voluptatum debitis
-                laudantium autem? Molestiae accusantium est soluta quae
-                necessitatibus! Est? Hic praesentium reprehenderit cupiditate?
-                Quia nulla doloremque recusandae atque, dolor iusto iure beatae
-                quod eos sapiente voluptatem ullam aspernatur, tenetur ipsum
-                laboriosam similique voluptates ex. Autem voluptatibus odio
-                praesentium mollitia! Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Quod cum ipsam nemo culpa, omnis odit
-                inventore beatae illum nihil dolores excepturi, impedit vero
-                amet voluptatum laudantium accusamus iste. Aperiam, nihil.
-                Explicabo nobis eligendi id rerum, ab quidem itaque neque
-                commodi vel quaerat, laborum dolores minima quasi,
-                exercitationem eveniet! Eveniet, error voluptatum praesentium
-                delectus tempora accusamus perferendis cum non? Hic, placeat.
-                Praesentium suscipit ex velit numquam quisquam maxime nisi fuga
-                quaerat cumque expedita eius veritatis, exercitationem
-                voluptatem maiores, a architecto. Illum soluta possimus iusto
-                officiis asperiores ab, cum quo illo nam. Ab sequi praesentium
-                nihil, eaque tempore nisi maxime vitae excepturi rerum
-                provident. Error odio ex quibusdam alias libero dolor! Et
-                ducimus dignissimos quaerat explicabo labore cum incidunt
-                sapiente nisi sunt? Sapiente, quaerat quas at illo dolorum iure
-                ipsum qui, soluta aperiam autem est provident, adipisci
-                cupiditate obcaecati rerum rem ab deleniti ducimus magnam?
-                Veniam incidunt aut itaque magnam aperiam consequatur.
-                voluptatem ullam aspernatur, tenetur ipsum laboriosam similique
-                voluptates ex. Autem voluptatibus odio praesentium mollitia!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
-                cum ipsam nemo culpa, omnis odit inventore beatae illum nihil
-                dolores excepturi, impedit vero amet voluptatum laudantium
-                accusamus iste. Aperiam, nihil. Explicabo nobis eligendi id
-                rerum, ab quidem itaque neque commodi vel quaerat, laborum
-                dolores minima quasi, exercitationem eveniet! Eveniet, error
-                voluptatum praesentium delectus tempora accusamus perferendis
-                cum non? Hic, placeat. Praesentium suscipit ex velit numquam
-                quisquam maxime nisi fuga quaerat cumque expedita eius
-                veritatis, exercitationem voluptatem maiores, a architecto.
-                Illum soluta possimus iusto officiis asperiores ab, cum quo illo
-                nam. Ab sequi praesentium nihil, eaque tempore nisi maxime vitae
-                excepturi rerum provident. Error odio ex quibusdam alias libero
-                dolor! Et ducimus dignissimos quaerat explicabo labore cum
-                incidunt sapiente nisi sunt? Sapiente, quaerat quas at illo
-                dolorum iure ipsum qui, soluta aperiam autem est provident,
-                adipisci cupiditate obcaecati rerum rem ab deleniti ducimus
-                magnam? Veniam incidunt aut itaque magnam aperiam consequatur.
-                quaerat quas at illo dolorum iure ipsumrat quas at illo dolorum
-                iure ipsum qui, soluta aperiam autem est provident, adipisci
-                cupiditate obcaecati rerum
+                <div className="border-bottom">
+                  <div className="d-flex justify-content-between align-items-center ">
+                    <h5 id="photos">Photos</h5>
+                    <button className=" border-0  bg-white">
+                      <span className="text-decoration-underline"> Edit</span>
+                      <span className="mx-2 fw-bold fs-6">
+                        {" "}
+                        <FaAngleRight />{" "}
+                      </span>
+                    </button>
+                  </div>
+
+                  <main className="Photo">
+                    {details?.images.map((image, index) => (
+                      <div key={index}>
+                        <img src={image} alt="" />
+                      </div>
+                    ))}
+                    <h4>{details?.images.length}Photos</h4>
+                  </main>
+                </div>
+
+                {/* title  */}
+                <div id="list" className="my-3 border-bottom">
+                  <h5 className="mt-1">Listing Basics</h5>
+                  <div className="d-flex justify-content-between align-items-center mt-5">
+                    <p>Listing Title</p>
+                    <button className=" border-0 fw-bold bg-white">
+                      <span className="text-decoration-underline"> Edit</span>
+                      <span className="mx-2 fw-bold fs-6">
+                        {" "}
+                        <FaAngleRight />{" "}
+                      </span>
+                    </button>
+                  </div>
+                  <p className="my-1">{details?.About}</p>
+                </div>
+                {/* description  */}
+                <div className="my-5 border-bottom">
+                  <div className="d-flex justify-content-between align-items-center mt-5">
+                    <p>Listing description</p>
+                    <button className=" border-0 fw-bold bg-white">
+                      <span className="text-decoration-underline"> Edit</span>
+                      <span className="mx-2 fw-bold fs-6">
+                        {" "}
+                        <FaAngleRight />{" "}
+                      </span>
+                    </button>
+                  </div>
+                  <p className="my-1">{details?.description}</p>
+                </div>
+                {/* guests  */}
+
+                <div className="d-flex justify-content-between align-items-baseline mt-3 border-bottom ">
+                  <p>Number of Guests</p>
+                  <div className="d-flex justify-content-center align-items-center">
+                    <button className="round_btn border">-</button>
+                    <span className="mx-3 fw-bold fs-6">1</span>
+                    <button className="round_btn border">+</button>
+                  </div>
+                </div>
+                {/* amenities  */}
+                <div id="amenity" className="mt-3 border-bottom ">
+                  <div className="d-flex justify-content-between align-items-baseline ">
+                    <h6>Amenities</h6>
+                    <button className=" border-0 fw-bold bg-white">
+                      <span className="text-decoration-underline"> Edit</span>
+                      <span className="mx-2 fw-bold fs-6">
+                        {" "}
+                        <FaAngleRight />{" "}
+                      </span>
+                    </button>
+                  </div>
+                  <div className="mt-3">
+                    {details?.Amenities.map((amenities, index) => (
+                      <p key={index}>{amenities}</p>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Location  */}
+                <div id="location" className="my-1 border-bottom">
+                  <div className="d-flex justify-content-between align-items-center mt-3">
+                    <h6>Location</h6>
+                    <button className=" border-0 fw-bold bg-white">
+                      <span className="text-decoration-underline"> Edit</span>
+                      <span className="mx-2 fw-bold fs-6">
+                        {" "}
+                        <FaAngleRight />{" "}
+                      </span>
+                    </button>
+                  </div>
+                  <p className="my-1">
+                    {details?.Location.address +
+                      ", " +
+                      details?.Location.city +
+                      ", " +
+                      details?.Location.state +
+                      ", " +
+                      details?.Location.country}
+                  </p>
+                </div>
+
+                {/* prop and rooms  */}
+
+                <div className="my-2 border-bottom">
+                  <div className="d-flex justify-content-between align-items-center mt-5">
+                    <h6 id="prop">Property and Rooms</h6>
+                    <button className=" border-0 fw-bold bg-white">
+                      <span className="text-decoration-underline"> Edit</span>
+                      <span className="mx-2 fw-bold fs-6">
+                        {" "}
+                        <FaAngleRight />{" "}
+                      </span>
+                    </button>
+                  </div>
+                  <p>Rooms and Spaces</p>
+                  <div>
+                    <p className="m-0 text-secondary">
+                      Bedrooms:{details?.Bedrooms}
+                    </p>
+                    <p className="m-0 text-secondary">
+                      Bathrooms:{details?.Bathrooms}
+                    </p>
+                    <p className="mb-3 text-secondary">Beds:{details?.Beds}</p>
+                  </div>
+                </div>
               </main>
             </section>
           </main>

@@ -27,7 +27,7 @@ a {
 }
 .imagesprop img {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 .owner {
   margin-top: 40px;
