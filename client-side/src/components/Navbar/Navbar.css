@@ -146,7 +146,11 @@
 .navDiv2 {
   height: 43px;
   margin-right: 10px;
-  max-width: 450px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+.navDiv2:hover {
+  box-shadow: 1px 1px lightgray;
 }
 .navDiv3 {
   display: flex;
@@ -163,42 +167,50 @@
   height: 43px;
   border-radius: 20px 0px 0px 20px;
   background-color: white;
-  border: 1px solid rgb(203, 192, 192);
+  border: 1px solid rgb(238, 231, 231);
   font-size: 14px;
   font-weight: 600;
   color: #222222;
 }
 .div2Button1:hover {
   outline: none;
-  border: 1px solid rgb(203, 192, 192);
 }
 .div2Button2 {
   padding-left: 17px;
   padding-right: 17px;
   height: 43px;
   background-color: white;
-  border: 1px solid rgb(203, 192, 192);
+  border: 1px solid rgb(238, 231, 231);
   font-size: 14px;
   font-weight: 600;
   color: #222222;
 }
 .div2Button2:hover {
   outline: none;
-  border: 1px solid rgb(203, 192, 192);
 }
 .div2Button3 {
   width: 140px;
   height: 43px;
   border-radius: 0px 20px 20px 0px;
   background-color: white;
-  border: 1px solid rgb(203, 192, 192);
+  border: 1px solid rgb(238, 231, 231);
   font-size: 14px;
   color: #544c4c;
   padding: 0px;
 }
 .div2Button3:hover {
   outline: none;
-  border: 1px solid rgb(203, 192, 192);
+}
+.divSearch {
+  height: 43px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: none;
+  transition: 0.3s;
+  background-color: white;
+}
+.divSearch:hover {
+  border-bottom: 1px solid red;
 }
 .iconButton {
   background-color: red;
@@ -254,6 +266,51 @@
   padding: 10px;
   border-radius: 8px;
   z-index: 1000 !important;
+}
+.searchDropdown {
+  width: 100%;
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 1000 !important;
+}
+.searchDropdown div {
+  width: 700px;
+  margin: auto;
+  background-color: rgb(233, 228, 228);
+  display: flex;
+  border-radius: 30px;
+  justify-content: start;
+}
+.alignTexts {
+  font-size: 12px;
+  line-height: 14px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.searchButton1 {
+  width: 250px;
+  border-radius: 30px;
+  padding-left: 15px;
+  background-color: transparent;
+  border: none;
+  transition: 0.2s;
+}
+.searchButton1:hover {
+  background-color: lightgrey;
+}
+.searchButton2 {
+  width: 100px;
+  border-radius: 30px;
+  padding-left: 20px;
+  background-color: transparent;
+  border: none;
+}
+.searchButton2:hover {
+  background-color: lightgray;
 }
 .dropdown p {
   color: grey;
