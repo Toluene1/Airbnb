@@ -124,11 +124,12 @@ const SearchDropdown = () => {
                     </button>
                   </div>
                 </div>
-                <RecentSearches toggle={toggle} />
-                <CheckInDates toggle={toggle} />
-                <CheckOutDates toggle={toggle} />
-                <Guests toggle={toggle} />
-                <div className="opacity-div"></div>
+                <div className="opacity-div">
+                  <RecentSearches toggle={toggle} />
+                  <CheckInDates toggle={toggle} />
+                  <CheckOutDates toggle={toggle} />
+                  <Guests toggle={toggle} />
+                </div>
               </main>
             )}
           </section>
