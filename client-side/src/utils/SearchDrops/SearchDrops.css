@@ -11,15 +11,23 @@
   border-radius: 30px;
   justify-content: start;
 }
+.divGuest {
+  width: 700px;
+  margin-top: 40px;
+  margin: auto;
+  background-color: transparent;
+  border-radius: 30px;
+}
 .mainDivGuest {
-  width: 350px;
+  width: 320px;
   margin-top: 40px;
   margin: auto;
   background-color: white;
-  height: 400px;
-  display: flex;
+  float: right;
+  /* display: flex; */
   border-radius: 30px;
   justify-content: start;
+  padding: 25px;
 }
 .divContain {
   width: 100%;
@@ -49,4 +57,20 @@
   background-color: aqua;
   width: 115px;
   height: 115px;
+}
+.justifyDiv {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+}
+.countButton {
+  border-radius: 50%;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: white;
+  border: 1px solid lightgrey;
+}
+.countButton:hover {
+  border: 1px solid black;
 }

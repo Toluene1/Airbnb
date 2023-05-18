@@ -108,11 +108,11 @@ const SearchDropdown = () => {
                     >
                       <div className="d-block">
                         <span style={{ float: "left", fontWeight: "bold" }}>
-                          where
+                          who
                         </span>{" "}
                         <br />
                         <span style={{ float: "left", fontWeight: "lighter" }}>
-                          search destinations
+                          Add guests
                         </span>
                       </div>
                       <div>
