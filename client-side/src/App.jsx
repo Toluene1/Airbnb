@@ -25,6 +25,7 @@ import Alert from "./components/Alert";
 import PopModal from "./components/SignUp";
 import FilterWebProperties from "./components/FilterWebProperties";
 import Airbnblogo from "../src/assets/airbnb-logo.png";
+import HomepageFooter from "./utils/HomepageFooter";
 
 function App() {
   const [loading, setloading] = useState(true);
@@ -285,6 +286,7 @@ function App() {
             </section>
           </section>
         )}
+        <HomepageFooter />
         <FilterWebProperties
           show={filterWeb}
           onHide={() => setFilterWeb(false)}
