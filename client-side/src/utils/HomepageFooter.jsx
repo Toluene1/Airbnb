@@ -15,13 +15,13 @@ function HomepageFooter() {
         <div>Privacy</div>
         <div>your privacy choices</div>
       </div>
-      <div className="d-flex gap-3" style={{ flexWrap: "no-wrap" }}>
+      <div className="d-flex gap-3">
         <div>
           {" "}
           <TbWorld className="me-1 adjustMargin" /> English (Us)
         </div>
         <div>$ USD</div>
-        <div>support and resources</div>
+        <div>support & resources</div>
       </div>
     </main>
   );
