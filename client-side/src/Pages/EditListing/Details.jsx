@@ -216,7 +216,7 @@ const Details = () => {
                   <p>Number of Guests</p>
                   <div className="d-flex justify-content-center align-items-center">
                     <button className="round_btn border">-</button>
-                    <span className="mx-3 fw-bold fs-6">1</span>
+                    <span className="mx-3 fw-bold fs-6">{details?.guests}</span>
                     <button className="round_btn border">+</button>
                   </div>
                 </div>

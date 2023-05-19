@@ -206,15 +206,13 @@ a:hover {
 
 .property {
   margin: auto;
-  /* display: flex; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 10px 50px;
+  grid-gap: 10px 60px;
   justify-content: space-between;
   align-content: center;
   flex-wrap: wrap;
   width: 94%;
-  gap: 20px;
 }
 
 .property img {
@@ -346,15 +344,6 @@ a:hover {
   .navFilter main::-webkit-scrollbar {
     display: none;
   }
-  .property {
-    width: 100%;
-    padding: 20px;
-    margin-top: 150px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
 }
 .prop {
   cursor: pointer;
@@ -362,17 +351,7 @@ a:hover {
 a {
   text-decoration: none !important;
 }
-@media only screen and (max-width: 680px) {
-  .property {
-    width: 100%;
-    padding: 20px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-}
+
 @media only screen and (max-width: 900px) {
   .navFilter {
     height: 75px;
@@ -397,11 +376,5 @@ a {
 
   .navFilter main::-webkit-scrollbar {
     display: none;
-  }
-  .property {
-    width: 100%;
-    padding: 20px;
-    margin: auto;
-    gap: 20px;
   }
 }
