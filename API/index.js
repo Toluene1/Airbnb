@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
 const mongoose = require("mongoose");
 const { PORT, MONGO_URL } = require("./src/Config/config");
 const Error404 = require("./src/middleware/error404");
@@ -9,8 +8,23 @@ const propertyRouter = require("./src/Routes/propertyRoute");
 const categoryRouter = require("./src/Routes/categoryRoute");
 const wishlistRouter = require("./src/Routes/wishlistRoute");
 const auth = require("./src/middleware/auth");
+
+// security packages
+const helmet = require("helmet");
+const xss = require("xss-clean");
+const cors = require("cors");
+const rateLimiter = require("express-rate-limit");
+
 //middleware
-app.use(cors());
+app.use(
+  rateLimiter({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+  }),
+);
+app.use(helmet());
+app.use(xss());
+app.use(cors({ origin: ["http://localhost:4000"] }));
 app.use(express.json());
 
 //Routes
