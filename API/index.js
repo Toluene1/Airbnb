@@ -16,6 +16,7 @@ const cors = require("cors");
 const rateLimiter = require("express-rate-limit");
 
 //middleware
+app.use(cors({ origin: "http://localhost:4000" }));
 app.use(
   rateLimiter({
     windowMs: 15 * 60 * 1000,
@@ -24,7 +25,6 @@ app.use(
 );
 app.use(helmet());
 app.use(xss());
-app.use(cors({ origin: ["http://localhost:4000"] }));
 app.use(express.json());
 
 //Routes
