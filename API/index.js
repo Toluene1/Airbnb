@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
- const mongoose = require("mongoose");
- const { PORT, MONGO_URL } = require("./src/Config/config");
-const Error404 = require("./src/middleware/error404");
-const userRouter = require("./src/Routes/userRoute");
-const propertyRouter = require("./src/Routes/propertyRoute");
-const categoryRouter = require("./src/Routes/categoryRoute");
-const wishlistRouter = require("./src/Routes/wishlistRoute");
-const auth = require("./src/middleware/auth");
+//  const mongoose = require("mongoose");
+//  const { PORT, MONGO_URL } = require("./src/Config/config");
+// const Error404 = require("./src/middleware/error404");
+// const userRouter = require("./src/Routes/userRoute");
+// const propertyRouter = require("./src/Routes/propertyRoute");
+// const categoryRouter = require("./src/Routes/categoryRoute");
+// const wishlistRouter = require("./src/Routes/wishlistRoute");
+// const auth = require("./src/middleware/auth");
 
 // security packages
 // const helmet = require("helmet");
@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 // app.use("/api/v1/category", categoryRouter);
 // app.use("/api/v1/wishlist", [auth], wishlistRouter);
 
-app.use(Error404); // unavailable route
+// app.use(Error404); // unavailable route
 
 // // connect to db and listen to port
 const start = async () => {
