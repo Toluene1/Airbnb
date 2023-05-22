@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 //  const mongoose = require("mongoose");
-//  const { PORT, MONGO_URL } = require("./src/Config/config");
+const { PORT, MONGO_URL } = require("./src/Config/config");
 // const Error404 = require("./src/middleware/error404");
 // const userRouter = require("./src/Routes/userRoute");
 // const propertyRouter = require("./src/Routes/propertyRoute");
