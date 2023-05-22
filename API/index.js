@@ -27,12 +27,12 @@ app.use(
 app.get("/", (req, res) => {
   res.send("hello");
 });
-app.use("/api/v1/user", userRouter);
-app.use("/api/v1/property", propertyRouter);
-app.use("/api/v1/category", categoryRouter);
-app.use("/api/v1/wishlist", [auth], wishlistRouter);
+// app.use("/api/v1/user", userRouter);
+// app.use("/api/v1/property", propertyRouter);
+// app.use("/api/v1/category", categoryRouter);
+// app.use("/api/v1/wishlist", [auth], wishlistRouter);
 
-app.use(Error404); // unavailable route
+// app.use(Error404); // unavailable route
 
 // // connect to db and listen to port
 const start = async () => {
