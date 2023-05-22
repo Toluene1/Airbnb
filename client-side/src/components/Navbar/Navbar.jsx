@@ -9,7 +9,6 @@ import PopModal from "../SignUp";
 import FilterProperties from "../filterProperties";
 import "./Navbar.css";
 import { Context } from "../../Provider/Context";
-import httpAuth from "../../Services/config";
 import { Existing } from "../../utils/setlocalstorage";
 import Airbnblogo from "../../assets/airbnb-logo.png";
 import SearchDropdown from "../SearchDropdown/SearchDropdown";
@@ -20,7 +19,6 @@ const Navbar = () => {
   const {
     modalShow,
     setModalShow,
-    setUser,
     User,
     Loggedin,
     setFilterShow,
@@ -29,10 +27,8 @@ const Navbar = () => {
     setFullscreen,
     setexisting,
     wishlist,
-    setwishlist,
   } = useContext(Context);
   const navigate = useNavigate();
-  let isMounted = true;
 
   //close filter
   const checkmodalShow = () => {
@@ -49,12 +45,6 @@ const Navbar = () => {
   function HideDropdown() {
     setModalShow(true);
     setDropdown(false);
-  }
-
-  //showSearchDropdown
-  function showSearchDropdown() {
-    setSearchBar(false);
-    setSearchDropdown(true);
   }
 
   const checkInnerwidth = () => {
@@ -88,48 +78,6 @@ const Navbar = () => {
       window.removeEventListener("resize", checkInnerwidth);
     };
   }, [window.innerWidth]);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await httpAuth.get("/user/fetchUser");
-        setUser(response.data.user);
-      } catch (error) {
-        console.log(error.response.data.msg);
-      }
-    };
-
-    if (isMounted) {
-      fetchUser();
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  // fetch wishlist length
-  useEffect(() => {
-    const fetchWishlist = async () => {
-      try {
-        const response = await httpAuth.get("/wishlist");
-        setwishlist(response.data.wish);
-      } catch (error) {
-        if (error.response.data.msg == "unauthorised") {
-          return setshowWish(false);
-        }
-        setwishlist([]);
-        setloading(true);
-        console.log(error.response.data.msg);
-      }
-    };
-
-    if (isMounted) {
-      fetchWishlist();
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, [wishlist]);
 
   useEffect(() => {
     if (wishlist.length < 1) {
