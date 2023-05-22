@@ -1,41 +1,26 @@
 {
-  "redirects": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/me",
-      "destination": "/profile.html"
-    },
-    {
-      "source": "/view-source",
-      "destination": "https://github.com/vercel/vercel"
+      "src": "src/index.js",
+      "use": "@vercel/node"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/about",
-      "destination": "/about-our-company.html"
+      "src": "/api/.*",
+      "dest": "src/api/index.js",
+      "methods": ["GET", "POST", "DELETE"]
     },
     {
-      "source": "/resize/:width/:height",
-      "destination": "/api/sharp"
+      "src": "/(.*)",
+      "dest": "src/index.js"
     }
   ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
-    }
-  ]
+  "env": {
+    "API_KEY": "@my-api-key"
+  },
+  "envSecrets": {
+    "MY_API_SECRET": "@my-api-secret"
+  }
 }
