@@ -35,15 +35,15 @@ app.get("/", (req, res) => {
 // app.use(Error404); // unavailable route
 
 // // connect to db and listen to port
-// const start = async () => {
-//   try {
-//     await mongoose.connect(MONGO_URL);
-//     app.listen(PORT, () =>
-//       console.log(`Server is listening on port ${PORT}...`),
-//     );
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-app.listen(5000);
-// start();
+const start = async () => {
+  try {
+    await mongoose.connect(MONGO_URL);
+    app.listen(PORT, () =>
+      console.log(`Server is listening on port ${PORT}...`),
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+start();
