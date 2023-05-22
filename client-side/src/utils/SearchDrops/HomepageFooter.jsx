@@ -1,10 +1,10 @@
-import "./Searchdrops/SearchDrops.css";
+import "./SearchDrops.css";
 import { TbWorld } from "react-icons/tb";
 import { BiCopyright } from "react-icons/bi";
 
 function HomepageFooter() {
   return (
-    <main className=" footerDiv bg-light px-5 py-2 shadow fixed-bottom">
+    <main className=" footerDivs  px-5 py-2 shadow fixed-bottom">
       <div className="d-flex gap-3">
         <div>
           {" "}
