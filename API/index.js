@@ -8,7 +8,14 @@ const { PORT, MONGO_URL } = require("./src/Config/config");
 // const categoryRouter = require("./src/Routes/categoryRoute");
 // const wishlistRouter = require("./src/Routes/wishlistRoute");
 // const auth = require("./src/middleware/auth");
-
+// moongoose
+//   .connect(MONGO_URL)
+//   .then((res) => {
+//     console.log("database connected");
+//   })
+//   .catch((err) => {
+//     console.log("not connected");
+//   });
 // security packages
 // const helmet = require("helmet");
 // const xss = require("xss-clean");
@@ -36,7 +43,8 @@ app.get("/", (req, res) => {
 
 // // connect to db and listen to port
 const start = async () => {
-  try { await mongoose.connect(MONGO_URL);
+  try { 
+//     await mongoose.connect(MONGO_URL);
     app.listen(PORT);
   } catch (error) {
     console.log(error);
