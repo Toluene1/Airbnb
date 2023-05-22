@@ -5,7 +5,7 @@ const { PORT, MONGO_URL } = require("./src/Config/config");
 // const Error404 = require("./src/middleware/error404");
 // const userRouter = require("./src/Routes/userRoute");
 // const propertyRouter = require("./src/Routes/propertyRoute");
-// const categoryRouter = require("./src/Routes/categoryRoute");
+// const categoryRouter = require("./src/Routes/categoryRoute")
 // const wishlistRouter = require("./src/Routes/wishlistRoute");
 // const auth = require("./src/middleware/auth");
 // moongoose
