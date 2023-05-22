@@ -21,7 +21,7 @@ const app = express();
 
 // app.use(helmet());
 // app.use(xss());
-// app.use(express.json());
+ app.use(express.json());
 
 // //Routes
 app.get("/", (req, res) => {
@@ -45,5 +45,5 @@ app.get("/", (req, res) => {
 //     console.log(error);
 //   }
 // };
-
+app.listen(5000);
 // start();
