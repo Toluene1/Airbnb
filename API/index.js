@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 // const mongoose = require("mongoose");
 const { PORT, MONGO_URL } = require("./src/Config/config");
-const Error404 = require("./src/middleware/error404");
-const userRouter = require("./src/Routes/userRoute");
-const propertyRouter = require("./src/Routes/propertyRoute");
-const categoryRouter = require("./src/Routes/categoryRoute")
-const wishlistRouter = require("./src/Routes/wishlistRoute");
-const auth = require("./src/middleware/auth");
+// const Error404 = require("./src/middleware/error404");
+// const userRouter = require("./src/Routes/userRoute");
+// const propertyRouter = require("./src/Routes/propertyRoute");
+// const categoryRouter = require("./src/Routes/categoryRoute")
+// const wishlistRouter = require("./src/Routes/wishlistRoute");
+// const auth = require("./src/middleware/auth");
 
 // security packages
 // const helmet = require("helmet");
