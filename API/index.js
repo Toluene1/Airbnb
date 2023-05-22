@@ -15,9 +15,9 @@ const auth = require("./src/middleware/auth");
 const cors = require("cors");
 
 //middleware
-app.use(
-  cors({ origin: ["http://localhost:4000", "https://airbnbr34.vercel.app"] }),
-);
+// app.use(
+//   cors({ origin: ["http://localhost:4000", "https://airbnbr34.vercel.app"] }),
+// );
 
 // app.use(helmet());
 // app.use(xss());
