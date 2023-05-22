@@ -15,7 +15,9 @@ const xss = require("xss-clean");
 const cors = require("cors");
 
 //middleware
-app.use(cors({ origin: "http://localhost:4000" }));
+app.use(
+  cors({ origin: ["http://localhost:4000", "https://airbnbr34.vercel.app/"] }),
+);
 
 app.use(helmet());
 app.use(xss());
