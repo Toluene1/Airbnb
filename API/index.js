@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-//  const mongoose = require("mongoose");
+  const mongoose = require("mongoose");
 const { PORT, MONGO_URL } = require("./src/Config/config");
 // const Error404 = require("./src/middleware/error404");
 // const userRouter = require("./src/Routes/userRoute");
@@ -36,8 +36,7 @@ app.get("/", (req, res) => {
 
 // // connect to db and listen to port
 const start = async () => {
-  try {
-//  await mongoose.connect(MONGO_URL);
+  try { await mongoose.connect(MONGO_URL);
     app.listen(PORT);
   } catch (error) {
     console.log(error);
