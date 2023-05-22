@@ -73,11 +73,12 @@
 .countButton:hover {
   border: 1px solid black;
 }
-.footerDiv {
+.footerDivs {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 13px;
+  background-color: white;
 }
 .adjustMargin {
   margin-top: -3px;

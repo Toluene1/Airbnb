@@ -25,7 +25,7 @@ import Alert from "./components/Alert";
 import PopModal from "./components/SignUp";
 import FilterWebProperties from "./components/FilterWebProperties";
 import Airbnblogo from "../src/assets/airbnb-logo.png";
-import HomepageFooter from "./utils/HomepageFooter";
+import HomepageFooter from "./utils/SearchDrops/HomepageFooter";
 
 function App() {
   const [loading, setloading] = useState(true);
@@ -113,7 +113,7 @@ function App() {
       try {
         setloading(true);
         const response = await httpClient.get(
-          `property/getallproperty/?structure=${query}`
+          `property/getallproperty/?structure=${query}`,
         );
         setProperty(response.data.prop);
         setloading(false);
