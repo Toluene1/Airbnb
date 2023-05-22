@@ -8,19 +8,8 @@
   ],
   "routes": [
     {
-      "src": "/api/.*",
-      "dest": "src/api/index.js",
-      "methods": ["GET", "POST", "DELETE"]
-    },
-    {
       "src": "/(.*)",
-      "dest": "src/index.js"
+      "dest": "/index.js"
     }
-  ],
-  "env": {
-    "API_KEY": "@my-api-key"
-  },
-  "envSecrets": {
-    "MY_API_SECRET": "@my-api-secret"
-  }
+  ]
 }
