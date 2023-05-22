@@ -82,14 +82,25 @@
   align-items: center;
   z-index: 1000;
 }
-@media only screen and (max-width: 735px) {
+
+@media only screen and (max-width: 1010px) {
   .createButton {
     display: none;
   }
   .plusButton {
     display: block;
   }
+  .Listings article {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
   .firstSection {
     width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px;
   }
 }
