@@ -12,7 +12,7 @@ const auth = require("./src/middleware/auth");
 // security packages
 // const helmet = require("helmet");
 // const xss = require("xss-clean");
-const cors = require("cors");
+// const cors = require("cors");
 
 //middleware
 // app.use(
