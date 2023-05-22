@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import httpAuth from "../Services/config";
 
 export const Context = createContext(null);
 
@@ -37,6 +38,47 @@ const ContextProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("existing"))
       : false,
   );
+  let isMounted = true;
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await httpAuth.get("/user/fetchUser");
+        setUser(response.data.user);
+      } catch (error) {
+        console.log(error.response.data.msg);
+      }
+    };
+
+    if (isMounted) {
+      fetchUser();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    const fetchWishlist = async () => {
+      try {
+        const response = await httpAuth.get("/wishlist");
+        setwishlist(response.data.wish);
+      } catch (error) {
+        if (error.response.data.msg == "unauthorised") {
+          return setshowWish(false);
+        }
+        setwishlist([]);
+        setloading(true);
+        console.log(error.response.data.msg);
+      }
+    };
+
+    if (isMounted) {
+      fetchWishlist();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, [wishlist]);
 
   const initialState = {
     mail,
