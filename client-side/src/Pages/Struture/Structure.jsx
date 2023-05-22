@@ -10,11 +10,10 @@ import {
   GiCaveEntrance,
   GiWindmill,
   GiKrakenTentacle,
-} from "react-icons/Gi";
+} from "react-icons/gi";
 
 import "./Structure.css";
 import { Link, useNavigate } from "react-router-dom";
-import { setId } from "../../utils/setlocalstorage";
 import httpAuth from "../../Services/config";
 import { Context } from "../../Provider/Context";
 const Structure = () => {
