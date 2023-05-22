@@ -36,7 +36,9 @@ app.use(Error404); // unavailable route
 const start = async () => {
   try {
     await mongoose.connect(MONGO_URL);
-    app.listen(PORT);
+    app.listen(PORT, () => {
+      console.log(`listening on port ${PORT}`);
+    });
   } catch (error) {
     console.log(error);
   }
