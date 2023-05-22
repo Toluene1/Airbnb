@@ -77,11 +77,9 @@ function Accounts() {
       ) : (
         <section>
           {/* // WEB SECTION  */}
-          <main className="mainDiv webAccount">
-            <div style={{ lineHeight: "10px" }} className="divTop">
-              <h1 className="account flex-start" style={{ fontSize: "30px" }}>
-                Account
-              </h1>
+          <main className="mainDivs webAccount">
+            <div className="mt-3">
+              <h1 style={{ fontSize: "30px" }}>Account</h1>
               <span className="fw-bold">
                 {User.FirstName} {User.LastName} ,
               </span>
