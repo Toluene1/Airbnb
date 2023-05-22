@@ -37,10 +37,8 @@ app.get("/", (req, res) => {
 // // connect to db and listen to port
 const start = async () => {
   try {
-    await mongoose.connect(MONGO_URL);
-    app.listen(PORT, () =>
-      console.log(`Server is listening on port ${PORT}...`),
-    );
+    await mongoose.connect('mongodb+srv://Mekuzd1:Emeka96@mekuzd1.i9iwfuv.mongodb.net/AirBnB?retryWrites=true&w=majority');
+    app.listen(5000);
   } catch (error) {
     console.log(error);
   }
