@@ -2,25 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/index.js",
+      "src": "index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/.*",
-      "dest": "src/api/index.js",
-      "methods": ["GET", "POST", "DELETE"]
-    },
-    {
       "src": "/(.*)",
-      "dest": "src/index.js"
+      "dest": "/index.js"
     }
-  ],
-  "env": {
-    "API_KEY": "@my-api-key"
-  },
-  "envSecrets": {
-    "MY_API_SECRET": "@my-api-secret"
-  }
+  ]
 }
