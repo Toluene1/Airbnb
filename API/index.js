@@ -13,16 +13,10 @@ const auth = require("./src/middleware/auth");
 const helmet = require("helmet");
 const xss = require("xss-clean");
 const cors = require("cors");
-const rateLimiter = require("express-rate-limit");
 
 //middleware
 app.use(cors({ origin: "http://localhost:4000" }));
-app.use(
-  rateLimiter({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-  }),
-);
+
 app.use(helmet());
 app.use(xss());
 app.use(express.json());
