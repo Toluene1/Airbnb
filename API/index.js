@@ -14,7 +14,7 @@ const helmet = require("helmet");
 const xss = require("xss-clean");
 const cors = require("cors");
 
-middleware
+//middleware
 app.use(
   cors({ origin: ["http://localhost:4000"] }),
 );
