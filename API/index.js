@@ -22,6 +22,9 @@ app.use(xss());
 app.use(express.json());
 
 //Routes
+app.get("/", (req, res) => {
+  res.send("hello");
+});
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/property", propertyRouter);
 app.use("/api/v1/category", categoryRouter);
