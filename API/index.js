@@ -16,7 +16,7 @@ const cors = require("cors");
 
 middleware
 app.use(
-  cors({ origin: ["http://localhost:4000", "https://airbnbr34.vercel.app"] }),
+  cors({ origin: ["http://localhost:4000"] }),
 );
 
 app.use(helmet());
