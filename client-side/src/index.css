@@ -11,9 +11,7 @@ html {
 body {
   overflow-x: hidden;
 }
-button {
-  color: black !important;
-}
+
 /* sign up modal  */
 .modal-body {
   height: 380px;
