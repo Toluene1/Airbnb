@@ -15,7 +15,7 @@ const createWishlist = async (req, res) => {
     const wishlist = await Wishlist.create({ property: propId, user: _id });
     res
       .status(200)
-      .json({ wish: wishlist, msg: "property added successfully" });
+      .json({ wish: wishlist, msg: "property added to wishlist successfully" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
