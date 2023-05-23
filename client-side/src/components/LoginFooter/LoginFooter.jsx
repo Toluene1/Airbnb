@@ -171,24 +171,26 @@ function LoginFooter() {
                     </div>
                   </Link>
                 </div>
-                <div
-                  className=" divWithin "
-                  id="second"
-                  onClick={clickedIconHandler}
-                >
-                  <AiOutlineHeart
-                    className={`iconFooter ${
-                      activeButton === "second" ? `text-danger` : ""
-                    }`}
-                  />
+                <Link to={"/wishlist"}>
                   <div
-                    className={`textFooter ${
-                      activeButton === "second" ? `text-dark` : ""
-                    }`}
+                    className=" divWithin "
+                    id="second"
+                    onClick={clickedIconHandler}
                   >
-                    Wishlists
+                    <AiOutlineHeart
+                      className={`iconFooter ${
+                        activeButton === "second" ? `text-danger` : ""
+                      }`}
+                    />
+                    <div
+                      className={`textFooter ${
+                        activeButton === "second" ? `text-dark` : ""
+                      }`}
+                    >
+                      Wishlists
+                    </div>
                   </div>
-                </div>
+                </Link>
                 <div
                   className=" divWithin "
                   id="eight"
