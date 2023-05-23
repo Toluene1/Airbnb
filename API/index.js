@@ -15,7 +15,7 @@ const xss = require("xss-clean");
 const cors = require("cors");
 
 //middleware
-app.use(cors({ origin: ["http://localhost:4000"] }));
+app.use(cors());
 
 app.use(xss());
 app.use(express.json());
