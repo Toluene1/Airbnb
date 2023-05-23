@@ -11,7 +11,7 @@ function StandOut() {
         <div className="div1">
           <img
             src={Airbnbhouse4}
-            style={{ width: "100%", borderRadius: "20px" }}
+            style={{ width: "100%", borderRadius: "19px" }}
             alt=""
           />
         </div>
