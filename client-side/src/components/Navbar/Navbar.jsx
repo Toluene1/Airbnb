@@ -236,16 +236,20 @@ const Navbar = () => {
       {/* Mobile section */}
       <section>
         <div className="inputNav">
-          <button className="inputButton1">
-            <AiOutlineSearch className="searchIcon" />
-          </button>
-          <div className="anyDiv">
+          <div>
+            <button className="inputButton1">
+              <AiOutlineSearch className="searchIcon" />
+            </button>
+          </div>
+          <div className="anyDiv me-auto">
             <span className="anyWhere">Anywhere</span> <br />
             <span className="anyWeek"> Any Week - Add guests</span>
           </div>
-          <button className="inputButton2" onClick={showFilter}>
-            <FaSlidersH className="searchIcon2" />
-          </button>
+          <div>
+            <button className="inputButton2" onClick={showFilter}>
+              <FaSlidersH className="searchIcon2" />
+            </button>
+          </div>
         </div>
         <FilterProperties
           show={filterShow}
