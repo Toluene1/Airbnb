@@ -10,14 +10,13 @@ const wishlistRouter = require("./src/Routes/wishlistRoute");
 const auth = require("./src/middleware/auth");
 
 //security packages
-const helmet = require("helmet");
+
 const xss = require("xss-clean");
 const cors = require("cors");
 
 //middleware
 app.use(cors({ origin: ["http://localhost:4000"] }));
 
-app.use(helmet());
 app.use(xss());
 app.use(express.json());
 
