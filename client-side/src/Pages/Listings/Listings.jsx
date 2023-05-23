@@ -88,7 +88,7 @@ function Listings() {
               <div>
                 <Link to={"/become-a-host"}>
                   <button className="createButton">
-                    <BiPlus className="fs-5" />
+                    <BiPlus className="fs-3" />
                     <span className="ms-2">Create Listing</span>
                   </button>
                 </Link>
