@@ -235,7 +235,7 @@ const Navbar = () => {
       </section>
       {/* Mobile section */}
       <section>
-        <div className="inputNav">
+        <div className="inputNav shadow">
           <div>
             <button className="inputButton1">
               <AiOutlineSearch className="searchIcon" />
