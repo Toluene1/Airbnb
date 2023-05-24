@@ -58,7 +58,7 @@ function Welcome({ setshowOtp }) {
             type="submit"
             className={`w-100 p-2 d-flex justify-content-center border bg-light ${
               loading
-                ? "btn-btn-secondary bg-light"
+                ? "btn btn-secondary bg-light"
                 : "btn btn-danger bg-light "
             }  `}
           >
