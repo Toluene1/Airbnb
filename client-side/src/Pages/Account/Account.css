@@ -52,7 +52,7 @@
   position: absolute;
   right: 35px;
 }
-.logOut {
+.logout {
   width: 100%;
   margin-top: 10px;
   border-radius: 7px;
@@ -60,7 +60,7 @@
   background-color: white;
   transition: 0.3s;
 }
-.logOut:hover {
+.logout:hover {
   background-color: rgb(240, 220, 220);
 }
 

@@ -58,7 +58,9 @@ const Hosting = () => {
 
       {/* mobile */}
       <nav className=" mobile ">
-        <div className="exitMobile ">Exit </div>
+        <Link to={"/"}>
+          <div className="exitMobile ">Exit </div>
+        </Link>
         <div className=" exitMobile ">Questions?</div>
       </nav>
       {authloading ? (

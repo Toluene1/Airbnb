@@ -16,7 +16,9 @@ Here are some key features of this web application:
 
 5. Wishlists and Saved Searches: Users can create wishlists to save their favorite listings for future reference. They can also save their search criteria to receive notifications when new listings match their preferences.
 
-- Api (Sercer)
+6. Authorization and Authentication system
+
+- Api (Server)
 - Client-side
 
 ---
@@ -52,6 +54,6 @@ Packages
 - react router dom
 - antd
 - Google Map api
-- Axios (Htp client for data fetching)
+- Axios (Http client for data fetching)
 - React Bootstrap
 - State Management ( Context -Api)
