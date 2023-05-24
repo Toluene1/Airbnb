@@ -1,9 +1,9 @@
-.image {
+.imagez {
   height: 30px;
 }
-.web {
+.webs {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0px;
@@ -21,7 +21,7 @@
   align-items: center;
   border: 1px solid rgb(198, 192, 192);
 }
-.imagesDiv {
+.imagesDivs {
   border-radius: 50%;
   width: 50px;
   height: 50px;
