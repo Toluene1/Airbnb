@@ -100,7 +100,7 @@
   padding: 15px 8px;
   margin-top: 10px;
   border-radius: 10px;
-  border: 1px solid rgb(51, 49, 49);
+  border: 1px solid rgb(51, 49, 50);
   transition: 0.2s;
 }
 .mobileEditButton:hover {
