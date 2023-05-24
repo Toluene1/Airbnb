@@ -429,7 +429,7 @@ function Accounts() {
                 </div>
                 <div>
                   <button
-                    className="w-100 mt-5 bg-white text-dark logout"
+                    className="w-100 mt-5 bg-white text-dark border-dark p-2 logout"
                     onClick={handleLogOut}
                   >
                     Log out
