@@ -262,29 +262,31 @@ function Accounts() {
                   className="ms-3 text-dark text-decoration-none mt-1"
                   style={{ width: "100%" }}
                 >
-                  <div
-                    className="shadow "
-                    style={{
-                      height: "130px",
-                      width: "100%",
-                      borderRadius: "15px",
-                      border: "1px solid lightgrey",
-                      paddingTop: "40px",
-                      paddingLeft: "20px",
-                    }}
-                  >
-                    <span>Airbnb your place</span> <br />{" "}
-                    <span className="fw-light">
-                      its simple to get set up and start earning
-                    </span>
-                    <span>
-                      <img
-                        src="https://a0.muscache.com/pictures/b0021c55-05a2-4449-998a-5593567220f7.jpg"
-                        alt=""
-                        className="imgAirbnb"
-                      />
-                    </span>
-                  </div>
+                  <Link to={"/become-a-host"}>
+                    <div
+                      className="shadow "
+                      style={{
+                        height: "130px",
+                        width: "100%",
+                        borderRadius: "15px",
+                        border: "1px solid lightgrey",
+                        paddingTop: "40px",
+                        paddingLeft: "20px",
+                      }}
+                    >
+                      <span>Airbnb your place</span> <br />{" "}
+                      <span className="fw-light">
+                        its simple to get set up and start earning
+                      </span>
+                      <span>
+                        <img
+                          src="https://a0.muscache.com/pictures/b0021c55-05a2-4449-998a-5593567220f7.jpg"
+                          alt=""
+                          className="imgAirbnb"
+                        />
+                      </span>
+                    </div>
+                  </Link>
                 </Link>
                 <div className="d-flex align-center mt-4  ">
                   <Link
@@ -426,7 +428,10 @@ function Accounts() {
                   <span className="ms-3">$ USD</span>
                 </div>
                 <div>
-                  <button className="logOut" onClick={handleLogOut}>
+                  <button
+                    className="w-100 mt-5 bg-white text-dark logout"
+                    onClick={handleLogOut}
+                  >
                     Log out
                   </button>
                 </div>

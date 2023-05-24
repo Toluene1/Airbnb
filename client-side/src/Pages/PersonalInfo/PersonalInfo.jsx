@@ -82,7 +82,10 @@ const PersonalInfo = () => {
               <main>
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Legal name</span>
-                  <button onClick={() => seteditname(!editname)}>
+                  <button
+                    className="text-dark"
+                    onClick={() => seteditname(!editname)}
+                  >
                     {editname ? "Cancel" : "Edit"}
                   </button>
                 </div>
@@ -98,7 +101,10 @@ const PersonalInfo = () => {
               <main>
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Email Address</span>
-                  <button onClick={() => seteditmail(!editmail)}>
+                  <button
+                    className="text-dark"
+                    onClick={() => seteditmail(!editmail)}
+                  >
                     {editmail ? "Cancel" : "Edit"}
                   </button>
                 </div>
@@ -112,7 +118,10 @@ const PersonalInfo = () => {
               <main>
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Phone Number</span>
-                  <button onClick={() => seteditphone(!editphone)}>
+                  <button
+                    className="text-dark"
+                    onClick={() => seteditphone(!editphone)}
+                  >
                     {editphone ? "Cancel" : "Edit"}
                   </button>
                 </div>
@@ -126,7 +135,10 @@ const PersonalInfo = () => {
               <main>
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Address</span>
-                  <button onClick={() => seteditaddress(!editaddress)}>
+                  <button
+                    className="text-dark"
+                    onClick={() => seteditaddress(!editaddress)}
+                  >
                     {editaddress ? "Cancel" : "Edit"}
                   </button>
                 </div>
@@ -145,7 +157,10 @@ const PersonalInfo = () => {
               <main>
                 <div className="d-flex justify-content-between align-items-center">
                   <span>Emergency Contact</span>
-                  <button onClick={() => seteditcontact(!editcontact)}>
+                  <button
+                    className="text-dark"
+                    onClick={() => seteditcontact(!editcontact)}
+                  >
                     {editcontact ? "Cancel" : "Edit"}
                   </button>
                 </div>

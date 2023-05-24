@@ -237,7 +237,7 @@ const Navbar = () => {
       <section>
         <div className="inputNav shadow">
           <div>
-            <button className="inputButton1">
+            <button className="inputButton1 text-dark">
               <AiOutlineSearch className="searchIcon" />
             </button>
           </div>
@@ -246,7 +246,7 @@ const Navbar = () => {
             <span className="anyWeek"> Any Week - Add guests</span>
           </div>
           <div>
-            <button className="inputButton2" onClick={showFilter}>
+            <button className="inputButton2 text-dark" onClick={showFilter}>
               <FaSlidersH className="searchIcon2" />
             </button>
           </div>
