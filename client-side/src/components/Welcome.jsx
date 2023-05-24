@@ -57,7 +57,7 @@ function Welcome({ setshowOtp }) {
           <button
             type="submit"
             className={`w-100 p-2 d-flex justify-content-center border ${
-              loading ? "btn btn-secondary " : "btn btn-danger "
+              loading ? "btn btn-secondary bg-light " : "btn btn-danger "
             }  `}
           >
             <span
