@@ -449,6 +449,7 @@ a :hover {
   background-color: white;
   border: 1px solid lightgrey;
   margin-left: 10px;
+  color: black;
 }
 .bedButtonRest:hover {
   border: 1px solid black;

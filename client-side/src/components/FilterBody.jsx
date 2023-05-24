@@ -226,7 +226,7 @@ function FilterBody({ hideFilter }) {
           {lists.map((list, index) => (
             <button
               type="button"
-              className="bedButtonRest text-dark"
+              className="bedButtonRest"
               key={index}
               onClick={() => handleColor(index)}
               style={{
