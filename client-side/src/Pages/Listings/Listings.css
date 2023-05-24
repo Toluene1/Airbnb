@@ -13,12 +13,7 @@
   border-radius: 10px;
   border: 1px solid rgb(91, 86, 86);
 }
-.plusButton {
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  background-color: white;
-  border: 1px solid rgb(91, 86, 86);
+.plusButtons {
   display: none;
 }
 
@@ -64,7 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 100;
 }
 .edit {
   height: 50px;
@@ -87,10 +82,15 @@
   .createButton {
     display: none;
   }
-  .plusButton {
+  .plusButtons {
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    border: 1px solid rgb(91, 86, 86);
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 100%;
   }
   .Listings article {
     display: flex;

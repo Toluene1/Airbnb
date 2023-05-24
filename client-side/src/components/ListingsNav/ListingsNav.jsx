@@ -6,6 +6,7 @@ import UserPics from "../../../src/assets/User.jpg";
 import { Context } from "../../Provider/Context";
 import { useContext, useEffect, useRef, useState } from "react";
 import httpAuth from "../../Services/config";
+import { FaBars } from "react-icons/fa";
 
 const ListingsNav = () => {
   const { setUser, User } = useContext(Context);
@@ -62,7 +63,7 @@ const ListingsNav = () => {
                 <img src={Airbnblogo} alt="" className="imagez" />
               </Link>
             </div>
-            <div className=" d-flex gap-4">
+            <div className=" d-flex justify-contetn-between align-items-center gap-4">
               <div className="bellDiv">
                 <BiBell className="fs-5" />
               </div>
@@ -74,6 +75,12 @@ const ListingsNav = () => {
                   src={User?.Avatar || UserPics}
                   alt=""
                   style={{ width: "100%", height: "100%", borderRadius: "50%" }}
+                />
+              </div>
+              <div>
+                <FaBars
+                  className="fs-3 bar"
+                  onClick={() => setDropdown(!dropdown)}
                 />
               </div>
             </div>
