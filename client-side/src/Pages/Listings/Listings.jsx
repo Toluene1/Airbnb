@@ -92,8 +92,8 @@ function Listings() {
                     <span className="ms-2">Create Listing</span>
                   </button>
                 </Link>
-                <Link to={"/become-a-host/overview"}>
-                  <button className="plusButton">
+                <Link to={"/become-a-host"}>
+                  <button className="plusButtons">
                     <BiPlus style={{ fontSize: "70px", color: "black" }} />
                   </button>
                 </Link>
