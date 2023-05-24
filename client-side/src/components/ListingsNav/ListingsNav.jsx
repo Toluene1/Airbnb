@@ -110,7 +110,7 @@ const ListingsNav = () => {
                     <p> switch to travelling</p>
                   </Link>
                   <button
-                    className="border-0 bg-white mx-2 p-0"
+                    className="border-0 bg-white mx-2 p-0 text-dark"
                     onClick={handleLogOut}
                   >
                     Log out
