@@ -94,7 +94,7 @@ function Listings() {
                 </Link>
                 <Link to={"/become-a-host/overview"}>
                   <button className="plusButton">
-                    <BiPlus className="fs-3" />
+                    <BiPlus style={{ fontSize: "30px", color: "black" }} />
                   </button>
                 </Link>
               </div>

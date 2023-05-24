@@ -55,18 +55,21 @@ const ListingsNav = () => {
     <>
       <main>
         <section>
-          <nav className=" web ">
+          <nav className=" webs px-4 ">
             {/* web  */}
             <div>
               <Link to={"/"} className="text-decoration-none">
-                <img src={Airbnblogo} alt="" className="image" />
+                <img src={Airbnblogo} alt="" className="imagez" />
               </Link>
             </div>
-            <div className=" d-flex ms-auto mx-4 gap-4">
+            <div className=" d-flex gap-4">
               <div className="bellDiv">
                 <BiBell className="fs-5" />
               </div>
-              <div className="imagesDiv" onClick={() => setDropdown(!dropdown)}>
+              <div
+                className="imagesDivs"
+                onClick={() => setDropdown(!dropdown)}
+              >
                 <img
                   src={User?.Avatar || UserPics}
                   alt=""
