@@ -120,7 +120,7 @@ function FilterBody({ hideFilter }) {
       try {
         setloading(true);
         const response = await httpClient.get(
-          `property/getallproperty/?structure=${structure}&Bedrooms=${bedrooms.qty}&Beds=${bed.qty}&Bathrooms=${bathroom.qty}&privacy=${privacy}&Amenities=${amenities}`,
+          `property/getallproperty/?structure=${structure}&Bedrooms=${bedrooms.qty}&Beds=${bed.qty}&Bathrooms=${bathroom.qty}&privacy=${privacy}&Amenities=${amenities}`
         );
         setFilterProp(response.data.prop);
         setloading(false);
@@ -226,7 +226,7 @@ function FilterBody({ hideFilter }) {
           {lists.map((list, index) => (
             <button
               type="button"
-              className="bedButtonRest"
+              className="bedButtonRest text-dark"
               key={index}
               onClick={() => handleColor(index)}
               style={{

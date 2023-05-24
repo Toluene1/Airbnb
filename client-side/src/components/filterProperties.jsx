@@ -23,7 +23,7 @@ function FilterProperties(props) {
             <div className="divCoverHeader">
               <div>
                 <button className="modalButtonHeader1" onClick={hideFilter}>
-                  <MdCancel className="fs-3" />
+                  <MdCancel className="fs-3 text-dark" />
                 </button>
               </div>
               <div>
