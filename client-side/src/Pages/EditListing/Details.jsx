@@ -162,7 +162,7 @@ const Details = () => {
                 <div className="border-bottom">
                   <div className="d-flex justify-content-between align-items-center ">
                     <h5 id="photos">Photos</h5>
-                    <button className=" border-0  bg-white">
+                    <button className=" border-0  bg-white text-dark">
                       <span className="text-decoration-underline"> Edit</span>
                       <span className="mx-2 fw-bold fs-6">
                         {" "}
@@ -186,7 +186,7 @@ const Details = () => {
                   <h5 className="mt-1">Listing Basics</h5>
                   <div className="d-flex justify-content-between align-items-center mt-5">
                     <p>Listing Title</p>
-                    <button className=" border-0 fw-bold bg-white">
+                    <button className=" border-0 fw-bold bg-white text-dark">
                       <span className="text-decoration-underline"> Edit</span>
                       <span className="mx-2 fw-bold fs-6">
                         {" "}
@@ -200,7 +200,7 @@ const Details = () => {
                 <div className="my-5 border-bottom">
                   <div className="d-flex justify-content-between align-items-center mt-5">
                     <p>Listing description</p>
-                    <button className=" border-0 fw-bold bg-white">
+                    <button className=" border-0 fw-bold bg-white text-dark">
                       <span className="text-decoration-underline"> Edit</span>
                       <span className="mx-2 fw-bold fs-6">
                         {" "}
@@ -215,9 +215,13 @@ const Details = () => {
                 <div className="d-flex justify-content-between align-items-baseline mt-3 border-bottom ">
                   <p>Number of Guests</p>
                   <div className="d-flex justify-content-center align-items-center">
-                    <button className="round_btn border">-</button>
+                    <button className="round_btn border text-dark bg-light">
+                      -
+                    </button>
                     <span className="mx-3 fw-bold fs-6">{details?.guests}</span>
-                    <button className="round_btn border">+</button>
+                    <button className="round_btn border text-dark bg-light">
+                      +
+                    </button>
                   </div>
                 </div>
                 {/* amenities  */}
@@ -225,7 +229,10 @@ const Details = () => {
                   <div className="d-flex justify-content-between align-items-baseline ">
                     <h6>Amenities</h6>
                     <button className=" border-0 fw-bold bg-white">
-                      <span className="text-decoration-underline"> Edit</span>
+                      <span className="text-decoration-underline text-dark">
+                        {" "}
+                        Edit
+                      </span>
                       <span className="mx-2 fw-bold fs-6">
                         {" "}
                         <FaAngleRight />{" "}
@@ -243,7 +250,7 @@ const Details = () => {
                 <div id="location" className="my-1 border-bottom">
                   <div className="d-flex justify-content-between align-items-center mt-3">
                     <h6>Location</h6>
-                    <button className=" border-0 fw-bold bg-white">
+                    <button className=" border-0 fw-bold bg-white text-dark">
                       <span className="text-decoration-underline"> Edit</span>
                       <span className="mx-2 fw-bold fs-6">
                         {" "}
@@ -267,7 +274,7 @@ const Details = () => {
                 <div className="my-2 border-bottom">
                   <div className="d-flex justify-content-between align-items-center mt-5">
                     <h6 id="prop">Property and Rooms</h6>
-                    <button className=" border-0 fw-bold bg-white">
+                    <button className=" border-0 fw-bold bg-white text-dark">
                       <span className="text-decoration-underline"> Edit</span>
                       <span className="mx-2 fw-bold fs-6">
                         {" "}
