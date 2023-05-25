@@ -162,11 +162,11 @@ const Navbar = () => {
             <div ref={dropdownRef} className="dropdown shadow px-0 text-start">
               {Loggedin ? (
                 <div>
-                  <Link className="fw-bold  text-black">
+                  <Link to={"/guests/inbox"} className="fw-bold  text-black">
                     {" "}
                     <p> Messages</p>
                   </Link>
-                  <Link>
+                  <Link to={"/trips/v1"}>
                     {" "}
                     <p> Trips</p>
                   </Link>

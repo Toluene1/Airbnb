@@ -1,0 +1,72 @@
+.messages {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: start;
+}
+.inbox {
+  min-width: 20%;
+  height: 100vh;
+  border: 1px solid lightgrey;
+}
+.middle {
+  width: 60%;
+  display: block;
+  border: 1px solid lightgrey;
+  height: 100vh;
+}
+.det {
+  display: block;
+  width: 20%;
+  border: 1px solid lightgrey;
+  height: 100vh;
+}
+.inbox:hover {
+  border: 1px solid black;
+}
+.middle:hover {
+  border: 1px solid black;
+}
+.det:hover {
+  border: 1px solid black;
+}
+.info {
+  height: 70px;
+}
+.mob p {
+  color: grey;
+}
+.mob {
+  text-align: center;
+  margin-top: 15px;
+  padding: 10px;
+}
+.mob button {
+  min-width: 150px;
+  padding: 15px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 8px;
+  font-weight: 700;
+}
+@media only screen and (max-width: 734px) {
+  .middle {
+    display: none;
+  }
+  .inbox {
+    width: 100%;
+    height: 100vh;
+    border: 1px solid lightgrey;
+  }
+}
+
+@media only screen and (max-width: 1127px) {
+  .det {
+    display: none;
+  }
+  .middle {
+    width: 100%;
+    border: 1px solid lightgrey;
+    height: 100vh;
+  }
+}
