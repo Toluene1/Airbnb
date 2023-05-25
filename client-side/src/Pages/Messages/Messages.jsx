@@ -24,7 +24,7 @@ const Messages = () => {
               show up here.
             </p>
             <Link to={"/"}>
-              <button>Explore Airbnb</button>
+              <button className="text-dark">Explore Airbnb</button>
             </Link>
           </div>
         </main>
