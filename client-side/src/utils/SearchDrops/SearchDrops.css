@@ -81,6 +81,7 @@
   position: sticky;
   bottom: 0px;
   background-color: white;
+  z-index: 1000;
 }
 .adjustMargin {
   margin-top: -3px;

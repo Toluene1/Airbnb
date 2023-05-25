@@ -25,7 +25,6 @@ import {
   BsFillBagHeartFill,
 } from "react-icons/bs";
 import UserPics from "../../../src/assets/User.jpg";
-import httpAuth from "../../Services/config";
 import PopModal from "../../components/SignUp";
 import FooterProp from "../../components/FooterProp.jsx/FooterProp";
 
@@ -36,15 +35,8 @@ const Property = () => {
   const [loading, setloading] = useState(true);
   const [sticky, setSticky] = useState(false);
   const [readmore, setreadmore] = useState(false);
-  const {
-    User,
-    Loggedin,
-    setUser,
-    modalShow,
-    setModalShow,
-    wishlist,
-    setwishlist,
-  } = useContext(Context);
+  const { User, Loggedin, modalShow, setModalShow, wishlist } =
+    useContext(Context);
   const { id } = useParams();
   const [drop, setdrop] = useState(false);
   const [showWish, setshowWish] = useState(false);
@@ -90,47 +82,6 @@ const Property = () => {
       window.removeEventListener("scroll", handleStick);
     };
   }, [window.scrollY]);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await httpAuth.get("/user/fetchUser");
-        setUser(response.data.user);
-      } catch (error) {
-        console.log(error.response.data.msg);
-      }
-    };
-
-    if (isMounted) {
-      fetchUser();
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    const fetchWishlist = async () => {
-      try {
-        const response = await httpAuth.get("/wishlist");
-        setwishlist(response.data.wish);
-      } catch (error) {
-        if (error.response.data.msg == "unauthorised") {
-          return setshowWish(false);
-        }
-        setwishlist([]);
-        setloading(true);
-        console.log(error.response.data.msg);
-      }
-    };
-
-    if (isMounted) {
-      fetchWishlist();
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, [wishlist]);
 
   useEffect(() => {
     if (wishlist.length < 1) {
@@ -242,11 +193,11 @@ const Property = () => {
               >
                 {Loggedin ? (
                   <div>
-                    <Link className="fw-bold  text-black">
+                    <Link to={"/guests/inbox"} className="fw-bold  text-black">
                       {" "}
                       <p> Messages</p>
                     </Link>
-                    <Link>
+                    <Link to={"/trips/v1"}>
                       {" "}
                       <p> Trips</p>
                     </Link>

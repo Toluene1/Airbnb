@@ -14,15 +14,8 @@ const NavbarAuth = () => {
   const dropdownRef = useRef(null);
   const [showWish, setshowWish] = useState(false);
 
-  const {
-    Loggedin,
-    User,
-    setModalShow,
-    setexisting,
-    setUser,
-    setwishlist,
-    wishlist,
-  } = useContext(Context);
+  const { Loggedin, User, setModalShow, setexisting, setUser, wishlist } =
+    useContext(Context);
 
   let isMounted = true;
   const navigate = useNavigate();
@@ -30,28 +23,6 @@ const NavbarAuth = () => {
     setModalShow(true);
     setDropdown(false);
   }
-  useEffect(() => {
-    const fetchWishlist = async () => {
-      try {
-        const response = await httpAuth.get("/wishlist");
-        setwishlist(response.data.wish);
-      } catch (error) {
-        if (error.response.data.msg == "unauthorised") {
-          return setshowWish(false);
-        }
-        setwishlist([]);
-        setloading(true);
-        console.log(error.response.data.msg);
-      }
-    };
-
-    if (isMounted) {
-      fetchWishlist();
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, [wishlist]);
 
   useEffect(() => {
     if (wishlist.length < 1) {
@@ -164,11 +135,13 @@ const NavbarAuth = () => {
               <div>
                 <p>
                   {" "}
-                  <Link className="fw-bold  text-dark">Messages</Link>
+                  <Link to={"/guests/inbox"} className="fw-bold  text-dark">
+                    Messages
+                  </Link>
                 </p>
                 <p>
                   {" "}
-                  <Link>Trips</Link>
+                  <Link to={"/trips/v1"}>Trips</Link>
                 </p>
                 <p>
                   {" "}

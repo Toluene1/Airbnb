@@ -87,42 +87,46 @@ function LoginFooter() {
                     </div>
                   </Link>
                 </div>
-                <div
-                  className=" divWithin "
-                  id="third"
-                  onClick={clickedIconHandler}
-                >
-                  <FaAirbnb
-                    className={`iconFooter ${
-                      activeButton === "third" ? `text-danger` : ""
-                    }`}
-                  />
+                <Link to={"/trips/v1"}>
                   <div
-                    className={`textFooter ${
-                      activeButton === "third" ? `text-dark` : ""
-                    }`}
+                    className=" divWithin "
+                    id="third"
+                    onClick={clickedIconHandler}
                   >
-                    Trips
+                    <FaAirbnb
+                      className={`iconFooter ${
+                        activeButton === "third" ? `text-danger` : ""
+                      }`}
+                    />
+                    <div
+                      className={`textFooter ${
+                        activeButton === "third" ? `text-dark` : ""
+                      }`}
+                    >
+                      Trips
+                    </div>
                   </div>
-                </div>
-                <div
-                  className=" divWithin "
-                  id="fourth"
-                  onClick={clickedIconHandler}
-                >
-                  <BiMessageAlt
-                    className={`iconFooter ${
-                      activeButton === "fourth" ? `text-danger` : ""
-                    }`}
-                  />
+                </Link>
+                <Link to={"/guests/inbox"}>
                   <div
-                    className={`textFooter ${
-                      activeButton === "fourth" ? `text-dank` : ""
-                    }`}
+                    className=" divWithin "
+                    id="fourth"
+                    onClick={clickedIconHandler}
                   >
-                    Inbox
+                    <BiMessageAlt
+                      className={`iconFooter ${
+                        activeButton === "fourth" ? `text-danger` : ""
+                      }`}
+                    />
+                    <div
+                      className={`textFooter ${
+                        activeButton === "fourth" ? `text-dank` : ""
+                      }`}
+                    >
+                      Inbox
+                    </div>
                   </div>
-                </div>
+                </Link>
                 <div
                   className=" divWithin"
                   id="fifth"
