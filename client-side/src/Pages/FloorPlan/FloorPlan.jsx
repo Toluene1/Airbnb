@@ -49,11 +49,12 @@ const FloorPlan = () => {
               id="guests"
               onClick={decreaseQty}
               disabled={plan.guests == 1 ? true : false}
+              className="text-dark"
             >
               -
             </button>
             <p className="m-1">{plan.guests}</p>
-            <button id="guests" onClick={increaseQty}>
+            <button id="guests" onClick={increaseQty} className="text-dark">
               +
             </button>
           </div>
@@ -65,11 +66,12 @@ const FloorPlan = () => {
               id="Bedrooms"
               onClick={decreaseQty}
               disabled={plan.Bedrooms == 1 ? true : false}
+              className="text-dark"
             >
               -
             </button>
             <p className="m-1">{plan.Bedrooms}</p>
-            <button id="Bedrooms" onClick={increaseQty}>
+            <button id="Bedrooms" onClick={increaseQty} className="text-dark">
               +
             </button>
           </div>
@@ -81,11 +83,12 @@ const FloorPlan = () => {
               id="Beds"
               onClick={decreaseQty}
               disabled={plan.Beds == 1 ? true : false}
+              className="text-dark"
             >
               -
             </button>
             <p className="m-1">{plan.Beds}</p>
-            <button id="Beds" onClick={increaseQty}>
+            <button id="Beds" onClick={increaseQty} className="text-dark">
               +
             </button>
           </div>
@@ -97,11 +100,12 @@ const FloorPlan = () => {
               id="Bathrooms"
               onClick={decreaseQty}
               disabled={plan.Bathrooms == 1 ? true : false}
+              className="text-dark"
             >
               -
             </button>
             <p className="m-1">{plan.Bathrooms}</p>
-            <button id="Bathrooms" onClick={increaseQty}>
+            <button id="Bathrooms" onClick={increaseQty} className="text-dark">
               +
             </button>
           </div>
