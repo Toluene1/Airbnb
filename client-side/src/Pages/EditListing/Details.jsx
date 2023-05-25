@@ -228,7 +228,7 @@ const Details = () => {
                 <div id="amenity" className="mt-3 border-bottom ">
                   <div className="d-flex justify-content-between align-items-baseline ">
                     <h6>Amenities</h6>
-                    <button className=" border-0 fw-bold bg-white">
+                    <button className=" border-0 fw-bold bg-white text-dark">
                       <span className="text-decoration-underline text-dark">
                         {" "}
                         Edit
