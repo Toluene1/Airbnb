@@ -39,12 +39,15 @@ const Price = () => {
             <button
               onClick={handleDecreasePrice}
               disabled={price == 12 ? true : false}
+              className="text-dark"
             >
               {" "}
               -{" "}
             </button>
             <div className="showPrice">${price}</div>
-            <button onClick={handleIncreasePrice}>+</button>
+            <button onClick={handleIncreasePrice} className="text-dark">
+              +
+            </button>
           </div>
 
           <div className="footers">
