@@ -78,6 +78,8 @@
   display: flex;
   justify-content: space-between;
   font-size: 13px;
+  position: sticky;
+  bottom: 0px;
   background-color: white;
 }
 .adjustMargin {

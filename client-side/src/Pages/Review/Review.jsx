@@ -157,7 +157,7 @@ function Review(props) {
             <div>
               <div>
                 <button
-                  className="modalButtonHeader"
+                  className="modalButtonHeader text-dark"
                   onClick={() => setModalShow(false)}
                 >
                   <MdCancel className="fs-3" />

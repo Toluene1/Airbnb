@@ -4,7 +4,7 @@ import { BiCopyright } from "react-icons/bi";
 
 function HomepageFooter() {
   return (
-    <main className=" footerDivs  px-5 py-2 shadow fixed-bottom">
+    <main className=" footerDivs  px-5 py-2 shadow ">
       <div className="d-flex gap-3">
         <div>
           {" "}
