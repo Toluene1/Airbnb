@@ -132,7 +132,6 @@ function App() {
       isMounted = false;
     };
   }, [query]);
-  // console.log(property);
 
   const addToWishlist = async (e, _id) => {
     e.preventDefault();
@@ -212,7 +211,13 @@ function App() {
             <span className="spinner-border text-danger"></span>
           </div>
         ) : (
-          <section style={{ marginTop: "150px", padding: "0px 10px" }}>
+          <section
+            style={{
+              marginTop: "150px",
+              padding: "0px 10px",
+              marginBottom: "30px",
+            }}
+          >
             {alert && (
               <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
             )}
