@@ -8,21 +8,20 @@ import { Context } from "../../Provider/Context";
 import httpAuth from "../../Services/config";
 
 function PropertyType() {
-  const [selected, setselected] = useState(null);
   const [isDisabled, setisDisabled] = useState(true);
   const { propertyId } = useContext(Context);
   const [privacy, setprivacy] = useState("");
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
   const handleToggle = (id) => {
-    if (selected == id) {
-      return setselected(null);
+    if (privacy == id) {
+      setisDisabled(true);
+      return setprivacy("");
     }
     setisDisabled(false);
-    setselected(id);
     setprivacy(id);
   };
-  console.log(propertyId);
+
   const postPrivacy = async () => {
     try {
       setloading(true);
@@ -48,7 +47,7 @@ function PropertyType() {
             id="entire-place"
             value="entire-place"
             className={` ${
-              selected == "entire-place" ? "privacyTypeClicked" : "privacyType"
+              privacy == "entire-place" ? "privacyTypeClicked" : "privacyType"
             }`}
             onClick={(e) => handleToggle(e.currentTarget.id)}
           >
@@ -65,7 +64,7 @@ function PropertyType() {
           <div
             id="private-room"
             className={` ${
-              selected == "private-room" ? "privacyTypeClicked" : "privacyType"
+              privacy == "private-room" ? "privacyTypeClicked" : "privacyType"
             }`}
             onClick={(e) => handleToggle(e.currentTarget.id)}
           >
@@ -83,7 +82,7 @@ function PropertyType() {
           <div
             id="shared-room"
             className={` ${
-              selected == "shared-room" ? "privacyTypeClicked" : "privacyType"
+              privacy == "shared-room" ? "privacyTypeClicked" : "privacyType"
             }`}
             onClick={(e) => handleToggle(e.currentTarget.id)}
           >
