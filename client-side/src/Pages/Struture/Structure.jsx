@@ -17,7 +17,6 @@ import { Link, useNavigate } from "react-router-dom";
 import httpAuth from "../../Services/config";
 import { Context } from "../../Provider/Context";
 const Structure = () => {
-  const [selected, setselected] = useState(null);
   const [isDisabled, setisDisabled] = useState(true);
   const [structure, setstructure] = useState("");
   const [loading, setloading] = useState(false);
@@ -25,13 +24,13 @@ const Structure = () => {
 
   const navigate = useNavigate();
 
-  const handleToggle = (id, val) => {
-    if (selected == id) {
-      return setselected(null);
+  const handleToggle = (id) => {
+    if (structure == id) {
+      setisDisabled(true);
+      return setstructure("");
     }
+    setstructure(id);
     setisDisabled(false);
-    setselected(id);
-    setstructure(val);
   };
 
   const postStructure = async () => {
@@ -54,14 +53,10 @@ const Structure = () => {
         <h2>Which of these best describes your place?</h2>
         <main className="animate__animated animate__fadeInRight animate__delay-0.5s">
           <div
-            id="1"
-            className={` ${selected == 1 ? "structuresClicked" : "structures"}`}
-            onClick={(e) =>
-              handleToggle(
-                e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
-              )
-            }
+            className={` ${
+              structure == "House" ? "structuresClicked" : "structures"
+            }`}
+            onClick={(e) => handleToggle(e.currentTarget.children[1].innerHTML)}
           >
             <p className="m-1">
               <BsHouseCheck />
@@ -69,14 +64,10 @@ const Structure = () => {
             <p className="fs-6">House</p>
           </div>
           <div
-            id="2"
-            className={`${selected == 2 ? "structuresClicked" : "structures"}`}
-            onClick={(e) =>
-              handleToggle(
-                e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
-              )
-            }
+            className={`${
+              structure == "Apartments" ? "structuresClicked" : "structures"
+            }`}
+            onClick={(e) => handleToggle(e.currentTarget.children[1].innerHTML)}
           >
             <p className="m-1">
               <AiOutlineApartment />
@@ -84,14 +75,10 @@ const Structure = () => {
             <p className="fs-6">Apartments</p>
           </div>
           <div
-            id="3"
-            className={`${selected == 3 ? "structuresClicked" : "structures"}`}
-            onClick={(e) =>
-              handleToggle(
-                e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
-              )
-            }
+            className={`${
+              structure == "Barns" ? "structuresClicked" : "structures"
+            }`}
+            onClick={(e) => handleToggle(e.currentTarget.children[1].innerHTML)}
           >
             <p className="m-1">
               <GiBarn />
@@ -99,14 +86,10 @@ const Structure = () => {
             <p className="fs-6">Barns</p>
           </div>
           <div
-            id="4"
-            className={`${selected == 4 ? "structuresClicked" : "structures"}`}
-            onClick={(e) =>
-              handleToggle(
-                e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
-              )
-            }
+            className={`${
+              structure == "Breakfast" ? "structuresClicked" : "structures"
+            }`}
+            onClick={(e) => handleToggle(e.currentTarget.children[1].innerHTML)}
           >
             <p className="m-1">
               <BsFillCupHotFill />
@@ -114,14 +97,10 @@ const Structure = () => {
             <p className="fs-6">Breakfast</p>
           </div>
           <div
-            id="5"
-            className={`${selected == 5 ? "structuresClicked" : "structures"}`}
-            onClick={(e) =>
-              handleToggle(
-                e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
-              )
-            }
+            className={`${
+              structure == "farm" ? "structuresClicked" : "structures"
+            }`}
+            onClick={(e) => handleToggle(e.currentTarget.children[1].innerHTML)}
           >
             <p className="m-1">
               <GiFarmTractor />
@@ -129,14 +108,10 @@ const Structure = () => {
             <p className="fs-6">farm</p>
           </div>
           <div
-            id="6"
-            className={`${selected == 6 ? "structuresClicked" : "structures"}`}
-            onClick={(e) =>
-              handleToggle(
-                e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
-              )
-            }
+            className={`${
+              structure == "Treehouse" ? "structuresClicked" : "structures"
+            }`}
+            onClick={(e) => handleToggle(e.currentTarget.children[1].innerHTML)}
           >
             <p className="m-1">
               <GiTreehouse />
@@ -144,14 +119,10 @@ const Structure = () => {
             <p className="fs-6">Treehouse</p>
           </div>
           <div
-            id="7"
-            className={`${selected == 7 ? "structuresClicked" : "structures"}`}
-            onClick={(e) =>
-              handleToggle(
-                e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
-              )
-            }
+            className={`${
+              structure == "Tent" ? "structuresClicked" : "structures"
+            }`}
+            onClick={(e) => handleToggle(e.currentTarget.children[1].innerHTML)}
           >
             <p className="m-1">
               <GiKrakenTentacle />
@@ -159,14 +130,10 @@ const Structure = () => {
             <p className="fs-6">Tent</p>
           </div>
           <div
-            id="8"
-            className={`${selected == 8 ? "structuresClicked" : "structures"}`}
-            onClick={(e) =>
-              handleToggle(
-                e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
-              )
-            }
+            className={`${
+              structure == "Tower" ? "structuresClicked" : "structures"
+            }`}
+            onClick={(e) => handleToggle(e.currentTarget.children[1].innerHTML)}
           >
             <p className="m-1">
               <GiSiegeTower />
@@ -174,14 +141,10 @@ const Structure = () => {
             <p className="fs-6">Tower</p>
           </div>
           <div
-            id="9"
-            className={`${selected == 9 ? "structuresClicked" : "structures"}`}
-            onClick={(e) =>
-              handleToggle(
-                e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
-              )
-            }
+            className={`${
+              structure == "Windmill" ? "structuresClicked" : "structures"
+            }`}
+            onClick={(e) => handleToggle(e.currentTarget.children[1].innerHTML)}
           >
             <p className="m-1">
               <GiWindmill />
@@ -189,14 +152,10 @@ const Structure = () => {
             <p className="fs-6">Windmill</p>
           </div>
           <div
-            id="10"
-            className={`${selected == 10 ? "structuresClicked" : "structures"}`}
-            onClick={(e) =>
-              handleToggle(
-                e.currentTarget.id,
-                e.currentTarget.children[1].innerHTML,
-              )
-            }
+            className={`${
+              structure == "Caves" ? "structuresClicked" : "structures"
+            }`}
+            onClick={(e) => handleToggle(e.currentTarget.children[1].innerHTML)}
           >
             <p className="m-1">
               <GiCaveEntrance />
