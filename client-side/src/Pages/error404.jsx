@@ -41,8 +41,17 @@ const Error404 = () => {
           </ul>
         </div>
 
-        <div className="errorDiv2">
-          <h1>Tolu</h1>
+        <div className="errorDiv bg-primary">
+          <div className="giphyStyle">
+            <iframe
+              src="https://giphy.com/embed/GCOJUp80i4SiqA2IxJ"
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              className="giphy-embed position-absolute"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       </section>
       <FooterProp />
