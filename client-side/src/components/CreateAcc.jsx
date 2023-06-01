@@ -33,8 +33,6 @@ const CreateAcc = () => {
     phone.current.value = foundCountry.dial_code;
   }
 
-  //back to welcome page before logout
-
   //post user details  to server
   const postUserDetails = async () => {
     try {
@@ -45,10 +43,6 @@ const CreateAcc = () => {
       setLogin(setLoggedIn);
       handleSaveUser(response.data.user);
       setauthloading(false);
-      if (Location.pathname == "/") {
-        navigate("/");
-        return location.reload();
-      }
       navigate(Location.pathname);
       location.reload();
     } catch (error) {

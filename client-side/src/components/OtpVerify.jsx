@@ -50,13 +50,7 @@ const OtpVerify = ({ setshowCreateAcc }) => {
       setUser(response.data.user);
       handleSaveUser(response.data.user);
       setLogin(setLoggedIn);
-
       setauthloading(false);
-      if (Location.pathname == "/") {
-        navigate("/");
-        location.reload();
-        return;
-      }
       navigate(Location.pathname);
       location.reload();
     } catch (error) {
