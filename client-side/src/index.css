@@ -317,6 +317,27 @@ a:hover {
 .dropdown p:hover {
   background-color: rgb(245, 241, 241);
 }
+.errorDivMain {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1400px;
+}
+.errorDiv1 {
+  /* background-color: blue; */
+  width: 60%;
+  /* height: 600px; */
+}
+/* .errorDiv2 {
+  background-color: aquamarine;
+  width: 40%;
+  height: 300px;
+} */
+.giphyStyle {
+  width: 250px;
+  padding-bottom: 178%;
+  position: relative;
+}
 @media only screen and (max-width: 735px) {
   .navFilter button {
     display: none;
@@ -344,6 +365,12 @@ a:hover {
 
   .navFilter main::-webkit-scrollbar {
     display: none;
+  }
+  .errorDivMain {
+    width: 95%;
+  }
+  .errorDiv1 {
+    width: 100%;
   }
 }
 .prop {
