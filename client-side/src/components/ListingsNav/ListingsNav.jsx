@@ -1,19 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ListingsNav.css";
 import Airbnblogo from "../../assets/airbnb-logo.png";
 import { BiBell } from "react-icons/bi";
 import UserPics from "../../../src/assets/User.jpg";
 import { Context } from "../../Provider/Context";
 import { useContext, useEffect, useRef, useState } from "react";
-import httpAuth from "../../Services/config";
 import { FaBars } from "react-icons/fa";
+import { Existing } from "../../utils/setlocalstorage";
 
 const ListingsNav = () => {
-  const { setUser, User } = useContext(Context);
+  const { User, setexisting } = useContext(Context);
   const [dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef(null);
-
-  let isMounted = true;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -27,30 +26,12 @@ const ListingsNav = () => {
     };
   }, [dropdownRef]);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await httpAuth.get("/user/fetchUser");
-        setUser(response.data.user);
-      } catch (error) {
-        console.log(error.response.data.msg);
-      }
-    };
-
-    if (isMounted) {
-      fetchUser();
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
   const handleLogOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("loggedin");
-    location.reload();
     Existing(setexisting);
     navigate("/");
+    location.reload();
   };
   return (
     <>

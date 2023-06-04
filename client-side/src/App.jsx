@@ -43,6 +43,7 @@ function App() {
     setFilterWeb,
     property,
     setProperty,
+    setwishlist,
   } = useContext(Context);
   const [index, setIndex] = useState(0);
   const [_id, setId] = useState("");
@@ -138,6 +139,7 @@ function App() {
     try {
       const response = await httpAuth.post("/wishlist/create", { _id });
       setalert(true);
+      setwishlist(response.data.wish);
       setalertMessage(response.data.msg);
     } catch (error) {
       if (error.response.data.msg == "unauthorised") {

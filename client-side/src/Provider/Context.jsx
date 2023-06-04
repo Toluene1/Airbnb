@@ -77,7 +77,7 @@ const ContextProvider = ({ children }) => {
     return () => {
       isMounted = false;
     };
-  }, [wishlist]);
+  }, []);
 
   const initialState = {
     mail,
