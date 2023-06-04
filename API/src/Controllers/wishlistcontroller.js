@@ -12,10 +12,12 @@ const createWishlist = async (req, res) => {
         .json({ msg: "property already added to wish list" });
     }
 
-    const wishlist = await Wishlist.create({ property: propId, user: _id });
-    res
-      .status(200)
-      .json({ wish: wishlist, msg: "property added to wishlist successfully" });
+    await Wishlist.create({ property: propId, user: _id });
+    const wishlists = await Wishlist.find({ user: _id }).populate("property");
+    res.status(200).json({
+      wish: wishlists,
+      msg: "property added to wishlist successfully",
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "please contact the admin " });

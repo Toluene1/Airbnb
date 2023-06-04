@@ -341,29 +341,29 @@ const Property = () => {
                 </header>
                 <main className="main">
                   <div className="feature">
-                    <p>
+                    <div>
                       <FaBed className="fs-5 ms-1" />
-                    </p>
-                    <p className="mx-2">
+                    </div>
+                    <div className="mx-2">
                       <p className="m-0">{property.Bedrooms}bedrooms</p>
                       <p className="m-0">{property.Beds}beds</p>
-                    </p>
+                    </div>
                   </div>
                   <div className="feature">
-                    <p>
+                    <div>
                       <FaShower className="fs-5 ms-1" />
-                    </p>
-                    <p className="mx-2">
+                    </div>
+                    <div className="mx-2">
                       <p>private bathroom</p>
-                    </p>
+                    </div>
                   </div>
                   <div className="feature">
-                    <p>
+                    <div>
                       <FaHouseUser className="fs-5 ms-1" />
-                    </p>
-                    <p className="mx-2">
+                    </div>
+                    <div className="mx-2">
                       <p> Host or others may share home</p>
-                    </p>
+                    </div>
                   </div>
                 </main>
                 <hr />

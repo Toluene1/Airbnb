@@ -43,7 +43,7 @@ function Listings() {
   };
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const UserProperty = async () => {
       try {
         setLoading(true);
         const response = await httpAuth.get(`property/findhostproperty`);
@@ -51,15 +51,15 @@ function Listings() {
         setLoading(false);
       } catch (error) {
         if (error.response.data.msg == "unauthorised") {
+          setListings([]);
+          setLoading(true);
           return setModalShow(true);
         }
-        setListings({});
-        console.log(error.response.data.msg);
       }
     };
 
     if (isMounted) {
-      fetchUser();
+      UserProperty();
     }
     return () => {
       isMounted = false;
