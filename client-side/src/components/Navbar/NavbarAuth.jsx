@@ -92,7 +92,7 @@ const NavbarAuth = () => {
                 style={{ width: "100%" }}
               />
             </div>
-            {wishlist.length > 1 && (
+            {wishlist.length > 0 && (
               <div className="wishlength">
                 <span>{wishlist.length} </span>
               </div>
@@ -117,7 +117,7 @@ const NavbarAuth = () => {
                   {" "}
                   <Link to={"/wishlist"}>
                     Wishlist
-                    {wishlist.length > 1 && (
+                    {wishlist.length > 0 && (
                       <span className="text-danger mx-3 ">
                         ({wishlist.length})
                       </span>

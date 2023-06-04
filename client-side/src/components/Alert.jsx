@@ -8,9 +8,9 @@ const Alert = ({ closeAlert, alertMessage }) => {
   }, []);
 
   return (
-    <p className="ms-auto w-100 p-0 m-0">
+    <article className="ms-auto w-100 p-0 m-0">
       <p className="text-center fw-bold text-danger p-0 m-0 ">{alertMessage}</p>
-    </p>
+    </article>
   );
 };
 

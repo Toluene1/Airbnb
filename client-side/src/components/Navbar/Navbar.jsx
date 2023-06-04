@@ -144,7 +144,7 @@ const Navbar = () => {
                   style={{ width: "100%" }}
                 />
               </div>
-              {wishlist.length > 1 && (
+              {wishlist.length > 0 && (
                 <div className="length">
                   <span>{wishlist.length} </span>
                 </div>
@@ -168,7 +168,7 @@ const Navbar = () => {
                     <p>
                       {" "}
                       Wishlist{" "}
-                      {wishlist.length > 1 && (
+                      {wishlist.length > 0 && (
                         <span className="text-danger mx-3 ">
                           ({wishlist.length})
                         </span>
