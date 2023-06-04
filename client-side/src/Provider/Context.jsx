@@ -45,7 +45,9 @@ const ContextProvider = ({ children }) => {
         const response = await httpAuth.get("/user/fetchUser");
         setUser(response.data.user);
       } catch (error) {
-        console.log(error.response.data.msg);
+        if (error.response.data.msg == "unauthorised") {
+          setUser({});
+        }
       }
     };
 
@@ -64,11 +66,8 @@ const ContextProvider = ({ children }) => {
         setwishlist(response.data.wish);
       } catch (error) {
         if (error.response.data.msg == "unauthorised") {
-          return setshowWish(false);
+          setwishlist([]);
         }
-        setwishlist([]);
-        setloading(true);
-        console.log(error.response.data.msg);
       }
     };
 
@@ -78,7 +77,7 @@ const ContextProvider = ({ children }) => {
     return () => {
       isMounted = false;
     };
-  }, [wishlist]);
+  }, []);
 
   const initialState = {
     mail,

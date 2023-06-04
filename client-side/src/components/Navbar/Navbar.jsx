@@ -14,7 +14,7 @@ import Airbnblogo from "../../assets/airbnb-logo.png";
 import SearchDropdown from "../SearchDropdown/SearchDropdown";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
-  const [showWish, setshowWish] = useState(false);
+
   const dropdownRef = useRef(null);
   const {
     modalShow,
@@ -79,13 +79,6 @@ const Navbar = () => {
     };
   }, [window.innerWidth]);
 
-  useEffect(() => {
-    if (wishlist.length < 1) {
-      setshowWish(false);
-    } else {
-      setshowWish(true);
-    }
-  }, [wishlist]);
   // log Out
   const handleLogOut = () => {
     localStorage.removeItem("token");
@@ -151,7 +144,7 @@ const Navbar = () => {
                   style={{ width: "100%" }}
                 />
               </div>
-              {showWish && (
+              {wishlist.length > 1 && (
                 <div className="length">
                   <span>{wishlist.length} </span>
                 </div>
@@ -175,7 +168,7 @@ const Navbar = () => {
                     <p>
                       {" "}
                       Wishlist{" "}
-                      {showWish && (
+                      {wishlist.length > 1 && (
                         <span className="text-danger mx-3 ">
                           ({wishlist.length})
                         </span>

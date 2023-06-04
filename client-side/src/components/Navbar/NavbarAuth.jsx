@@ -7,30 +7,18 @@ import { FaBars } from "react-icons/fa";
 import Airlogo from "../../../src/assets/airbnb-logo.png";
 import UserPics from "../../../src/assets/User.jpg";
 import { Existing } from "../../utils/setlocalstorage";
-import httpAuth from "../../Services/config";
 
 const NavbarAuth = () => {
   const [dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef(null);
-  const [showWish, setshowWish] = useState(false);
 
   const { Loggedin, User, setModalShow, setexisting, setUser, wishlist } =
     useContext(Context);
-
-  let isMounted = true;
   const navigate = useNavigate();
   function HideDropdown() {
     setModalShow(true);
     setDropdown(false);
   }
-
-  useEffect(() => {
-    if (wishlist.length < 1) {
-      setshowWish(false);
-    } else {
-      setshowWish(true);
-    }
-  }, [wishlist]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -52,24 +40,6 @@ const NavbarAuth = () => {
     location.reload();
     Existing(setexisting);
   };
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await httpAuth.get("/fetchUser");
-        setUser(response.data.user);
-      } catch (error) {
-        console.log(error.response.data.msg);
-      }
-    };
-
-    if (isMounted) {
-      fetchUser();
-    }
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   return (
     <nav className=" p-3 webNav">
@@ -122,7 +92,7 @@ const NavbarAuth = () => {
                 style={{ width: "100%" }}
               />
             </div>
-            {showWish && (
+            {wishlist.length > 1 && (
               <div className="wishlength">
                 <span>{wishlist.length} </span>
               </div>
@@ -147,7 +117,7 @@ const NavbarAuth = () => {
                   {" "}
                   <Link to={"/wishlist"}>
                     Wishlist
-                    {showWish && (
+                    {wishlist.length > 1 && (
                       <span className="text-danger mx-3 ">
                         ({wishlist.length})
                       </span>

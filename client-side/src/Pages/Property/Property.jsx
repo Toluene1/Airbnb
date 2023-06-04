@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import httpClient from "../../Services/httpclient";
 import "./Property.css";
 import { FaAngleLeft, FaRegHeart } from "react-icons/fa";
@@ -39,7 +39,7 @@ const Property = () => {
     useContext(Context);
   const { id } = useParams();
   const [drop, setdrop] = useState(false);
-  const [showWish, setshowWish] = useState(false);
+  const navigate = useNavigate();
 
   let isMounted = true;
 
@@ -84,14 +84,6 @@ const Property = () => {
   }, [window.scrollY]);
 
   useEffect(() => {
-    if (wishlist.length < 1) {
-      setshowWish(false);
-    } else {
-      setshowWish(true);
-    }
-  }, [wishlist]);
-
-  useEffect(() => {
     const FetchProperty = async () => {
       try {
         setloading(true);
@@ -101,8 +93,6 @@ const Property = () => {
       } catch (error) {
         setproperty({});
         setloading(true);
-
-        console.log(error.response.data.msg);
       }
     };
 
@@ -179,7 +169,7 @@ const Property = () => {
                     style={{ width: "100%" }}
                   />
                 </div>
-                {showWish && (
+                {wishlist.length > 1 && (
                   <div className="length">
                     <span>{wishlist.length} </span>
                   </div>
@@ -206,7 +196,7 @@ const Property = () => {
                       <p>
                         {" "}
                         Wishlist
-                        {showWish && (
+                        {wishlist.length > 1 && (
                           <span className="text-danger mx-3 ">
                             ({wishlist.length})
                           </span>
