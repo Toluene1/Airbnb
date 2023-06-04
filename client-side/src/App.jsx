@@ -91,7 +91,6 @@ function App() {
       } catch (error) {
         setcategories([]);
         setloadingCategory(true);
-        console.log(error.response.data.msg);
       }
     };
 
@@ -120,8 +119,6 @@ function App() {
       } catch (error) {
         setProperty([]);
         setloading(true);
-
-        console.log(error.response.data.msg);
       }
     };
 
