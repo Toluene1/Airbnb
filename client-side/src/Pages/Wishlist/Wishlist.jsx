@@ -27,11 +27,9 @@ const Wishlist = () => {
         setloading(false);
       } catch (error) {
         if (error.response.data.msg == "unauthorised") {
-          return setModalShow(true);
+          setwishlist([]);
+          setModalShow(true);
         }
-        setwishlist([]);
-        setloading(true);
-        console.log(error.response.data.msg);
       }
     };
 

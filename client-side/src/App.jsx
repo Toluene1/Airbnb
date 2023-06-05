@@ -28,7 +28,7 @@ import Airbnblogo from "../src/assets/airbnb-logo.png";
 import HomepageFooter from "./utils/SearchDrops/HomepageFooter";
 
 function App() {
-  const [loading, setloading] = useState(true);
+  const [loading, setloading] = useState(false);
   const [loadingCatgory, setloadingCategory] = useState(true);
   const [categories, setcategories] = useState([]);
   const [clickedFilter, setclickedFilter] = useState("All");
@@ -43,6 +43,7 @@ function App() {
     setFilterWeb,
     property,
     setProperty,
+    setwishlist,
   } = useContext(Context);
   const [index, setIndex] = useState(0);
   const [_id, setId] = useState("");
@@ -62,12 +63,18 @@ function App() {
     FaRainbow,
     FaTicketAlt,
   ];
+
+  // select carousel images
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
+
+  // show filter Web
   function showFilterWeb() {
     setFilterWeb(true);
   }
+
+  //query db by structure
   const handleClickFilter = (category) => {
     if (category == "All") {
       setclickedFilter(category);
@@ -80,6 +87,7 @@ function App() {
   const closeAlert = () => {
     setalert(false);
   };
+
   // fetchCategories
   useEffect(() => {
     const FetchCategories = async () => {
@@ -91,7 +99,6 @@ function App() {
       } catch (error) {
         setcategories([]);
         setloadingCategory(true);
-        console.log(error.response.data.msg);
       }
     };
 
@@ -116,12 +123,12 @@ function App() {
           `property/getallproperty/?structure=${query}`,
         );
         setProperty(response.data.prop);
-        setloading(false);
+        setTimeout(() => {
+          setloading(false);
+        }, 1500);
       } catch (error) {
         setProperty([]);
         setloading(true);
-
-        console.log(error.response.data.msg);
       }
     };
 
@@ -133,6 +140,9 @@ function App() {
     };
   }, [query]);
 
+  const skeletonItems = Array.from({ length: property.length }, (_, index) => (
+    <div key={index} className="loadings animate"></div>
+  ));
   const addToWishlist = async (e, _id) => {
     e.preventDefault();
     e.stopPropagation();
@@ -141,6 +151,7 @@ function App() {
     try {
       const response = await httpAuth.post("/wishlist/create", { _id });
       setalert(true);
+      setwishlist(response.data.wish);
       setalertMessage(response.data.msg);
     } catch (error) {
       if (error.response.data.msg == "unauthorised") {
@@ -207,8 +218,8 @@ function App() {
         {/* display properties  */}
 
         {loading ? (
-          <div className="center-screen">
-            <span className="spinner-border text-danger"></span>
+          <div className="property" style={{ margin: "120px auto" }}>
+            {skeletonItems}
           </div>
         ) : (
           <section
