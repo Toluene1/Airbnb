@@ -28,7 +28,7 @@ import Airbnblogo from "../src/assets/airbnb-logo.png";
 import HomepageFooter from "./utils/SearchDrops/HomepageFooter";
 
 function App() {
-  const [loading, setloading] = useState(false);
+  const [loading, setloading] = useState(true);
   const [loadingCatgory, setloadingCategory] = useState(true);
   const [categories, setcategories] = useState([]);
   const [clickedFilter, setclickedFilter] = useState("All");
@@ -125,7 +125,7 @@ function App() {
         setProperty(response.data.prop);
         setTimeout(() => {
           setloading(false);
-        }, 1500);
+        }, 1000);
       } catch (error) {
         setProperty([]);
         setloading(true);
