@@ -49,7 +49,7 @@ function App() {
   const [_id, setId] = useState("");
   let isMounted = true;
   let isMountedCat = true;
-  let catload = [];
+
   let icons = [
     FaAirbnb,
     FaHouseUser,
@@ -95,7 +95,9 @@ function App() {
         setloadingCategory(true);
         const response = await httpClient.get(`/category/getallcategory`);
         setcategories(["All", ...response.data.category]);
-        setloadingCategory(false);
+        setTimeout(() => {
+          setloadingCategory(false);
+        }, 1000);
       } catch (error) {
         setcategories([]);
         setloadingCategory(true);
@@ -109,10 +111,6 @@ function App() {
       isMountedCat = false;
     };
   }, []);
-
-  for (let index = 0; index < 10; index++) {
-    catload.push(index);
-  }
 
   // fetchProperties
   useEffect(() => {
@@ -140,8 +138,22 @@ function App() {
     };
   }, [query]);
 
+  const categorySkeleton = Array.from(
+    { length: categories.length },
+    (_, index) => <p key={index} className="catload"></p>,
+  );
+
   const skeletonItems = Array.from({ length: property.length }, (_, index) => (
-    <div key={index} className="loadings animate"></div>
+    <div key={index}>
+      <div style={{ height: "200px" }} className="loadings animate"></div>
+      <div>
+        <div className="foot my-3">
+          <p className="loadings animate" style={{ height: "20px" }}></p>
+          <p className="loadings animate my-3" style={{ height: "20px" }}></p>
+          <p className="loadings animate" style={{ height: "20px" }}></p>
+        </div>
+      </div>
+    </div>
   ));
   const addToWishlist = async (e, _id) => {
     e.preventDefault();
@@ -174,13 +186,7 @@ function App() {
           <nav className="navFilter">
             {loadingCatgory ? (
               <>
-                <main>
-                  {catload.map((_, index) => (
-                    <div key={index}>
-                      <p className="catload"></p>
-                    </div>
-                  ))}
-                </main>
+                <main>{categorySkeleton}</main>
                 <button onClick={showFilterWeb} className="mx-5">
                   <FaSlidersH className="searchIcon2" /> filters
                 </button>

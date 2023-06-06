@@ -162,7 +162,7 @@ body {
   border-bottom: 2px solid rgb(32, 32, 32);
 }
 .catload {
-  width: 100px;
+  min-width: 100px;
   height: 30px;
   background-color: rgb(233, 231, 231);
 }
@@ -333,10 +333,7 @@ a:hover {
 } */
 
 .loadings {
-  background-color: white;
   width: 300px;
-  height: 400px;
-
   background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0),
