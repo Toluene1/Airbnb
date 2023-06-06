@@ -1,6 +1,5 @@
 import Modal from "react-bootstrap/Modal";
 import "./Navbar/Navbar.css";
-import FilterBody from "./FilterBody";
 import { MdOutlineCancel } from "react-icons/md";
 import { useContext } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
