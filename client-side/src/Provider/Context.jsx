@@ -7,6 +7,7 @@ const ContextProvider = ({ children }) => {
   const [mail, setmail] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [filterShow, setFilterShow] = useState(false);
+  const [searchShow, setSearchShow] = useState(false);
   const [filterWeb, setFilterWeb] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [User, setUser] = useState({});
@@ -18,25 +19,25 @@ const ContextProvider = ({ children }) => {
   const [activeButton, setActiveButton] = useState(
     localStorage.getItem("active")
       ? JSON.parse(localStorage.getItem("active"))
-      : "first",
+      : "first"
   );
 
   const [propertyId, setpropertyId] = useState(
     localStorage.getItem("propId")
       ? JSON.parse(localStorage.getItem("propId"))
-      : "",
+      : ""
   );
 
   const [Loggedin, setLoggedIn] = useState(
     localStorage.getItem("loggedin")
       ? JSON.parse(localStorage.getItem("loggedin"))
-      : false,
+      : false
   );
 
   const [existing, setexisting] = useState(
     localStorage.getItem("existing")
       ? JSON.parse(localStorage.getItem("existing"))
-      : false,
+      : false
   );
   let isMounted = true;
   useEffect(() => {
@@ -86,6 +87,8 @@ const ContextProvider = ({ children }) => {
     setModalShow,
     filterShow,
     setFilterShow,
+    searchShow,
+    setSearchShow,
     fullscreen,
     setFullscreen,
     User,

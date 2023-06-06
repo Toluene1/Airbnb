@@ -41,7 +41,7 @@ const Error404 = () => {
           </ul>
         </div>
 
-        <div className="errorDiv bg-primary">
+        <div>
           <div className="giphyStyle">
             <iframe
               src="https://giphy.com/embed/GCOJUp80i4SiqA2IxJ"
