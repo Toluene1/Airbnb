@@ -536,3 +536,39 @@ a :hover {
   border: none;
   background-color: white;
 }
+.SearchMainDiv {
+  width: 100%;
+  border-radius: 10px;
+}
+.input-Search {
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+  border: solid rgb(133, 123, 123) 1px;
+}
+.flexBoxes {
+  display: flex;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+.flexBoxes::-webkit-scrollbar {
+  display: none;
+}
+.regionDivs {
+  background-color: aqua;
+  width: 115px;
+  height: 115px;
+  transition: 0.3s;
+}
+.regionDivs:hover {
+  border: solid rgb(82, 78, 78) 1px;
+}
+.date-guests {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,7 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import "./Navbar/Navbar.css";
 import FilterBody from "./FilterBody";
-import { MdCancel } from "react-icons/md";
+import { MdOutlineCancel } from "react-icons/md";
 import { useContext } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { Context } from "../Provider/Context";
@@ -21,7 +21,7 @@ function SearchProperties(props) {
             <div className="divCoverHeader py-3">
               <div>
                 <button className="modalButtonHeader1" onClick={hideFilter}>
-                  <MdCancel className="fs-3 text-dark" />
+                  <MdOutlineCancel className="fs-3 text-dark" />
                 </button>
               </div>
               <div>
@@ -30,7 +30,7 @@ function SearchProperties(props) {
               </div>
             </div>
           </Modal.Header>
-          <Modal.Body className="ms-2">
+          <Modal.Body>
             <SearchBody hideFilter={hideFilter} />
           </Modal.Body>
           <Modal.Footer>
