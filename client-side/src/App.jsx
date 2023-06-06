@@ -137,15 +137,32 @@ function App() {
       isMounted = false;
     };
   }, [query]);
-
+  // skeleton for categories
   const categorySkeleton = Array.from(
     { length: categories.length },
-    (_, index) => <p key={index} className="catload"></p>,
+    (_, index) => (
+      <div key={index}>
+        <p
+          style={{
+            height: "20px",
+            width: "20px",
+            borderRadius: "50%",
+            backgroundColor: "lightgrey",
+            margin: "5px auto",
+          }}
+        ></p>
+        <p key={index} className="catload"></p>
+      </div>
+    ),
   );
 
+  // skeleton for properties
   const skeletonItems = Array.from({ length: property.length }, (_, index) => (
-    <div key={index}>
-      <div style={{ height: "200px" }} className="loadings animate"></div>
+    <div key={index} className="property-ind">
+      <div
+        style={{ height: "200px" }}
+        className="loadings animate carous "
+      ></div>
       <div>
         <div className="foot my-3">
           <p className="loadings animate" style={{ height: "20px" }}></p>
@@ -249,16 +266,13 @@ function App() {
                       key={property._id}
                     >
                       {/* carousel  */}
-                      <div
-                        className="  position-relative"
-                        style={{ maxWidth: "300px" }}
-                      >
+                      <div className=" property-ind">
                         {property.images.length > 0 ? (
-                          <Carousel onSelect={handleSelect}>
+                          <Carousel onSelect={handleSelect} className="carou">
                             {property.images.map((images) => (
                               <Carousel.Item
                                 activeindex={index}
-                                style={{ width: "300px", height: "200px" }}
+                                className="carous"
                                 key={images}
                               >
                                 <img src={images} alt="" />
