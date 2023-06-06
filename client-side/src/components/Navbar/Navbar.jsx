@@ -12,6 +12,7 @@ import { Context } from "../../Provider/Context";
 import { Existing } from "../../utils/setlocalstorage";
 import Airbnblogo from "../../assets/airbnb-logo.png";
 import SearchDropdown from "../SearchDropdown/SearchDropdown";
+import SearchProperties from "../SearchProperties";
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
 
@@ -23,6 +24,8 @@ const Navbar = () => {
     Loggedin,
     setFilterShow,
     filterShow,
+    searchShow,
+    setSearchShow,
     fullscreen,
     setFullscreen,
     setexisting,
@@ -34,10 +37,15 @@ const Navbar = () => {
   const checkmodalShow = () => {
     if (window.innerWidth > 735) {
       setFilterShow(false);
+      setSearchShow(false);
     }
   };
   function showFilter() {
     setFilterShow(true);
+    setFullscreen(true);
+  }
+  function showSearch() {
+    setSearchShow(true);
     setFullscreen(true);
   }
 
@@ -230,7 +238,7 @@ const Navbar = () => {
       <section>
         <div className="inputNav shadow">
           <div>
-            <button className="inputButton1 text-dark">
+            <button className="inputButton1 text-dark" onClick={showSearch}>
               <AiOutlineSearch className="searchIcon" />
             </button>
           </div>
@@ -248,6 +256,11 @@ const Navbar = () => {
           show={filterShow}
           fullscreen={fullscreen}
           onHide={() => setFilterShow(false)}
+        />
+        <SearchProperties
+          show={searchShow}
+          fullscreen={fullscreen}
+          onHide={() => setSearchShow(false)}
         />
       </section>
       <PopModal show={modalShow} onHide={() => setModalShow(false)} />
