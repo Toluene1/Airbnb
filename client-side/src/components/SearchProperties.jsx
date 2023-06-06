@@ -3,7 +3,9 @@ import "./Navbar/Navbar.css";
 import FilterBody from "./FilterBody";
 import { MdCancel } from "react-icons/md";
 import { useContext } from "react";
+import { BiSearchAlt2 } from "react-icons/bi";
 import { Context } from "../Provider/Context";
+import SearchBody from "./SearchBody";
 
 function SearchProperties(props) {
   const { setFilterShow, setFullscreen, setSearchShow } = useContext(Context);
@@ -14,26 +16,36 @@ function SearchProperties(props) {
   return (
     <>
       <div id="modalDisplay">
-        <Modal
-          {...props}
-          className="modalStyle pt-2"
-          style={{ zIndex: "5000" }}
-        >
+        <Modal {...props} className="modalStyle" style={{ zIndex: "5000" }}>
           <Modal.Header className="p-1 pe-3 py-2 ">
-            <div className="divCoverHeader">
+            <div className="divCoverHeader py-3">
               <div>
                 <button className="modalButtonHeader1" onClick={hideFilter}>
                   <MdCancel className="fs-3 text-dark" />
                 </button>
               </div>
               <div>
-                <span className="fw-bold">Full Preview</span>
+                <button className="stays px-3">Stays</button>
+                <button className="experiences px-3">Experiences</button>
               </div>
             </div>
           </Modal.Header>
           <Modal.Body className="ms-2">
-            <FilterBody hideFilter={hideFilter} />
+            <SearchBody hideFilter={hideFilter} />
           </Modal.Body>
+          <Modal.Footer>
+            <section className="divFilterFooter ">
+              <button className="text-dark clearAll  border-0 bg-white">
+                clear all
+              </button>
+              <div>
+                <button className="SearchfooterButton">
+                  <BiSearchAlt2 className="me-2" />
+                  <span>search</span>
+                </button>
+              </div>
+            </section>
+          </Modal.Footer>
         </Modal>
       </div>
     </>
