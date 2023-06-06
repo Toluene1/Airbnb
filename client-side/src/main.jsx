@@ -163,7 +163,13 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ContextProvider>
-      <Suspense>
+      <Suspense
+        fallback={
+          <div className=" center-screen">
+            <div className="spinner-border text-danger "></div>
+          </div>
+        }
+      >
         <RouterProvider router={router} />
       </Suspense>
     </ContextProvider>

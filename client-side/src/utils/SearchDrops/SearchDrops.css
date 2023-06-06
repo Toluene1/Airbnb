@@ -86,7 +86,7 @@
 .adjustMargin {
   margin-top: -3px;
 }
-@media only screen and (max-width: 735px) {
+@media only screen and (max-width: 764px) {
   .footerDivs {
     display: none;
   }
