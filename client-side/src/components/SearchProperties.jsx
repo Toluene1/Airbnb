@@ -7,7 +7,7 @@ import { Context } from "../Provider/Context";
 import SearchBody from "./SearchBody";
 
 function SearchProperties(props) {
-  const { setFilterShow, setFullscreen, setSearchShow } = useContext(Context);
+  const { setFullscreen, setSearchShow } = useContext(Context);
   function hideFilter() {
     setSearchShow(false);
     setFullscreen(false);
@@ -24,8 +24,10 @@ function SearchProperties(props) {
                 </button>
               </div>
               <div>
-                <button className="stays px-3">Stays</button>
-                <button className="experiences px-3">Experiences</button>
+                <button className="stays px-3 text-dark">Stays</button>
+                <button className="experiences px-3 text-dark">
+                  Experiences
+                </button>
               </div>
             </div>
           </Modal.Header>
