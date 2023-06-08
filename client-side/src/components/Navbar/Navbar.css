@@ -556,7 +556,6 @@ a :hover {
   display: none;
 }
 .regionDivs {
-  background-color: aqua;
   width: 115px;
   height: 115px;
   transition: 0.3s;
