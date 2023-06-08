@@ -138,26 +138,23 @@ function App() {
     };
   }, [query]);
   // skeleton for categories
-  const categorySkeleton = Array.from(
-    { length: categories.length },
-    (_, index) => (
-      <div key={index}>
-        <p
-          style={{
-            height: "20px",
-            width: "20px",
-            borderRadius: "50%",
-            backgroundColor: "lightgrey",
-            margin: "5px auto",
-          }}
-        ></p>
-        <p key={index} className="catload"></p>
-      </div>
-    ),
-  );
+  const categorySkeleton = Array.from({ length: 10 }, (_, index) => (
+    <div key={index}>
+      <p
+        style={{
+          height: "20px",
+          width: "20px",
+          borderRadius: "50%",
+          backgroundColor: "lightgrey",
+          margin: "5px auto",
+        }}
+      ></p>
+      <p key={index} className="catload"></p>
+    </div>
+  ));
 
   // skeleton for properties
-  const skeletonItems = Array.from({ length: property.length }, (_, index) => (
+  const skeletonItems = Array.from({ length: 16 }, (_, index) => (
     <div key={index} className="property-ind">
       <div
         style={{ height: "200px" }}
@@ -204,7 +201,7 @@ function App() {
             {loadingCatgory ? (
               <>
                 <main>{categorySkeleton}</main>
-                <button onClick={showFilterWeb} className="mx-5">
+                <button onClick={showFilterWeb} className="mx-1">
                   <FaSlidersH className="searchIcon2" /> filters
                 </button>
               </>
@@ -230,7 +227,7 @@ function App() {
                     );
                   })}
                 </main>
-                <button onClick={showFilterWeb} className="mx-5">
+                <button onClick={showFilterWeb} className="mx-1">
                   <FaSlidersH className="searchIcon2" /> filters
                 </button>
               </>
