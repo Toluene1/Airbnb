@@ -154,21 +154,24 @@ function App() {
   ));
 
   // skeleton for properties
-  const skeletonItems = Array.from({ length: 16 }, (_, index) => (
-    <div key={index} className="property-ind">
-      <div
-        style={{ height: "200px" }}
-        className="loadings animate carous "
-      ></div>
-      <div>
-        <div className="foot my-3">
-          <p className="loadings animate" style={{ height: "20px" }}></p>
-          <p className="loadings animate my-3" style={{ height: "20px" }}></p>
-          <p className="loadings animate" style={{ height: "20px" }}></p>
+  const skeletonItems = Array.from(
+    { length: property.length || 16 },
+    (_, index) => (
+      <div key={index} className="property-ind">
+        <div
+          style={{ height: "200px" }}
+          className="loadings animate carous "
+        ></div>
+        <div>
+          <div className="foot my-3">
+            <p className="loadings animate" style={{ height: "20px" }}></p>
+            <p className="loadings animate my-3" style={{ height: "20px" }}></p>
+            <p className="loadings animate" style={{ height: "20px" }}></p>
+          </div>
         </div>
       </div>
-    </div>
-  ));
+    ),
+  );
   const addToWishlist = async (e, _id) => {
     e.preventDefault();
     e.stopPropagation();
