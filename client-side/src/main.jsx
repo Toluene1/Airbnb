@@ -7,8 +7,7 @@ import "animate.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContextProvider from "./Provider/Context";
 import AirbnbHome from "./Pages/AirbnbHome/AirbnbHome";
-
-const App = React.lazy(() => import("./App"));
+import App from "./App";
 
 const Accounts = React.lazy(() => import("./Pages/Account/Account"));
 const PersonalInfo = React.lazy(() =>
