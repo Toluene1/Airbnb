@@ -157,7 +157,7 @@ function App() {
   const skeletonItems = Array.from(
     { length: property.length || 16 },
     (_, index) => (
-      <div key={index} className="property-ind">
+      <div key={index} className="property-ind mt-4">
         <div
           style={{ height: "200px" }}
           className="loadings animate carous "

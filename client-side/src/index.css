@@ -220,10 +220,12 @@ a:hover {
   width: 94%;
 }
 .property-ind {
+  border-radius: 10px;
   position: relative;
   width: 270px;
 }
 .carous {
+  border-radius: 10px;
   width: 270px;
   height: 200px;
 }
@@ -423,6 +425,7 @@ a {
     width: 325px;
   }
   .carous {
+    border-radius: 20px;
     width: 325px;
     height: 200px;
   }
