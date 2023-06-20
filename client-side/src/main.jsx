@@ -165,7 +165,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Suspense
         fallback={
           <div className=" center-screen">
-            <div className="spinner-border text-danger "></div>
+            <div className="spinner-border text-dark "></div>
           </div>
         }
       >

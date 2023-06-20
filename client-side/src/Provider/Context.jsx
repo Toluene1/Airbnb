@@ -19,25 +19,25 @@ const ContextProvider = ({ children }) => {
   const [activeButton, setActiveButton] = useState(
     localStorage.getItem("active")
       ? JSON.parse(localStorage.getItem("active"))
-      : "first"
+      : "first",
   );
 
   const [propertyId, setpropertyId] = useState(
     localStorage.getItem("propId")
       ? JSON.parse(localStorage.getItem("propId"))
-      : ""
+      : "",
   );
 
   const [Loggedin, setLoggedIn] = useState(
     localStorage.getItem("loggedin")
       ? JSON.parse(localStorage.getItem("loggedin"))
-      : false
+      : false,
   );
 
   const [existing, setexisting] = useState(
     localStorage.getItem("existing")
       ? JSON.parse(localStorage.getItem("existing"))
-      : false
+      : false,
   );
   let isMounted = true;
   useEffect(() => {

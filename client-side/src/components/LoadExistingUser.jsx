@@ -55,7 +55,7 @@ const LoadExistingUser = ({ setshowOtp, setexisting, setshowCreateAcc }) => {
         <span>
           <CiMail />
         </span>{" "}
-        <span className="mx-1">{"***" + String(email).slice(4)}</span>
+        <span className="mx-1">{"****" + String(email).slice(4)}</span>
       </p>
       <p className="text-center mt-1">
         {" "}
