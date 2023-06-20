@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../Provider/Context";
 import httpAuth from "../Services/config";
 import { country_code } from "./CountryCodes";
@@ -18,11 +18,18 @@ const Phone = ({ seteditphone }) => {
     );
     phone.current.value = foundCountry.dial_code;
   }
+  useEffect(() => {
+    let country = "Afghanistan";
+    let foundCountry = country_code.find(
+      (country_code) => country_code.name == country,
+    );
+    phone.current.value = foundCountry.dial_code;
+  }, []);
 
   const postUserEmail = async () => {
     try {
       setloading(true);
-      const response = await httpAuth.post("/user/updatePhone", edit.current);
+      const response = await httpAuth.post("/user/updateUser", edit.current);
       setUser(response.data.user);
       handleSaveUser(response.data.user);
       seteditphone(false);

@@ -14,7 +14,7 @@ const Email = ({ seteditmail }) => {
     try {
       setloading(true);
       const response = await httpAuth.post(
-        "/user/updateEmail",
+        "/user/updateUser",
         editEmail.current,
       );
       setUser(response.data.user);

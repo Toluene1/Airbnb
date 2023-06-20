@@ -4,7 +4,7 @@ footer {
 .copyright {
   display: none;
 }
-@media only screen and (min-width: 735px) {
+@media only screen and (min-width: 764px) {
   footer {
     display: flex;
     justify-content: space-between;

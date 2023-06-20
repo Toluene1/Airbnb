@@ -75,36 +75,7 @@ const createUser = async (req, res) => {
   }
 };
 
-const updateEmail = async (req, res) => {
-  try {
-    const { _id } = req.user;
-    const user = await User.findOneAndUpdate(
-      { _id: _id },
-      { ...req.body },
-      { new: true },
-    );
-    res.status(200).json({ user: user });
-  } catch (error) {
-    res.status(500).json({ message: "please contact your admin" });
-    console.log(error);
-  }
-};
-
-const updateNames = async (req, res) => {
-  try {
-    const { _id } = req.user;
-    const user = await User.findOneAndUpdate(
-      { _id: _id },
-      { ...req.body },
-      { new: true },
-    );
-    res.status(200).json({ user: user });
-  } catch (error) {
-    res.status(500).json({ message: "please contact your admin" });
-    console.log(error);
-  }
-};
-const updatePhone = async (req, res) => {
+const updateUser = async (req, res) => {
   try {
     const { _id } = req.user;
     const user = await User.findOneAndUpdate(
@@ -215,7 +186,5 @@ module.exports = {
   updateProfile,
   uploadPhoto,
   getUser,
-  updateEmail,
-  updateNames,
-  updatePhone,
+  updateUser,
 };
