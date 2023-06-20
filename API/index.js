@@ -10,13 +10,13 @@ const wishlistRouter = require("./src/Routes/wishlistRoute");
 const auth = require("./src/middleware/auth");
 
 //security packages
-
 const xss = require("xss-clean");
 const cors = require("cors");
+const mongoSanitize = require("express-mongo-sanitize");
 
 //middleware
 app.use(cors());
-
+app.use(mongoSanitize());
 app.use(xss());
 app.use(express.json());
 
