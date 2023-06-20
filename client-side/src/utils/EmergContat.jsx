@@ -1,4 +1,4 @@
-import { useRef, useState, useContext } from "react";
+import { useRef, useState, useContext, useEffect } from "react";
 import { Context } from "../Provider/Context";
 import httpAuth from "../Services/config";
 import { country_code } from "./CountryCodes";
@@ -6,7 +6,6 @@ import { Language } from "./Languages";
 import { handleSaveUser } from "./setlocalstorage";
 
 const EmergencyContact = ({ seteditcontact }) => {
-  const edit = useRef({ Email: "" });
   const [loading, setloading] = useState(false);
   const { setUser } = useContext(Context);
   const editContact = useRef({
@@ -26,6 +25,14 @@ const EmergencyContact = ({ seteditcontact }) => {
     );
     phone.current.value = foundCountry.dial_code;
   }
+
+  useEffect(() => {
+    let country = "Afghanistan";
+    let foundCountry = country_code.find(
+      (country_code) => country_code.name == country,
+    );
+    phone.current.value = foundCountry.dial_code;
+  }, []);
 
   const postUserAddress = async () => {
     try {
@@ -73,7 +80,6 @@ const EmergencyContact = ({ seteditcontact }) => {
         {/* relationship */}
         <div className="form-floating my-3">
           <input
-            value={edit.current.FirstName}
             id="lastname"
             required
             type="text"

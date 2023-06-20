@@ -8,9 +8,7 @@ const {
   updateProfile,
   uploadPhoto,
   getUser,
-  updateEmail,
-  updateNames,
-  updatePhone,
+  updateUser,
 } = require("../Controllers/userController");
 const auth = require("../middleware/auth");
 
@@ -23,7 +21,6 @@ router.post("/createAddress", [auth], updateAddress);
 router.post("/emergContact", [auth], updateEmergencyContact);
 router.post("/updateProfile", [auth], updateProfile);
 router.post("/uploadPhoto", [auth], uploadPhoto);
-router.post("/updateEmail", [auth], updateEmail);
-router.post("/updateName", [auth], updateNames);
-router.post("/updatePhone", [auth], updatePhone);
+router.post("/updateUser", [auth], updateUser);
+
 module.exports = router;

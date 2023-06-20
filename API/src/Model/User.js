@@ -5,9 +5,11 @@ const userSchema = new Schema(
     FirstName: {
       type: Schema.Types.String,
       required: true,
+      trim: true,
     },
     LastName: {
       type: Schema.Types.String,
+      trim: true,
       required: true,
     },
     Email: {
@@ -21,6 +23,7 @@ const userSchema = new Schema(
     },
     About: {
       type: Schema.Types.String,
+      trim: true,
       default: "",
     },
     Location: {
