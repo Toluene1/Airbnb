@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContextProvider from "./Provider/Context";
 import AirbnbHome from "./Pages/AirbnbHome/AirbnbHome";
 import App from "./App";
-
+import { GoogleOAuthProvider } from "@react-oauth/google";
 const Accounts = React.lazy(() => import("./Pages/Account/Account"));
 const PersonalInfo = React.lazy(() =>
   import("./Pages/PersonalInfo/PersonalInfo"),
@@ -43,7 +43,7 @@ const AboutYourPlace = React.lazy(() =>
   import("./Pages/About-your-place/About-your-place"),
 );
 const Error404 = React.lazy(() => import("./Pages/error404"));
-
+const ClIENT_iD = import.meta.env.VITE_SERVER_CLIENT_ID;
 const router = createBrowserRouter([
   {
     path: "/",
@@ -165,11 +165,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Suspense
         fallback={
           <div className=" center-screen">
-            <div className="spinner-border text-danger "></div>
+            <div className="spinner-border text-dark "></div>
           </div>
         }
       >
-        <RouterProvider router={router} />
+        <GoogleOAuthProvider clientId={ClIENT_iD}>
+          {" "}
+          <RouterProvider router={router} />
+        </GoogleOAuthProvider>
       </Suspense>
     </ContextProvider>
   </React.StrictMode>,
