@@ -12,7 +12,7 @@ const EmergencyContact = ({ seteditcontact }) => {
     name: "",
     relationship: "",
     email: "",
-    phonenumber: "",
+    phoneNumber: "",
     language: "",
   });
   const phone = useRef(null);
@@ -146,7 +146,7 @@ const EmergencyContact = ({ seteditcontact }) => {
             required
             type="text"
             className="form-control w-100 border "
-            onChange={(e) => (editContact.current.phonenumber = e.target.value)}
+            onChange={(e) => (editContact.current.phoneNumber = e.target.value)}
             placeholder="phone"
           />
           <label htmlFor="lastname">Phone number</label>

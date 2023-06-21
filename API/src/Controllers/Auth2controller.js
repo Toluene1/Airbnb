@@ -15,7 +15,6 @@ const GoogleAuth = async (req, res) => {
     );
     const { email, given_name, family_name, picture } = response.data;
     const existing_User = await User.findOne({ Email: email });
-    console.log(existing_User);
 
     if (existing_User) {
       const token = createJWT(existing_User._id);
@@ -26,7 +25,7 @@ const GoogleAuth = async (req, res) => {
       Email: email,
       FirstName: given_name,
       LastName: family_name,
-      Avatar: picture || "",
+      Avatar: picture,
     });
     const new_token = createJWT(user._id);
     res.status(200).json({ token: new_token, user: user });
