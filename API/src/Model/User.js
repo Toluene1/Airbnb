@@ -19,7 +19,7 @@ const userSchema = new Schema(
     },
     DOB: {
       type: Schema.Types.String,
-      required: true,
+      default: "",
     },
     About: {
       type: Schema.Types.String,
@@ -36,7 +36,7 @@ const userSchema = new Schema(
     },
     PhoneNumber: {
       type: Schema.Types.String,
-      required: true,
+      default: "",
     },
     Address: {
       suite: {

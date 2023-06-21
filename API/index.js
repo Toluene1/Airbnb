@@ -8,6 +8,7 @@ const propertyRouter = require("./src/Routes/propertyRoute");
 const categoryRouter = require("./src/Routes/categoryRoute");
 const wishlistRouter = require("./src/Routes/wishlistRoute");
 const auth = require("./src/middleware/auth");
+const Auth2Router = require("./src/Routes/Auth2Route");
 
 //security packages
 const xss = require("xss-clean");
@@ -20,10 +21,11 @@ app.use(mongoSanitize());
 app.use(xss());
 app.use(express.json());
 
-// Routes
+// API ROUTES
 app.get("/", (req, res) => {
   res.send("hello");
 });
+app.use("/api/v1/", Auth2Router);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/property", propertyRouter);
 app.use("/api/v1/category", categoryRouter);

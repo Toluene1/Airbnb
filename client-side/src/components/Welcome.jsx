@@ -4,11 +4,22 @@ import { Context } from "../Provider/Context";
 import { useContext, useRef, useState } from "react";
 import { AiFillApple, AiOutlineMail } from "react-icons/ai";
 import httpClient from "../Services/httpclient";
+import { useGoogleLogin } from "@react-oauth/google";
+
+import {
+  handleSaveToken,
+  handleSaveUser,
+  setLogin,
+} from "../utils/setlocalstorage";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Welcome({ setshowOtp }) {
   const state = useRef({ email: "" });
-  const { setmail } = useContext(Context);
+  const { setmail, setModalShow, setLoggedIn, setUser, setauthloading } =
+    useContext(Context);
   const [loading, setloading] = useState(false);
+  const Location = useLocation();
+  const navigate = useNavigate();
 
   const postUserEmail = async () => {
     try {
@@ -29,6 +40,26 @@ function Welcome({ setshowOtp }) {
       postUserEmail();
     }
   };
+
+  // oAuth Goggle Login
+  const login = useGoogleLogin({
+    onSuccess: async (response) => {
+      const token = response.access_token;
+      try {
+        const res = await httpClient.post("/Oauth/google", { token });
+        handleSaveToken(res.data.token);
+        setModalShow(false);
+        setUser(res.data.user);
+        handleSaveUser(res.data.user);
+        setLogin(setLoggedIn);
+        setauthloading(false);
+        navigate(Location.pathname);
+        location.reload();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  });
 
   return (
     <section>
@@ -90,14 +121,17 @@ function Welcome({ setshowOtp }) {
         </div>{" "}
         {/* Google  */}
         <div className="m-2">
-          <button className=" w-100 p-2 d-flex align-items-center">
+          <button
+            className=" w-100 p-2 d-flex align-items-center"
+            onClick={login}
+          >
             <span className=" fs-5 ms-3">
               <FcGoogle />{" "}
             </span>{" "}
             <span className="m-auto"> continue with Google</span>
           </button>
         </div>
-        {/* Apple  */}
+        ;{/* Apple  */}
         <div className="m-2">
           <button className=" w-100 p-2 d-flex align-items-center">
             <span className=" fs-5 ms-3">
