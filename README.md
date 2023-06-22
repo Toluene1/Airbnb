@@ -36,6 +36,7 @@ PACKAGES AND STACKS USED
 - Mongoose (Schema based system for application Data Modelling)
 - Formidable (parse files from form-data)
 - json web token (Client-side Authorization and Authentiction)
+- Google oauth
 
 ---
 

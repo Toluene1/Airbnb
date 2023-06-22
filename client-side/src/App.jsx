@@ -158,7 +158,7 @@ function App() {
     { length: property.length || 16 },
     (_, index) => (
       <div key={index} className="property-ind mt-4">
-        <div className="loadings animate carous "></div>
+        <div className="loadings animate carous w-100"></div>
         <div>
           <div className="foot my-3">
             <p
