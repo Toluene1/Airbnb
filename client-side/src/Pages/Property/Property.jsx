@@ -316,9 +316,9 @@ const Property = () => {
               </span>
             </div>
             {/* images  */}
-            <div className="d-flex flex-wrap gap-2  mt-3">
+            <div className="images_Container  mt-3">
               {property.images.map((images, index) => (
-                <div className="imagesprop " key={index}>
+                <div className="imagesprop" key={index}>
                   <img src={images} alt="" />
                 </div>
               ))}

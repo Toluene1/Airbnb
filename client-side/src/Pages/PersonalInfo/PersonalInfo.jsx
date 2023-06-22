@@ -128,7 +128,7 @@ const PersonalInfo = () => {
                 {editphone ? (
                   <Phone seteditphone={seteditphone} />
                 ) : (
-                  <p>{User.PhoneNumber}</p>
+                  <p>{User.PhoneNumber || "not provided"}</p>
                 )}
               </main>{" "}
               {/* Address */}

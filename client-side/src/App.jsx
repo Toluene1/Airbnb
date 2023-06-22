@@ -158,15 +158,21 @@ function App() {
     { length: property.length || 16 },
     (_, index) => (
       <div key={index} className="property-ind mt-4">
-        <div
-          style={{ height: "200px" }}
-          className="loadings animate carous "
-        ></div>
+        <div className="loadings animate carous "></div>
         <div>
           <div className="foot my-3">
-            <p className="loadings animate" style={{ height: "20px" }}></p>
-            <p className="loadings animate my-3" style={{ height: "20px" }}></p>
-            <p className="loadings animate" style={{ height: "20px" }}></p>
+            <p
+              className="loadings animate"
+              style={{ height: "20px", width: "90%" }}
+            ></p>
+            <p
+              className="loadings animate my-3"
+              style={{ height: "20px", width: "90%" }}
+            ></p>
+            <p
+              className="loadings animate"
+              style={{ height: "20px", width: "90%" }}
+            ></p>
           </div>
         </div>
       </div>
@@ -268,7 +274,7 @@ function App() {
                       {/* carousel  */}
                       <div className=" property-ind">
                         {property.images.length > 0 ? (
-                          <Carousel onSelect={handleSelect} className="carou">
+                          <Carousel onSelect={handleSelect}>
                             {property.images.map((images) => (
                               <Carousel.Item
                                 activeindex={index}
