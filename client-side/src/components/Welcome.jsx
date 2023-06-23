@@ -131,7 +131,7 @@ function Welcome({ setshowOtp }) {
             <span className="m-auto"> continue with Google</span>
           </button>
         </div>
-        ;{/* Apple  */}
+        {/* Apple  */}
         <div className="m-2">
           <button className=" w-100 p-2 d-flex align-items-center">
             <span className=" fs-5 ms-3">
