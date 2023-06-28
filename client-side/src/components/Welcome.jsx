@@ -96,7 +96,7 @@ function Welcome({ setshowOtp }) {
             ></span>
             <span className={`mx-3 ${loading ? "d-none" : "d-block"}`}>
               {" "}
-              continue
+              Continue
             </span>
           </button>
         </div>
@@ -116,7 +116,7 @@ function Welcome({ setshowOtp }) {
             <span className="text-primary fs-5 ms-3">
               <FaFacebookSquare />{" "}
             </span>{" "}
-            <span className="m-auto"> continue with facebook</span>
+            <span className="m-auto"> Continue with Facebook</span>
           </button>
         </div>{" "}
         {/* Google  */}
@@ -128,7 +128,7 @@ function Welcome({ setshowOtp }) {
             <span className=" fs-5 ms-3">
               <FcGoogle />{" "}
             </span>{" "}
-            <span className="m-auto"> continue with Google</span>
+            <span className="m-auto"> Continue with Google</span>
           </button>
         </div>
         {/* Apple  */}
@@ -137,7 +137,7 @@ function Welcome({ setshowOtp }) {
             <span className=" fs-5 ms-3">
               <AiFillApple />
             </span>{" "}
-            <span className="m-auto"> continue with Apple</span>
+            <span className="m-auto"> Continue with Apple</span>
           </button>
         </div>
         {/* mail */}
@@ -146,7 +146,7 @@ function Welcome({ setshowOtp }) {
             <span className=" fs-5 ms-3">
               <AiOutlineMail />
             </span>{" "}
-            <span className="m-auto"> continue with email</span>
+            <span className="m-auto"> Continue with Email</span>
           </button>
         </div>
       </div>
