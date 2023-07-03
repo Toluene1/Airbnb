@@ -18,7 +18,8 @@ function FilterWebProperties(props) {
   const [structure, setstructure] = useState("");
   const [privacy, setprivacy] = useState("");
   const [amenities, setamenities] = useState([]);
-
+  const [minPrice, setminprice] = useState(50);
+  const [maxPrice, setmaxprice] = useState(200);
   const [amenity, setamenity] = useState({
     wifi: false,
     tv: false,
@@ -134,7 +135,7 @@ function FilterWebProperties(props) {
       try {
         setloading(true);
         const response = await httpClient.get(
-          `property/getallproperty/?structure=${structure}&Bedrooms=${bedrooms.qty}&Beds=${bed.qty}&Bathrooms=${bathroom.qty}&privacy=${privacy}&Amenities=${amenities}`,
+          `property/getallproperty/?structure=${structure}&Bedrooms=${bedrooms.qty}&Beds=${bed.qty}&Bathrooms=${bathroom.qty}&privacy=${privacy}&Amenities=${amenities}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
         );
         setFilterProp(response.data.prop);
         setloading(false);
@@ -150,7 +151,16 @@ function FilterWebProperties(props) {
     return () => {
       isMounted = false;
     };
-  }, [structure, bedrooms.qty, bed.qty, bathroom.qty, privacy, amenities]);
+  }, [
+    structure,
+    bedrooms.qty,
+    bed.qty,
+    bathroom.qty,
+    privacy,
+    amenities,
+    minPrice,
+    maxPrice,
+  ]);
 
   return (
     <main>
@@ -185,14 +195,28 @@ function FilterWebProperties(props) {
                 className="imgGraph"
               />
             </div>
-            <div className="text-center mt-2">
-              <input
-                type="text"
-                className=" p-2 inputPrice"
-                placeholder="min"
-              />
-              <span className="ms-2 me-2">-</span>
-              <input type="text" className="inputPrice p-2" placeholder="max" />
+            <div className="text-center mt-2 d-flex justify-content-center align-items-center">
+              <div className="p-2 border">
+                <span>$</span>
+                <input
+                  type="text"
+                  className=" p-2 border-0"
+                  placeholder="min"
+                  onChange={(e) => setminprice(e.target.value)}
+                  value={minPrice}
+                />
+              </div>
+              <span className="mx-4">-</span>
+              <div className="p-2 border">
+                <span>$</span>
+                <input
+                  type="text"
+                  className="border-0 p-2"
+                  onChange={(e) => setmaxprice(e.target.value)}
+                  placeholder="max"
+                  value={maxPrice}
+                />
+              </div>
             </div>
 
             <section>
