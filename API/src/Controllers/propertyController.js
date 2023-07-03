@@ -148,8 +148,16 @@ const editHostProperty = async (req, res) => {
 };
 
 const getAllProperty = async (req, res) => {
-  const { structure, privacy, Bedrooms, Beds, Bathrooms, Amenities } =
-    req.query;
+  const {
+    structure,
+    privacy,
+    Bedrooms,
+    Beds,
+    Bathrooms,
+    Amenities,
+    minPrice,
+    maxPrice,
+  } = req.query;
 
   const queryObject = {};
   if (structure) {
@@ -172,7 +180,12 @@ const getAllProperty = async (req, res) => {
     const amenities = Amenities.split(",");
     queryObject.Amenities = { $all: amenities };
   }
-
+  if (minPrice && maxPrice) {
+    queryObject.price = {
+      $gte: minPrice,
+      $lte: maxPrice,
+    };
+  }
   try {
     const property = await Property.find(queryObject).populate("host");
     res.status(200).json({ prop: property });
