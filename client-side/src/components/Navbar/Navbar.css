@@ -411,11 +411,17 @@ a :hover {
   margin-left: 30px;
   margin-bottom: 10px;
 }
-.inputPrice {
-  width: 43%;
-  min-width: 10px;
+.priceDiv {
   border: 1px solid rgb(100, 94, 94);
   border-radius: 10px;
+}
+.inputPrice {
+  width: 80%;
+  border: none;
+}
+.inputPrice:focus {
+  border: none;
+  outline: none;
 }
 .labelStyle {
   font-size: 12px;
