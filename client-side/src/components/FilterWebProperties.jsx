@@ -9,7 +9,7 @@ import { TbBuildingHospital } from "react-icons/tb";
 import { MdOutlineWarehouse } from "react-icons/md";
 
 function FilterWebProperties(props) {
-  const { setProperty, setFilterWeb } = useContext(Context);
+  const { setProperty, setFilterWeb, property } = useContext(Context);
   const [filterProp, setFilterProp] = useState([]);
   const [loading, setloading] = useState(false);
   const [bedrooms, setbedrooms] = useState({ color: 0, qty: "" });
@@ -20,6 +20,8 @@ function FilterWebProperties(props) {
   const [amenities, setamenities] = useState([]);
   const [minPrice, setminprice] = useState(50);
   const [maxPrice, setmaxprice] = useState(200);
+  const [avgprice, setavgprice] = useState(0);
+
   const [amenity, setamenity] = useState({
     wifi: false,
     tv: false,
@@ -129,6 +131,15 @@ function FilterWebProperties(props) {
     setFilterWeb(false);
   }
 
+  // calculate average Price
+  useEffect(() => {
+    let totalPrice = property
+      .map((prop) => prop.price)
+      .reduce((total, value) => {
+        return total + value;
+      }, 0);
+    setavgprice(Math.floor(totalPrice / property.length));
+  });
   // fetch properties
   useEffect(() => {
     const fetchProperties = async () => {
@@ -186,7 +197,9 @@ function FilterWebProperties(props) {
           <section>
             <div className="topModal">
               <p className="fw-bold">price change</p>
-              <p className="fw-lighter">The average nightly price is $472</p>
+              <p className="fw-lighter">
+                The average nightly price is ${avgprice}
+              </p>
             </div>
             <div>
               <img
@@ -196,22 +209,22 @@ function FilterWebProperties(props) {
               />
             </div>
             <div className="text-center mt-2 d-flex justify-content-center align-items-center">
-              <div className="p-2 border">
+              <div className="p-1 priceDiv">
                 <span>$</span>
                 <input
                   type="text"
-                  className=" p-2 border-0"
+                  className=" p-1 inputPrice"
                   placeholder="min"
                   onChange={(e) => setminprice(e.target.value)}
                   value={minPrice}
                 />
               </div>
               <span className="mx-4">-</span>
-              <div className="p-2 border">
+              <div className="p-1  priceDiv">
                 <span>$</span>
                 <input
                   type="text"
-                  className="border-0 p-2"
+                  className=" p-1 inputPrice"
                   onChange={(e) => setmaxprice(e.target.value)}
                   placeholder="max"
                   value={maxPrice}
