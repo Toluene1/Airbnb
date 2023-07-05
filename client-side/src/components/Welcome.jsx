@@ -80,8 +80,8 @@ function Welcome({ setshowOtp }) {
         </div>
 
         <p className="mt-1">
-          We’ll call or text you to confirm your number. Standard message and
-          data rates apply
+          We’ll text you to confirm your Email. Standard message and data rates
+          apply
         </p>
 
         <div>
