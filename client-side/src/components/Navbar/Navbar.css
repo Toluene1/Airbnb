@@ -412,6 +412,7 @@ a :hover {
   margin-bottom: 10px;
 }
 .priceDiv {
+  width: 100%;
   border: 1px solid rgb(100, 94, 94);
   border-radius: 10px;
 }
