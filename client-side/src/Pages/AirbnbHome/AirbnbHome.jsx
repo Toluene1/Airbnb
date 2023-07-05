@@ -106,7 +106,7 @@ function AirbnbHome() {
         </div>
       </section>
       <section className="div-PriceMap text-center gap-4 mt-5">
-        <div className="priceDiv">
+        <div className="priceDivs">
           <h1
             className="text-danger"
             style={{
