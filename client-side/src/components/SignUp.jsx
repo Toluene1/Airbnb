@@ -84,7 +84,7 @@ function PopModal(props) {
           )}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body className="p-2">
+      <Modal.Body className="p-2" style={{ height: "55vh" }}>
         {existing ? (
           <LoadExistingUser
             setshowOtp={setshowOtp}
