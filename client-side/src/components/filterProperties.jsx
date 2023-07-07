@@ -109,7 +109,7 @@ function FilterProperties(props) {
       .reduce((total, value) => {
         return total + value;
       }, 0);
-    setavgprice(Math.floor(totalPrice / property.length));
+    setavgprice(Math.round(totalPrice / property.length));
   });
 
   // fetch properties
@@ -174,6 +174,8 @@ function FilterProperties(props) {
     setbathroom({ ...bathroom, color: 0, qty: "" });
     setbedrooms({ ...bedrooms, color: 0, qty: "" });
     setbed({ ...bed, color: 0, qty: "" });
+    setminprice(50);
+    setmaxprice(200);
   };
   return (
     <>
