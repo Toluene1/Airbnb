@@ -163,7 +163,7 @@ body {
 }
 .catload {
   min-width: 100px;
-  height: 30px;
+  height: 15px;
   background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0),
