@@ -6,7 +6,6 @@ const createCategory = async (req, res) => {
 
     res.status(200).json({ prop: categories });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };
@@ -17,7 +16,6 @@ const getAllCategories = async (req, res) => {
     const newCategories = categories.map((category) => category.structure);
     res.status(200).json({ category: newCategories });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };
