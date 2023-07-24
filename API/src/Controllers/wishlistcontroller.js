@@ -19,7 +19,6 @@ const createWishlist = async (req, res) => {
       msg: "property added to wishlist successfully",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };
@@ -45,7 +44,6 @@ const deleteWishlist = async (req, res) => {
     const wishlist = await Wishlist.find({ user: _id }).populate("property");
     res.status(200).json({ wish: wishlist });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };

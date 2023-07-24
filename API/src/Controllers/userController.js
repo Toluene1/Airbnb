@@ -21,7 +21,7 @@ const createEmailOtp = async (req, res) => {
       });
 
       ev.emit("mail", message, email);
-      res.status(200).json({ message: "otp sent " });
+      res.status(200).json({ message: "otp sent" });
       return;
     }
 
@@ -34,7 +34,6 @@ const createEmailOtp = async (req, res) => {
     res.status(200).json({ message: "otp sent " });
   } catch (error) {
     res.status(500).json({ message: "please contact admin" });
-    console.log(error);
   }
 };
 
@@ -58,7 +57,6 @@ const verifyEmailOtp = async (req, res) => {
     res.status(200).json({ token: token, user: regUser });
   } catch (error) {
     res.status(500).json({ message: "please contact admin" });
-    console.log(error);
   }
 };
 
@@ -71,7 +69,6 @@ const createUser = async (req, res) => {
     res.status(200).json({ token, user });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
-    console.log(error);
   }
 };
 
@@ -86,7 +83,6 @@ const updateUser = async (req, res) => {
     res.status(200).json({ user: user });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
-    console.log(error);
   }
 };
 
@@ -102,7 +98,6 @@ const updateAddress = async (req, res) => {
     res.status(200).json({ message: "address update", user });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
-    console.log(error);
   }
 };
 const updateEmergencyContact = async (req, res) => {
@@ -117,7 +112,6 @@ const updateEmergencyContact = async (req, res) => {
     res.status(200).json({ message: "emergencey contact updated", user });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
-    console.log(error);
   }
 };
 
@@ -135,7 +129,6 @@ const updateProfile = async (req, res) => {
     res.status(200).json({ user });
   } catch (error) {
     res.status(500).json({ message: "please contact your admin" });
-    console.log(error);
   }
 };
 
@@ -162,7 +155,6 @@ const uploadPhoto = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ message: "img uploaded failed" });
-    console.log(error);
   }
 };
 
@@ -172,7 +164,6 @@ const getUser = async (req, res) => {
     const user = await User.findOne({ _id: _id });
     res.status(200).json({ user: user });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "please contact the admin" });
   }
 };
