@@ -11,7 +11,6 @@ const createProperty = async (req, res) => {
     });
     res.status(200).json({ prop: property._id });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };
@@ -25,7 +24,6 @@ const updateProperty = async (req, res) => {
 
     res.status(200).json({ prop: property });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };
@@ -44,7 +42,6 @@ const updatePropertyLocation = async (req, res) => {
 
     res.status(200).json({ prop: property });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };
@@ -130,7 +127,6 @@ const deleteHostProperty = async (req, res) => {
     const prop = await Property.find({ host: _id });
     res.status(200).json({ prop: prop });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };
@@ -142,7 +138,6 @@ const editHostProperty = async (req, res) => {
     const property = await Property.findOne({ host: _id, _id: id });
     res.status(200).json({ prop: property });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };
@@ -190,7 +185,6 @@ const getAllProperty = async (req, res) => {
     const property = await Property.find(queryObject).populate("host");
     res.status(200).json({ prop: property });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };

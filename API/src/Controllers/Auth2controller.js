@@ -30,7 +30,6 @@ const GoogleAuth = async (req, res) => {
     const new_token = createJWT(user._id);
     res.status(200).json({ token: new_token, user: user });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "please contact admin" });
   }
 };
