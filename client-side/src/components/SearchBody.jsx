@@ -5,7 +5,7 @@ import canada from "../../src/assets/canada.webp";
 import unitedkingdom from "../../src/assets/united-kingdom.webp";
 import southamerica from "../../src/assets/south-america.webp";
 
-function SearchBody({ hideFilter }) {
+function SearchBody() {
   return (
     <main className="py-3">
       <section>
