@@ -18,9 +18,19 @@ const createProperty = async (req, res) => {
 const updateProperty = async (req, res) => {
   const { id } = req.params;
   try {
-    const property = await Property.findOneAndUpdate({ _id: id }, req.body, {
-      new: true,
-    });
+    const propertyExist = await Property.findOne({ _id: id });
+    if (!propertyExist) {
+      return res
+        .status(404)
+        .json({ msg: `property with id :${id} doesn't exist ` });
+    }
+    const property = await Property.findOneAndUpdate(
+      { _id: propertyExist._id },
+      req.body,
+      {
+        new: true,
+      },
+    );
 
     res.status(200).json({ prop: property });
   } catch (error) {
@@ -49,6 +59,12 @@ const updatePropertyLocation = async (req, res) => {
 const uploadPropertyImages = async (req, res) => {
   try {
     const { id } = req.params;
+    const propertyExist = await Property.findOne({ _id: id });
+    if (!propertyExist) {
+      return res
+        .status(404)
+        .json({ msg: `property with id :${id} doesn't exist ` });
+    }
     const { Email } = req.user;
     const imagesUri = [];
     const uploadResults = [];
@@ -72,9 +88,8 @@ const uploadPropertyImages = async (req, res) => {
       for (let index = 0; index < uploadResults.length; index++) {
         images.push(uploadResults[index].secure_url);
       }
-
       const property = await Property.findOneAndUpdate(
-        { _id: id },
+        { _id: propertyExist._id },
         { images: images },
         { new: true },
       );
