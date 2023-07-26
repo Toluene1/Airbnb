@@ -12,11 +12,14 @@ import {
   setLogin,
 } from "../utils/setlocalstorage";
 import { useLocation, useNavigate } from "react-router-dom";
+import Alert from "./Alert";
 
 function Welcome({ setshowOtp }) {
   const state = useRef({ email: "" });
   const { setmail, setModalShow, setLoggedIn, setUser, setauthloading } =
     useContext(Context);
+  const [alert, setalert] = useState(false);
+  const [alertMessage, setalertMessage] = useState("");
   const [loading, setloading] = useState(false);
   const Location = useLocation();
   const navigate = useNavigate();
@@ -29,7 +32,12 @@ function Welcome({ setshowOtp }) {
       setshowOtp(true);
       setloading(false);
     } catch (error) {
-      setloading(false); //analyse error 500
+      if (error.response.status == 500) {
+        setalert(true);
+        setalertMessage(error.response.data.message);
+        setloading(false);
+        return;
+      }
     }
   };
 
@@ -39,7 +47,10 @@ function Welcome({ setshowOtp }) {
       postUserEmail();
     }
   };
-
+  //close alert
+  const closeAlert = () => {
+    setalert(false);
+  };
   // oAuth Goggle Login
   const login = useGoogleLogin({
     onSuccess: async (response) => {
@@ -62,6 +73,7 @@ function Welcome({ setshowOtp }) {
 
   return (
     <section>
+      {alert && <Alert closeAlert={closeAlert} alertMessage={alertMessage} />}
       <form action="" onSubmit={handleSubmit} className="form-control border-0">
         <h4 className="my-2">Welcome to AirBnb</h4>
         {/* email  */}

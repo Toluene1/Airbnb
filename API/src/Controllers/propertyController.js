@@ -40,10 +40,15 @@ const updateProperty = async (req, res) => {
 
 const updatePropertyLocation = async (req, res) => {
   const { id } = req.params;
-
   try {
+    const propertyExist = await Property.findOne({ _id: id });
+    if (!propertyExist) {
+      return res
+        .status(404)
+        .json({ msg: `property with id :${id} doesn't exist ` });
+    }
     const property = await Property.findOneAndUpdate(
-      { _id: id },
+      { _id: propertyExist._id },
       { Location: req.body },
       {
         new: true,
@@ -96,8 +101,7 @@ const uploadPropertyImages = async (req, res) => {
       res.status(200).json({ prop: property });
     });
   } catch (error) {
-    res.status(500).json({ message: "please contact admin" });
-    console.log(error);
+    res.status(500).json({ msg: "please contact admin" });
   }
 };
 
@@ -107,7 +111,6 @@ const findProperty = async (req, res) => {
     const property = await Property.findOne({ _id: id }).populate("host");
     res.status(200).json({ prop: property });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };
@@ -117,7 +120,6 @@ const findPropertynoAuth = async (req, res) => {
     const property = await Property.findOne({ _id: id }).populate("host");
     res.status(200).json({ prop: property });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };
@@ -129,7 +131,6 @@ const getHostProperty = async (req, res) => {
     const property = await Property.find({ host: _id });
     res.status(200).json({ prop: property });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ msg: "please contact the admin " });
   }
 };

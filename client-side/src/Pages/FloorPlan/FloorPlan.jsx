@@ -37,12 +37,6 @@ const FloorPlan = () => {
       setloading(false);
       navigate("/become-a-host/stand-out");
     } catch (error) {
-      if (error.response.status == 404) {
-        setalert(true);
-        setalertMessage("propertyId not found");
-        setloading(false);
-        return;
-      }
       setalert(true);
       setalertMessage(error.response.data.msg);
       setloading(false);
@@ -55,6 +49,7 @@ const FloorPlan = () => {
     const fetchUser = async () => {
       try {
         await httpAuth.get("/user/fetchUser");
+        setauthloading(false);
       } catch (error) {
         setauthloading(true);
         setModalShow(true);
