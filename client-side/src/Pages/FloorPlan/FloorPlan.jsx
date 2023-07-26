@@ -13,14 +13,8 @@ const FloorPlan = () => {
     Beds: 1,
     Bathrooms: 1,
   });
-  const {
-    propertyId,
-    setauthloading,
-    setModalShow,
-    modalShow,
-    setUser,
-    authloading,
-  } = useContext(Context);
+  const { propertyId, setauthloading, setModalShow, modalShow, authloading } =
+    useContext(Context);
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
   const [loading, setloading] = useState();
@@ -60,10 +54,7 @@ const FloorPlan = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        setauthloading(true);
-        const response = await httpAuth.get("/user/fetchUser");
-        setUser(response.data.user);
-        setauthloading(false);
+        await httpAuth.get("/user/fetchUser");
       } catch (error) {
         setauthloading(true);
         setModalShow(true);

@@ -32,10 +32,7 @@ function Photos() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        setauthloading(true);
-        const response = await httpAuth.get("/user/fetchUser");
-        setUser(response.data.user);
-        setauthloading(false);
+        await httpAuth.get("/user/fetchUser");
       } catch (error) {
         setauthloading(true);
         setModalShow(true);
