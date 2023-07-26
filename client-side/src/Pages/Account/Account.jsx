@@ -29,7 +29,6 @@ function Accounts() {
   const {
     setUser,
     User,
-
     setModalShow,
     modalShow,
     authloading,
