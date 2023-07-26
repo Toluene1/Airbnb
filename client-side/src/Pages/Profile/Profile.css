@@ -3,7 +3,6 @@
   justify-content: start;
   margin: 20px auto;
   margin-left: 200px;
-  /* display: block; */
 }
 
 .profile-badge {
@@ -91,7 +90,6 @@
 }
 .mobileDiv {
   max-width: 395px;
-  /* height: 700px; */
   margin: auto;
 }
 .mobileEditButton {
