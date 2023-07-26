@@ -31,7 +31,7 @@ const FloorPlan = () => {
   const postFloorPlan = async () => {
     try {
       setloading(true);
-      await httpAuth.post(`/property/updateproperty/645d72dce07937c5a507bef9`, {
+      await httpAuth.post(`/property/updateproperty/${propertyId}`, {
         ...plan,
       });
       setloading(false);
