@@ -29,8 +29,7 @@ function Welcome({ setshowOtp }) {
       setshowOtp(true);
       setloading(false);
     } catch (error) {
-      setloading(false);
-      console.log(error);
+      setloading(false); //analyse error 500
     }
   };
 

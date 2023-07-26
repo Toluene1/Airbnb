@@ -23,7 +23,7 @@ app.use(express.json());
 
 // API ROUTES
 app.get("/", (req, res) => {
-  res.send("hello");
+  res.send("hello I'm working");
 });
 app.use("/api/v1/", Auth2Router);
 app.use("/api/v1/user", userRouter);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./About-your-place.css";
 import Airbnbhouse3 from "../../assets/house3.jpg";
 import PropertyNav from "../../components/PropertyNav/PropertyNav";
